@@ -1,39 +1,38 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\ClassProgram;
+use App\Models\LessonProgram;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClassProgramController extends Controller
 {
     public function programs(){
-        $program = ClassProgram::all();
+        $program = DB::table('prog_view')->orderByDesc('id')->get();
         return $program;
     }
     public function program($id){
-        $program = ClassProgram::find($id);
+        $program = LessonProgram::find($id);
         return $program;
     }
     public function remove($id){
-        $result = ClassProgram::find($id)->delete();     
+        $result = LessonProgram::find($id)->delete();     
     }
     public function update(Request $request , $id){
-        $program = ClassProgram::find($id);
+        $program = LessonProgram::find($id);
         $program->update(['lesson_id' => $request->lesson_id,
                           'class_id' => $request->class_id,
-                          'year' => $request->year,
                           'time_start' => $request->time_start,
                           'time_end' => $request->time_end, 
-                          'day_of_week' => $request->day_of_week]);
+                          'dayOfWeek' => $request->dayOfWeek]);
         return $program;  
     }
     public function store(Request $request){
-        ClassProgram::create(['lesson_id' => $request->lesson_id,
+        LessonProgram::create(['lesson_id' => $request->lesson_id,
                               'class_id' => $request->class_id,
-                              'year' => $request->year,
                               'time_start' => $request->time_start,
                               'time_end' => $request->time_end, 
-                              'day_of_week' => $request->day_of_week]); 
+                              'dayOfWeek' => $request->dayOfWeek]); 
         return $request->all();
     }
 }

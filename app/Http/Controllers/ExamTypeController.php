@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ExamType;
 use App\Models\ClassRoom;
 use App\Models\Lesson;
+use App\Http\Requests\ExamTypeRequest;
 
 class ExamTypeController extends Controller
 {
@@ -20,12 +21,12 @@ class ExamTypeController extends Controller
     public function remove($id){
         $result = ExamType::find($id)->delete();     
     }
-    public function update(Request $request , $id){
+    public function update(ExamTypeRequest $request,$id){
         $exam = ExamType::find($id);
         $exam->update(['exam_type'=>$request->exam_type]);
         return $exam;  
     }
-    public function store(Request $request){
+    public function store(ExamTypeRequest $request){
         ExamType::create(['exam_type' => $request->exam_type]); 
         return $request->all();
     }

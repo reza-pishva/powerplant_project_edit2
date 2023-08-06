@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\Profile;
+use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -22,7 +23,7 @@ class ProfileController extends Controller
         $profile = Profile::find($id);        
         return $profile->user;
     }
-    public function update(Request $request , $id){
+    public function update(ProfileRequest $request , $id){
         $profiles = Profile::find($id);
         $profiles->update(['father_job'=>$request->father_job,
                            'mother_job'=>$request->mother_job,
@@ -35,7 +36,7 @@ class ProfileController extends Controller
                            'user_id'=>$request->user_id]);
         return $profiles;  
     }
-    public function store(Request $request){
+    public function store(ProfileRequest $request){
 
         if(Profile::where('user_id',$request->user_id)->get()->count()==0){
             Profile::create(['father_job'=>$request->father_job,

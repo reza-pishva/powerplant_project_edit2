@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\StudentToClass;
+use App\Http\Requests\StudentClassRequest;
 
 class StudentClassController extends Controller
 {
@@ -14,7 +14,6 @@ class StudentClassController extends Controller
     
     public function student($id){
         $students = StudentToClass::find($id);
-        // return StudentToClass::find($id);
         return $students;
     }
     
@@ -23,13 +22,13 @@ class StudentClassController extends Controller
     }
     
     public function update(Request $request , $id){
-        $students = StudentToClass::find($id);
+        $students = StudentClassRequest::find($id);
         $students->update(['user_id'=>$request->user_id,
                            'class_id'=>$request->class_id]);
         return $students;  
     }
     
-    public function store(Request $request){
+    public function store(StudentClassRequest $request){
         StudentToClass::create(['user_id'=>$request->user_id,
                                 'class_id'=>$request->class_id]); 
         return $request->all();
