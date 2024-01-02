@@ -1852,6 +1852,28 @@
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");
                                 $(this).closest('tr.report_row').css("color", "white");
                             })
+                            $(".set_block").on('click',function(){
+
+                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                var token = $("meta[name='csrf-token']").attr("content");
+                                $.ajax(
+                                    {
+                                        url: "/set-block/" + id_b,
+                                        type: 'GET',
+                                        data: {
+                                            "id": id_b,
+                                            "_token": token,
+                                        },
+                                        success: function () {
+                                            $('#ajax-alert3').addClass('alert-success').show(function(){
+                                               $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
+                                            });
+                                        }
+                                    });
+
+                                
+
+                            })
                         }
 
 
