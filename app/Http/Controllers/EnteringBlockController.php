@@ -37,4 +37,14 @@ class EnteringBlockController extends Controller
                           $blocks = EnteringBlock::all();
                           return response()->json(['success'=>'hi','result'=>$blocks]);
     }
+    public function set_block($id){
+        $block = EnteringBlock::find($id);
+        $block->update(['isBlocked' => 1]);
+         return $block;  
+    }
+    public function set_free($id){
+        $block = EnteringBlock::find($id);
+        $block->update(['isBlocked' => 0]);
+         return $block;  
+    }
 }
