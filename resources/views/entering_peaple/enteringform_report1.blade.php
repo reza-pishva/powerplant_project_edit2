@@ -1832,14 +1832,14 @@
                         var row = ''
                        
                         for(var i = 0; i < response.result.length; i++) {
-                            id_b=$('<td display=none>' + response.result[i]['id_b'] + '</td>')
+                            id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
                             f_name = $('<td style="width: 7%;text-align:center">' + response.result[i]['f_name'] + '</td>')
                             l_name = $('<td style="width: 9%;text-align:center">' + response.result[i]['l_name'] + '</td>')
                             national_code = $('<td style="width: 9%;text-align:center">' + response.result[i]['national_code'] + '</td>')
                             company_name = $('<td style="width: 14%;text-align:center">' + response.result[i]['company_name'] + '</td>')
                             reason = $('<td style="width: 23%;text-align:center">' + response.result[i]['reason'] + '</td>')
                             t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
-                            t1 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-danger set_block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغومجوز</button></td>')
+                            t1 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغومجوز</button></td>')
                             t2 = $('<td style="width: 13%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">بازگشت مجوز</button></td>')
                             t3 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-primary" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
                             t4 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-warning" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button></td>')
@@ -1852,35 +1852,24 @@
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");
                                 $(this).closest('tr.report_row').css("color", "white");
                             })
-                            $(".set_block1").on('click',function(){
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");
-                            })
-                            // $(".set_block").on('click',function(){
-                            //     alert("hi")
-                            //     // var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                            $(".block1").on('click',function(){
                                 
-                            //     // var token = $("meta[name='csrf-token']").attr("content");
-                            //     // $.ajax(
-                            //     //     {
-                            //     //         url: "/set-block/" + id_b,
-                            //     //         type: 'GET',
-                            //     //         data: {
-                            //     //             "id": id_b,
-                            //     //             "_token": token,
-                            //     //         },
-                            //     //         success: function () {
-                            //     //             $('#ajax-alert3').addClass('alert-success').show(function(){
-                            //     //                $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
-                            //     //             });
-                            //     //         }
-                            //     //     });
+                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                $.ajax(
+                                    {
+                                        url: "/set-block/"+id_b,
+                                        type: 'GET',
+                                        success: function (response) {
+                                            alert(response.result)
+                                            $('#ajax-alert3').addClass('alert-success').show(function(){
+                                               $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
+                                            });
+                                        }
+                                    });
 
                                 
 
-                            // })
+                             })
                         }
 
 

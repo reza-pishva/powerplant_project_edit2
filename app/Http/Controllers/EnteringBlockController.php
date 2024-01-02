@@ -38,13 +38,14 @@ class EnteringBlockController extends Controller
                           return response()->json(['success'=>'hi','result'=>$blocks]);
     }
     public function set_block($id){
-        $block = EnteringBlock::find($id);
-        $block->update(['isBlocked' => 1]);
-         return $block;  
+        //$block = EnteringBlock::find($id);
+        // $block->update(['isBlocked' => 1]);
+        //EnteringBlock::where('id_b',169)->update(['isBlocked'=>1]);
+        return response()->json(['success'=>'hi','result'=>$id]);
     }
     public function set_free($id){
         $block = EnteringBlock::find($id);
-        $block->update(['isBlocked' => 0]);
-         return $block;  
+        $block->update(['isBlockeded' => 0]);
+        return response()->json(['success'=>'hi','result'=>$blocks]); 
     }
 }
