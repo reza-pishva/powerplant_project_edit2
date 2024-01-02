@@ -1,0 +1,6 @@
+
+    function reload()
+    {
+     alert('hi')
+    }
+
