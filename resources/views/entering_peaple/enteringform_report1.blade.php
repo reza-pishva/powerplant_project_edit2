@@ -1834,12 +1834,12 @@
                             id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
                             f_name = $('<td style="width: 7%;text-align:center">' + response.result[i]['f_name'] + '</td>')
                             l_name = $('<td style="width: 9%;text-align:center">' + response.result[i]['l_name'] + '</td>')
-                            national_code = $('<td style="width: 9%;text-align:center">' + response.result[i]['national_code'] + '</td>')
-                            company_name = $('<td style="width: 14%;text-align:center">' + response.result[i]['company_name'] + '</td>')
-                            reason = $('<td style="width: 23%;text-align:center">' + response.result[i]['reason'] + '</td>')
+                            national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
+                            company_name = $('<td style="width: 16%;text-align:center">' + response.result[i]['company_name'] + '</td>')
+                            reason = $('<td style="width: 25%;text-align:center">' + response.result[i]['reason'] + '</td>')
                             t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
                             t1 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغومجوز</button></td>')
-                            t2 = $('<td style="width: 13%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">بازگشت مجوز</button></td>')
+                            t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
                             t3 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-primary" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
                             t4 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-warning" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -1876,7 +1876,7 @@
                                         url: "/set-block1/"+id_b,
                                         type: 'GET',
                                         success: function (response) {
-                                            Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'info')
+                                            Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
                                             $('#ajax-alert3').addClass('alert-success').show(function(){
                                                $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
                                             });
@@ -2821,11 +2821,11 @@
                         <td class="person" style="width: 3%">--</td>
                         <td class="person" style="width: 7%">نام</td>
                         <td class="person" style="width: 9%">نام خانوادگی</td>
-                        <td class="person" style="width: 9%">کد ملی</td>
-                        <td class="person" style="width: 14%">شرکت</td>
-                        <td class="person" style="width: 23%">دلیل منع تردد</td>
+                        <td class="person" style="width: 10%">کد ملی</td>
+                        <td class="person" style="width: 16%">شرکت</td>
+                        <td class="person" style="width: 25%">دلیل منع تردد</td>
                         <td class="person" style="width: 8%">#</td>
-                        <td class="person" style="width: 13%">#</td>
+                        <td class="person" style="width: 8%">#</td>
                         <td class="person" style="width: 7%">#</td>
                         <td class="person" style="width: 7%">#</td>
                     </tr>
