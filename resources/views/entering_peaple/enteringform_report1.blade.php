@@ -1805,8 +1805,7 @@
                     dataType: 'JSON',
                     contentType: false,
                     processData: false,
-                    success: function (response) {      
-                        
+                    success: function (response) {            
                         
                         $("#f_name_b").val('');
                         $("#l_name_b").val('');
@@ -1846,31 +1845,9 @@
                             row = $('<tr class="report_row"></tr>')
                             row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
                             $("#block_table").append(row)
-                            $(".select1").on('click',function(){
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");
-                            })
-                            $(".block1").on('click',function(){      
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");                          
-                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                                $.ajax(
-                                    {
-                                        url: "/set-block1/"+id_b,
-                                        type: 'GET',
-                                        success: function (response) {
-                                            $('#ajax-alert3').addClass('alert-danger').show(function(){
-                                               $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
-                                            });
-                                        }
-                                    });    
-                             })
 
-                             $(".set_free").on('click',function(){        
+                        }
+                        $(".set_free").on('click',function(){        
                                 $("tr.report_row").css("background-color", "white");
                                 $("tr.report_row").css("color", "black");
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");
@@ -1881,44 +1858,42 @@
                                         url: "/set-free/"+id_b,
                                         type: 'GET',
                                         success: function (response) {
+                                            Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را خواهد داشت', '', 'info')
                                             $('#ajax-alert3').addClass('alert-success').show(function(){
                                                $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
                                             });
                                         }
                                     });   
-                             })
-                        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
+                        })
+                        $(".block1").on('click',function(){      
+                                $("tr.report_row").css("background-color", "white");
+                                $("tr.report_row").css("color", "black");
+                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                $(this).closest('tr.report_row').css("color", "white");                          
+                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                $.ajax(
+                                    {
+                                        url: "/set-block1/"+id_b,
+                                        type: 'GET',
+                                        success: function (response) {
+                                            Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'info')
+                                            $('#ajax-alert3').addClass('alert-success').show(function(){
+                                               $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
+                                            });
+                                        }
+                                    });    
+                        })     
+                        $(".select1").on('click',function(){
+                                $("tr.report_row").css("background-color", "white");
+                                $("tr.report_row").css("color", "black");
+                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                $(this).closest('tr.report_row').css("color", "white");
+                        })               
                        
 
                     }
                 });
             });
-            // $(".select1").on('click', function() {
-            //     // event.preventDefault();
-            //     alert("hi")
-            //     // $(this).closest('tr.report_row').css("background-color", "#2975cd");
-            //     // $(this).closest('tr.report_row').css("color", "white");
-      
-            // });
             
         });
     </script>
