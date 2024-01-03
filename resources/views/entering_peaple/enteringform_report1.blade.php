@@ -1812,7 +1812,7 @@
                         $("#company_name_b").val('');
                         $("#national_code_b").val('');
                         $("#reason_b").val('');
-                        
+                        Swal.fire('مشخصات این فرد به بانک اطلاعاتی افزوده شد.جهت بلاک کردن این فرد به لیست پایین مراجعه شود', '', 'success')
                         $('#ajax-alert3').addClass('alert-success').show(function(){
                            $(this).html("مشخصات این فرد به لیست تعیین وضعیت اضافه گردید .");
                         });
@@ -1841,7 +1841,7 @@
                             t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
                             t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
                             t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
-                            t4 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-warning delete" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button></td>')
+                            t4 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button></td>')
                             row = $('<tr class="report_row"></tr>')
                             row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
                             $("#block_table").append(row)
@@ -1889,18 +1889,23 @@
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");
                                 $(this).closest('tr.report_row').css("color", "white");
                         })               
-                        $(".delete").on('click',function(){
+                        $(".delete1").on('click',function(){
                             
                             $("tr.report_row").css("background-color", "white");
                             $("tr.report_row").css("color", "black");
                             $(this).closest('tr.report_row').css("background-color", "#2975cd");
                             $(this).closest('tr.report_row').css("color", "white");                          
                             var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                            $.ajax(
-                                    {
-                                        url: "/enteringblock/remove/"+id_b,
-                                        type: 'GET',
-                                        success: function (response) {
+                            
+                            $.ajax({
+                                                        url: "/enteringblock-remove/" + id_b,
+                                                        type: 'DELETE',
+                                                        data: {
+                                                            "id": id_b,
+                                                            "_token": token,
+                                                        },
+                                                        success: function (response) {
+                                            alert(response.result);
                                             Swal.fire('فرد انتخاب شده حذف گردید', '', 'danger')
                                             $('#ajax-alert3').addClass('alert-success').show(function(){
                                                $(this).html("فرد انتخاب شده حذف گردید");
