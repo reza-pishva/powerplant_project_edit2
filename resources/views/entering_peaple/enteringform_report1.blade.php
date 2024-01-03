@@ -1832,16 +1832,16 @@
                        
                         for(var i = 0; i < response.result.length; i++) {
                             id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
-                            f_name = $('<td style="width: 7%;text-align:center">' + response.result[i]['f_name'] + '</td>')
-                            l_name = $('<td style="width: 9%;text-align:center">' + response.result[i]['l_name'] + '</td>')
+                            f_name = $('<td style="width: 8%;text-align:center">' + response.result[i]['f_name'] + '</td>')
+                            l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
                             national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
-                            company_name = $('<td style="width: 16%;text-align:center">' + response.result[i]['company_name'] + '</td>')
+                            company_name = $('<td style="width: 17%;text-align:center">' + response.result[i]['company_name'] + '</td>')
                             reason = $('<td style="width: 25%;text-align:center">' + response.result[i]['reason'] + '</td>')
                             t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
-                            t1 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغومجوز</button></td>')
+                            t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
                             t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
-                            t3 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-primary" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
-                            t4 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-warning" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button></td>')
+                            t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
+                            t4 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-warning delete" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button></td>')
                             row = $('<tr class="report_row"></tr>')
                             row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
                             $("#block_table").append(row)
@@ -1889,7 +1889,25 @@
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");
                                 $(this).closest('tr.report_row').css("color", "white");
                         })               
-                       
+                        $(".delete").on('click',function(){
+                            
+                            $("tr.report_row").css("background-color", "white");
+                            $("tr.report_row").css("color", "black");
+                            $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                            $(this).closest('tr.report_row').css("color", "white");                          
+                            var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                            $.ajax(
+                                    {
+                                        url: "/enteringblock/remove/"+id_b,
+                                        type: 'GET',
+                                        success: function (response) {
+                                            Swal.fire('فرد انتخاب شده حذف گردید', '', 'danger')
+                                            $('#ajax-alert3').addClass('alert-success').show(function(){
+                                               $(this).html("فرد انتخاب شده حذف گردید");
+                                            });
+                                        }
+                                    });    
+                        })   
 
                     }
                 });
@@ -2736,11 +2754,11 @@
 
 <!-- block -->
 <div class="modal fade" id="block5" style="direction: rtl;margin-top:80px">
-    <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 50px;margin-left: 600px">
+    <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 50px;margin-left: 630px">
      <div class="modal-content">
 
          <!-- Modal Header -->
-         <div class="modal-header" style="height: 35px;padding-top: 5px;width: 850px ;background-color:rgb(98, 15, 15)" >
+         <div class="modal-header" style="height: 35px;padding-top: 5px;width: 900px ;background-color:rgb(98, 15, 15)" >
              <div class="row" style="width: 100%">
                  <div class="col-3"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">فرم ممنوعیت تردد</p></div>
                  <div class="col-9">
@@ -2757,7 +2775,7 @@
 
          </div>
         
-<div class="container"  style="margin: auto;background-color:white;width: 850px ;height: 400px">
+<div class="container"  style="margin: auto;background-color:white;width: 900px ;height: 400px">
     <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small;text-align: center"></div>
 
     <div class="row" style="margin-top: 10px">
@@ -2819,15 +2837,15 @@
                 <table id="block_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px">                
                     <tr style="color: black">
                         <td class="person" style="width: 3%">--</td>
-                        <td class="person" style="width: 7%">نام</td>
-                        <td class="person" style="width: 9%">نام خانوادگی</td>
+                        <td class="person" style="width: 8%">نام</td>
+                        <td class="person" style="width: 10%">نام خانوادگی</td>
                         <td class="person" style="width: 10%">کد ملی</td>
-                        <td class="person" style="width: 16%">شرکت</td>
-                        <td class="person" style="width: 25%">دلیل منع تردد</td>
-                        <td class="person" style="width: 8%">#</td>
-                        <td class="person" style="width: 8%">#</td>
+                        <td class="person" style="width: 17%">شرکت</td>
+                        <td class="person" style="width: 26%">دلیل منع تردد</td>
                         <td class="person" style="width: 7%">#</td>
                         <td class="person" style="width: 7%">#</td>
+                        <td class="person" style="width: 6%">#</td>
+                        <td class="person" style="width: 6%">#</td>
                     </tr>
                 </table>
 
