@@ -1805,7 +1805,7 @@
                     dataType: 'JSON',
                     contentType: false,
                     processData: false,
-                    success: function (response) {                   
+                    success: function (response) {      
                         
                         
                         $("#f_name_b").val('');
@@ -1852,23 +1852,40 @@
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");
                                 $(this).closest('tr.report_row').css("color", "white");
                             })
-                            $(".block1").on('click',function(){
-                                
+                            $(".block1").on('click',function(){      
+                                $("tr.report_row").css("background-color", "white");
+                                $("tr.report_row").css("color", "black");
+                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                $(this).closest('tr.report_row').css("color", "white");                          
                                 var id_b = $(this).closest('tr').find('td:eq(0)').text();
                                 $.ajax(
                                     {
-                                        url: "/set-block/"+id_b,
+                                        url: "/set-block1/"+id_b,
                                         type: 'GET',
                                         success: function (response) {
-                                            alert(response.result)
-                                            $('#ajax-alert3').addClass('alert-success').show(function(){
+                                            $('#ajax-alert3').addClass('alert-danger').show(function(){
                                                $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
                                             });
                                         }
-                                    });
+                                    });    
+                             })
 
-                                
-
+                             $(".set_free").on('click',function(){        
+                                $("tr.report_row").css("background-color", "white");
+                                $("tr.report_row").css("color", "black");
+                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                $(this).closest('tr.report_row').css("color", "white");                        
+                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                $.ajax(
+                                    {
+                                        url: "/set-free/"+id_b,
+                                        type: 'GET',
+                                        success: function (response) {
+                                            $('#ajax-alert3').addClass('alert-success').show(function(){
+                                               $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
+                                            });
+                                        }
+                                    });   
                              })
                         }
 

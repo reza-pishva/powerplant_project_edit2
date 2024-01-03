@@ -235,7 +235,7 @@ Route::get('/enteringblock/{id}','EnteringBlockController@block');
 Route::post('/enteringblock','EnteringBlockController@store')->name('blockindividuals.store3');
 Route::delete('/enteringblock/remove/{id}','EnteringBlockController@remove');
 Route::post('/enteringblock/update/{id}','EnteringBlockController@update');
-Route::get('/set-block/{id}','EnteringBlockController@set_block');
+Route::get('/set-block1/{id}','EnteringBlockController@set_block1');
 Route::get('/set-free/{id}','EnteringBlockController@set_free');
 
 
