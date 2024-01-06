@@ -14,9 +14,9 @@ class EnteringBlockController extends Controller
         $block = EnteringBlock::find($id);
         return $block;
     }
-    public function remove($id){
-        // $result = EnteringBlock::find($id)->delete();     
-        return response()->json(['success'=>'hi','result'=>11]);
+    public function remove1($id){
+        EnteringBlock::where('id_b', $id)->delete();
+        return response()->json(['success'=>'hi','result'=>$id]);
     }
     public function update(Request $request,$id){
         $block = EnteringBlock::find($id);
