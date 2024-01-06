@@ -16,6 +16,7 @@
             return cache;
         }
         $(document).ready(function(){
+
             
             $("#f_name_b").on("click",function(){
               $('#ajax-alert3').hide();
@@ -851,132 +852,148 @@
 
             })
             $('#third_report').click(function(event) {
-                $('#block5').modal('toggle');
-                // event.preventDefault();
-                // $.ajax({
-                //     url: '/auth-peaple-block',
-                //     method:'GET',
-                //     success: function (response) {
-                //         $(".report_row").remove();
-                //         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست افرادی که بطور موقت مجوز ورود آنها لغو شده </p>')
-                //         var id_ep = ''
-                //         var f_name = ''
-                //         var id_et = ''
-                //         var code_melli = ''
-                //         var tell = ''
-                //         var title = ''
-                //         var l_name = ''
-                //         var herasat = ''
-                //         var form = ''
-                //         var t4=''
-                //         var t3 = ''
-                //         var t2 = ''
-                //         var row = ''
-                //         var enterexit=''
-                //         var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;"><td style="border-left:1px white solid;">کد فرد</td><td style="border-left:1px white solid;">نام</td><td style="border-left:1px white solid;">نام خانوادگی</td><td style="border-left:1px white solid;">کد ملی</td><td style="border-left:1px white solid;">شماره تماس</td><td style="border-left:1px white solid;">تحت عنوان</td><td style="border-left:1px white solid;">#</td></tr>'
-                //         $("#report_table").append(row_th)
-                //         for(var i = 0; i < response.results.length; i++) {
-                //             id_ep = $('<td style="width: 5%">' + response.results[i]['id_ep'] + '</td>')
-                //             f_name = $('<td style="width: 13%;text-align: right;padding-right: 5px">' + response.results[i]['f_name'] + '</td>')
-                //             l_name = $('<td style="width: 17%;text-align: right;padding-right: 5px">' +response.results[i]['l_name'] + '</td>')
-                //             code_melli = $('<td style="width: 15%;text-align: right;padding-right: 5px">' + response.results[i]['code_melli'] + '</td>')
-                //             tell = $('<td style="width: 15%;text-align: right;padding-right: 5px">' +response.results[i]['mobile'] + '</td>')
-                //             id_et=response.results[i]['id_et']
-                //             for(var z = 0; z < response.titles.length; z++) {
-                //                 if(response.titles[z]['id_et']==response.results[i]['id_et']){
-                //                     title = $('<td style="width: 10%">' + response.titles[z]['description'] + '</td>')
-                //                     break;
-                //                 }
+                event.preventDefault();
+                $.ajax({
+                    url: '/enteringblocks',
+                    method:'GET',
+                    success: function (response) {                            
+                        var id_b = ''
+                        var f_name = ''
+                        var l_name = ''
+                        var national_code = ''
+                        var company_name = ''
+                        var reason = ''
+                        var select_btn = ''
+                        var t0 = ''
+                        var t1 = ''
+                        var t2 = ''
+                        var t3 = ''
+                        var t4 = ''
+                        var b4 = ''
+                        var row = ''
+                        $("#block_table").empty();
+                        var row_th ='<tr style="color: black"><td class="person" style="width: 3%">--</td><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 6%">#</td><td class="person" style="width: 6%">#</td></tr>';
+                        $("#block_table").append(row_th)
+                        for(var i = 0; i < response.result.length; i++) {
+                            id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
+                            f_name = $('<td style="width: 8%;text-align:center">' + response.result[i]['f_name'] + '</td>')
+                            l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
+                            national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
+                            company_name = $('<td style="width: 17%;text-align:center">' + response.result[i]['company_name'] + '</td>')
+                            reason = $('<td style="width: 25%;text-align:center">' + response.result[i]['reason'] + '</td>')
+                            t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
+                            t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
+                            t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
+                            t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
+                            b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
+                            t4 = $('<td style="width: 6%;text-align:center"></td>')
+                            t4.append(b4)
+                            row = $('<tr class="report_row"></tr>')
+                            row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
+                            $("#block_table").append(row)
 
-                //             }
-                //             form = $('<button type="button" class="btn-sm btn-success form" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">دادن مجوز</button>')
-                //             enterexit= $('<button hidden type="button" class="btn-sm btn-danger enterexit" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo5">اطلاعات ورود و خروج</button>').attr('id',  response.results[i]['id_ep'])
-                //             t3 = $('<td style="width: 10%"></td>')
-                //             t4 = $('<td style="width: 17%"></td>')
-                //             row = $('<tr class="report_row"></tr>')
-                //             t3.append(form)
-                //             t4.append(enterexit)
-                //             row.append(id_ep,f_name,l_name,code_melli,tell,title,t3)
-                //             $("#report_table").append(row)
-                //             $("#editlist").css("margin-top","100px");
-                //             $('.form').on('click',function(){
-                //                 var id_ep = $(this).closest('tr').find('td:eq(0)').text();
-                //                 var token = $("meta[name='csrf-token']").attr("content");
-                //                 //$('.toast').toast('show');
-                //                 $.ajax(
-                //                     {
-                //                         url: "/reset-block/" + id_ep,
-                //                         type: 'GET',
-                //                         data: {
-                //                             "id": id_ep,
-                //                             "_token": token,
-                //                         },
-                //                         success: function () {
-                //                             $('.toast').toast('show');
-                //                             $("#mytoast").text("این فرد از بلاک لیست خارج شد")
-                //                         }
-                //                     });
+                        }
+                        $(".set_free").on('click',function(){        
+                                $("tr.report_row").css("background-color", "white");
+                                $("tr.report_row").css("color", "black");
+                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                $(this).closest('tr.report_row').css("color", "white");                        
+                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                $.ajax(
+                                    {
+                                        url: "/set-free/"+id_b,
+                                        type: 'GET',
+                                        success: function (response) {
+                                            Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را خواهد داشت', '', 'info')
+                                            $('#ajax-alert3').addClass('alert-success').show(function(){
+                                               $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
+                                            });
+                                        }
+                                    });   
+                        })
+                        $(".block1").on('click',function(){      
+                                $("tr.report_row").css("background-color", "white");
+                                $("tr.report_row").css("color", "black");
+                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                $(this).closest('tr.report_row').css("color", "white");                          
+                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                $.ajax(
+                                    {
+                                        url: "/set-block1/"+id_b,
+                                        type: 'GET',
+                                        success: function (response) {
+                                            Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
+                                            $('#ajax-alert3').addClass('alert-success').show(function(){
+                                               $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
+                                            });
+                                        }
+                                    });    
+                        })     
+                        $(".select1").on('click',function(){
+                            $('#ajax-alert3').fadeOut(1000);
+                                // $('#ajax-alert3').hide();
+                                $("tr.report_row").css("background-color", "white");
+                                $("tr.report_row").css("color", "black");
+                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                $(this).closest('tr.report_row').css("color", "white");
+                        })               
+                        $(".delete1").on('click',function(){                            
+                            
+                            $("tr.report_row").css("background-color", "white");
+                            $("tr.report_row").css("color", "black");
+                            $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                            $(this).closest('tr.report_row').css("color", "white");                          
+                            var id_b = $(this).closest('tr').find('td:eq(0)').text();
 
-                //                 $(this).closest('tr').remove()
-                //             })
-                //             $(".enterexit").click(function () {
-                //                 var code_melli = $(this).closest('tr').find('td:eq(3)').text();
-                //                 var token = $("meta[name='csrf-token']").attr("content");
-                //                 $.ajax(
-                //                     {
-                //                         url: "/personinfo3/" + code_melli,
-                //                         type: 'GET',
-                //                         data: {
-                //                             "id": code_melli,
-                //                             "_token": token,
-                //                         },
-                //                         success: function (response) {
+                            Swal.fire({
+                              title: 'مایل به حذف این فرد هستید؟',
+                              showDenyButton: true,
+                              cancelButtonText: `بازگشت`,
+                              confirmButtonText: `انصراف از حذف`,
+                              denyButtonText: 'حذف شود',
+                                }).then((result) => {
+                                if (result.isConfirmed) {
+                                    Swal.fire('فرد انتخابی حذف نشد', '', 'info')
+                                } else if (result.isDenied) {
+                                        $.ajax({
+                                        url: "/enteringblockremove/"+id_b,
+                                        type: 'GET',
+                                        success: function (response) {
+                                                $('#' + (Number(id_b) + 3000)).closest('tr').remove();
+                                                toastr.options = {
+                                                    "closeButton": true,
+                                                    "debug": false,
+                                                    "positionClass": "toast-top-right",
+                                                    "onclick": null,
+                                                    "showDuration": "300",
+                                                    "hideDuration": "1000",
+                                                    "timeOut": "3000",
+                                                    "extendedTimeOut": "1000",
+                                                    "showEasing": "swing",
+                                                    "hideEasing": "linear",
+                                                    "showMethod": "fadeIn",
+                                                    "hideMethod": "fadeOut"
+                                                };
+                                                // $('#' + (Number(id_b) + 3000)).closest('tr').remove();
+                                                Swal.fire('حذف شد', '', 'success');
 
-                //                             var edit=''
-                //                             var del=''
-                //                             var t1=''
-                //                             var t2=''
-                //                             var enter_exit = ''
-                //                             var id_ed = ''
-                //                             var date = ''
-                //                             var time = ''
-                //                             var row = ''
-                //                             $(".personinfo2").remove();
-                //                             for(var i = 0; i < response.individuals.length; i++) {
-                //                                 id_ed = $('<td style="width:11%;text-align: center" class="personinfo2">' + response.individuals[i]['i_ed'] + '</td>')
-                //                                 var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.individuals[i]['enter_exit']+ '</td>')
-                //                                 if(response.individuals[i]['enter_exit']==1){
-                //                                     enter_exit = $('<td style="width: 15%;text-align: center" class="personinfo2">' +'ورود'+ '</td>')
-                //                                 }else{
-                //                                     enter_exit = $('<td style="width: 15%;text-align: center" class="personinfo2">' +'خروج'+ '</td>')
-                //                                 }
-                //                                 var day=response.individuals[i]['date_enter'].substr(6,2)
-                //                                 var month=response.individuals[i]['date_enter'].substr(4,2)
-                //                                 var year=response.individuals[i]['date_enter'].substr(0,4)
-                //                                 var date = $('<td style="text-align: center;padding-right: 5px;width: 22%" class="personinfo2">' + year +'/'+month+'/'+day+'</td>')
-                //                                 time = $('<td style="width: 22%;text-align: center" class="personinfo2">' + response.individuals[i]['time_enter'] + '</td>')
-                //                                 t1 = $('<td style="width: 15%" class="personinfo2"></td>')
-                //                                 t2 = $('<td style="width: 15%" class="personinfo2"></td>')
-                //                                 row = $('<tr class="report_row"></tr>')
-                //                                 row.append(id_ed,enter_exit,date,time,enter_exit_val)
-                //                                 $("#person_table77").append(row)//data-toggle="modal" data-target="#personinfo"
-                //                             }
+                                        }
+                                  });
+                                }
+                              })
 
-                //                         }
-                //                     });
+  
+                        })   
+                        $('#block5').modal('toggle');
 
-                //             })
+                    }
+                })
 
 
 
 
-                //         }
-                //         $(".mylist").hide();
-                //         $('.mylist2').hide();
-                //         $('.mylist3').hide();
-                //         $(".register").hide();
-                //         $(".mylist2").fadeToggle(2000);
-                //     }})
+
+             
 
             })
             $('#third2_report').click(function(event) {
@@ -1830,7 +1847,9 @@
                         var t4 = ''
                         var b4 = ''
                         var row = ''
-                       
+                        $("#block_table").empty();
+                        var row_th ='<tr style="color: black"><td class="person" style="width: 3%">--</td><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 6%">#</td><td class="person" style="width: 6%">#</td></tr>';
+                        $("#block_table").append(row_th)
                         for(var i = 0; i < response.result.length; i++) {
                             id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
                             f_name = $('<td style="width: 8%;text-align:center">' + response.result[i]['f_name'] + '</td>')
@@ -1887,7 +1906,8 @@
                                     });    
                         })     
                         $(".select1").on('click',function(){
-                                $('#ajax-alert3').hide();
+                            $('#ajax-alert3').fadeOut(1000);
+                                // $('#ajax-alert3').hide();
                                 $("tr.report_row").css("background-color", "white");
                                 $("tr.report_row").css("color", "black");
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");

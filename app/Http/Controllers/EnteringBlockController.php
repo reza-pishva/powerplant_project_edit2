@@ -8,7 +8,7 @@ class EnteringBlockController extends Controller
 {
     public function blocks(){
         $blocks = EnteringBlock::all();
-        return $blocks;
+        return response()->json(['success'=>'hi','result'=>$blocks]);
     }
     public function block($id){
         $block = EnteringBlock::find($id);
