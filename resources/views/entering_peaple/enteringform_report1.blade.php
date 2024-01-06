@@ -2387,9 +2387,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer bg-info" style="height: 20px;width:600px">
-{{--                <div class="toast bg-danger individuals2" style="margin-top:20px;margin: auto;border-radius: 10px">--}}
-{{--                    <div class="toast-body"><p id="individuals2" style="font-family: Tahoma;font-size: small;color: white;"></p></div>--}}
-{{--                </div>--}}
+
             </div>
 
         </div>
@@ -2491,9 +2489,7 @@
                         <img style="display: none" src="{{URL::to('/')}}/authorised003.png" id="img_ok" class="reza3"  >
                         <img style="display: none" src="{{URL::to('/')}}/unauthorised002.jpg" id="img_no" class="reza3" >
                     </div>
-{{--                    <div id="sixth_report333"style="margin-left: 5px">--}}
-{{--                        <img  src="./dailyenter003.png"  class="reza2" data-toggle="tooltip" data-placement="left" title="ورود اطلاعات ورود و خروج">--}}
-{{--                    </div>--}}
+
                     <div id="sixth_report35" style="margin-left: 65px">
                         <img  src="{{URL::to('/')}}/enter_edit.jpg"  class="reza4" data-toggle="tooltip" data-placement="left" title="ورود و اصلاح اطلاعات ورود و خروج این فرد">
                     </div>
@@ -2668,12 +2664,6 @@
                                         <div class="form-group" >
                                             <div class="row">
                                                 <div class="col-12">
-{{--                                                    <div class="row">--}}
-{{--                                                        <div class="col-7">--}}
-{{--                                                            <input type="text" maxlength="10" class="form-control" id="date_shamsi_enter_edit"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ ورود یا خروج:" name="date_enter" style="direction: rtl;font-family: Tahoma;font-size:small;width: 73%;text-align:center"  required title="تاریخ ورود یا خروج">--}}
-{{--                                                        </div>--}}
-
-{{--                                                    </div>--}}
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <input type="text" maxlength="10" class="form-control" id="time_enter_edit"  data-toggle="tooltip"  name="time_enter" style="direction: rtl;font-family: Tahoma;font-size:small;width: 73%;text-align:center" required placeholder="ساعت ورود یا خروج">
@@ -2681,7 +2671,6 @@
                                                         <div class="col-6">
                                                             <input type="text" maxlength="10" class="form-control" id="date_shamsi_enter_edit"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ ورود یا خروج:" name="date_enter" style="direction: rtl;font-family: Tahoma;font-size:small;width: 73%;text-align:center"  required title="تاریخ ورود یا خروج">
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -2758,7 +2747,7 @@
 </div>
 
 <!-- block -->
-<div class="modal fade" id="block5" style="direction: rtl;margin-top:80px">
+<div class="modal fade" id="block5" style="direction: rtl;margin-top:-10px">
     <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 50px;margin-left: 630px">
      <div class="modal-content">
 
@@ -2837,7 +2826,7 @@
                 
             </div>
            
-            {{-- <input hidden type="text" id="code_melli_s4"> ;overflow-y: scroll--}}
+
             <div style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;overflow-y: scroll;height:200px">
                 <table id="block_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px">                
                     <tr style="color: black">
