@@ -1884,6 +1884,7 @@
                                     });    
                         })     
                         $(".select1").on('click',function(){
+                                $('#ajax-alert3').hide();
                                 $("tr.report_row").css("background-color", "white");
                                 $("tr.report_row").css("color", "black");
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");
