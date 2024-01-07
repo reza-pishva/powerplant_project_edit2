@@ -3068,9 +3068,9 @@
          </div>
         
 <div class="container"  style="margin: auto;background-color:white;width: 900px ;height: 320px">
-    <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small;text-align: center"></div>
+    <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small;text-align: center;margin-top:5px"></div>
 
-    <div class="row" style="margin-top: 10px">
+    <div class="row" style="margin-top: 5px">
 
         <div id="person_div2" class="col" style="height:50px">
 
