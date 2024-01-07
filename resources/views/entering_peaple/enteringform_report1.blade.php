@@ -884,7 +884,7 @@
                             t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
                             t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
                             t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
-                            t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
+                            t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary EditBlock" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
                             b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
                             t4 = $('<td style="width: 6%;text-align:center"></td>')
                             t4.append(b4)
@@ -984,7 +984,10 @@
 
   
                         })   
-                        $('#block5').modal('toggle');
+                        $(".EditBlock").on('click',function(){
+                             $('#blockEdit').modal('toggle');
+                        })  
+                        // $('#block5').modal('toggle');
 
                     }
                 })
@@ -1993,8 +1996,6 @@
         <div class="col-12" style="direction: rtl;height: 300px;overflow-y: scroll;">
             <table id="report_table" text-align="center" style="width: 100%;font-family: Tahoma;font-size: small"></table>
         </div>
-
-
     </div>
     <div class="row mylist3" style="margin: auto;width:50%;display: none;margin-top: 5px">
         <div class="col-12" id="title_report3" style="height: 35px;margin-top: 5px;border-radius: 5px;font-family: Tahoma;font-size: small;direction: rtl;color: white;text-align: right;background-color:rgb(14,53,126)"></div>
@@ -2812,8 +2813,8 @@
 </div>
 
 <!-- block -->
-<div class="modal fade" id="block5" style="direction: rtl;margin-top:-10px">
-    <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 50px;margin-left: 630px">
+<div class="row mylist20" id="block5" style="direction: rtl;margin-top:-5px">
+    <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 11px;margin-left: 625px">
      <div class="modal-content">
 
          <!-- Modal Header -->
@@ -2821,6 +2822,116 @@
              <div class="row" style="width: 100%">
                  <div class="col-3"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">فرم ممنوعیت تردد</p></div>
                  <div class="col-9">
+                     {{-- <div class="row" style="width: 100%">
+                         <div class="col-10">.</div>
+                         <div class="col-2">
+                             <button type="button" class="close" data-dismiss="modal" style="text-align: center;display: inline;color: white">&times;</button>
+                         </div>
+                     </div> --}}
+
+                 </div>
+             </div>
+
+
+         </div>
+        
+<div class="container"  style="margin: auto;background-color:white;width: 900px ;height: 320px">
+    <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small;text-align: center"></div>
+
+    <div class="row" style="margin-top: 10px">
+
+        <div id="person_div2" class="col" style="height:50px">
+
+            <div id="s2" class="container" style="text-align: left;background-color:#37473B;width: 100%;border-radius: 5px;height:130px;direction: rtl;color: white;margin-top:2px;padding-top: 2px;">
+                <div class="row">
+                   <div class=col-1></div>
+                        <div class=col-10>
+                            <form method="post" encType="multipart/form-data" id="blockindividuals" action="{{route('blockindividuals.store3')}}">
+                    
+                                {{csrf_field()}}
+                                <br>
+                                <div class="row" style="height: 15px">
+                                    <div class="col">
+                                        <div class="form-group" >
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <input type="text" maxlength="20" class="form-control" id="f_name_b"  data-toggle="tooltip" data-placement="right" placeholder="نام:" name="f_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" maxlength="30" class="form-control" id="l_name_b"  data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی:" name="l_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" maxlength="10" class="form-control" id="national_code_b"  data-toggle="tooltip" data-placement="right" placeholder="کدملی:" name="national_code" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-1">
+                                                        <div class="col-4">
+                                                            <input type="text" maxlength="100" class="form-control" id="company_name_b"  data-toggle="tooltip" data-placement="right" placeholder="شرکت:" name="company_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <input type="text" maxlength="100" class="form-control" id="reason_b"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                        </div>
+                                                        <div class="col-2" style="padding-left: 50px">
+                                                            <button type="commit" class="btn btn-primary" id="addblock" style="font-family: Tahoma;font-size: small;text-align: center;width:120%">ثبت</button>
+                                                        </div>
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row" style="margin-top:45px">
+                                    <div class="col" style="text-align:center">
+                                        
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        </div>
+                   <div class=col-1></div>
+                </div>
+                
+
+                
+            </div>
+           
+
+            <div style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;overflow-y: scroll;height:110px">
+                <table id="block_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px">                
+                    <tr style="color: black">
+                        <td class="person" style="width: 3%">--</td>
+                        <td class="person" style="width: 8%">نام</td>
+                        <td class="person" style="width: 10%">نام خانوادگی</td>
+                        <td class="person" style="width: 10%">کد ملی</td>
+                        <td class="person" style="width: 17%">شرکت</td>
+                        <td class="person" style="width: 26%">دلیل منع تردد</td>
+                        <td class="person" style="width: 7%">#</td>
+                        <td class="person" style="width: 7%">#</td>
+                        <td class="person" style="width: 6%">#</td>
+                        <td class="person" style="width: 6%">#</td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div></div>
+
+<!-- blockEdit -->
+<div class="modal fade" id="blockEdit" style="direction: rtl;margin-top:5px">
+    <div class="modal-dialog modal-md" id="editlist3" style="margin-top: 60px;margin-left:480px">
+     <div class="modal-content">
+
+         <!-- Modal Header -->
+         <div class="modal-header" style="height: 35px;padding-top: 5px;width: 600px ;background-color:rgb(30, 49, 127)" >
+             <div class="row" style="width: 100%">
+                 <div class="col-5"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">فرم اصلاح ممنوعیت تردد</p></div>
+                 <div class="col-7">
                      <div class="row" style="width: 100%">
                          <div class="col-10">.</div>
                          <div class="col-2">
@@ -2834,7 +2945,7 @@
 
          </div>
         
-<div class="container"  style="margin: auto;background-color:white;width: 900px ;height: 400px">
+<div class="container"  style="margin: auto;background-color:white;width: 600px ;height: 160px">
     <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small;text-align: center"></div>
 
     <div class="row" style="margin-top: 10px">
@@ -2843,7 +2954,7 @@
 
             <div id="s2" class="container" style="text-align: left;background-color:#37473B;width: 100%;border-radius: 5px;height:130px;direction: rtl;color: white;margin-top:2px;padding-top: 2px;">
                 
-                <form method="post" encType="multipart/form-data" id="blockindividuals" action="{{route('blockindividuals.store3')}}">
+                <form method="post" encType="multipart/form-data" id="blockindividualsedit" >
                     
                     {{csrf_field()}}
                     <br>
@@ -2871,7 +2982,7 @@
                                                 <input type="text" maxlength="100" class="form-control" id="reason_b"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                             <div class="col-2" style="padding-left: 50px">
-                                                <button type="commit" class="btn btn-primary" id="addblock" style="font-family: Tahoma;font-size: small;text-align: center;width:120%">ثبت</button>
+                                                <button type="commit" class="btn btn-primary" id="addblock" style="font-family: Tahoma;font-size: small;text-align: center;width:150%">ثبت</button>
                                             </div>
                                         </div>
 
@@ -2890,31 +3001,10 @@
                 </form>
                 
             </div>
-           
-
-            <div style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;overflow-y: scroll;height:200px">
-                <table id="block_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px">                
-                    <tr style="color: black">
-                        <td class="person" style="width: 3%">--</td>
-                        <td class="person" style="width: 8%">نام</td>
-                        <td class="person" style="width: 10%">نام خانوادگی</td>
-                        <td class="person" style="width: 10%">کد ملی</td>
-                        <td class="person" style="width: 17%">شرکت</td>
-                        <td class="person" style="width: 26%">دلیل منع تردد</td>
-                        <td class="person" style="width: 7%">#</td>
-                        <td class="person" style="width: 7%">#</td>
-                        <td class="person" style="width: 6%">#</td>
-                        <td class="person" style="width: 6%">#</td>
-                    </tr>
-                </table>
-
-            </div>
 
         </div>
     </div>
-</div>
-
-        </div>
+</div></div>
 
 
 
