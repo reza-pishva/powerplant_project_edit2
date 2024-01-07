@@ -3075,14 +3075,14 @@
                                             </div>
                                         </div>
                                         <div class="row mt-1">
-                                            <div class="col-4">
+                                            <div class="col-3">
                                                 <input type="text" maxlength="100" class="form-control" id="company_name_e"  data-toggle="tooltip" data-placement="right" placeholder="شرکت:" name="company_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-5">
                                                 <input type="text" maxlength="100" class="form-control" id="reason_e"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
-                                            <div class="col-2" style="padding-left: 50px">
-                                                <button type="commit" class="btn btn-primary" id="addblock" style="font-family: Tahoma;font-size: small;text-align: center;width:150%">ثبت</button>
+                                            <div class="col-4" style="padding-left: 50px">
+                                                <button type="commit" class="btn btn-primary" id="addblock" style="font-family: Tahoma;font-size: small;text-align: center;width:80%">ثبت تغییرات</button>
                                             </div>
                                         </div>
 
