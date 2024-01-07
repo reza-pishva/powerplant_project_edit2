@@ -992,11 +992,13 @@
                             $(this).closest('tr.report_row').css("color", "white");                          
                             var id_b = $(this).closest('tr').find('td:eq(0)').text();
 
-                            // $('#f_name_e').val($(this).closest('tr').find('td:eq(1)').text());
-                            // $('#l_name_e').val($(this).closest('tr').find('td:eq(2)').text());
-                            // $('#nationa_code_e').val($(this).closest('tr').find('td:eq(3)').text());
-                            // $('#company_name_e').val($(this).closest('tr').find('td:eq(4)').text());
-                            // $('#reason_e').val($(this).closest('tr').find('td:eq(5)').text());
+                            $('#f_name_e').val($(this).closest('tr').find('td:eq(2)').text());
+                            $('#l_name_e').val($(this).closest('tr').find('td:eq(3)').text());
+                            $('#national_code_e').val($(this).closest('tr').find('td:eq(4)').text());
+                            $('#company_name_e').val($(this).closest('tr').find('td:eq(5)').text());
+                            $('#reason_e').val($(this).closest('tr').find('td:eq(6)').text());
+
+                            $('#blockEdit').modal('show');
                             
 
                             // Swal.fire({
@@ -1038,8 +1040,7 @@
 
   
                         })  
-                        $('#block5').modal('toggle');
-
+                        $('#block5').show();
                     }
                 })       
 
