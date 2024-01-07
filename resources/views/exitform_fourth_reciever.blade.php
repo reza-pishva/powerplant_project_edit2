@@ -93,7 +93,7 @@
                                 $('#jamdari_no2').val($(this).closest('tr').find('td:eq(4)').text());
                                 $('#id_goods_type2').val($(this).closest('tr').find('td:eq(10)').text());
                                 $('#with_return2').val($(this).closest('tr').find('td:eq(11)').text());
-                                $('#origin_destination2').val($(this).closest('tr').find('td:eq(9)').text());//true
+                                $('#origin_destination2').val($(this).closest('tr').find('td:eq(9)').text());
 
                             })
                             $(".history").on('click',function () {

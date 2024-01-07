@@ -884,7 +884,7 @@
                             t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
                             t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
                             t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
-                            t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary EditBlock" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
+                            t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary edit1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
                             b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
                             t4 = $('<td style="width: 6%;text-align:center"></td>')
                             t4.append(b4)
@@ -984,19 +984,64 @@
 
   
                         })   
-                        $(".EditBlock").on('click',function(){
-                             $('#blockEdit').modal('toggle');
+                        $(".edit1").on('click',function(){                            
+                            
+                            $("tr.report_row").css("background-color", "white");
+                            $("tr.report_row").css("color", "black");
+                            $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                            $(this).closest('tr.report_row').css("color", "white");                          
+                            var id_b = $(this).closest('tr').find('td:eq(0)').text();
+
+                            // $('#f_name_e').val($(this).closest('tr').find('td:eq(1)').text());
+                            // $('#l_name_e').val($(this).closest('tr').find('td:eq(2)').text());
+                            // $('#nationa_code_e').val($(this).closest('tr').find('td:eq(3)').text());
+                            // $('#company_name_e').val($(this).closest('tr').find('td:eq(4)').text());
+                            // $('#reason_e').val($(this).closest('tr').find('td:eq(5)').text());
+                            
+
+                            // Swal.fire({
+                            //   title: 'مایل به حذف این فرد هستید؟',
+                            //   showDenyButton: true,
+                            //   cancelButtonText: `بازگشت`,
+                            //   confirmButtonText: `انصراف از حذف`,
+                            //   denyButtonText: 'حذف شود',
+                            //     }).then((result) => {
+                            //     if (result.isConfirmed) {
+                            //         Swal.fire('فرد انتخابی حذف نشد', '', 'info')
+                            //     } else if (result.isDenied) {
+                            //             $.ajax({
+                            //             url: "/enteringblockremove/"+id_b,
+                            //             type: 'GET',
+                            //             success: function (response) {
+                            //                     $('#' + (Number(id_b) + 3000)).closest('tr').remove();
+                            //                     toastr.options = {
+                            //                         "closeButton": true,
+                            //                         "debug": false,
+                            //                         "positionClass": "toast-top-right",
+                            //                         "onclick": null,
+                            //                         "showDuration": "300",
+                            //                         "hideDuration": "1000",
+                            //                         "timeOut": "3000",
+                            //                         "extendedTimeOut": "1000",
+                            //                         "showEasing": "swing",
+                            //                         "hideEasing": "linear",
+                            //                         "showMethod": "fadeIn",
+                            //                         "hideMethod": "fadeOut"
+                            //                     };
+                            //                     // $('#' + (Number(id_b) + 3000)).closest('tr').remove();
+                            //                     Swal.fire('حذف شد', '', 'success');
+
+                            //             }
+                            //       });
+                            //     }
+                            //   })
+
+  
                         })  
-                        // $('#block5').modal('toggle');
+                        $('#block5').modal('toggle');
 
                     }
-                })
-
-
-
-
-
-             
+                })       
 
             })
             $('#third2_report').click(function(event) {
@@ -1863,7 +1908,7 @@
                             t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
                             t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
                             t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
-                            t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
+                            t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary edit1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
                             b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
                             t4 = $('<td style="width: 6%;text-align:center"></td>')
                             t4.append(b4)
@@ -1980,6 +2025,60 @@
                             //               });
                             //             }
                             //         });    
+                        })   
+                        $(".edit1").on('click',function(){                            
+                            
+                            $("tr.report_row").css("background-color", "white");
+                            $("tr.report_row").css("color", "black");
+                            $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                            $(this).closest('tr.report_row').css("color", "white");                          
+                            var id_b = $(this).closest('tr').find('td:eq(0)').text();
+
+                            $('#f_name_e').val($(this).closest('tr').find('td:eq(1)').text());
+                            $('#l_name_e').val($(this).closest('tr').find('td:eq(2)').text());
+                            $('#nationa_code_e').val($(this).closest('tr').find('td:eq(3)').text());
+                            $('#company_name_e').val($(this).closest('tr').find('td:eq(4)').text());
+                            $('#reason_e').val($(this).closest('tr').find('td:eq(5)').text());
+                            
+
+                            // Swal.fire({
+                            //   title: 'مایل به حذف این فرد هستید؟',
+                            //   showDenyButton: true,
+                            //   cancelButtonText: `بازگشت`,
+                            //   confirmButtonText: `انصراف از حذف`,
+                            //   denyButtonText: 'حذف شود',
+                            //     }).then((result) => {
+                            //     if (result.isConfirmed) {
+                            //         Swal.fire('فرد انتخابی حذف نشد', '', 'info')
+                            //     } else if (result.isDenied) {
+                            //             $.ajax({
+                            //             url: "/enteringblockremove/"+id_b,
+                            //             type: 'GET',
+                            //             success: function (response) {
+                            //                     $('#' + (Number(id_b) + 3000)).closest('tr').remove();
+                            //                     toastr.options = {
+                            //                         "closeButton": true,
+                            //                         "debug": false,
+                            //                         "positionClass": "toast-top-right",
+                            //                         "onclick": null,
+                            //                         "showDuration": "300",
+                            //                         "hideDuration": "1000",
+                            //                         "timeOut": "3000",
+                            //                         "extendedTimeOut": "1000",
+                            //                         "showEasing": "swing",
+                            //                         "hideEasing": "linear",
+                            //                         "showMethod": "fadeIn",
+                            //                         "hideMethod": "fadeOut"
+                            //                     };
+                            //                     // $('#' + (Number(id_b) + 3000)).closest('tr').remove();
+                            //                     Swal.fire('حذف شد', '', 'success');
+
+                            //             }
+                            //       });
+                            //     }
+                            //   })
+
+  
                         })   
 
                     }
@@ -2965,21 +3064,21 @@
                                     <div class="col-12">
                                         <div class="row">
                                             <div class="col">
-                                                <input type="text" maxlength="20" class="form-control" id="f_name_b"  data-toggle="tooltip" data-placement="right" placeholder="نام:" name="f_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                <input type="text" maxlength="20" class="form-control" id="f_name_e"  data-toggle="tooltip" data-placement="right" placeholder="نام:" name="f_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                             <div class="col">
-                                                <input type="text" maxlength="30" class="form-control" id="l_name_b"  data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی:" name="l_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                <input type="text" maxlength="30" class="form-control" id="l_name_e"  data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی:" name="l_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                             <div class="col">
-                                                <input type="text" maxlength="10" class="form-control" id="national_code_b"  data-toggle="tooltip" data-placement="right" placeholder="کدملی:" name="national_code" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                <input type="text" maxlength="10" class="form-control" id="national_code_e"  data-toggle="tooltip" data-placement="right" placeholder="کدملی:" name="national_code" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                         </div>
                                         <div class="row mt-1">
                                             <div class="col-4">
-                                                <input type="text" maxlength="100" class="form-control" id="company_name_b"  data-toggle="tooltip" data-placement="right" placeholder="شرکت:" name="company_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                <input type="text" maxlength="100" class="form-control" id="company_name_e"  data-toggle="tooltip" data-placement="right" placeholder="شرکت:" name="company_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                             <div class="col-6">
-                                                <input type="text" maxlength="100" class="form-control" id="reason_b"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                <input type="text" maxlength="100" class="form-control" id="reason_e"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                             <div class="col-2" style="padding-left: 50px">
                                                 <button type="commit" class="btn btn-primary" id="addblock" style="font-family: Tahoma;font-size: small;text-align: center;width:150%">ثبت</button>
