@@ -19,13 +19,13 @@ class EnteringBlockController extends Controller
         return response()->json(['success'=>'hi','result'=>$id]);
     }
     public function update(Request $request){
-        // $block = EnteringBlock::find($id);
-        // $block->update(['f_name' => $request->f_name,
-        // 'l_name' => $request->l_name,
-        // 'national_code' => $request->national_code,
-        // 'company_name' => $request->company_name,
-        // 'reason' => $request->reason]);
-        return response()->json(['success'=>'hi']);
+        $id_b_e=$request->id_b_e;
+        EnteringBlock::where('id_b',$id_b_e)->update(['f_name' => $request->f_name_e,
+        'l_name' => $request->l_name_e,
+        'national_code' => $request->national_code_e,
+        'company_name' => $request->company_name_e,
+        'reason' => $request->reason_e]);
+        return response()->json(['success'=>'hi','result'=> $id_b_e]);//,'result'=>$request->id_b_e
     }
     public function store(Request $request){        
         EnteringBlock::create(['f_name' => $request->f_name,

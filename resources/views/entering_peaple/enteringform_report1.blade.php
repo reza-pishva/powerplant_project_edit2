@@ -2101,7 +2101,7 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {                                 
-                       alert("hi");
+                       alert(response.result);
                     }
                 });
             });
@@ -3082,21 +3082,21 @@
                                         <div class="row">
                                             <input type="text" id="id_b_e" name="id_b_e" style="display: none">
                                             <div class="col">
-                                                <input type="text" maxlength="20" class="form-control" id="f_name_e"  data-toggle="tooltip" data-placement="right" placeholder="نام:" name="f_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                <input type="text" maxlength="20" class="form-control" id="f_name_e"  data-toggle="tooltip" data-placement="right" placeholder="نام:" name="f_name_e" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                             <div class="col">
-                                                <input type="text" maxlength="30" class="form-control" id="l_name_e"  data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی:" name="l_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                <input type="text" maxlength="30" class="form-control" id="l_name_e"  data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی:" name="l_name_e" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                             <div class="col">
-                                                <input type="text" maxlength="10" class="form-control" id="national_code_e"  data-toggle="tooltip" data-placement="right" placeholder="کدملی:" name="national_code" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                <input type="text" maxlength="10" class="form-control" id="national_code_e"  data-toggle="tooltip" data-placement="right" placeholder="کدملی:" name="national_code_e" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                         </div>
                                         <div class="row mt-1">
                                             <div class="col-3">
-                                                <input type="text" maxlength="100" class="form-control" id="company_name_e"  data-toggle="tooltip" data-placement="right" placeholder="شرکت:" name="company_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                <input type="text" maxlength="100" class="form-control" id="company_name_e"  data-toggle="tooltip" data-placement="right" placeholder="شرکت:" name="company_name_e" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                             <div class="col-5">
-                                                <input type="text" maxlength="100" class="form-control" id="reason_e"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                <input type="text" maxlength="100" class="form-control" id="reason_e"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason_e" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
                                             <div class="col-4" style="padding-left: 50px">
                                                 <button type="commit" class="btn btn-primary" id="addblock" style="font-family: Tahoma;font-size: small;text-align: center;width:80%">ثبت تغییرات</button>
