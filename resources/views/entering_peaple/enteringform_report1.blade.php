@@ -999,46 +999,7 @@
                             $('#reason_e').val($(this).closest('tr').find('td:eq(6)').text());
 
                             $('#blockEdit').modal('show');
-                            
-
-                            // Swal.fire({
-                            //   title: 'مایل به حذف این فرد هستید؟',
-                            //   showDenyButton: true,
-                            //   cancelButtonText: `بازگشت`,
-                            //   confirmButtonText: `انصراف از حذف`,
-                            //   denyButtonText: 'حذف شود',
-                            //     }).then((result) => {
-                            //     if (result.isConfirmed) {
-                            //         Swal.fire('فرد انتخابی حذف نشد', '', 'info')
-                            //     } else if (result.isDenied) {
-                            //             $.ajax({
-                            //             url: "/enteringblockremove/"+id_b,
-                            //             type: 'GET',
-                            //             success: function (response) {
-                            //                     $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                            //                     toastr.options = {
-                            //                         "closeButton": true,
-                            //                         "debug": false,
-                            //                         "positionClass": "toast-top-right",
-                            //                         "onclick": null,
-                            //                         "showDuration": "300",
-                            //                         "hideDuration": "1000",
-                            //                         "timeOut": "3000",
-                            //                         "extendedTimeOut": "1000",
-                            //                         "showEasing": "swing",
-                            //                         "hideEasing": "linear",
-                            //                         "showMethod": "fadeIn",
-                            //                         "hideMethod": "fadeOut"
-                            //                     };
-                            //                     // $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                            //                     Swal.fire('حذف شد', '', 'success');
-
-                            //             }
-                            //       });
-                            //     }
-                            //   })
-
-  
+ 
                         })  
                         $('#block5').show();
                     }
@@ -2100,8 +2061,159 @@
                     dataType: 'JSON',
                     contentType: false,
                     processData: false,
-                    success: function (response) {                                 
-                       alert(response.result);
+                    success: function (response) {   
+                        $('#blockEdit').modal('hide');                              
+                        $.ajax({
+                            url: '/enteringblocks',
+                            method:'GET',
+                        success: function (response) {                            
+                            var id_b = ''
+                            var f_name = ''
+                            var l_name = ''
+                            var national_code = ''
+                            var company_name = ''
+                            var reason = ''
+                            var select_btn = ''
+                            var t0 = ''
+                            var t1 = ''
+                            var t2 = ''
+                            var t3 = ''
+                            var t4 = ''
+                            var b4 = ''
+                            var row = ''
+                            $("#block_table").empty();
+                            var row_th ='<tr style="color: black"><td class="person" style="width: 3%">--</td><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 6%">#</td><td class="person" style="width: 6%">#</td></tr>';
+                            $("#block_table").append(row_th)
+                            for(var i = 0; i < response.result.length; i++) {
+                                id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
+                                f_name = $('<td style="width: 8%;text-align:center">' + response.result[i]['f_name'] + '</td>')
+                                l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
+                                national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
+                                company_name = $('<td style="width: 17%;text-align:center">' + response.result[i]['company_name'] + '</td>')
+                                reason = $('<td style="width: 25%;text-align:center">' + response.result[i]['reason'] + '</td>')
+                                t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
+                                t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
+                                t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
+                                t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary edit1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
+                                b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
+                                t4 = $('<td style="width: 6%;text-align:center"></td>')
+                                t4.append(b4)
+                                row = $('<tr class="report_row"></tr>')
+                                row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
+                                $("#block_table").append(row)
+
+                            }
+                            $(".set_free").on('click',function(){        
+                                    $("tr.report_row").css("background-color", "white");
+                                    $("tr.report_row").css("color", "black");
+                                    $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                    $(this).closest('tr.report_row').css("color", "white");                        
+                                    var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                    $.ajax(
+                                        {
+                                            url: "/set-free/"+id_b,
+                                            type: 'GET',
+                                            success: function (response) {
+                                                Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را خواهد داشت', '', 'info')
+                                                $('#ajax-alert3').addClass('alert-success').show(function(){
+                                                $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
+                                                });
+                                            }
+                                        });   
+                            })
+                            $(".block1").on('click',function(){      
+                                    $("tr.report_row").css("background-color", "white");
+                                    $("tr.report_row").css("color", "black");
+                                    $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                    $(this).closest('tr.report_row').css("color", "white");                          
+                                    var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                    $.ajax(
+                                        {
+                                            url: "/set-block1/"+id_b,
+                                            type: 'GET',
+                                            success: function (response) {
+                                                Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
+                                                $('#ajax-alert3').addClass('alert-success').show(function(){
+                                                $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
+                                                });
+                                            }
+                                        });    
+                            })     
+                            $(".select1").on('click',function(){
+                                $('#ajax-alert3').fadeOut(1000);
+                                    // $('#ajax-alert3').hide();
+                                    $("tr.report_row").css("background-color", "white");
+                                    $("tr.report_row").css("color", "black");
+                                    $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                    $(this).closest('tr.report_row').css("color", "white");
+                            })               
+                            $(".delete1").on('click',function(){                            
+                                
+                                $("tr.report_row").css("background-color", "white");
+                                $("tr.report_row").css("color", "black");
+                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                $(this).closest('tr.report_row').css("color", "white");                          
+                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
+
+                                Swal.fire({
+                                title: 'مایل به حذف این فرد هستید؟',
+                                showDenyButton: true,
+                                cancelButtonText: `بازگشت`,
+                                confirmButtonText: `انصراف از حذف`,
+                                denyButtonText: 'حذف شود',
+                                    }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire('فرد انتخابی حذف نشد', '', 'info')
+                                    } else if (result.isDenied) {
+                                            $.ajax({
+                                            url: "/enteringblockremove/"+id_b,
+                                            type: 'GET',
+                                            success: function (response) {
+                                                    $('#' + (Number(id_b) + 3000)).closest('tr').remove();
+                                                    toastr.options = {
+                                                        "closeButton": true,
+                                                        "debug": false,
+                                                        "positionClass": "toast-top-right",
+                                                        "onclick": null,
+                                                        "showDuration": "300",
+                                                        "hideDuration": "1000",
+                                                        "timeOut": "3000",
+                                                        "extendedTimeOut": "1000",
+                                                        "showEasing": "swing",
+                                                        "hideEasing": "linear",
+                                                        "showMethod": "fadeIn",
+                                                        "hideMethod": "fadeOut"
+                                                    };
+                                                    // $('#' + (Number(id_b) + 3000)).closest('tr').remove();
+                                                    Swal.fire('حذف شد', '', 'success');
+
+                                            }
+                                    });
+                                    }
+                                })
+
+    
+                            })   
+                            $(".edit1").on('click',function(){                            
+                                
+                                $("tr.report_row").css("background-color", "white");
+                                $("tr.report_row").css("color", "black");
+                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
+                                $(this).closest('tr.report_row').css("color", "white");                          
+                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                $('#id_b_e').val($(this).closest('tr').find('td:eq(0)').text());
+                                $('#f_name_e').val($(this).closest('tr').find('td:eq(2)').text());
+                                $('#l_name_e').val($(this).closest('tr').find('td:eq(3)').text());
+                                $('#national_code_e').val($(this).closest('tr').find('td:eq(4)').text());
+                                $('#company_name_e').val($(this).closest('tr').find('td:eq(5)').text());
+                                $('#reason_e').val($(this).closest('tr').find('td:eq(6)').text());
+
+                                $('#blockEdit').modal('show');
+    
+                            })  
+                            $('#block5').show();
+                        }
+                     })  
                     }
                 });
             });
