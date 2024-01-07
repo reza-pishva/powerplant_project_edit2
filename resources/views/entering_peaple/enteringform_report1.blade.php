@@ -991,7 +991,7 @@
                             $(this).closest('tr.report_row').css("background-color", "#2975cd");
                             $(this).closest('tr.report_row').css("color", "white");                          
                             var id_b = $(this).closest('tr').find('td:eq(0)').text();
-
+                            $('#id_b_e').val($(this).closest('tr').find('td:eq(0)').text());
                             $('#f_name_e').val($(this).closest('tr').find('td:eq(2)').text());
                             $('#l_name_e').val($(this).closest('tr').find('td:eq(3)').text());
                             $('#national_code_e').val($(this).closest('tr').find('td:eq(4)').text());
@@ -2085,6 +2085,26 @@
                     }
                 });
             });
+            $("#blockindividualsedit").on('submit',function(event) {
+                event.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "/enteringblockupdate",
+                    method: 'POST',
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {                                 
+                       alert("hi");
+                    }
+                });
+            });
             
         });
     </script>
@@ -3049,13 +3069,9 @@
     <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small;text-align: center"></div>
 
     <div class="row" style="margin-top: 10px">
-
         <div id="person_div2" class="col" style="height:50px">
-
             <div id="s2" class="container" style="text-align: left;background-color:#37473B;width: 100%;border-radius: 5px;height:130px;direction: rtl;color: white;margin-top:2px;padding-top: 2px;">
-                
-                <form method="post" encType="multipart/form-data" id="blockindividualsedit" >
-                    
+                <form method="post" encType="multipart/form-data" id="blockindividualsedit" action="{{route('blockindividualsedit.store4')}}">                    
                     {{csrf_field()}}
                     <br>
                     <div class="row" style="height: 15px">
@@ -3064,6 +3080,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row">
+                                            <input type="text" id="id_b_e" name="id_b_e" style="display: none">
                                             <div class="col">
                                                 <input type="text" maxlength="20" class="form-control" id="f_name_e"  data-toggle="tooltip" data-placement="right" placeholder="نام:" name="f_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                             </div>
@@ -3096,12 +3113,9 @@
                         <div class="col" style="text-align:center">
                             
                         </div>
-                    </div>
-                    
-                </form>
-                
+                    </div>                    
+                </form>                
             </div>
-
         </div>
     </div>
 </div></div>

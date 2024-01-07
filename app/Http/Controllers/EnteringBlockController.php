@@ -18,15 +18,14 @@ class EnteringBlockController extends Controller
         EnteringBlock::where('id_b', $id)->delete();
         return response()->json(['success'=>'hi','result'=>$id]);
     }
-    public function update(Request $request,$id){
-        $block = EnteringBlock::find($id);
-        $block->update(['f_name' => $request->f_name,
-        'l_name' => $request->l_name,
-        'national_code' => $request->national_code,
-        'company_name' => $request->company_name,
-        'isBlocked' => $request->isBlocked,
-        'reason' => $request->reason]);
-         return $block;  
+    public function update(Request $request){
+        // $block = EnteringBlock::find($id);
+        // $block->update(['f_name' => $request->f_name,
+        // 'l_name' => $request->l_name,
+        // 'national_code' => $request->national_code,
+        // 'company_name' => $request->company_name,
+        // 'reason' => $request->reason]);
+        return response()->json(['success'=>'hi']);
     }
     public function store(Request $request){        
         EnteringBlock::create(['f_name' => $request->f_name,
