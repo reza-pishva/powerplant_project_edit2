@@ -18,9 +18,9 @@
         $(document).ready(function(){
 
             
-            $("#f_name_b").on("click",function(){
-              $('#ajax-alert3').hide();
-            })
+            // $("#f_name_b").on("click",function(){
+            //   $('#ajax-alert3').hide();
+            // })
             $("#date_exit_shamsi1").persianDatepicker({
                 format: 'YYYY/MM/DD'
             });
@@ -905,9 +905,9 @@
                                         type: 'GET',
                                         success: function (response) {
                                             Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را خواهد داشت', '', 'info')
-                                            $('#ajax-alert3').addClass('alert-success').show(function(){
-                                               $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
-                                            });
+                                            // $('#ajax-alert3').addClass('alert-success').show(function(){
+                                            //    $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
+                                            // });
                                         }
                                     });   
                         })
@@ -923,14 +923,14 @@
                                         type: 'GET',
                                         success: function (response) {
                                             Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
-                                            $('#ajax-alert3').addClass('alert-success').show(function(){
-                                               $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
-                                            });
+                                            // $('#ajax-alert3').addClass('alert-success').show(function(){
+                                            //    $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
+                                            // });
                                         }
                                     });    
                         })     
                         $(".select1").on('click',function(){
-                            $('#ajax-alert3').fadeOut(1000);
+                            // $('#ajax-alert3').fadeOut(1000);
                                 // $('#ajax-alert3').hide();
                                 $("tr.report_row").css("background-color", "white");
                                 $("tr.report_row").css("color", "black");
@@ -1841,9 +1841,9 @@
                         $("#national_code_b").val('');
                         $("#reason_b").val('');
                         Swal.fire('مشخصات این فرد به بانک اطلاعاتی افزوده شد.جهت بلاک کردن این فرد به لیست پایین مراجعه شود', '', 'success')
-                        $('#ajax-alert3').addClass('alert-success').show(function(){
-                           $(this).html("مشخصات این فرد به لیست تعیین وضعیت اضافه گردید .");
-                        });
+                        // $('#ajax-alert3').addClass('alert-success').show(function(){
+                        //    $(this).html("مشخصات این فرد به لیست تعیین وضعیت اضافه گردید .");
+                        // });
                         var id_b = ''
                         var f_name = ''
                         var l_name = ''
@@ -1875,7 +1875,13 @@
                             b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
                             t4 = $('<td style="width: 6%;text-align:center"></td>')
                             t4.append(b4)
-                            row = $('<tr class="report_row"></tr>')
+                            if(response.result[i]['isBlocked']==0){
+                                    row = $('<tr class="report_row" style="background-color: lightblue"></tr>')
+                                }
+                                if(response.result[i]['isBlocked']==1){
+                                    row = $('<tr class="report_row" style="background-color: Tomato"></tr>')
+                                }
+                            // row = $('<tr class="report_row"></tr>')
                             row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
                             $("#block_table").append(row)
 
@@ -1892,9 +1898,9 @@
                                         type: 'GET',
                                         success: function (response) {
                                             Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را خواهد داشت', '', 'info')
-                                            $('#ajax-alert3').addClass('alert-success').show(function(){
-                                               $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
-                                            });
+                                            // $('#ajax-alert3').addClass('alert-success').show(function(){
+                                            //    $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
+                                            // });
                                         }
                                     });   
                         })
@@ -1910,14 +1916,14 @@
                                         type: 'GET',
                                         success: function (response) {
                                             Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
-                                            $('#ajax-alert3').addClass('alert-success').show(function(){
-                                               $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
-                                            });
+                                            // $('#ajax-alert3').addClass('alert-success').show(function(){
+                                            //    $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
+                                            // });
                                         }
                                     });    
                         })     
                         $(".select1").on('click',function(){
-                            $('#ajax-alert3').fadeOut(1000);
+                            // $('#ajax-alert3').fadeOut(1000);
                                 // $('#ajax-alert3').hide();
                                 $("tr.report_row").css("background-color", "white");
                                 $("tr.report_row").css("color", "black");
@@ -2086,6 +2092,7 @@
                             var row_th ='<tr style="color: black"><td class="person" style="width: 3%">--</td><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 6%">#</td><td class="person" style="width: 6%">#</td></tr>';
                             $("#block_table").append(row_th)
                             for(var i = 0; i < response.result.length; i++) {
+                                
                                 id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
                                 f_name = $('<td style="width: 8%;text-align:center">' + response.result[i]['f_name'] + '</td>')
                                 l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
@@ -2099,6 +2106,7 @@
                                 b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
                                 t4 = $('<td style="width: 6%;text-align:center"></td>')
                                 t4.append(b4)
+
                                 row = $('<tr class="report_row"></tr>')
                                 row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
                                 $("#block_table").append(row)
@@ -2116,9 +2124,9 @@
                                             type: 'GET',
                                             success: function (response) {
                                                 Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را خواهد داشت', '', 'info')
-                                                $('#ajax-alert3').addClass('alert-success').show(function(){
-                                                $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
-                                                });
+                                                // $('#ajax-alert3').addClass('alert-success').show(function(){
+                                                // $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
+                                                // });
                                             }
                                         });   
                             })
@@ -2134,14 +2142,14 @@
                                             type: 'GET',
                                             success: function (response) {
                                                 Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
-                                                $('#ajax-alert3').addClass('alert-success').show(function(){
-                                                $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
-                                                });
+                                                // $('#ajax-alert3').addClass('alert-success').show(function(){
+                                                // $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
+                                                // });
                                             }
                                         });    
                             })     
                             $(".select1").on('click',function(){
-                                $('#ajax-alert3').fadeOut(1000);
+                                // $('#ajax-alert3').fadeOut(1000);
                                     // $('#ajax-alert3').hide();
                                     $("tr.report_row").css("background-color", "white");
                                     $("tr.report_row").css("color", "black");
