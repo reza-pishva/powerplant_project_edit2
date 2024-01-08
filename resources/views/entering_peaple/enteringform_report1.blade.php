@@ -2196,7 +2196,7 @@
     
                             })   
                             $(".edit1").on('click',function(){                            
-                                
+                            
                                 $("tr.report_row").css("background-color", "white");
                                 $("tr.report_row").css("color", "black");
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");
@@ -2210,8 +2210,8 @@
                                 $('#reason_e').val($(this).closest('tr').find('td:eq(6)').text());
 
                                 $('#blockEdit').modal('show');
-    
-                            })  
+ 
+                            })   
                             $('#block5').show();
                         }
                      })  
@@ -3096,15 +3096,15 @@
                                                             <input type="text" maxlength="30" class="form-control" id="l_name_b"  data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی:" name="l_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                                         </div>
                                                         <div class="col">
-                                                            <input type="text" maxlength="10" class="form-control" id="national_code_b"  data-toggle="tooltip" data-placement="right" placeholder="کدملی:" name="national_code" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                            <input type="text" maxlength="12" class="form-control" id="national_code_b"  data-toggle="tooltip" data-placement="right" placeholder="کدملی:" name="national_code" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                                         </div>
                                                     </div>
                                                     <div class="row mt-1">
                                                         <div class="col-4">
-                                                            <input type="text" maxlength="100" class="form-control" id="company_name_b"  data-toggle="tooltip" data-placement="right" placeholder="شرکت:" name="company_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                            <input type="text" maxlength="25" class="form-control" id="company_name_b"  data-toggle="tooltip" data-placement="right" placeholder="شرکت:" name="company_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                                         </div>
                                                         <div class="col-6">
-                                                            <input type="text" maxlength="100" class="form-control" id="reason_b"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
+                                                            <input type="text" maxlength="40" class="form-control" id="reason_b"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
                                                         </div>
                                                         <div class="col-2" style="padding-left: 50px">
                                                             <button type="commit" class="btn btn-primary" id="addblock" style="font-family: Tahoma;font-size: small;text-align: center;width:120%">ثبت</button>
