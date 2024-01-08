@@ -1001,7 +1001,8 @@
                             $('#blockEdit').modal('show');
  
                         })  
-                        $('#block5').show();
+                        $(".mylist20").fadeToggle(1500);
+                        // $('#block5').show();
                     }
                 })       
 
@@ -3045,7 +3046,7 @@
 </div>
 
 <!-- block -->
-<div class="row mylist20" id="block5" style="direction: rtl;margin-top:-5px">
+<div class="row mylist20" id="block5" style="direction: rtl;margin-top:-5px;display: none">
     <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 11px;margin-left: 625px">
      <div class="modal-content">
 
@@ -3070,7 +3071,7 @@
 <div class="container"  style="margin: auto;background-color:white;width: 900px ;height: 320px">
     <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small;text-align: center;margin-top:5px"></div>
 
-    <div class="row" style="margin-top: 5px">
+    <div class="row" style="margin-top:-2px">
 
         <div id="person_div2" class="col" style="height:50px">
 
