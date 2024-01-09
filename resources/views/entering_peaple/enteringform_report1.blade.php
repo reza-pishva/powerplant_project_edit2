@@ -1008,7 +1008,11 @@
  
                         })  
                         $(".mylist20").fadeToggle(1500);
-                        // $('#block5').show();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+
                     }
                 })       
 
@@ -1052,7 +1056,6 @@
                             if(response.result[i]['isBlocked']==1){
                                     row = $('<tr class="report_row" style="background-color:rgb(248,186,184)"></tr>')
                             }
-                            // row = $('<tr class="report_row"></tr>')
                             row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t4)
                             $("#block_table2").append(row)
 
@@ -1077,6 +1080,7 @@
                         })  
                         $(".mylist").hide();
                         $('.mylist2').hide();
+                        $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
