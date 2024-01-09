@@ -19,23 +19,37 @@ class EnteringBlockController extends Controller
         return response()->json(['success'=>'hi','result'=>$id]);
     }
     public function update(Request $request){
-        $id_b_e=$request->id_b_e;
-        EnteringBlock::where('id_b',$id_b_e)->update(['f_name' => $request->f_name_e,
-        'l_name' => $request->l_name_e,
-        'national_code' => $request->national_code_e,
-        'company_name' => $request->company_name_e,
-        'reason' => $request->reason_e]);
-        return response()->json(['success'=>'hi','result'=> $id_b_e]);//,'result'=>$request->id_b_e
+        
+        // if($n==0){
+            $id_b_e=$request->id_b_e;
+            EnteringBlock::where('id_b',$id_b_e)->update(['f_name' => $request->f_name_e,
+            'l_name' => $request->l_name_e,
+            'national_code' => $request->national_code_e,
+            'company_name' => $request->company_name_e,
+            'reason' => $request->reason_e]);
+            $n= EnteringBlock::where('national_code',$request->input('national_code_e'))->get()->count();  
+            if($n==1){
+               return response()->json(['success'=>'hi','result2'=> $id_b_e]);
+            }else{
+               return response()->json(['success'=>'hi','result'=>$n]);
+            }
+
     }
-    public function store(Request $request){        
-        EnteringBlock::create(['f_name' => $request->f_name,
-                          'l_name' => $request->l_name,
-                          'national_code' => $request->national_code,
-                          'company_name' => $request->company_name,
-                          'isBlocked' => 0,
-                          'reason' => $request->reason]); 
-                          $blocks = EnteringBlock::all();
-                          return response()->json(['success'=>'hi','result'=>$blocks]);
+    public function store(Request $request){   
+        $n= EnteringBlock::where('national_code',$request->input('national_code'))->get()->count();  
+        if($n==0){
+            EnteringBlock::create(['f_name' => $request->f_name,
+            'l_name' => $request->l_name,
+            'national_code' => $request->national_code,
+            'company_name' => $request->company_name,
+            'isBlocked' => 0,
+            'reason' => $request->reason]); 
+            $blocks = EnteringBlock::all();
+            return response()->json(['success'=>'hi','result'=>$blocks]);
+        }else{
+            return response()->json(['success'=>'hi','result'=>$n]);
+        }
+        
     }
     public function set_block1($id){
         EnteringBlock::where('id_b',$id)->update(['isBlocked'=>1]);
