@@ -42,6 +42,7 @@
             $('#first_report').click(function(event) {
                 $('.mylist2').hide();
                 $('.mylist3').hide();
+                $('.mylist20').hide();
                 $('#codemelli_modal').modal("show");
             })
             $('#sixth_report333').click(function(event) {
@@ -55,6 +56,7 @@
 
                 $('.mylist2').hide();
                 $('.mylist3').hide();
+                $('.mylist20').hide();
                 $('#codemelli_modal').modal('toggle');
                 $('#personinfo4').modal("show");
                 var code_melli = $('#code_melli_s2').val();
@@ -134,6 +136,7 @@
             $('#sixth_report35').click(function(event) {
                 $('.mylist2').hide();
                 $('.mylist3').hide();
+                $('.mylist20').hide();
                 $('#codemelli_modal2').modal('toggle');
                 $('#personinfo5').modal("show");
 
@@ -434,6 +437,7 @@
                     }})
                 $('.mylist2').hide();
                 $('.mylist3').hide();
+                $('.mylist20').hide();
                 $(".mylist3").fadeToggle(2000);
             })
             $('#eighth_report').click(function(event) {
@@ -639,6 +643,7 @@
                             })
                         }
                         $('.mylist2').hide();
+                        $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".mylist3").fadeToggle(2000);
                     }})
@@ -647,6 +652,7 @@
             $('#sixth_report2').click(function(event) {
                 $('.mylist2').hide();
                 $('.mylist3').hide();
+                $('.mylist20').hide();
                 $('#codemelli_modal2').modal("show");
             })
             $('#second_report').click(function(event) {
@@ -772,6 +778,7 @@
                         }
                         $(".mylist").hide();
                         $('.mylist2').hide();
+                        $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
@@ -1199,6 +1206,7 @@
                         }
                         $(".mylist").hide();
                         $('.mylist2').hide();
+                        $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
@@ -1314,6 +1322,7 @@
                         }
                         $(".mylist").hide();
                         $('.mylist2').hide();
+                        $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
