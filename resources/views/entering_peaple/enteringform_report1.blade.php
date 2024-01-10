@@ -2095,9 +2095,6 @@
                                             type: 'GET',
                                             success: function (response) {
                                                 Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را خواهد داشت', '', 'info')
-                                                // $('#ajax-alert3').addClass('alert-success').show(function(){
-                                                // $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
-                                                // });
                                             }
                                         });   
                             })
@@ -2113,15 +2110,10 @@
                                             type: 'GET',
                                             success: function (response) {
                                                 Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
-                                                // $('#ajax-alert3').addClass('alert-success').show(function(){
-                                                // $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
-                                                // });
                                             }
                                         });    
                             })     
                             $(".select1").on('click',function(){
-                                // $('#ajax-alert3').fadeOut(1000);
-                                    // $('#ajax-alert3').hide();
                                     $("tr.report_row").css("background-color", "white");
                                     $("tr.report_row").css("color", "black");
                                     $(this).closest('tr.report_row').css("background-color", "#2975cd");
