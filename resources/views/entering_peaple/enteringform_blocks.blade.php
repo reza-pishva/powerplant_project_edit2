@@ -847,7 +847,6 @@
 
             })
             $('#third_report').click(function(event) {
-
                 event.preventDefault();
                 $.ajax({
                     url: '/auth-peaple-block',

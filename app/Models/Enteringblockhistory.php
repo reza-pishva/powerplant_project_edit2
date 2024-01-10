@@ -14,6 +14,7 @@ class Enteringblockhistory extends Model
         'reason', 
         'date_shamsi', 
         'time',
+        'id_b',
     ];
     protected $table='enteringblockhistories';
 }

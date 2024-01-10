@@ -930,15 +930,13 @@
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");
                                 $(this).closest('tr.report_row').css("color", "white");                          
                                 var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                var reason = $(this).closest('tr').find('td:eq(6)').text();
                                 $.ajax(
                                     {
-                                        url: "/set-block1/"+id_b,
+                                        url: "/set-block1/"+id_b+'/'+reason,
                                         type: 'GET',
                                         success: function (response) {
                                             Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
-                                            // $('#ajax-alert3').addClass('alert-success').show(function(){
-                                            //    $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
-                                            // });
                                         }
                                     });    
                         })     
