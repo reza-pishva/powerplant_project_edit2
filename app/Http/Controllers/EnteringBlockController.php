@@ -79,6 +79,7 @@ class EnteringBlockController extends Controller
         return response()->json(['success'=>'hi','result'=>$values['id_b']]);
     }
     public function set_free($id){
+        
         $user = auth()->user()->id;
         $f_name=auth()->user()->f_name;
         $l_name=auth()->user()->l_name;
