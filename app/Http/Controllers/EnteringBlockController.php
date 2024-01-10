@@ -43,6 +43,7 @@ class EnteringBlockController extends Controller
 
     }
     public function store(Request $request){   
+       
         $n= EnteringBlock::where('national_code',$request->input('national_code'))->get()->count();  
         if($n==0){
             EnteringBlock::create(['f_name' => $request->f_name,
@@ -79,7 +80,7 @@ class EnteringBlockController extends Controller
         return response()->json(['success'=>'hi','result'=>$values['id_b']]);
     }
     public function set_free($id){
-        
+
         $user = auth()->user()->id;
         $f_name=auth()->user()->f_name;
         $l_name=auth()->user()->l_name;
@@ -92,7 +93,7 @@ class EnteringBlockController extends Controller
         $date_shamsi=$date_shamsi_array[0].'/'.$date_shamsi_array[1].'/'.$date_shamsi_array[2];
         $mytime=Carbon::now();
 
-        $values = array('requester' =>$full_name,'date_shamsi' =>$date_shamsi,'مجوز ورود داده شد' => $reason,'time' =>$mytime, 'id_b' => $id);
+        $values = array('requester' =>$full_name,'date_shamsi' =>$date_shamsi,'reason'=>'مجوز ورود داده شد','time' =>$mytime, 'id_b' => $id);
         DB::table('enteringblockhistories')->insert($values);
 
         EnteringBlock::where('id_b',$id)->update(['isBlocked'=>0]);
