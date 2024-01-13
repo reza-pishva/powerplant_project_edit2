@@ -4,6 +4,7 @@ use App\CalendarHelper;
 use Carbon\Carbon;
 
 use App\Models\EnteringBlock;
+use App\Models\Enteringblockhistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -100,7 +101,7 @@ class EnteringBlockController extends Controller
         return response()->json(['success'=>'hi','result'=>$id]);
     }
     public function block_history($id){
-        $block = Enteringblockhistory::find($id);
-        return $block;
+        $history = Enteringblockhistory::where('id_b',$id)->get();
+        return response()->json(['success'=>'hi','result'=>$history]);
     }
 }
