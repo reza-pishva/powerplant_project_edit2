@@ -1067,50 +1067,54 @@
  
                         $(".history").on('click',function(){  
                             var id_b = $(this).closest('tr').find('td:eq(0)').text(); 
-                            event.preventDefault();
-                            $.ajax({
-                                url: '/enteringblocks',
-                                method:'GET',
-                                success: function (response) {                            
-                                    var id_b = ''
-                                    var f_name = ''
-                                    var l_name = ''
-                                    var national_code = ''
-                                    var company_name = ''
-                                    var reason = ''
-                                    var select_btn = ''
-                                    var t0 = ''
-                                    var t1 = ''
-                                    var t2 = ''
-                                    var t3 = ''
-                                    var t4 = ''
-                                    var b4 = ''
-                                    var row = ''
-                                    $("#block_table2").empty();
-                                    var row_th ='<tr style="color: black"><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td></tr>';
-                                    $("#block_table2").append(row_th)
-                                    for(var i = 0; i < response.result.length; i++) {
-                                        id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
-                                        f_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['f_name'] + '</td>')
-                                        l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
-                                        national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
-                                        company_name = $('<td style="width: 20%;text-align:center">' + response.result[i]['company_name'] + '</td>')
-                                        reason = $('<td style="width: 40%;text-align:center">' + response.result[i]['reason'] + '</td>')
-                                        b4 = $('<button type="button" class="btn-outline-info history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">سابقه</button>')
-                                        t4 = $('<td style="width: 10%;text-align:center"></td>')
-                                        t4.append(b4)
-                                        if(response.result[i]['isBlocked']==0){
-                                                row = $('<tr class="report_row" style="background-color: rgb(184,248,189)"></tr>')
-                                            }
-                                        if(response.result[i]['isBlocked']==1){
-                                                row = $('<tr class="report_row" style="background-color:rgb(248,186,184)"></tr>')
-                                        }
-                                        row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t4)
-                                        $("#block_table2").append(row)
+                            
+                            $('#myModal4').modal("show");
+                            //$("#blockHistory").fadeToggle(2000);
+                            // event.preventDefault();
+                            // $.ajax({
+                            //     url: '/enteringblocks',
+                            //     method:'GET',
+                            //     success: function (response) {                            
+                            //         var id_b = ''
+                            //         var f_name = ''
+                            //         var l_name = ''
+                            //         var national_code = ''
+                            //         var company_name = ''
+                            //         var reason = ''
+                            //         var select_btn = ''
+                            //         var t0 = ''
+                            //         var t1 = ''
+                            //         var t2 = ''
+                            //         var t3 = ''
+                            //         var t4 = ''
+                            //         var b4 = ''
+                            //         var row = ''
+                            //         $("#block_table2").empty();
+                            //         var row_th ='<tr style="color: black"><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td></tr>';
+                            //         $("#block_table2").append(row_th)
+                            //         for(var i = 0; i < response.result.length; i++) {
+                            //             id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
+                            //             f_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['f_name'] + '</td>')
+                            //             l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
+                            //             national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
+                            //             company_name = $('<td style="width: 20%;text-align:center">' + response.result[i]['company_name'] + '</td>')
+                            //             reason = $('<td style="width: 40%;text-align:center">' + response.result[i]['reason'] + '</td>')
+                            //             b4 = $('<button type="button" class="btn-outline-info history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">سابقه</button>')
+                            //             t4 = $('<td style="width: 10%;text-align:center"></td>')
+                            //             t4.append(b4)
+                            //             if(response.result[i]['isBlocked']==0){
+                            //                     row = $('<tr class="report_row" style="background-color: rgb(184,248,189)"></tr>')
+                            //                 }
+                            //             if(response.result[i]['isBlocked']==1){
+                            //                     row = $('<tr class="report_row" style="background-color:rgb(248,186,184)"></tr>')
+                            //             }
+                            //             row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t4)
+                            //             $("#block_table2").append(row)
 
-                                    }
-                                }
-                            })                      
+                            //         }
+                                    
+                            //     }
+                            // })                      
 
                         })  
                         $(".mylist").hide();
@@ -1123,7 +1127,6 @@
                 })       
 
             })
-
             $('#fourth_report').click(function(event) {
 
                 event.preventDefault();
@@ -3231,6 +3234,45 @@
         </div>
     </div>
 </div></div>
+
+<!-- blockHistory -->
+<div class="modal fade mt-3" id="myModal4" style="direction: rtl;">
+    <div class="modal-dialog modal-md" id="editlist2000" style="margin-top: 100px;margin-left: 600px">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header bg-dark" style="height: 35px;padding-top: 5px;width: 450px " >
+                <div class="row" style="width: 100%">
+                    <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">گردش درخواست</p></div>
+                    <div class="col-6">
+                        <div class="row" style="width: 100%">
+                            <div class="col-10"></div>
+                            <div class="col-2">
+                                <button type="button" class="close" data-dismiss="modal" style="text-align: center;display: inline;color: white">&times;</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- List -->
+            <div class="container"  style="margin: auto;background-color:#c4e6f5;width: 450px ;height: 400px;;overflow-y: scroll">
+                <table class="table table-striped" id="workflow" style="width: 450px">
+                </table>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer bg-info" style="height: 20px;width:450px"></div>
+
+        </div>
+    </div>
+</div>
+
+
+
 
 
 
