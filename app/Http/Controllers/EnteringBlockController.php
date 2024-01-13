@@ -77,7 +77,7 @@ class EnteringBlockController extends Controller
         DB::table('enteringblockhistories')->insert($values);
 
         EnteringBlock::where('id_b',$id)->update(['isBlocked'=>1]);
-        return response()->json(['success'=>'hi','result'=>$values['id_b']]);
+        return response()->json(['success'=>'hi','result'=>$reason]);
     }
     public function set_free($id){
 

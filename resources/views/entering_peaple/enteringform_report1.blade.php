@@ -1017,7 +1017,6 @@
                         $('.mylist2').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
-
                     }
                 })       
 
