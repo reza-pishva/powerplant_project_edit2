@@ -99,4 +99,8 @@ class EnteringBlockController extends Controller
         EnteringBlock::where('id_b',$id)->update(['isBlocked'=>0]);
         return response()->json(['success'=>'hi','result'=>$id]);
     }
+    public function block_history($id){
+        $block = Enteringblockhistory::find($id);
+        return $block;
+    }
 }
