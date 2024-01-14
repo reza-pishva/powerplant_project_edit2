@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\EnteringBlock;
-use App\CalendarHelper;
-use App\Enteringform;
-use App\Enteringhefazat;
-use App\Enteringhefazatcase;
-use App\Entering_personel_unique;
-use App\Enteringpeaple;
-use App\Enteringtitle;
+use App\Models\EnteringBlock;
+use App\Models\CalendarHelper;
+use App\Models\Enteringform;
+use App\Models\Enteringhefazat;
+use App\Models\Enteringhefazatcase;
+use App\Models\Entering_personel_unique;
+use App\Models\Enteringpeaple;
+use App\Models\Enteringtitle;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,16 +24,16 @@ class enteringpeoplesController extends Controller
 
     public  function store(Request $request){
         $blocked=0;
-        $peaple=1;
-        //$peaple = EnteringBlock::where('national_code',$request->input('code_melli'))->get()->count();
-        if( $peaple == 1){
-            $isBlocked = DB::table('enteringblocks')->where('national_code',$request->input('code_melli'))->orderBy('id_b', 'DESC')->first()->isBlocked;
-            if($isBlocked == 1){
-                $blocked=1;
-            }else{
-                $blocked=0;
-            }            
-        }
+        //$peaple=1;
+        $peaple = EnteringBlock::where('code_melli',$request->input('code_melli'))->get()->count();
+        // if( $peaple == 1){
+        //     $isBlocked = DB::table('enteringblocks')->where('national_code',$request->input('code_melli'))->orderBy('id_b', 'DESC')->first()->isBlocked;
+        //     if($isBlocked == 1){
+        //         $blocked=1;
+        //     }else{
+        //         $blocked=0;
+        //     }            
+        // }
         return response()->json(['success'=>'hi','result'=>$peaple]);
         // if($blocked==0){
         //     date_default_timezone_set('Asia/Tehran');
