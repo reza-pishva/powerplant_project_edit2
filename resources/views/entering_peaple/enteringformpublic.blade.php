@@ -691,7 +691,6 @@
                 })
             })
             $("#addpersons").on('submit',function(event) {
-                alert("بلاک")
                 event.preventDefault();
                 $.ajaxSetup({
                     headers: {
@@ -707,7 +706,6 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                        alert("بلاک")
                         if(response.reapeted==1){
                             alert("اشکال در تاریخ انتخابی: بازه زمانی انتخابی مجاز نمی باشد")
                         }
