@@ -1068,53 +1068,40 @@
                         $(".history").on('click',function(){  
                             var id_b = $(this).closest('tr').find('td:eq(0)').text(); 
                             
-                            $('#myModal4').modal("show");
-                            //$("#blockHistory").fadeToggle(2000);
-                            // event.preventDefault();
-                            // $.ajax({
-                            //     url: '/enteringblocks',
-                            //     method:'GET',
-                            //     success: function (response) {                            
-                            //         var id_b = ''
-                            //         var f_name = ''
-                            //         var l_name = ''
-                            //         var national_code = ''
-                            //         var company_name = ''
-                            //         var reason = ''
-                            //         var select_btn = ''
-                            //         var t0 = ''
-                            //         var t1 = ''
-                            //         var t2 = ''
-                            //         var t3 = ''
-                            //         var t4 = ''
-                            //         var b4 = ''
-                            //         var row = ''
-                            //         $("#block_table2").empty();
-                            //         var row_th ='<tr style="color: black"><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td></tr>';
-                            //         $("#block_table2").append(row_th)
-                            //         for(var i = 0; i < response.result.length; i++) {
-                            //             id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
-                            //             f_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['f_name'] + '</td>')
-                            //             l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
-                            //             national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
-                            //             company_name = $('<td style="width: 20%;text-align:center">' + response.result[i]['company_name'] + '</td>')
-                            //             reason = $('<td style="width: 40%;text-align:center">' + response.result[i]['reason'] + '</td>')
-                            //             b4 = $('<button type="button" class="btn-outline-info history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">سابقه</button>')
-                            //             t4 = $('<td style="width: 10%;text-align:center"></td>')
-                            //             t4.append(b4)
-                            //             if(response.result[i]['isBlocked']==0){
-                            //                     row = $('<tr class="report_row" style="background-color: rgb(184,248,189)"></tr>')
-                            //                 }
-                            //             if(response.result[i]['isBlocked']==1){
-                            //                     row = $('<tr class="report_row" style="background-color:rgb(248,186,184)"></tr>')
-                            //             }
-                            //             row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t4)
-                            //             $("#block_table2").append(row)
+                            
+                            event.preventDefault();
+                            $.ajax({
+                                url: '/block-history/'+id_b,
+                                method:'GET',
+                                success: function (response) {  
+                                    $('#myModal4').modal("show");    
+                                    alert(response.result.length)                      
+                                    var reason = ''
+                                    var date_shamsi = ''
+                                    var time = ''
+                                    var requester = ''
+                                    var t0 = ''
+                                    var t1 = ''
+                                    var t2 = ''
+                                    var t3 = ''
+                                    var t4 = ''
+                                    var b4 = ''
+                                    var row = ''
+                                    $("#block_history").empty();
+                                    var row_th ='<tr style="color: black"><td class="person" style="width: 25%">تاریخ</td><td class="person" style="width: 25%">ساعت</td><td class="person" style="width: 25%">سابقه</td><td class="person" style="width: 25%">درخواست کننده</td></tr>';
+                                    $("#block_history").append(row_th)
+                                    for(var i = 0; i < response.result.length; i++) {
+                                        date_shamsi = $('<td style="width: 25%;text-align:center">' + response.result[i]['date_shamsi'] + '</td>')
+                                        time = $('<td style="width: 25%;text-align:center">' + response.result[i]['time'] + '</td>')
+                                        requester = $('<td style="width: 25%;text-align:center">' + response.result[i]['requester'] + '</td>')
+                                        reason = $('<td style="width: 25%;text-align:center">' + response.result[i]['reason'] + '</td>')
+                                        row.append(date_shamsi,time,reason,requester)
+                                        // $("#block_history").append(row)
 
-                            //         }
-                                    
-                            //     }
-                            // })                      
+                                    }
+                                    $('#myModal4').modal("show");
+                                }
+                            })                      
 
                         })  
                         $(".mylist").hide();
@@ -2481,13 +2468,13 @@
         </div>
     </div>
     <div class="modal fade mt-3" id="myModal4" style="direction: rtl;">
-        <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 100px;margin-left: 600px">
+        <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 100px;margin-left: 410px">
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header bg-dark" style="height: 35px;padding-top: 5px;width: 850px " >
+                <div class="modal-header bg-dark" style="height: 35px;padding-top: 5px;width: 500px " >
                     <div class="row" style="width: 100%">
-                        <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">جزئیات درخواست</p></div>
+                        <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">سابقه فرد</p></div>
                         <div class="col-6">
                             <div class="row" style="width: 100%">
                                 <div class="col-10">.</div>
@@ -2503,118 +2490,12 @@
                 </div>
 
                 <!-- List -->
-                <div class="container"  style="margin: auto;background-color:white;width: 850px ;height: 400px;overflow-y: scroll">
-                    <div class="row mt-3">
-                        <div class="col" style="height:25px">
-                            <div class="row">
-                                <div class="col-4" style="height:25px">
-                                    <p style="font-family: Tahoma;font-size: smaller;color: black">عنوان فعالیت:</p>
-                                </div>
-                                <div class="col-8" style="height:25px;text-align: right">
-                                    <p id="title1" style="font-family: Tahoma;font-size: smaller;color: black"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col" style="height:25px">
-                            <div class="row">
-                                <div class="col-4" style="height:25px">
-                                    <p style="font-family: Tahoma;font-size: smaller;color: black">نام شرکت یا مرکز:</p>
-                                </div>
-                                <div class="col-8" style="height:25px;text-align: right">
-                                    <p id="company1" style="font-family: Tahoma;font-size: smaller;color: black"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col" style="height:25px;text-align: right">
-                            <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px">مشخصات افراد دعوت شده به نیروگاه:</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div id="person_div888" class="col" style="height:50px">
-                            <table id="person_table888" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
-                                <tr style="color: black">
-                                    <td class="person" style="width: 5%">کد</td>
-                                    <td class="person" style="width: 10%">نام</td>
-                                    <td class="person" style="width: 14%">نام خانوادگی</td>
-                                    <td class="person" style="width: 8%">عنوان فرد</td>
-                                    <td class="person" style="width: 5%">ملیت</td>
-                                    <td class="person" style="width: 4%">سن</td>
-                                    <td class="person" style="width: 10%">تاریخ شروع</td>
-                                    <td class="person" style="width: 7%">ساعت شروع</td>
-                                    <td class="person" style="width: 10%">تاریخ پایان</td>
-                                    <td class="person" style="width: 7%">ساعت پایان</td>
-                                    <td class="person" style="width: 10%">کد ملی</td>
-                                    <td class="person" style="width: 10%">شماره تلفن</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <br>
-                    <div id="first1" class="row">
-                        <div id="ec_txt" class="col" style="height:25px;text-align: right;">
-                            <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px;">مشخصات خودروهای مجاز به ورود به نیروگاه:</p>
-                        </div>
-                        <div id="ec_txt" class="col" style="height:25px;text-align: right;">
-                            <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px;">فهرست لوازم الکترونیکی مجاز به ورود به نیروگاه:</p>
-                        </div>
-                    </div>
-                    <div id="first2" class="row" style="text-align: right">
-                        <div id="cars_div123" class="col" style="height:30px;text-align: right">
-                            <table id="cars_table123" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;border: 1px solid black;">
-                                <tr style="color: black;height: 25px;font-family: Tahoma;font-size: small;color: black">
-                                    <td class="car" style="width: 10%;text-align: center;border: 1px solid black">کد</td>
-                                    <td class="car" style="width: 15%;text-align: center;border: 1px solid black">نام خودرو</td>
-                                    <td class="car" style="width: 20%;text-align: center;border: 1px solid black">نام راننده</td>
-                                    <td class="car" style="width: 5%;text-align: center;border: 1px solid black"></td>
-                                    <td class="car" style="width: 1%;font-size: 7px;text-align: center;border: 1px solid black">پلاک</td>
-                                    <td class="car" style="width: 5%;text-align: center;border: 1px solid black"></td>
-                                    <td class="car" style="width: 15%;text-align: center;border: 1px solid black">محدوده تردد</td>
-
-                                </tr>
-                            </table>
-                        </div>
-                        <div id="el_div" class="col" style="height:50px;text-align: right">
-                            <table id="el_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
-                                <tr style="color: black">
-                                    <td class="el" style="width: 15%">کد</td>
-                                    <td class="el" style="width: 85%">نام وسیله الکترونیکی</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div id="eq_txt" class="col" style="height:25px;text-align: right">
-                            <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px;">فهرست لوازم کار مجاز به ورود به نیروگاه:</p>
-                        </div>
-                        <div id="equ_txt" class="col" style="height:25px;text-align: right">
-                            <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px;">فهرست فایلهای پیوست شده:</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div id="eq_div" class="col" style="height:200px;text-align: right">
-                            <table id="eq_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
-                                <tr style="color: black">
-                                    <td class="eq" style="width: 15%">کد</td>
-                                    <td class="eq" style="width: 85%">نام وسیله </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div id="equ_div" class="col" style="height:200px;text-align: right">
-                            <table id="equ_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
-                                <tr style="color: black">
-                                    <td class="equ" style="width: 15%">کد</td>
-                                    <td class="equ" style="width: 85%">عنوان فایل</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+                <div class="container"  style="margin: auto;background-color:white;width: 500px ;height: 400px;overflow-y: scroll">
+                    <table id="block_history" text-align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top:5px"></table>
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer bg-info" style="height: 20px;width:850px"></div>
+                <div class="modal-footer bg-info" style="height: 20px;width:500px"></div>
 
             </div>
         </div>
@@ -3235,41 +3116,7 @@
     </div>
 </div></div>
 
-<!-- blockHistory -->
-<div class="modal fade mt-3" id="myModal4" style="direction: rtl;">
-    <div class="modal-dialog modal-md" id="editlist2000" style="margin-top: 100px;margin-left: 600px">
-        <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header bg-dark" style="height: 35px;padding-top: 5px;width: 450px " >
-                <div class="row" style="width: 100%">
-                    <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">گردش درخواست</p></div>
-                    <div class="col-6">
-                        <div class="row" style="width: 100%">
-                            <div class="col-10"></div>
-                            <div class="col-2">
-                                <button type="button" class="close" data-dismiss="modal" style="text-align: center;display: inline;color: white">&times;</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-            </div>
-
-            <!-- List -->
-            <div class="container"  style="margin: auto;background-color:#c4e6f5;width: 450px ;height: 400px;;overflow-y: scroll">
-                <table class="table table-striped" id="workflow" style="width: 450px">
-                </table>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer bg-info" style="height: 20px;width:450px"></div>
-
-        </div>
-    </div>
-</div>
 
 
 
