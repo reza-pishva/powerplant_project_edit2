@@ -1858,10 +1858,10 @@
                             t4 = $('<td style="width: 6%;text-align:center"></td>')
                             t4.append(b4)
                             // if(response.result[i]['isBlocked']==0){
-                            //         row = $('<tr class="report_row" style="background-color: lightblue"></tr>')
+                            //         row = $('<tr class="report_row" style="background-color: rgb(184,248,189)"></tr>')
                             //     }
                             // if(response.result[i]['isBlocked']==1){
-                            //         row = $('<tr class="report_row" style="background-color: Tomato"></tr>')
+                            //         row = $('<tr class="report_row" style="background-color:rgb(248,186,184)"></tr>')
                             // }
                             row = $('<tr class="report_row"></tr>')
                             row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
@@ -1892,20 +1892,18 @@
                                 $(this).closest('tr.report_row').css("background-color", "#2975cd");
                                 $(this).closest('tr.report_row').css("color", "white");                          
                                 var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                                var reason = $(this).closest('tr').find('td:eq(6)').text();
                                 $.ajax(
                                     {
-                                        url: "/set-block1/"+id_b,
+                                        url: "/set-block1/"+id_b+'/'+reason,
                                         type: 'GET',
                                         success: function (response) {
                                             Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
-                                            // $('#ajax-alert3').addClass('alert-success').show(function(){
-                                            //    $(this).html("فرد انتخابی دیگر مجاز به ورود به نیروگاه نخواهد بود");
-                                            // });
                                         }
                                     });    
                         })     
                         $(".select1").on('click',function(){
-                            // $('#ajax-alert3').fadeOut(1000);
+                                // $('#ajax-alert3').fadeOut(1000);
                                 // $('#ajax-alert3').hide();
                                 $("tr.report_row").css("background-color", "white");
                                 $("tr.report_row").css("color", "black");
@@ -1957,25 +1955,7 @@
                                 }
                               })
 
-
-
-                            
-                            // $.ajax({
-                            //         url: "/enteringblockremove/"+id_b,
-                            //         type: 'GET',
-                            //         // data: {
-                            //         //        "id": id_b,
-                            //         //        "_token": token,
-                            //         //       },
-                            //         success: function (response) {
-                                        
-                            //               $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                            //               Swal.fire('فرد انتخاب شده حذف گردید', '', 'danger')
-                            //               $('#ajax-alert3').addClass('alert-success').show(function(){
-                            //                    $(this).html("فرد انتخاب شده حذف گردید");
-                            //               });
-                            //             }
-                            //         });    
+  
                         })   
                         $(".edit1").on('click',function(){                            
                             
@@ -1984,53 +1964,16 @@
                             $(this).closest('tr.report_row').css("background-color", "#2975cd");
                             $(this).closest('tr.report_row').css("color", "white");                          
                             var id_b = $(this).closest('tr').find('td:eq(0)').text();
+                            $('#id_b_e').val($(this).closest('tr').find('td:eq(0)').text());
+                            $('#f_name_e').val($(this).closest('tr').find('td:eq(2)').text());
+                            $('#l_name_e').val($(this).closest('tr').find('td:eq(3)').text());
+                            $('#national_code_e').val($(this).closest('tr').find('td:eq(4)').text());
+                            $('#company_name_e').val($(this).closest('tr').find('td:eq(5)').text());
+                            $('#reason_e').val($(this).closest('tr').find('td:eq(6)').text());
 
-                            $('#f_name_e').val($(this).closest('tr').find('td:eq(1)').text());
-                            $('#l_name_e').val($(this).closest('tr').find('td:eq(2)').text());
-                            $('#nationa_code_e').val($(this).closest('tr').find('td:eq(3)').text());
-                            $('#company_name_e').val($(this).closest('tr').find('td:eq(4)').text());
-                            $('#reason_e').val($(this).closest('tr').find('td:eq(5)').text());
-                            
-
-                            // Swal.fire({
-                            //   title: 'مایل به حذف این فرد هستید؟',
-                            //   showDenyButton: true,
-                            //   cancelButtonText: `بازگشت`,
-                            //   confirmButtonText: `انصراف از حذف`,
-                            //   denyButtonText: 'حذف شود',
-                            //     }).then((result) => {
-                            //     if (result.isConfirmed) {
-                            //         Swal.fire('فرد انتخابی حذف نشد', '', 'info')
-                            //     } else if (result.isDenied) {
-                            //             $.ajax({
-                            //             url: "/enteringblockremove/"+id_b,
-                            //             type: 'GET',
-                            //             success: function (response) {
-                            //                     $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                            //                     toastr.options = {
-                            //                         "closeButton": true,
-                            //                         "debug": false,
-                            //                         "positionClass": "toast-top-right",
-                            //                         "onclick": null,
-                            //                         "showDuration": "300",
-                            //                         "hideDuration": "1000",
-                            //                         "timeOut": "3000",
-                            //                         "extendedTimeOut": "1000",
-                            //                         "showEasing": "swing",
-                            //                         "hideEasing": "linear",
-                            //                         "showMethod": "fadeIn",
-                            //                         "hideMethod": "fadeOut"
-                            //                     };
-                            //                     // $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                            //                     Swal.fire('حذف شد', '', 'success');
-
-                            //             }
-                            //       });
-                            //     }
-                            //   })
-
-  
-                        })   
+                            $('#blockEdit').modal('show');
+ 
+                        })    
                         }       
                         
 
