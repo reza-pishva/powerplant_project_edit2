@@ -1817,15 +1817,16 @@
                         if(response.result==1){
                             Swal.fire('کد ملی تکراری تشخیص داده شد', '', 'success')
                         }else{
-                        $("#f_name_b").val('');
-                        $("#l_name_b").val('');
-                        $("#company_name_b").val('');
-                        $("#national_code_b").val('');
-                        $("#reason_b").val('');
-                        Swal.fire('مشخصات این فرد به بانک اطلاعاتی افزوده شد.جهت بلاک کردن این فرد به لیست پایین مراجعه شود', '', 'success')
-                        // $('#ajax-alert3').addClass('alert-success').show(function(){
-                        //    $(this).html("مشخصات این فرد به لیست تعیین وضعیت اضافه گردید .");
-                        // });
+                            $("#f_name_b").val('');
+                            $("#l_name_b").val('');
+                            $("#company_name_b").val('');
+                            $("#national_code_b").val('');
+                            $("#reason_b").val('');
+                            Swal.fire('مشخصات این فرد به بانک اطلاعاتی افزوده شد.جهت بلاک کردن این فرد به لیست پایین مراجعه شود', '', 'success')
+                            $.ajax({
+                    url: '/enteringblocks',
+                    method:'GET',
+                    success: function (response) {                            
                         var id_b = ''
                         var f_name = ''
                         var l_name = ''
@@ -1973,7 +1974,14 @@
 
                             $('#blockEdit').modal('show');
  
-                        })    
+                        })  
+                        $(".mylist20").show();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                    }
+                })   
                         }       
                         
 

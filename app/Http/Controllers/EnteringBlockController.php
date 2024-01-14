@@ -15,7 +15,7 @@ class EnteringBlockController extends Controller
         $this->middleware('auth');
     }
     public function blocks(){
-        $blocks = EnteringBlock::all();
+        $blocks = EnteringBlock::where('id_b','>', 0)->orderBy('id_b', 'DESC')->get();
         return response()->json(['success'=>'hi','result'=>$blocks]);
     }
     public function block($id){
