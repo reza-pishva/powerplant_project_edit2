@@ -20,7 +20,17 @@ class EnteringBlockController extends Controller
     }
     public function block($id){
         $block = EnteringBlock::find($id);
-        return $block;
+        $peaple = EnteringBlock::where('national_code',$id)->get()->count();
+        if( $peaple == 1){
+            $isBlocked = DB::table('enteringblocks')->where('national_code',$id)->orderBy('id_b', 'DESC')->first()->isBlocked;
+            if($isBlocked == 1){
+                return response()->json(['success'=>'hi','result'=>1]);
+            }else{
+                return response()->json(['success'=>'hi','result'=>0]);
+            }
+            return response()->json(['success'=>'hi','result'=>0]);
+        }
+        return response()->json(['success'=>'hi','result'=>0]);
     }
     public function remove1($id){
         EnteringBlock::where('id_b', $id)->delete();
