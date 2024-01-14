@@ -25,16 +25,16 @@ class enteringpeoplesController extends Controller
     public  function store(Request $request){
         $blocked=0;
         //$peaple=1;
-        $peaple = EnteringBlock::where('code_melli',$request->input('code_melli'))->get()->count();
-        // if( $peaple == 1){
-        //     $isBlocked = DB::table('enteringblocks')->where('national_code',$request->input('code_melli'))->orderBy('id_b', 'DESC')->first()->isBlocked;
-        //     if($isBlocked == 1){
-        //         $blocked=1;
-        //     }else{
-        //         $blocked=0;
-        //     }            
-        // }
-        return response()->json(['success'=>'hi','result'=>$peaple]);
+        $peaple = EnteringBlock::where('national_code',$request->input('code_melli'))->get()->count();
+        if( $peaple == 1){
+            $isBlocked = DB::table('enteringblocks')->where('national_code',$request->input('code_melli'))->orderBy('id_b', 'DESC')->first()->isBlocked;
+            if($isBlocked == 1){
+                $blocked=1;
+            }else{
+                $blocked=0;
+            }            
+        }
+        return response()->json(['success'=>'hi','result'=>$blocked]);
         // if($blocked==0){
         //     date_default_timezone_set('Asia/Tehran');
         //     $g_y = Carbon::now()->year;
