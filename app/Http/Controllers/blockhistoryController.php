@@ -18,20 +18,6 @@ class blockhistoryController extends Controller
     }
 
     public function store(Request $request){  
-        // $user = auth()->user()->id;
-        // $f_name=auth()->user()->f_name;
-        // $l_name=auth()->user()->l_name;
-        // $full_name=$f_name.' '.$l_name;
-        // $g_y = Carbon::now()->year;
-        // $g_m = Carbon::now()->month;
-        // $g_d = Carbon::now()->day;
-        // $Calendar=new CalendarHelper();
-        // $date_shamsi_array=$Calendar->gregorian_to_jalali($g_y, $g_m, $g_d);
-        // $date_shamsi=$date_shamsi_array[0].'/'.$date_shamsi_array[1].'/'.$date_shamsi_array[2];
-        // $mytime=Carbon::now();
-        // $values = array('national_code'=> 0,'date_shamsi'=>$date_shamsi,'time_set' => $mytime,'description' =>$reason,'userblock'=>$full_name,'block'=>"این فرد بلاک شد");
-        // DB::table('workflowblocks')->insert($values); 
-
 
         Enteringblockhistory::create(['requester' => $request->f_name,
             'l_name' => $request->l_name,
