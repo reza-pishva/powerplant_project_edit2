@@ -1857,13 +1857,13 @@
                             b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
                             t4 = $('<td style="width: 6%;text-align:center"></td>')
                             t4.append(b4)
-                            if(response.result[i]['isBlocked']==0){
-                                    row = $('<tr class="report_row" style="background-color: lightblue"></tr>')
-                                }
-                            if(response.result[i]['isBlocked']==1){
-                                    row = $('<tr class="report_row" style="background-color: Tomato"></tr>')
-                            }
-                            // row = $('<tr class="report_row"></tr>')
+                            // if(response.result[i]['isBlocked']==0){
+                            //         row = $('<tr class="report_row" style="background-color: lightblue"></tr>')
+                            //     }
+                            // if(response.result[i]['isBlocked']==1){
+                            //         row = $('<tr class="report_row" style="background-color: Tomato"></tr>')
+                            // }
+                            row = $('<tr class="report_row"></tr>')
                             row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
                             $("#block_table").append(row)
 
@@ -2937,13 +2937,6 @@
              <div class="row" style="width: 100%">
                  <div class="col-3"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">فرم ممنوعیت تردد</p></div>
                  <div class="col-9">
-                     {{-- <div class="row" style="width: 100%">
-                         <div class="col-10">.</div>
-                         <div class="col-2">
-                             <button type="button" class="close" data-dismiss="modal" style="text-align: center;display: inline;color: white">&times;</button>
-                         </div>
-                     </div> --}}
-
                  </div>
              </div>
 
