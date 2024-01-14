@@ -1075,7 +1075,6 @@
                                 method:'GET',
                                 success: function (response) {  
                                     $('#myModal4').modal("show");    
-                                    alert(response.result.length)                      
                                     var reason = ''
                                     var date_shamsi = ''
                                     var time = ''
@@ -1088,16 +1087,16 @@
                                     var b4 = ''
                                     var row = ''
                                     $("#block_history").empty();
-                                    var row_th ='<tr style="color: black"><td class="person" style="width: 25%">تاریخ</td><td class="person" style="width: 25%">ساعت</td><td class="person" style="width: 25%">سابقه</td><td class="person" style="width: 25%">درخواست کننده</td></tr>';
+                                    var row_th ='<tr style="color: black"><td class="person" style="width: 15%">تاریخ</td><td class="person" style="width: 15%">ساعت</td><td class="person" style="width: 45%">سابقه</td><td class="person" style="width: 15%">درخواست کننده</td></tr>';
                                     $("#block_history").append(row_th)
                                     for(var i = 0; i < response.result.length; i++) {
-                                        date_shamsi = $('<td style="width: 25%;text-align:center">' + response.result[i]['date_shamsi'] + '</td>')
-                                        time = $('<td style="width: 25%;text-align:center">' + response.result[i]['time'] + '</td>')
-                                        requester = $('<td style="width: 25%;text-align:center">' + response.result[i]['requester'] + '</td>')
-                                        reason = $('<td style="width: 25%;text-align:center">' + response.result[i]['reason'] + '</td>')
+                                        date_shamsi = $('<td style="width: 15%;text-align:center" class="person">' + response.result[i]['date_shamsi'] + '</td>')
+                                        time = $('<td style="width: 15%;text-align:center" class="person">' + response.result[i]['time'] + '</td>')
+                                        requester = $('<td style="width: 45%;text-align:center" class="person">' + response.result[i]['requester'] + '</td>')
+                                        reason = $('<td style="width: 25%;text-align:center" class="person">' + response.result[i]['reason'] + '</td>')
+                                        row = $('<tr class="person"></tr>')
                                         row.append(date_shamsi,time,reason,requester)
-                                        // $("#block_history").append(row)
-
+                                        $("#block_history").append(row)
                                     }
                                     $('#myModal4').modal("show");
                                 }
@@ -2467,7 +2466,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade mt-3" id="myModal4" style="direction: rtl;">
+    <div class="modal fade mt-4" id="myModal4" style="direction: rtl;">
         <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 100px;margin-left: 410px">
             <div class="modal-content">
 
@@ -2490,7 +2489,7 @@
                 </div>
 
                 <!-- List -->
-                <div class="container"  style="margin: auto;background-color:white;width: 500px ;height: 400px;overflow-y: scroll">
+                <div class="container"  style="margin: auto;background-color:white;width: 500px ;height: 300px;overflow-y: scroll">
                     <table id="block_history" text-align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top:5px"></table>
                 </div>
 
