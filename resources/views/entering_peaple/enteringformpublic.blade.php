@@ -691,6 +691,7 @@
                 })
             })
             $("#addpersons").on('submit',function(event) {
+                alert("بلاک")
                 event.preventDefault();
                 $.ajaxSetup({
                     headers: {
@@ -706,6 +707,7 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
+                        alert("بلاک")
                         if(response.reapeted==1){
                             alert("اشکال در تاریخ انتخابی: بازه زمانی انتخابی مجاز نمی باشد")
                         }
@@ -2774,8 +2776,6 @@
 
 
                 </div>
-            {{--                rgb(39,55,97)--}}
-            <!-- List -->
                 <div class="container"  style="margin: auto;background-color:#101820FF;width: 1000px ;height: 435px;overflow-y: scroll">
                     <ul class="tabs">
 
