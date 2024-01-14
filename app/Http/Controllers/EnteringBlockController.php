@@ -61,7 +61,7 @@ class EnteringBlockController extends Controller
         
     }
     public function set_block1($id,$reason){
-
+        date_default_timezone_set('Asia/Tehran');
         $user = auth()->user()->id;
         $f_name=auth()->user()->f_name;
         $l_name=auth()->user()->l_name;
@@ -81,7 +81,7 @@ class EnteringBlockController extends Controller
         return response()->json(['success'=>'hi','result'=>$reason]);
     }
     public function set_free($id){
-
+        date_default_timezone_set('Asia/Tehran');
         $user = auth()->user()->id;
         $f_name=auth()->user()->f_name;
         $l_name=auth()->user()->l_name;

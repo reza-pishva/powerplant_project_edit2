@@ -93,7 +93,7 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                        //alert('hi')
+                        alert('block')
                         // alert(response.date_no1)
                         // alert(response.date_no2)
                         // alert(response.date_no1_p)

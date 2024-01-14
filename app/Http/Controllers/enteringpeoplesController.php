@@ -24,16 +24,6 @@ class enteringpeoplesController extends Controller
 
     public  function store(Request $request){
 
-        // $n=Entering_personel_unique::where('code_melli',$request->input('code_melli'))->get()->count();
-        // if($n == 0){
-        //     DB::table('entering_personel_uniques')->insert([
-        //         'f_name' => $request->input('f_name'),
-        //         'l_name' => $request->input('l_name'),
-        //         'code_melli' => $request->input('code_melli')
-        //     ]);
-        // }
-
-
         date_default_timezone_set('Asia/Tehran');
         $g_y = Carbon::now()->year;
         $g_m = Carbon::now()->month;
