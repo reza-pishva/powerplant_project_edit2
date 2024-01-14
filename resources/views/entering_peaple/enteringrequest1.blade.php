@@ -93,7 +93,10 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                        alert('block')
+                        alert(response.result);
+                        if(response.result==100){
+                            Swal.fire('مشخصات این فرد به بانک اطلاعاتی افزوده شد.جهت بلاک کردن این فرد به لیست پایین مراجعه شود', '', 'success')
+                        }
                         // alert(response.date_no1)
                         // alert(response.date_no2)
                         // alert(response.date_no1_p)

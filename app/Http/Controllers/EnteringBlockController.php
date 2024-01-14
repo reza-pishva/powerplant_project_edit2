@@ -19,7 +19,7 @@ class EnteringBlockController extends Controller
         return response()->json(['success'=>'hi','result'=>$blocks]);
     }
     public function block($id){
-        $block = EnteringBlock::find($id);
+        // $block = EnteringBlock::find($id);
         $peaple = EnteringBlock::where('national_code',$id)->get()->count();
         if( $peaple == 1){
             $isBlocked = DB::table('enteringblocks')->where('national_code',$id)->orderBy('id_b', 'DESC')->first()->isBlocked;
