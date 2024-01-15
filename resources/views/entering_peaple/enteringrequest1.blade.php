@@ -94,125 +94,123 @@
                     processData: false,
                     success: function (response) {
                         alert(response.result);
-                        if(response.result==100){
-                            Swal.fire('مشخصات این فرد به بانک اطلاعاتی افزوده شد.جهت بلاک کردن این فرد به لیست پایین مراجعه شود', '', 'success')
+                        if(response.result == 100){
+                            alert("ورود این فرد به نیروگاه توسط اداره محترم حفاظت فیزیکی نیروگاه تا اطلاع ثانوی ممنوع گردیده و شما امکان ثبت مشخصات این فرد را ندارید")
                         }
-                        // alert(response.date_no1)
-                        // alert(response.date_no2)
-                        // alert(response.date_no1_p)
-                        // alert(response.date_no2_p)
-                        if(response.reapeted==1){
+                        if(response.result == 0){
+                            alert("hi");
+                            if(response.reapeted==1){
                             alert('اشکال در انتخاب تاریخ: تاریخ انتخابی را مجددا بررسی نمایید. از برنامه خارج شوید و مجددا نسبت به تکمیل فرم اقدام نمایید')
                             var alarm="بر اساس درخواست شماره "+response.id_ef+" از طرف شرکت  "+response.company+" این فرد در بخشی از بازه زمانی انتخاب شده  مجاز به ورود بوده و قبل از ثبت درخواست جدید توسط شما مجوز قبلی باید توسط مدیر حراست لغو گردد.برای این منظور شماره درخواست ذکر شده به مسئول حراست ارائه گردد"
                             alert(alarm)
-                        }else{
-                            $("#date_shamsi_exit").val($("#date_shamsi_exit100").val());
-                            $("#date_shamsi_enter").val($("#date_shamsi_enter100").val());
-                            $("#time_exit").val($("#time_exit100").val());
-                            $("#time_enter").val($("#time_enter100").val());
-                            s2=1;
-                            $("#stage002").removeClass( "bg-secondary" )
-                            $("#stage002").css('background-color','green')
-                            $("#next_s3").show()
-                            $('#s8').hide()
-                            $("#s2_1").fadeIn()
-                            if(response.people==1){
-                                $('#s2_3_1').modal('toggle')
-                            }
-                            if(response.people>1){
-                                toastr.success("مشخصات این فرد به فرم اضافه گردید", "", {
-                                    "timeOut": "2000",
-                                    "extendedTImeout": "0"
-                                });
-                            }
-                            var id_ep = $('<td>' + response.id_ep + '</td>')
-                            var id_et = $('<td hidden>' +$('#id_et').val() + '</td>')
-                            var nationality = $('<td hidden>' + $('#nationality').val() + '</td>')
-                            var age = $('<td hidden>' + $('#age').val() + '</td>')
-                            var full_name = $('<td>' + $('#f_name').val() +' '+ $('#l_name').val()+'</td>')
-                            var f_name = $('<td hidden>' + $('#f_name').val() +'</td>')
-                            var l_name = $('<td hidden>' + $('#l_name').val() +'</td>')
-                            var time_enter = $('<td>' + $('#time_enter').val() + '</td>')
-                            var date_shamsi_enter = $('<td>' + $('#date_shamsi_enter').val() + '</td>')
-                            var time_exit = $('<td>' + $('#time_exit').val() + '</td>')
-                            var date_shamsi_exit = $('<td>' + $('#date_shamsi_exit').val() + '</td>')
-                            var code_melli = $('<td hidden>' + $('#code_melli').val() + '</td>')
-                            var mobile = $('<td hidden>' + $('#mobile').val() + '</td>')
-                            var edit1 = $('<button type="button" class="btn-sm btn-primary edit1" style="font-family: Tahoma;font-size: small;text-align: center;width: 100%" data-toggle="modal" data-target="#s2_2">ویرایش</button>').attr('id',response.id_ep + 1000)
-                            var del1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: small;text-align: center;width: 100%">حذف</button>').attr('id',response.id_ep+2000)
-                            var t1=$('<td></td>')
-                            var t2=$('<td></td>')
-                            t1.append(edit1)
-                            t2.append(del1)
-                            var row=$('<tr></tr>')
-                            row.append(id_ep, full_name, date_shamsi_enter, time_enter, date_shamsi_exit, time_exit,t1,t2,code_melli,mobile,f_name,l_name,id_et,nationality,age)
-                            $("#persons_table").append(row)
-                            $('#f_name').val('');
-                            $('#l_name').val('');
-                            $('#time_enter').val('');
-                            $('#date_shamsi_enter').val('');
-                            $('#date_shamsi_exit').val('');
-                            $('#time_exit').val('');
-                            $('#code_melli').val('');
-                            $('#mobile').val('');
-                            $('#id_et').val('0');
-                            $('#nationality').val('ایرانی');
-                            $('#age').val('');
+                                }else{
+                                    $("#date_shamsi_exit").val($("#date_shamsi_exit100").val());
+                                    $("#date_shamsi_enter").val($("#date_shamsi_enter100").val());
+                                    $("#time_exit").val($("#time_exit100").val());
+                                    $("#time_enter").val($("#time_enter100").val());
+                                    s2=1;
+                                    $("#stage002").removeClass( "bg-secondary" )
+                                    $("#stage002").css('background-color','green')
+                                    $("#next_s3").show()
+                                    $('#s8').hide()
+                                    $("#s2_1").fadeIn()
+                                    if(response.people==1){
+                                        $('#s2_3_1').modal('toggle')
+                                    }
+                                    if(response.people>1){
+                                        toastr.success("مشخصات این فرد به فرم اضافه گردید", "", {
+                                            "timeOut": "2000",
+                                            "extendedTImeout": "0"
+                                        });
+                                    }
+                                    var id_ep = $('<td>' + response.id_ep + '</td>')
+                                    var id_et = $('<td hidden>' +$('#id_et').val() + '</td>')
+                                    var nationality = $('<td hidden>' + $('#nationality').val() + '</td>')
+                                    var age = $('<td hidden>' + $('#age').val() + '</td>')
+                                    var full_name = $('<td>' + $('#f_name').val() +' '+ $('#l_name').val()+'</td>')
+                                    var f_name = $('<td hidden>' + $('#f_name').val() +'</td>')
+                                    var l_name = $('<td hidden>' + $('#l_name').val() +'</td>')
+                                    var time_enter = $('<td>' + $('#time_enter').val() + '</td>')
+                                    var date_shamsi_enter = $('<td>' + $('#date_shamsi_enter').val() + '</td>')
+                                    var time_exit = $('<td>' + $('#time_exit').val() + '</td>')
+                                    var date_shamsi_exit = $('<td>' + $('#date_shamsi_exit').val() + '</td>')
+                                    var code_melli = $('<td hidden>' + $('#code_melli').val() + '</td>')
+                                    var mobile = $('<td hidden>' + $('#mobile').val() + '</td>')
+                                    var edit1 = $('<button type="button" class="btn-sm btn-primary edit1" style="font-family: Tahoma;font-size: small;text-align: center;width: 100%" data-toggle="modal" data-target="#s2_2">ویرایش</button>').attr('id',response.id_ep + 1000)
+                                    var del1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: small;text-align: center;width: 100%">حذف</button>').attr('id',response.id_ep+2000)
+                                    var t1=$('<td></td>')
+                                    var t2=$('<td></td>')
+                                    t1.append(edit1)
+                                    t2.append(del1)
+                                    var row=$('<tr></tr>')
+                                    row.append(id_ep, full_name, date_shamsi_enter, time_enter, date_shamsi_exit, time_exit,t1,t2,code_melli,mobile,f_name,l_name,id_et,nationality,age)
+                                    $("#persons_table").append(row)
+                                    $('#f_name').val('');
+                                    $('#l_name').val('');
+                                    $('#time_enter').val('');
+                                    $('#date_shamsi_enter').val('');
+                                    $('#date_shamsi_exit').val('');
+                                    $('#time_exit').val('');
+                                    $('#code_melli').val('');
+                                    $('#mobile').val('');
+                                    $('#id_et').val('0');
+                                    $('#nationality').val('ایرانی');
+                                    $('#age').val('');
 
-                            $('#' + (Number(response.id_ep) + 1000)).click(function () {
-                                $('#id_ep_edit').val($(this).closest('tr').find('td:eq(0)').text());
-                                $('#f_name_edit').val($(this).closest('tr').find('td:eq(10)').text());
-                                $('#l_name_edit').val($(this).closest('tr').find('td:eq(11)').text());
-                                $('#time_enter_edit').val($(this).closest('tr').find('td:eq(3)').text());
-                                $('#date_shamsi_enter_edit').val($(this).closest('tr').find('td:eq(2)').text());
-                                $('#date_shamsi_exit_edit').val($(this).closest('tr').find('td:eq(4)').text());
-                                $('#time_exit_edit').val($(this).closest('tr').find('td:eq(5)').text());
-                                $('#code_melli_edit').val($(this).closest('tr').find('td:eq(8)').text());
-                                $('#mobile_edit').val($(this).closest('tr').find('td:eq(9)').text());
-                                $('#id_et_edit').val($(this).closest('tr').find('td:eq(12)').text());
-                                $('#nationality_edit').val($(this).closest('tr').find('td:eq(13)').text());
-                                $('#age_edit').val($(this).closest('tr').find('td:eq(14)').text());
-                            })
-                            $('#' + (Number(response.id_ep)+2000)).click(function () {
-                                var id_ep = $('#' + (Number(response.id_ep)+2000)).closest('tr').find('td:eq(0)').text();
-                                var token = $("meta[name='csrf-token']").attr("content");
-                                $.ajax({
-                                    url: "/enter-delete/" + id_ep,
-                                    type: 'DELETE',
-                                    data: {
-                                        "id": id_ep,
-                                        "_token": token,
-                                    },
-                                    success: function (response) {
-                                        if(response.people==0){
-                                            $('#next_s3').hide();
-                                            $("#stage002").css("background-color","red");
-                                            $('#s2_3').modal('toggle')
-                                        }
-                                        if(response.people>0){
-                                            toastr.options = {
-                                                "closeButton": true,
-                                                "debug": false,
-                                                "positionClass": "toast-top-right",
-                                                "onclick": null,
-                                                "showDuration": "300",
-                                                "hideDuration": "1000",
-                                                "timeOut": "3000",
-                                                "extendedTimeOut": "1000",
-                                                "showEasing": "swing",
-                                                "hideEasing": "linear",
-                                                "showMethod": "fadeIn",
-                                                "hideMethod": "fadeOut"
-                                            };
-                                            toastr.error('این فرد از این فرم حذف گردید');
-                                        }
+                                    $('#' + (Number(response.id_ep) + 1000)).click(function () {
+                                        $('#id_ep_edit').val($(this).closest('tr').find('td:eq(0)').text());
+                                        $('#f_name_edit').val($(this).closest('tr').find('td:eq(10)').text());
+                                        $('#l_name_edit').val($(this).closest('tr').find('td:eq(11)').text());
+                                        $('#time_enter_edit').val($(this).closest('tr').find('td:eq(3)').text());
+                                        $('#date_shamsi_enter_edit').val($(this).closest('tr').find('td:eq(2)').text());
+                                        $('#date_shamsi_exit_edit').val($(this).closest('tr').find('td:eq(4)').text());
+                                        $('#time_exit_edit').val($(this).closest('tr').find('td:eq(5)').text());
+                                        $('#code_melli_edit').val($(this).closest('tr').find('td:eq(8)').text());
+                                        $('#mobile_edit').val($(this).closest('tr').find('td:eq(9)').text());
+                                        $('#id_et_edit').val($(this).closest('tr').find('td:eq(12)').text());
+                                        $('#nationality_edit').val($(this).closest('tr').find('td:eq(13)').text());
+                                        $('#age_edit').val($(this).closest('tr').find('td:eq(14)').text());
+                                    })
+                                    $('#' + (Number(response.id_ep)+2000)).click(function () {
+                                        var id_ep = $('#' + (Number(response.id_ep)+2000)).closest('tr').find('td:eq(0)').text();
+                                        var token = $("meta[name='csrf-token']").attr("content");
+                                        $.ajax({
+                                            url: "/enter-delete/" + id_ep,
+                                            type: 'DELETE',
+                                            data: {
+                                                "id": id_ep,
+                                                "_token": token,
+                                            },
+                                            success: function (response) {
+                                                if(response.people==0){
+                                                    $('#next_s3').hide();
+                                                    $("#stage002").css("background-color","red");
+                                                    $('#s2_3').modal('toggle')
+                                                }
+                                                if(response.people>0){
+                                                    toastr.options = {
+                                                        "closeButton": true,
+                                                        "debug": false,
+                                                        "positionClass": "toast-top-right",
+                                                        "onclick": null,
+                                                        "showDuration": "300",
+                                                        "hideDuration": "1000",
+                                                        "timeOut": "3000",
+                                                        "extendedTimeOut": "1000",
+                                                        "showEasing": "swing",
+                                                        "hideEasing": "linear",
+                                                        "showMethod": "fadeIn",
+                                                        "hideMethod": "fadeOut"
+                                                    };
+                                                    toastr.error('این فرد از این فرم حذف گردید');
+                                                }
 
                                     }
                                 });
                                 $('#' + (Number(response.id_ep)+2000)).closest('tr').remove();
                             })
+                         }
                         }
-
                     }
                 });
 
