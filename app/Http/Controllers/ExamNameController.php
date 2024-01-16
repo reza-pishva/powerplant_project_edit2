@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\Exam;
+namespace App\Models\Http\Controllers;
+use App\Models\Models\Exam;
 use Illuminate\Http\Request;
-use App\Http\Requests\ExamRequest;
+use App\Models\Http\Requests\ExamRequest;
 use Illuminate\Support\Facades\DB;
 class ExamNameController extends Controller
 {

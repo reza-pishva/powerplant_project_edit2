@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\CalendarHelper;
-use App\Enteringcar;
-use App\Enteringform;
-use App\Enteringpeaple;
+use App\Models\CalendarHelper;
+use App\Models\Enteringcar;
+use App\Models\Enteringform;
+use App\Models\Enteringpeaple;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

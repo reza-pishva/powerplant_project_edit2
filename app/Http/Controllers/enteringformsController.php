@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models\Http\Controllers;
 
-use App\CalendarHelper;
-use App\Enteringcar;
-use App\Enteringeq;
-use App\Enteringform;
-use App\Enteringin;
-use App\Enteringpeaple;
-use App\Enteringtitle;
-use App\Enteringupload;
-use App\Groupuser;
-use App\Querytext;
-use App\Requestpart;
+use App\Models\CalendarHelper;
+use App\Models\Enteringcar;
+use App\Models\Enteringeq;
+use App\Models\Enteringform;
+use App\Models\Enteringin;
+use App\Models\Enteringpeaple;
+use App\Models\Enteringtitle;
+use App\Models\Enteringupload;
+use App\Models\Groupuser;
+use App\Models\Querytext;
+use App\Models\Requestpart;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

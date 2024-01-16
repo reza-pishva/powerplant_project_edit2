@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\EnteringBlock;
-use App\Models\CalendarHelper;
-use App\Models\Enteringform;
-use App\Models\Enteringhefazat;
-use App\Models\Enteringhefazatcase;
-use App\Models\Entering_personel_unique;
-use App\Models\Enteringpeaple;
-use App\Models\Enteringtitle;
+namespace App\Models\Http\Controllers;
+use App\Models\Models\EnteringBlock;
+use App\Models\Models\CalendarHelper;
+use App\Models\Models\Enteringform;
+use App\Models\Models\Enteringhefazat;
+use App\Models\Models\Enteringhefazatcase;
+use App\Models\Models\Entering_personel_unique;
+use App\Models\Models\Enteringpeaple;
+use App\Models\Models\Enteringtitle;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

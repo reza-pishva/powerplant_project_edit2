@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models\Http\Controllers;
 
-use App\Entering_personel_unique;
-use App\Enteringpeaple;
+use App\Models\Entering_personel_unique;
+use App\Models\Enteringpeaple;
 use Illuminate\Support\Facades\DB;
 
 class enteringPersonelUniqueController extends Controller

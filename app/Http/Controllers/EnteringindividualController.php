@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Entering_personel_unique;
-use App\CalendarHelper;
-use App\Enteringindividual;
-use App\Enteringform;
-use App\Enteringkarkard;
-use App\Enteringkarkard2;
-use App\Enteringpeaple;
-use App\Querytext;
-use App\User;
+namespace App\Models\Http\Controllers;
+use App\Models\Entering_personel_unique;
+use App\Models\CalendarHelper;
+use App\Models\Enteringindividual;
+use App\Models\Enteringform;
+use App\Models\Enteringkarkard;
+use App\Models\Enteringkarkard2;
+use App\Models\Enteringpeaple;
+use App\Models\Querytext;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;

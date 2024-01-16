@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models\Http\Controllers;
 
-use App\Enteringform;
-use App\Enteringin;
+use App\Models\Enteringform;
+use App\Models\Enteringin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
