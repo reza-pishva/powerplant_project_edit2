@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="{{URL::to('/')}}/jquery.min.js"></script>
-    <script src="{{URL::to('/')}}/popper.min.js"></script>
-    <script src="{{URL::to('/')}}/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{{URL::to('/')}}/bootstrap.min.css">
-    <script src="{{URL::to('/')}}/persian-date.js"></script>
-    <script src="{{URL::to('/')}}/persian-datepicker.js"></script>
-    <link rel="stylesheet" href="{{URL::to('/')}}/persian-datepicker.css">
-    <script src="{{URL::to('/')}}/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="{{URL::to('/')}}/sweetalert.min.css">
-    <script src="{{URL::to('/')}}/toastr.min.js"></script>
-    <link rel="stylesheet" href="{{URL::to('/')}}/toastr.min.css">
-    <script src="{{URL::to('/')}}/jquery.timepicker.min.js"></script>
-    <link rel="stylesheet" href="{{URL::to('/')}}/jquery.timepicker.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="persian-date.js"></script>
+    <script src="persian-datepicker.js"></script>
+    <link rel="stylesheet" href="persian-datepicker.css">
+    <script src="sweetalert.min.js"></script>
+    <link rel="stylesheet" href="sweetalert.min.css">
+    <script src="toastr.min.js"></script>
+    <link rel="stylesheet" href="toastr.min.css">
+    <script src="jquery.timepicker.min.js"></script>
+    <link rel="stylesheet" href="jquery.timepicker.min.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -75,8 +75,8 @@
             border-radius: 15px;
             opacity: 0.7;
             filter: alpha(opacity=100);
-            width:50px;
-            height:50px;
+            width:55px;
+            height:55px;
             margin-top: 10px;
         }
         img.reza3
@@ -91,26 +91,6 @@
             height:90px;
             margin-top: 10px;
             cursor: pointer;
-        }
-
-        img.reza4
-        {
-            width:50px;
-            height:50px;
-            margin-top: 10px;
-        }
-        img.reza4:hover
-        {
-            width:50px;
-            height:50px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-        img.reza5
-        {
-            width:10px;
-            height:10px;
-
         }
         li a
         {
@@ -280,29 +260,29 @@
         }
     </style>
 </head>
-<body style="margin:0;text-align: center;background-image: url('{{URL::to('/')}}/kz2.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;backdrop-filter: brightness(40%);">
+<body style="margin:0;text-align: center;background-image: url('./kz2.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;backdrop-filter: brightness(40%);">
 <div class="container-fluid">
     <div class="row justify-content-center" style="height:100px;overflow: hidden">
         <div class="col-12" style="height: 100%">
             <div class="bg-dark" style="width: 100%;height:100%;margin-top: 3px;border-radius: 5px">
                 <div class="row justify-content-center" style="height: 100%">
-                    <div class="col-2"><img src="{{URL::to('/')}}/mapna.jpg" class="rounded-circle mt-2 ml-3" alt="Cinque Terre"></div>
+                    <div class="col-2"><img src="./mapna.jpg" class="rounded-circle mt-2 ml-3" alt="Cinque Terre"></div>
                     <div class="col-1">.</div>
                     <div class="col-1">.</div>
                     <div class="col-1">.</div>
                     <div class="col-5"><p style="color: white;text-align: right;margin-top: 4px;font-family: Tahoma;font-size: large;font-weight: bold">نیروگاه سیکل ترکیبی کازرون</p><p style="color: white;text-align: right;font-family: Tahoma;font-size: small;font-weight: bold">گزارش گیری از ورود و خروج افراد به نیروگاه</p></div>
-                    <div class="col-2 pt-1"><img src="{{URL::to('/')}}/reports2.png" class="rounded-circle" style="width:30%;height:50%"><p style="color: white;text-align: center;font-family: Tahoma;font-size: small">{{$full_name}}</p></div>
+                    <div class="col-2 pt-1"><img src="./reports2.png" class="rounded-circle" style="width:30%;height:50%"><p style="color: white;text-align: center;font-family: Tahoma;font-size: small">{{$full_name}}</p></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row pt-2" style="height: 15%;">
+    <div class="row pt-2" style="height: 5%;">
         <div class="col-12">
            <div class="row" style="margin-top:0px;height:90%">
                <div class="col-2">
                    <div>
-                       <a href="/herasat2">
-                           <img src="{{URL::to('/')}}/exit003.png" id="report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="بازگشت">
+                       <a href="./herasat2">
+                           <img src="./exit003.png" id="report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="بازگشت">
                        </a>
                    </div>
 
@@ -310,14 +290,9 @@
                <div class="col-8" style="background: rgba(0, 45, 90, 0.7);border-radius: 8px;height:100%;font-size: smaller">
                    <div class="row" style="border-radius: 5px;height:85px;margin-top:0px">
                        <div class="col">
-                           <a href="/reporti">
-                               <img src="{{URL::to('/')}}/individual.png" class="reza2" data-toggle="tooltip" data-placement="left" title="از اینجا می توانید گزارشات تردد را تهیه کنید">
-                           </a>
-                       </div>
-                       <div class="col">
                            <div>
-                               <a href="/reportp">
-                                   <img src="{{URL::to('/')}}/report200.png"  class="reza2" data-toggle="tooltip" data-placement="bottom" title="گزارش گیری">
+                               <a href="http://172.28.232.27:8000/reportp">
+                                   <img src="./report200.png"  class="reza2" data-toggle="tooltip" data-placement="bottom" title="گزارش گیری">
                                </a>
                            </div>
 
@@ -326,22 +301,14 @@
                        <div class="col">
                            <div>
                                <a href="#">
-                                   <img src="{{URL::to('/')}}/notcar001.png" id="eighth_report"  class="reza2" data-toggle="tooltip" data-placement="bottom" title="خودروهای غیر مجاز برای ورود به نیروگاه">
+                                   <img src="./notcar001.png" id="eighth_report"  class="reza2" data-toggle="tooltip" data-placement="bottom" title="خودروهای غیر مجاز برای ورود به نیروگاه">
                                </a>
                            </div>
                        </div>
                        <div class="col">
                            <div>
                                <a href="#">
-                                   <img src="{{URL::to('/')}}/car001.png" id="seventh_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="خودروهای مجاز به ورود به نیروگاه">
-                               </a>
-                           </div>
-
-                       </div>
-                       <div class="col">
-                           <div>
-                               <a href="#">
-                                   <img src="{{URL::to('/')}}/cardexpired002.png" id="fifth_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت مهمان منقضی شده">
+                                   <img src="./car001.png" id="seventh_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="خودروهای مجاز به ورود به نیروگاه">
                                </a>
                            </div>
 
@@ -349,7 +316,7 @@
                        <div class="col">
                            <div>
                                <a href="#">
-                                   <img src="{{URL::to('/')}}/card001.png" id="fourth_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت مهمان معتبر">
+                                   <img src="./cardexpired002.png" id="fifth_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت مهمان منقضی شده">
                                </a>
                            </div>
 
@@ -357,7 +324,7 @@
                        <div class="col">
                            <div>
                                <a href="#">
-                                   <img src="{{URL::to('/')}}/blacklist.png" id="third2_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست افرادی که تاکنون برای مدتی وارد بلاک لیست شده اند">
+                                   <img src="./card001.png" id="fourth_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت مهمان معتبر">
                                </a>
                            </div>
 
@@ -365,7 +332,7 @@
                        <div class="col">
                            <div>
                                <a href="#">
-                                   <img src="{{URL::to('/')}}/unauthorised002.jpg" id="third_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست افرادی که موقتا در بلاک لیست قرار گرفته اند">
+                                   <img src="./blacklist.png" id="third2_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست افرادی که تاکنون برای مدتی وارد بلاک لیست شده اند">
                                </a>
                            </div>
 
@@ -373,7 +340,7 @@
                        <div class="col">
                            <div>
                                <a href="#">
-                                   <img src="{{URL::to('/')}}/person_search002.png" id="second_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست افرادی که در بازه زمانی مجاز برای ورود به نیروگاه قرار دارند">
+                                   <img src="./unauthorised002.jpg" id="third_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست افرادی که موقتا در بلاک لیست قرار گرفته اند">
                                </a>
                            </div>
 
@@ -381,14 +348,22 @@
                        <div class="col">
                            <div>
                                <a href="#">
-                                   <img src="{{URL::to('/')}}/notebook3.png" id="notebook"  class="reza2" data-toggle="tooltip" data-placement="bottom" title="دفتر ورود و خروج">
+                                   <img src="./person_search002.png" id="second_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست افرادی که در بازه زمانی مجاز برای ورود به نیروگاه قرار دارند">
+                               </a>
+                           </div>
+
+                       </div>
+                       <div class="col">
+                           <div>
+                               <a href="#">
+                                   <img src="./notebook3.png" id="notebook"  class="reza2" data-toggle="tooltip" data-placement="bottom" title="دفتر ورود و خروج">
                                </a>
                            </div>
                        </div>
                        <div class="col">
                            <div>
                                <a href="#">
-                                   <img src="{{URL::to('/')}}/person_search007.png" id="sixth_report2" class="reza2" data-toggle="tooltip" data-placement="bottom" title="مشاهده و ویرایش اطلاعات افراد ">
+                                   <img src="./person_search007.png" id="sixth_report2" class="reza2" data-toggle="tooltip" data-placement="bottom" title="مشاهده و ویرایش اطلاعات افراد ">
                                </a>
                            </div>
 

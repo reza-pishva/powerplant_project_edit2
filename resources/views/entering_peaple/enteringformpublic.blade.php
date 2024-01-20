@@ -2774,6 +2774,8 @@
 
 
                 </div>
+            {{--                rgb(39,55,97)--}}
+            <!-- List -->
                 <div class="container"  style="margin: auto;background-color:#101820FF;width: 1000px ;height: 435px;overflow-y: scroll">
                     <ul class="tabs">
 

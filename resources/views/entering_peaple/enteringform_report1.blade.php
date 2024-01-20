@@ -16,11 +16,6 @@
             return cache;
         }
         $(document).ready(function(){
-
-            
-            // $("#f_name_b").on("click",function(){
-            //   $('#ajax-alert3').hide();
-            // })
             $("#date_exit_shamsi1").persianDatepicker({
                 format: 'YYYY/MM/DD'
             });
@@ -35,14 +30,13 @@
             $("#code_melli").prop('readonly', true)
             $("#date_shamsi_enter_edit").prop('readonly', true)
             $("#date_shamsi_enter").prop('readonly', true)
-            
+            bootstrap.Toast.Default.delay = 3000
             $('#notebook').click(function(event) {
                 $('#daftar_modal').modal('toggle');
             })
             $('#first_report').click(function(event) {
                 $('.mylist2').hide();
                 $('.mylist3').hide();
-                $('.mylist20').hide();
                 $('#codemelli_modal').modal("show");
             })
             $('#sixth_report333').click(function(event) {
@@ -56,7 +50,6 @@
 
                 $('.mylist2').hide();
                 $('.mylist3').hide();
-                $('.mylist20').hide();
                 $('#codemelli_modal').modal('toggle');
                 $('#personinfo4').modal("show");
                 var code_melli = $('#code_melli_s2').val();
@@ -136,7 +129,6 @@
             $('#sixth_report35').click(function(event) {
                 $('.mylist2').hide();
                 $('.mylist3').hide();
-                $('.mylist20').hide();
                 $('#codemelli_modal2').modal('toggle');
                 $('#personinfo5').modal("show");
 
@@ -437,7 +429,6 @@
                     }})
                 $('.mylist2').hide();
                 $('.mylist3').hide();
-                $('.mylist20').hide();
                 $(".mylist3").fadeToggle(2000);
             })
             $('#eighth_report').click(function(event) {
@@ -643,7 +634,6 @@
                             })
                         }
                         $('.mylist2').hide();
-                        $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".mylist3").fadeToggle(2000);
                     }})
@@ -652,7 +642,6 @@
             $('#sixth_report2').click(function(event) {
                 $('.mylist2').hide();
                 $('.mylist3').hide();
-                $('.mylist20').hide();
                 $('#codemelli_modal2').modal("show");
             })
             $('#second_report').click(function(event) {
@@ -718,7 +707,7 @@
                                         },
                                         success: function () {
                                             $('.toast').toast('show');
-                                            $("#mytoast100").text("این فرد بطور موقت بلاک گردید")
+                                            $("#mytoast").text("این فرد بطور موقت بلاک گردید")
                                         }
                                     });
 
@@ -778,7 +767,6 @@
                         }
                         $(".mylist").hide();
                         $('.mylist2').hide();
-                        $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
@@ -859,258 +847,260 @@
 
             })
             $('#third_report').click(function(event) {
+
                 event.preventDefault();
                 $.ajax({
-                    url: '/enteringblocks',
+                    url: '/auth-peaple-block',
                     method:'GET',
-                    success: function (response) {                            
-                        var id_b = ''
+                    success: function (response) {
+                        $(".report_row").remove();
+                        $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست افرادی که بطور موقت مجوز ورود آنها لغو شده </p>')
+                        var id_ep = ''
                         var f_name = ''
+                        var id_et = ''
+                        var code_melli = ''
+                        var tell = ''
+                        var title = ''
                         var l_name = ''
-                        var national_code = ''
-                        var company_name = ''
-                        var reason = ''
-                        var select_btn = ''
-                        var t0 = ''
-                        var t1 = ''
-                        var t2 = ''
+                        var herasat = ''
+                        var form = ''
+                        var t4=''
                         var t3 = ''
-                        var t4 = ''
-                        var b4 = ''
+                        var t2 = ''
                         var row = ''
-                        $("#block_table").empty();
-                        var row_th ='<tr style="color: black"><td class="person" style="width: 3%">--</td><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 6%">#</td><td class="person" style="width: 6%">#</td></tr>';
-                        $("#block_table").append(row_th)
-                        for(var i = 0; i < response.result.length; i++) {
-                            id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
-                            f_name = $('<td style="width: 8%;text-align:center">' + response.result[i]['f_name'] + '</td>')
-                            l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
-                            national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
-                            company_name = $('<td style="width: 17%;text-align:center">' + response.result[i]['company_name'] + '</td>')
-                            reason = $('<td style="width: 25%;text-align:center">' + response.result[i]['reason'] + '</td>')
-                            t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
-                            t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
-                            t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
-                            t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary edit1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
-                            b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
-                            t4 = $('<td style="width: 6%;text-align:center"></td>')
-                            t4.append(b4)
-                            // if(response.result[i]['isBlocked']==0){
-                            //         row = $('<tr class="report_row" style="background-color: rgb(184,248,189)"></tr>')
-                            //     }
-                            // if(response.result[i]['isBlocked']==1){
-                            //         row = $('<tr class="report_row" style="background-color:rgb(248,186,184)"></tr>')
-                            // }
+                        var enterexit=''
+                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;"><td style="border-left:1px white solid;">کد فرد</td><td style="border-left:1px white solid;">نام</td><td style="border-left:1px white solid;">نام خانوادگی</td><td style="border-left:1px white solid;">کد ملی</td><td style="border-left:1px white solid;">شماره تماس</td><td style="border-left:1px white solid;">تحت عنوان</td><td style="border-left:1px white solid;">#</td></tr>'
+                        $("#report_table").append(row_th)
+                        for(var i = 0; i < response.results.length; i++) {
+                            id_ep = $('<td style="width: 5%">' + response.results[i]['id_ep'] + '</td>')
+                            f_name = $('<td style="width: 13%;text-align: right;padding-right: 5px">' + response.results[i]['f_name'] + '</td>')
+                            l_name = $('<td style="width: 17%;text-align: right;padding-right: 5px">' +response.results[i]['l_name'] + '</td>')
+                            code_melli = $('<td style="width: 15%;text-align: right;padding-right: 5px">' + response.results[i]['code_melli'] + '</td>')
+                            tell = $('<td style="width: 15%;text-align: right;padding-right: 5px">' +response.results[i]['mobile'] + '</td>')
+                            id_et=response.results[i]['id_et']
+                            for(var z = 0; z < response.titles.length; z++) {
+                                if(response.titles[z]['id_et']==response.results[i]['id_et']){
+                                    title = $('<td style="width: 10%">' + response.titles[z]['description'] + '</td>')
+                                    break;
+                                }
+
+                            }
+                            form = $('<button type="button" class="btn-sm btn-success form" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">دادن مجوز</button>')
+                            enterexit= $('<button hidden type="button" class="btn-sm btn-danger enterexit" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo5">اطلاعات ورود و خروج</button>').attr('id',  response.results[i]['id_ep'])
+                            t3 = $('<td style="width: 10%"></td>')
+                            t4 = $('<td style="width: 17%"></td>')
                             row = $('<tr class="report_row"></tr>')
-                            row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
-                            $("#block_table").append(row)
+                            t3.append(form)
+                            t4.append(enterexit)
+                            row.append(id_ep,f_name,l_name,code_melli,tell,title,t3)
+                            $("#report_table").append(row)
+                            $("#editlist").css("margin-top","100px");
+                            $('.form').on('click',function(){
+                                var id_ep = $(this).closest('tr').find('td:eq(0)').text();
+                                var token = $("meta[name='csrf-token']").attr("content");
+                                //$('.toast').toast('show');
+                                $.ajax(
+                                    {
+                                        url: "/reset-block/" + id_ep,
+                                        type: 'GET',
+                                        data: {
+                                            "id": id_ep,
+                                            "_token": token,
+                                        },
+                                        success: function () {
+                                            $('.toast').toast('show');
+                                            $("#mytoast").text("این فرد از بلاک لیست خارج شد")
+                                        }
+                                    });
+
+                                $(this).closest('tr').remove()
+                            })
+                            $(".enterexit").click(function () {
+                                var code_melli = $(this).closest('tr').find('td:eq(3)').text();
+                                var token = $("meta[name='csrf-token']").attr("content");
+                                $.ajax(
+                                    {
+                                        url: "/personinfo3/" + code_melli,
+                                        type: 'GET',
+                                        data: {
+                                            "id": code_melli,
+                                            "_token": token,
+                                        },
+                                        success: function (response) {
+
+                                            var edit=''
+                                            var del=''
+                                            var t1=''
+                                            var t2=''
+                                            var enter_exit = ''
+                                            var id_ed = ''
+                                            var date = ''
+                                            var time = ''
+                                            var row = ''
+                                            $(".personinfo2").remove();
+                                            for(var i = 0; i < response.individuals.length; i++) {
+                                                id_ed = $('<td style="width:11%;text-align: center" class="personinfo2">' + response.individuals[i]['i_ed'] + '</td>')
+                                                var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.individuals[i]['enter_exit']+ '</td>')
+                                                if(response.individuals[i]['enter_exit']==1){
+                                                    enter_exit = $('<td style="width: 15%;text-align: center" class="personinfo2">' +'ورود'+ '</td>')
+                                                }else{
+                                                    enter_exit = $('<td style="width: 15%;text-align: center" class="personinfo2">' +'خروج'+ '</td>')
+                                                }
+                                                var day=response.individuals[i]['date_enter'].substr(6,2)
+                                                var month=response.individuals[i]['date_enter'].substr(4,2)
+                                                var year=response.individuals[i]['date_enter'].substr(0,4)
+                                                var date = $('<td style="text-align: center;padding-right: 5px;width: 22%" class="personinfo2">' + year +'/'+month+'/'+day+'</td>')
+                                                time = $('<td style="width: 22%;text-align: center" class="personinfo2">' + response.individuals[i]['time_enter'] + '</td>')
+                                                t1 = $('<td style="width: 15%" class="personinfo2"></td>')
+                                                t2 = $('<td style="width: 15%" class="personinfo2"></td>')
+                                                row = $('<tr class="report_row"></tr>')
+                                                row.append(id_ed,enter_exit,date,time,enter_exit_val)
+                                                $("#person_table77").append(row)//data-toggle="modal" data-target="#personinfo"
+                                            }
+
+                                        }
+                                    });
+
+                            })
+
+
+
 
                         }
-                        $(".set_free").on('click',function(){        
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");                        
-                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                                $.ajax(
-                                    {
-                                        url: "/set-free/"+id_b,
-                                        type: 'GET',
-                                        success: function (response) {
-                                            Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را خواهد داشت', '', 'info')
-                                            // $('#ajax-alert3').addClass('alert-success').show(function(){
-                                            //    $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
-                                            // });
-                                        }
-                                    });   
-                        })
-                        $(".block1").on('click',function(){      
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");                          
-                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                                var reason = $(this).closest('tr').find('td:eq(6)').text();
-                                $.ajax(
-                                    {
-                                        url: "/set-block1/"+id_b+'/'+reason,
-                                        type: 'GET',
-                                        success: function (response) {
-                                            Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
-                                        }
-                                    });    
-                        })     
-                        $(".select1").on('click',function(){
-                                // $('#ajax-alert3').fadeOut(1000);
-                                // $('#ajax-alert3').hide();
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");
-                        })               
-                        $(".delete1").on('click',function(){                            
-                            
-                            $("tr.report_row").css("background-color", "white");
-                            $("tr.report_row").css("color", "black");
-                            $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                            $(this).closest('tr.report_row').css("color", "white");                          
-                            var id_b = $(this).closest('tr').find('td:eq(0)').text();
-
-                            Swal.fire({
-                              title: 'مایل به حذف این فرد هستید؟',
-                              showDenyButton: true,
-                              cancelButtonText: `بازگشت`,
-                              confirmButtonText: `انصراف از حذف`,
-                              denyButtonText: 'حذف شود',
-                                }).then((result) => {
-                                if (result.isConfirmed) {
-                                    Swal.fire('فرد انتخابی حذف نشد', '', 'info')
-                                } else if (result.isDenied) {
-                                        $.ajax({
-                                        url: "/enteringblockremove/"+id_b,
-                                        type: 'GET',
-                                        success: function (response) {
-                                                $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                                                toastr.options = {
-                                                    "closeButton": true,
-                                                    "debug": false,
-                                                    "positionClass": "toast-top-right",
-                                                    "onclick": null,
-                                                    "showDuration": "300",
-                                                    "hideDuration": "1000",
-                                                    "timeOut": "3000",
-                                                    "extendedTimeOut": "1000",
-                                                    "showEasing": "swing",
-                                                    "hideEasing": "linear",
-                                                    "showMethod": "fadeIn",
-                                                    "hideMethod": "fadeOut"
-                                                };
-                                                // $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                                                Swal.fire('حذف شد', '', 'success');
-
-                                        }
-                                  });
-                                }
-                              })
-
-  
-                        })   
-                        $(".edit1").on('click',function(){                            
-                            
-                            $("tr.report_row").css("background-color", "white");
-                            $("tr.report_row").css("color", "black");
-                            $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                            $(this).closest('tr.report_row').css("color", "white");                          
-                            var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                            $('#id_b_e').val($(this).closest('tr').find('td:eq(0)').text());
-                            $('#f_name_e').val($(this).closest('tr').find('td:eq(2)').text());
-                            $('#l_name_e').val($(this).closest('tr').find('td:eq(3)').text());
-                            $('#national_code_e').val($(this).closest('tr').find('td:eq(4)').text());
-                            $('#company_name_e').val($(this).closest('tr').find('td:eq(5)').text());
-                            $('#reason_e').val($(this).closest('tr').find('td:eq(6)').text());
-
-                            $('#blockEdit').modal('show');
- 
-                        })  
-                        $(".mylist20").fadeToggle(1500);
                         $(".mylist").hide();
                         $('.mylist2').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
-                    }
-                })       
+                        $(".mylist2").fadeToggle(2000);
+                    }})
 
             })
             $('#third2_report').click(function(event) {
                 event.preventDefault();
                 $.ajax({
-                    url: '/enteringblocks',
+                    url: '/block-history',
                     method:'GET',
-                    success: function (response) {                            
-                        var id_b = ''
+                    success: function (response) {
+                        $(".report_row").remove();
+                        $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست افرادی که تاکنون وارد بلاک لیست شده اند </p>')
+                        var id_ep = ''
                         var f_name = ''
+                        var id_et = ''
+                        var code_melli = ''
+                        var tell = ''
+                        var title = ''
                         var l_name = ''
-                        var national_code = ''
-                        var company_name = ''
-                        var reason = ''
-                        var select_btn = ''
-                        var t0 = ''
-                        var t1 = ''
-                        var t2 = ''
+                        var herasat = ''
+                        var form = ''
+                        var t4=''
                         var t3 = ''
-                        var t4 = ''
-                        var b4 = ''
+                        var t2 = ''
                         var row = ''
-                        $("#block_table2").empty();
-                        var row_th ='<tr style="color: black"><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td></tr>';
-                        $("#block_table2").append(row_th)
-                        for(var i = 0; i < response.result.length; i++) {
-                            id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
-                            f_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['f_name'] + '</td>')
-                            l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
-                            national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
-                            company_name = $('<td style="width: 20%;text-align:center">' + response.result[i]['company_name'] + '</td>')
-                            reason = $('<td style="width: 40%;text-align:center">' + response.result[i]['reason'] + '</td>')
-                            b4 = $('<button type="button" class="btn-outline-info history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">سابقه</button>')
-                            t4 = $('<td style="width: 10%;text-align:center"></td>')
-                            t4.append(b4)
-                            if(response.result[i]['isBlocked']==0){
-                                    row = $('<tr class="report_row" style="background-color: rgb(184,248,189)"></tr>')
+                        var enterexit=''
+                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;"><td style="border-left:1px white solid;">کد فرد</td><td style="border-left:1px white solid;">نام</td><td style="border-left:1px white solid;">نام خانوادگی</td><td style="border-left:1px white solid;">کد ملی</td><td style="border-left:1px white solid;">شماره تماس</td><td style="border-left:1px white solid;">تحت عنوان</td></tr>'
+                        $("#report_table").append(row_th)
+                        for(var i = 0; i < response.results.length; i++) {
+                            id_ep = $('<td style="width: 5%">' + response.results[i]['id_ep'] + '</td>')
+                            f_name = $('<td style="width: 13%;text-align: right;padding-right: 5px">' + response.results[i]['f_name'] + '</td>')
+                            l_name = $('<td style="width: 17%;text-align: right;padding-right: 5px">' +response.results[i]['l_name'] + '</td>')
+                            code_melli = $('<td style="width: 15%;text-align: right;padding-right: 5px">' + response.results[i]['code_melli'] + '</td>')
+                            tell = $('<td style="width: 15%;text-align: right;padding-right: 5px">' +response.results[i]['mobile'] + '</td>')
+                            id_et=response.results[i]['id_et']
+                            for(var z = 0; z < response.titles.length; z++) {
+                                if(response.titles[z]['id_et']==response.results[i]['id_et']){
+                                    title = $('<td style="width: 10%">' + response.titles[z]['description'] + '</td>')
+                                    break;
                                 }
-                            if(response.result[i]['isBlocked']==1){
-                                    row = $('<tr class="report_row" style="background-color:rgb(248,186,184)"></tr>')
+
                             }
-                            row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t4)
-                            $("#block_table2").append(row)
+                            form = $('<button hidden type="button" class="btn-sm btn-success form" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">دادن مجوز</button>')
+                            enterexit= $('<button hidden type="button" class="btn-sm btn-danger enterexit" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo5">اطلاعات ورود و خروج</button>').attr('id',  response.results[i]['id_ep'])
+                            t3 = $('<td style="width: 10%"></td>')
+                            t4 = $('<td style="width: 17%"></td>')
+                            row = $('<tr class="report_row"></tr>')
+                            t3.append(form)
+                            t4.append(enterexit)
+                            row.append(id_ep,f_name,l_name,code_melli,tell,title)
+                            $("#report_table").append(row)
+                            $("#editlist").css("margin-top","100px");
+                            $('.form').on('click',function(){
+                                var id_ep = $(this).closest('tr').find('td:eq(0)').text();
+                                var token = $("meta[name='csrf-token']").attr("content");
+                                //$('.toast').toast('show');
+                                $.ajax(
+                                    {
+                                        url: "/reset-block/" + id_ep,
+                                        type: 'GET',
+                                        data: {
+                                            "id": id_ep,
+                                            "_token": token,
+                                        },
+                                        success: function () {
+                                            $('.toast').toast('show');
+                                            $("#mytoast").text("این فرد از بلاک لیست خارج شد")
+                                        }
+                                    });
+
+                                $(this).closest('tr').remove()
+                            })
+                            $(".enterexit").click(function () {
+                                var code_melli = $(this).closest('tr').find('td:eq(3)').text();
+                                var token = $("meta[name='csrf-token']").attr("content");
+                                $.ajax(
+                                    {
+                                        url: "/personinfo3/" + code_melli,
+                                        type: 'GET',
+                                        data: {
+                                            "id": code_melli,
+                                            "_token": token,
+                                        },
+                                        success: function (response) {
+
+                                            var edit=''
+                                            var del=''
+                                            var t1=''
+                                            var t2=''
+                                            var enter_exit = ''
+                                            var id_ed = ''
+                                            var date = ''
+                                            var time = ''
+                                            var row = ''
+                                            $(".personinfo2").remove();
+                                            for(var i = 0; i < response.individuals.length; i++) {
+                                                id_ed = $('<td style="width:11%;text-align: center" class="personinfo2">' + response.individuals[i]['i_ed'] + '</td>')
+                                                var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.individuals[i]['enter_exit']+ '</td>')
+                                                if(response.individuals[i]['enter_exit']==1){
+                                                    enter_exit = $('<td style="width: 15%;text-align: center" class="personinfo2">' +'ورود'+ '</td>')
+                                                }else{
+                                                    enter_exit = $('<td style="width: 15%;text-align: center" class="personinfo2">' +'خروج'+ '</td>')
+                                                }
+                                                var day=response.individuals[i]['date_enter'].substr(6,2)
+                                                var month=response.individuals[i]['date_enter'].substr(4,2)
+                                                var year=response.individuals[i]['date_enter'].substr(0,4)
+                                                var date = $('<td style="text-align: center;padding-right: 5px;width: 22%" class="personinfo2">' + year +'/'+month+'/'+day+'</td>')
+                                                time = $('<td style="width: 22%;text-align: center" class="personinfo2">' + response.individuals[i]['time_enter'] + '</td>')
+                                                t1 = $('<td style="width: 15%" class="personinfo2"></td>')
+                                                t2 = $('<td style="width: 15%" class="personinfo2"></td>')
+                                                row = $('<tr class="report_row"></tr>')
+                                                row.append(id_ed,enter_exit,date,time,enter_exit_val)
+                                                $("#person_table77").append(row)//data-toggle="modal" data-target="#personinfo"
+                                            }
+
+                                        }
+                                    });
+
+                            })
+
+
+
 
                         }
- 
-                        $(".history").on('click',function(){  
-                            var id_b = $(this).closest('tr').find('td:eq(0)').text(); 
-                            
-                            
-                            event.preventDefault();
-                            $.ajax({
-                                url: '/block-history/'+id_b,
-                                method:'GET',
-                                success: function (response) {  
-                                    $('#myModal4').modal("show");    
-                                    var reason = ''
-                                    var date_shamsi = ''
-                                    var time = ''
-                                    var requester = ''
-                                    var t0 = ''
-                                    var t1 = ''
-                                    var t2 = ''
-                                    var t3 = ''
-                                    var t4 = ''
-                                    var b4 = ''
-                                    var row = ''
-                                    $("#block_history").empty();
-                                    var row_th ='<tr style="color: black"><td class="person" style="width: 15%">تاریخ</td><td class="person" style="width: 15%">ساعت</td><td class="person" style="width: 45%">سابقه</td><td class="person" style="width: 15%">درخواست کننده</td></tr>';
-                                    $("#block_history").append(row_th)
-                                    for(var i = 0; i < response.result.length; i++) {
-                                        date_shamsi = $('<td style="width: 15%;text-align:center" class="person">' + response.result[i]['date_shamsi'] + '</td>')
-                                        time = $('<td style="width: 15%;text-align:center" class="person">' + response.result[i]['time'] + '</td>')
-                                        requester = $('<td style="width: 45%;text-align:center" class="person">' + response.result[i]['requester'] + '</td>')
-                                        reason = $('<td style="width: 25%;text-align:center" class="person">' + response.result[i]['reason'] + '</td>')
-                                        row = $('<tr class="person"></tr>')
-                                        row.append(date_shamsi,time,reason,requester)
-                                        $("#block_history").append(row)
-                                    }
-                                    $('#myModal4').modal("show");
-                                }
-                            })                      
-
-                        })  
                         $(".mylist").hide();
                         $('.mylist2').hide();
-                        $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
-                    }
-                })       
+                    }})
 
             })
             $('#fourth_report').click(function(event) {
@@ -1223,7 +1213,6 @@
                         }
                         $(".mylist").hide();
                         $('.mylist2').hide();
-                        $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
@@ -1339,7 +1328,6 @@
                         }
                         $(".mylist").hide();
                         $('.mylist2').hide();
-                        $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
@@ -1798,375 +1786,19 @@
                         }
                     });
             });
-            $("#blockindividuals").on('submit',function(event) {
-                event.preventDefault();
-                $.ajaxSetup({
-                    headers: {
-                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                    }
-                });
-                var _token = $("input[name='_token']").val();
-                $.ajax({
-                    url: "/enteringblock",
-                    method: 'POST',
-                    data: new FormData(this),
-                    dataType: 'JSON',
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {     
-                        if(response.result==1){
-                            Swal.fire('کد ملی تکراری تشخیص داده شد', '', 'success')
-                        }else{
-                            $("#f_name_b").val('');
-                            $("#l_name_b").val('');
-                            $("#company_name_b").val('');
-                            $("#national_code_b").val('');
-                            $("#reason_b").val('');
-                            Swal.fire('مشخصات این فرد به بانک اطلاعاتی افزوده شد.جهت بلاک کردن این فرد به لیست پایین مراجعه شود', '', 'success')
-                            $.ajax({
-                    url: '/enteringblocks',
-                    method:'GET',
-                    success: function (response) {                            
-                        var id_b = ''
-                        var f_name = ''
-                        var l_name = ''
-                        var national_code = ''
-                        var company_name = ''
-                        var reason = ''
-                        var select_btn = ''
-                        var t0 = ''
-                        var t1 = ''
-                        var t2 = ''
-                        var t3 = ''
-                        var t4 = ''
-                        var b4 = ''
-                        var row = ''
-                        $("#block_table").empty();
-                        var row_th ='<tr style="color: black"><td class="person" style="width: 3%">--</td><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 6%">#</td><td class="person" style="width: 6%">#</td></tr>';
-                        $("#block_table").append(row_th)
-                        for(var i = 0; i < response.result.length; i++) {
-                            id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
-                            f_name = $('<td style="width: 8%;text-align:center">' + response.result[i]['f_name'] + '</td>')
-                            l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
-                            national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
-                            company_name = $('<td style="width: 17%;text-align:center">' + response.result[i]['company_name'] + '</td>')
-                            reason = $('<td style="width: 25%;text-align:center">' + response.result[i]['reason'] + '</td>')
-                            t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
-                            t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
-                            t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
-                            t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary edit1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
-                            b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
-                            t4 = $('<td style="width: 6%;text-align:center"></td>')
-                            t4.append(b4)
-                            // if(response.result[i]['isBlocked']==0){
-                            //         row = $('<tr class="report_row" style="background-color: rgb(184,248,189)"></tr>')
-                            //     }
-                            // if(response.result[i]['isBlocked']==1){
-                            //         row = $('<tr class="report_row" style="background-color:rgb(248,186,184)"></tr>')
-                            // }
-                            row = $('<tr class="report_row"></tr>')
-                            row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
-                            $("#block_table").append(row)
-
-                        }
-                        $(".set_free").on('click',function(){        
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");                        
-                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                                $.ajax(
-                                    {
-                                        url: "/set-free/"+id_b,
-                                        type: 'GET',
-                                        success: function (response) {
-                                            Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را خواهد داشت', '', 'info')
-                                            // $('#ajax-alert3').addClass('alert-success').show(function(){
-                                            //    $(this).html("فرد انتخابی مجاز به ورود به نیروگاه خواهد بود");
-                                            // });
-                                        }
-                                    });   
-                        })
-                        $(".block1").on('click',function(){      
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");                          
-                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                                var reason = $(this).closest('tr').find('td:eq(6)').text();
-                                $.ajax(
-                                    {
-                                        url: "/set-block1/"+id_b+'/'+reason,
-                                        type: 'GET',
-                                        success: function (response) {
-                                            Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
-                                        }
-                                    });    
-                        })     
-                        $(".select1").on('click',function(){
-                                // $('#ajax-alert3').fadeOut(1000);
-                                // $('#ajax-alert3').hide();
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");
-                        })               
-                        $(".delete1").on('click',function(){                            
-                            
-                            $("tr.report_row").css("background-color", "white");
-                            $("tr.report_row").css("color", "black");
-                            $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                            $(this).closest('tr.report_row').css("color", "white");                          
-                            var id_b = $(this).closest('tr').find('td:eq(0)').text();
-
-                            Swal.fire({
-                              title: 'مایل به حذف این فرد هستید؟',
-                              showDenyButton: true,
-                              cancelButtonText: `بازگشت`,
-                              confirmButtonText: `انصراف از حذف`,
-                              denyButtonText: 'حذف شود',
-                                }).then((result) => {
-                                if (result.isConfirmed) {
-                                    Swal.fire('فرد انتخابی حذف نشد', '', 'info')
-                                } else if (result.isDenied) {
-                                        $.ajax({
-                                        url: "/enteringblockremove/"+id_b,
-                                        type: 'GET',
-                                        success: function (response) {
-                                                $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                                                toastr.options = {
-                                                    "closeButton": true,
-                                                    "debug": false,
-                                                    "positionClass": "toast-top-right",
-                                                    "onclick": null,
-                                                    "showDuration": "300",
-                                                    "hideDuration": "1000",
-                                                    "timeOut": "3000",
-                                                    "extendedTimeOut": "1000",
-                                                    "showEasing": "swing",
-                                                    "hideEasing": "linear",
-                                                    "showMethod": "fadeIn",
-                                                    "hideMethod": "fadeOut"
-                                                };
-                                                // $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                                                Swal.fire('حذف شد', '', 'success');
-
-                                        }
-                                  });
-                                }
-                              })
-
-  
-                        })   
-                        $(".edit1").on('click',function(){                            
-                            
-                            $("tr.report_row").css("background-color", "white");
-                            $("tr.report_row").css("color", "black");
-                            $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                            $(this).closest('tr.report_row').css("color", "white");                          
-                            var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                            $('#id_b_e').val($(this).closest('tr').find('td:eq(0)').text());
-                            $('#f_name_e').val($(this).closest('tr').find('td:eq(2)').text());
-                            $('#l_name_e').val($(this).closest('tr').find('td:eq(3)').text());
-                            $('#national_code_e').val($(this).closest('tr').find('td:eq(4)').text());
-                            $('#company_name_e').val($(this).closest('tr').find('td:eq(5)').text());
-                            $('#reason_e').val($(this).closest('tr').find('td:eq(6)').text());
-
-                            $('#blockEdit').modal('show');
- 
-                        })  
-                        $(".mylist20").show();
-                        $(".mylist").hide();
-                        $('.mylist2').hide();
-                        $('.mylist3').hide();
-                        $(".register").hide();
-                    }
-                })   
-                        }       
-                        
-
-
-                    }
-                });
-            });
-            $("#blockindividualsedit").on('submit',function(event) {
-                event.preventDefault();
-                $.ajaxSetup({
-                    headers: {
-                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                    }
-                });
-                var _token = $("input[name='_token']").val();
-                $.ajax({
-                    url: "/enteringblockupdate",
-                    method: 'POST',
-                    data: new FormData(this),
-                    dataType: 'JSON',
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {  
-                        if(response.result>1){
-                            Swal.fire('این کد ملی به '+response.result+' نفر تخصیص داده شده' , '', 'success')
-                        } 
-                        $('#blockEdit').modal('hide');                              
-                        $.ajax({
-                            url: '/enteringblocks',
-                            method:'GET',
-                        success: function (response) {                            
-                            var id_b = ''
-                            var f_name = ''
-                            var l_name = ''
-                            var national_code = ''
-                            var company_name = ''
-                            var reason = ''
-                            var select_btn = ''
-                            var t0 = ''
-                            var t1 = ''
-                            var t2 = ''
-                            var t3 = ''
-                            var t4 = ''
-                            var b4 = ''
-                            var row = ''
-                            $("#block_table").empty();
-                            var row_th ='<tr style="color: black"><td class="person" style="width: 3%">--</td><td class="person" style="width: 8%">نام</td><td class="person" style="width: 10%">نام خانوادگی</td><td class="person" style="width: 10%">کد ملی</td><td class="person" style="width: 17%">شرکت</td><td class="person" style="width: 26%">دلیل منع تردد</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 7%">#</td><td class="person" style="width: 6%">#</td><td class="person" style="width: 6%">#</td></tr>';
-                            $("#block_table").append(row_th)
-                            for(var i = 0; i < response.result.length; i++) {
-                                
-                                id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
-                                f_name = $('<td style="width: 8%;text-align:center">' + response.result[i]['f_name'] + '</td>')
-                                l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
-                                national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
-                                company_name = $('<td style="width: 17%;text-align:center">' + response.result[i]['company_name'] + '</td>')
-                                reason = $('<td style="width: 25%;text-align:center">' + response.result[i]['reason'] + '</td>')
-                                t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
-                                t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
-                                t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
-                                t3 = $('<td style="width: 6%;text-align:center"><button type="button" class="btn-outline-primary edit1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">اصلاح</button></td>')
-                                b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
-                                t4 = $('<td style="width: 6%;text-align:center"></td>')
-                                t4.append(b4)
-
-                                row = $('<tr class="report_row"></tr>')
-                                row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
-                                $("#block_table").append(row)
-
-                            }
-                            $(".set_free").on('click',function(){        
-                                    $("tr.report_row").css("background-color", "white");
-                                    $("tr.report_row").css("color", "black");
-                                    $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                    $(this).closest('tr.report_row').css("color", "white");                        
-                                    var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                                    $.ajax(
-                                        {
-                                            url: "/set-free/"+id_b,
-                                            type: 'GET',
-                                            success: function (response) {
-                                                Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را خواهد داشت', '', 'info')
-                                            }
-                                        });   
-                            })
-                            $(".block1").on('click',function(){      
-                                    $("tr.report_row").css("background-color", "white");
-                                    $("tr.report_row").css("color", "black");
-                                    $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                    $(this).closest('tr.report_row').css("color", "white");                          
-                                    var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                                    $.ajax(
-                                        {
-                                            url: "/set-block1/"+id_b,
-                                            type: 'GET',
-                                            success: function (response) {
-                                                Swal.fire('فرد انتخاب شده مجوز ورود به نیروگاه را نخواهد داشت', '', 'success')
-                                            }
-                                        });    
-                            })     
-                            $(".select1").on('click',function(){
-                                    $("tr.report_row").css("background-color", "white");
-                                    $("tr.report_row").css("color", "black");
-                                    $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                    $(this).closest('tr.report_row').css("color", "white");
-                            })               
-                            $(".delete1").on('click',function(){                            
-                                
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");                          
-                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
-
-                                Swal.fire({
-                                title: 'مایل به حذف این فرد هستید؟',
-                                showDenyButton: true,
-                                cancelButtonText: `بازگشت`,
-                                confirmButtonText: `انصراف از حذف`,
-                                denyButtonText: 'حذف شود',
-                                    }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        Swal.fire('فرد انتخابی حذف نشد', '', 'info')
-                                    } else if (result.isDenied) {
-                                            $.ajax({
-                                            url: "/enteringblockremove/"+id_b,
-                                            type: 'GET',
-                                            success: function (response) {
-                                                    $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                                                    toastr.options = {
-                                                        "closeButton": true,
-                                                        "debug": false,
-                                                        "positionClass": "toast-top-right",
-                                                        "onclick": null,
-                                                        "showDuration": "300",
-                                                        "hideDuration": "1000",
-                                                        "timeOut": "3000",
-                                                        "extendedTimeOut": "1000",
-                                                        "showEasing": "swing",
-                                                        "hideEasing": "linear",
-                                                        "showMethod": "fadeIn",
-                                                        "hideMethod": "fadeOut"
-                                                    };
-                                                    // $('#' + (Number(id_b) + 3000)).closest('tr').remove();
-                                                    Swal.fire('حذف شد', '', 'success');
-
-                                            }
-                                    });
-                                    }
-                                })
-
-    
-                            })   
-                            $(".edit1").on('click',function(){                            
-                            
-                                $("tr.report_row").css("background-color", "white");
-                                $("tr.report_row").css("color", "black");
-                                $(this).closest('tr.report_row').css("background-color", "#2975cd");
-                                $(this).closest('tr.report_row').css("color", "white");                          
-                                var id_b = $(this).closest('tr').find('td:eq(0)').text();
-                                $('#id_b_e').val($(this).closest('tr').find('td:eq(0)').text());
-                                $('#f_name_e').val($(this).closest('tr').find('td:eq(2)').text());
-                                $('#l_name_e').val($(this).closest('tr').find('td:eq(3)').text());
-                                $('#national_code_e').val($(this).closest('tr').find('td:eq(4)').text());
-                                $('#company_name_e').val($(this).closest('tr').find('td:eq(5)').text());
-                                $('#reason_e').val($(this).closest('tr').find('td:eq(6)').text());
-
-                                $('#blockEdit').modal('show');
- 
-                            })   
-                            $('#block5').show();
-                        }
-                     })  
-                    }
-                });
-            });
-            
         });
     </script>
-    {{-- blocklist --}}
+
     <div class="row mylist2" style="margin: auto;width:70%;display: none;margin-top: 5px">
-        <div class="col-12 pt-2" id="title_report" style="height: 35px;margin-top: 5px;border-radius: 5px;font-family: Tahoma;font-size: small;direction: rtl;color: white;text-align: right;background-color:rgb(38, 42, 152)">لیست کلیه افراد</div>
+        <div class="col-12" id="title_report" style="height: 35px;margin-top: 5px;border-radius: 5px;font-family: Tahoma;font-size: small;direction: rtl;color: white;text-align: right;background-color:rgb(14,53,126)"></div>
     </div>
     <div class="row mylist2" style="margin: auto;width:70%;height:310px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
         <div class="col-12" style="direction: rtl;height: 300px;overflow-y: scroll;">
-            <table id="block_table2" text-align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top:5px"></table>
+            <table id="report_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small"></table>
+        </div>
+
+        <div class="toast bg-success" style="margin-top:20px;margin: auto;border-radius: 10px">
+            <div class="toast-body"><p id="mytoast" style="font-family: Tahoma;font-size: small;color: white;"></p></div>
         </div>
     </div>
     <div class="row mylist3" style="margin: auto;width:50%;display: none;margin-top: 5px">
@@ -2174,7 +1806,7 @@
     </div>
     <div class="row mylist3" style="margin: auto;width:50%;height:200px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
         <div class="col-12" style="direction: rtl;height: 195px;overflow-y: scroll;">
-            <table id="report_table3" text-align="center" style="width: 100%;font-family: Tahoma;font-size: small"></table>
+            <table id="report_table3" align="center" style="width: 100%;font-family: Tahoma;font-size: small"></table>
         </div>
 
         <div class="toast bg-success" style="margin-top:20px;margin: auto;border-radius: 10px">
@@ -2417,14 +2049,14 @@
             </div>
         </div>
     </div>
-    <div class="modal fade mt-4" id="myModal4" style="direction: rtl;">
-        <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 100px;margin-left: 410px">
+    <div class="modal fade mt-3" id="myModal4" style="direction: rtl;">
+        <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 100px;margin-left: 600px">
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header bg-dark" style="height: 35px;padding-top: 5px;width: 500px " >
+                <div class="modal-header bg-dark" style="height: 35px;padding-top: 5px;width: 850px " >
                     <div class="row" style="width: 100%">
-                        <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">سابقه فرد</p></div>
+                        <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">جزئیات درخواست</p></div>
                         <div class="col-6">
                             <div class="row" style="width: 100%">
                                 <div class="col-10">.</div>
@@ -2440,12 +2072,118 @@
                 </div>
 
                 <!-- List -->
-                <div class="container"  style="margin: auto;background-color:white;width: 500px ;height: 300px;overflow-y: scroll">
-                    <table id="block_history" text-align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top:5px"></table>
+                <div class="container"  style="margin: auto;background-color:white;width: 850px ;height: 400px;overflow-y: scroll">
+                    <div class="row mt-3">
+                        <div class="col" style="height:25px">
+                            <div class="row">
+                                <div class="col-4" style="height:25px">
+                                    <p style="font-family: Tahoma;font-size: smaller;color: black">عنوان فعالیت:</p>
+                                </div>
+                                <div class="col-8" style="height:25px;text-align: right">
+                                    <p id="title1" style="font-family: Tahoma;font-size: smaller;color: black"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col" style="height:25px">
+                            <div class="row">
+                                <div class="col-4" style="height:25px">
+                                    <p style="font-family: Tahoma;font-size: smaller;color: black">نام شرکت یا مرکز:</p>
+                                </div>
+                                <div class="col-8" style="height:25px;text-align: right">
+                                    <p id="company1" style="font-family: Tahoma;font-size: smaller;color: black"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="height:25px;text-align: right">
+                            <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px">مشخصات افراد دعوت شده به نیروگاه:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="person_div888" class="col" style="height:50px">
+                            <table id="person_table888" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                                <tr style="color: black">
+                                    <td class="person" style="width: 5%">کد</td>
+                                    <td class="person" style="width: 10%">نام</td>
+                                    <td class="person" style="width: 14%">نام خانوادگی</td>
+                                    <td class="person" style="width: 8%">عنوان فرد</td>
+                                    <td class="person" style="width: 5%">ملیت</td>
+                                    <td class="person" style="width: 4%">سن</td>
+                                    <td class="person" style="width: 10%">تاریخ شروع</td>
+                                    <td class="person" style="width: 7%">ساعت شروع</td>
+                                    <td class="person" style="width: 10%">تاریخ پایان</td>
+                                    <td class="person" style="width: 7%">ساعت پایان</td>
+                                    <td class="person" style="width: 10%">کد ملی</td>
+                                    <td class="person" style="width: 10%">شماره تلفن</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="first1" class="row">
+                        <div id="ec_txt" class="col" style="height:25px;text-align: right;">
+                            <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px;">مشخصات خودروهای مجاز به ورود به نیروگاه:</p>
+                        </div>
+                        <div id="ec_txt" class="col" style="height:25px;text-align: right;">
+                            <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px;">فهرست لوازم الکترونیکی مجاز به ورود به نیروگاه:</p>
+                        </div>
+                    </div>
+                    <div id="first2" class="row" style="text-align: right">
+                        <div id="cars_div123" class="col" style="height:30px;text-align: right">
+                            <table id="cars_table123" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;border: 1px solid black;">
+                                <tr style="color: black;height: 25px;font-family: Tahoma;font-size: small;color: black">
+                                    <td class="car" style="width: 10%;text-align: center;border: 1px solid black">کد</td>
+                                    <td class="car" style="width: 15%;text-align: center;border: 1px solid black">نام خودرو</td>
+                                    <td class="car" style="width: 20%;text-align: center;border: 1px solid black">نام راننده</td>
+                                    <td class="car" style="width: 5%;text-align: center;border: 1px solid black"></td>
+                                    <td class="car" style="width: 1%;font-size: 7px;text-align: center;border: 1px solid black">پلاک</td>
+                                    <td class="car" style="width: 5%;text-align: center;border: 1px solid black"></td>
+                                    <td class="car" style="width: 15%;text-align: center;border: 1px solid black">محدوده تردد</td>
+
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="el_div" class="col" style="height:50px;text-align: right">
+                            <table id="el_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                                <tr style="color: black">
+                                    <td class="el" style="width: 15%">کد</td>
+                                    <td class="el" style="width: 85%">نام وسیله الکترونیکی</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div id="eq_txt" class="col" style="height:25px;text-align: right">
+                            <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px;">فهرست لوازم کار مجاز به ورود به نیروگاه:</p>
+                        </div>
+                        <div id="equ_txt" class="col" style="height:25px;text-align: right">
+                            <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px;">فهرست فایلهای پیوست شده:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="eq_div" class="col" style="height:200px;text-align: right">
+                            <table id="eq_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                                <tr style="color: black">
+                                    <td class="eq" style="width: 15%">کد</td>
+                                    <td class="eq" style="width: 85%">نام وسیله </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="equ_div" class="col" style="height:200px;text-align: right">
+                            <table id="equ_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                                <tr style="color: black">
+                                    <td class="equ" style="width: 15%">کد</td>
+                                    <td class="equ" style="width: 85%">عنوان فایل</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer bg-info" style="height: 20px;width:500px"></div>
+                <div class="modal-footer bg-info" style="height: 20px;width:850px"></div>
 
             </div>
         </div>
@@ -2519,7 +2257,9 @@
 
             <!-- Modal footer -->
             <div class="modal-footer bg-info" style="height: 20px;width:600px">
-
+{{--                <div class="toast bg-danger individuals2" style="margin-top:20px;margin: auto;border-radius: 10px">--}}
+{{--                    <div class="toast-body"><p id="individuals2" style="font-family: Tahoma;font-size: small;color: white;"></p></div>--}}
+{{--                </div>--}}
             </div>
 
         </div>
@@ -2621,7 +2361,9 @@
                         <img style="display: none" src="{{URL::to('/')}}/authorised003.png" id="img_ok" class="reza3"  >
                         <img style="display: none" src="{{URL::to('/')}}/unauthorised002.jpg" id="img_no" class="reza3" >
                     </div>
-
+{{--                    <div id="sixth_report333"style="margin-left: 5px">--}}
+{{--                        <img  src="./dailyenter003.png"  class="reza2" data-toggle="tooltip" data-placement="left" title="ورود اطلاعات ورود و خروج">--}}
+{{--                    </div>--}}
                     <div id="sixth_report35" style="margin-left: 65px">
                         <img  src="{{URL::to('/')}}/enter_edit.jpg"  class="reza4" data-toggle="tooltip" data-placement="left" title="ورود و اصلاح اطلاعات ورود و خروج این فرد">
                     </div>
@@ -2685,9 +2427,9 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="row" style="height: 20px;margin-top: 20px">
-                                                        <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">تاریخ ورود یا خرووج:</p>
+                                                        <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">تاریخ ورود یا خروج:</p>
                                                         </div>
-                                                        <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">ساعت ورود یا خرووج:</p></div>
+                                                        <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">ساعت ورود یا خروج:</p></div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-6">
@@ -2706,7 +2448,7 @@
                                 <br>
                                 <div class="row" style="margin-top:45px">
                                     <div class="col" style="text-align:center">
-                                        <button type="submit" class="btn btn-primary" id="btnupdate" style="text-align:left;font-family: Tahoma;font-size: small;text-align: center;width:25%">ثبتت اطلاعات</button>
+                                        <button type="submit" class="btn btn-primary" id="btnupdate" style="text-align:left;font-family: Tahoma;font-size: small;text-align: center;width:25%">ثبت اطلاعات</button>
                                     </div>
                                 </div>
 
@@ -2777,7 +2519,7 @@
                                     <div class="col-9">
                                         <select  class="form-control" name="enter_exit" id="enter_exit_edit" style="width: 35%;font-family: Tahoma;font-size: small;margin-top: 10px;margin-right: 10px" required>
                                             <option value=''>انتخاب ورود یا خروج</option>
-                                            <option value='1'>ثبت وروود</option>
+                                            <option value='1'>ثبت ورود</option>
                                             <option value='2'>ثبت خروج</option>
                                         </select>
                                     </div>
@@ -2796,6 +2538,12 @@
                                         <div class="form-group" >
                                             <div class="row">
                                                 <div class="col-12">
+{{--                                                    <div class="row">--}}
+{{--                                                        <div class="col-7">--}}
+{{--                                                            <input type="text" maxlength="10" class="form-control" id="date_shamsi_enter_edit"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ ورود یا خروج:" name="date_enter" style="direction: rtl;font-family: Tahoma;font-size:small;width: 73%;text-align:center"  required title="تاریخ ورود یا خروج">--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </div>--}}
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <input type="text" maxlength="10" class="form-control" id="time_enter_edit"  data-toggle="tooltip"  name="time_enter" style="direction: rtl;font-family: Tahoma;font-size:small;width: 73%;text-align:center" required placeholder="ساعت ورود یا خروج">
@@ -2803,6 +2551,7 @@
                                                         <div class="col-6">
                                                             <input type="text" maxlength="10" class="form-control" id="date_shamsi_enter_edit"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ ورود یا خروج:" name="date_enter" style="direction: rtl;font-family: Tahoma;font-size:small;width: 73%;text-align:center"  required title="تاریخ ورود یا خروج">
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2877,218 +2626,6 @@
         </div>
     </div>
 </div>
-
-<!-- block -->
-<div class="row mylist20" id="block5" style="direction: rtl;margin-top:-5px;display: none">
-    <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 11px;margin-left: 625px">
-     <div class="modal-content">
-
-         <!-- Modal Header -->
-         <div class="modal-header" style="height: 35px;padding-top: 5px;width: 900px ;background-color:rgb(98, 15, 15)" >
-             <div class="row" style="width: 100%">
-                 <div class="col-3"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">فرم ممنوعیت تردد</p></div>
-                 <div class="col-9">
-                 </div>
-             </div>
-
-
-         </div>
-        
-<div class="container"  style="margin: auto;background-color:white;width: 900px ;height: 320px">
-    <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small;text-align: center;margin-top:5px"></div>
-
-    <div class="row" style="margin-top:-2px">
-
-        <div id="person_div2" class="col" style="height:50px">
-
-            <div id="s2" class="container" style="text-align: left;background-color:#37473B;width: 100%;border-radius: 5px;height:130px;direction: rtl;color: white;margin-top:2px;padding-top: 2px;">
-                <div class="row">
-                   <div class=col-1></div>
-                        <div class=col-10>
-                            <form method="post" encType="multipart/form-data" id="blockindividuals" action="{{route('blockindividuals.store3')}}">
-                    
-                                {{csrf_field()}}
-                                <br>
-                                <div class="row" style="height: 15px">
-                                    <div class="col">
-                                        <div class="form-group" >
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <input type="text" maxlength="20" class="form-control" id="f_name_b"  data-toggle="tooltip" data-placement="right" placeholder="نام:" name="f_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
-                                                        </div>
-                                                        <div class="col">
-                                                            <input type="text" maxlength="30" class="form-control" id="l_name_b"  data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی:" name="l_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
-                                                        </div>
-                                                        <div class="col">
-                                                            <input type="text" maxlength="12" class="form-control" id="national_code_b"  data-toggle="tooltip" data-placement="right" placeholder="کدملی:" name="national_code" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-1">
-                                                        <div class="col-4">
-                                                            <input type="text" maxlength="25" class="form-control" id="company_name_b"  data-toggle="tooltip" data-placement="right" placeholder="شرکت:" name="company_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <input type="text" maxlength="40" class="form-control" id="reason_b"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
-                                                        </div>
-                                                        <div class="col-2" style="padding-left: 50px">
-                                                            <button type="commit" class="btn btn-primary" id="addblock" style="font-family: Tahoma;font-size: small;text-align: center;width:120%">ثبت</button>
-                                                        </div>
-                                                    </div>
-            
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row" style="margin-top:45px">
-                                    <div class="col" style="text-align:center">
-                                        
-                                    </div>
-                                </div>
-                                
-                            </form>
-                        </div>
-                   <div class=col-1></div>
-                </div>
-                
-
-                
-            </div>
-           
-
-            <div style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;overflow-y: scroll;height:170px">
-                <table id="block_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px">                
-                    <tr style="color: black">
-                        <td class="person" style="width: 3%">--</td>
-                        <td class="person" style="width: 8%">نام</td>
-                        <td class="person" style="width: 10%">نام خانوادگی</td>
-                        <td class="person" style="width: 10%">کد ملی</td>
-                        <td class="person" style="width: 17%">شرکت</td>
-                        <td class="person" style="width: 26%">دلیل منع تردد</td>
-                        <td class="person" style="width: 7%">#</td>
-                        <td class="person" style="width: 7%">#</td>
-                        <td class="person" style="width: 6%">#</td>
-                        <td class="person" style="width: 6%">#</td>
-                    </tr>
-                </table>
-
-            </div>
-
-        </div>
-    </div>
-</div></div>
-
-<!-- blockEdit -->
-<div class="modal fade" id="blockEdit" style="direction: rtl;margin-top:5px">
-    <div class="modal-dialog modal-md" id="editlist3" style="margin-top: 60px;margin-left:480px">
-     <div class="modal-content">
-
-         <!-- Modal Header -->
-         <div class="modal-header" style="height: 35px;padding-top: 5px;width: 600px ;background-color:rgb(30, 49, 127)" >
-             <div class="row" style="width: 100%">
-                 <div class="col-5"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">فرم اصلاح ممنوعیت تردد</p></div>
-                 <div class="col-7">
-                     <div class="row" style="width: 100%">
-                         <div class="col-10">.</div>
-                         <div class="col-2">
-                             <button type="button" class="close" data-dismiss="modal" style="text-align: center;display: inline;color: white">&times;</button>
-                         </div>
-                     </div>
-
-                 </div>
-             </div>
-
-
-         </div>
-        
-<div class="container"  style="margin: auto;background-color:white;width: 600px ;height: 160px">
-    <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small;text-align: center"></div>
-
-    <div class="row" style="margin-top: 10px">
-        <div id="person_div2" class="col" style="height:50px">
-            <div id="s2" class="container" style="text-align: left;background-color:#37473B;width: 100%;border-radius: 5px;height:130px;direction: rtl;color: white;margin-top:2px;padding-top: 2px;">
-                <form method="post" encType="multipart/form-data" id="blockindividualsedit" action="{{route('blockindividualsedit.store4')}}">                    
-                    {{csrf_field()}}
-                    <br>
-                    <div class="row" style="height: 15px">
-                        <div class="col">
-                            <div class="form-group" >
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <input type="text" id="id_b_e" name="id_b_e" style="display: none">
-                                            <div class="col">
-                                                <input type="text" maxlength="20" class="form-control" id="f_name_e"  data-toggle="tooltip" data-placement="right" placeholder="نام:" name="f_name_e" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
-                                            </div>
-                                            <div class="col">
-                                                <input type="text" maxlength="30" class="form-control" id="l_name_e"  data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی:" name="l_name_e" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
-                                            </div>
-                                            <div class="col">
-                                                <input type="text" maxlength="10" class="form-control" id="national_code_e"  data-toggle="tooltip" data-placement="right" placeholder="کدملی:" name="national_code_e" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-1">
-                                            <div class="col-3">
-                                                <input type="text" maxlength="100" class="form-control" id="company_name_e"  data-toggle="tooltip" data-placement="right" placeholder="شرکت:" name="company_name_e" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
-                                            </div>
-                                            <div class="col-5">
-                                                <input type="text" maxlength="100" class="form-control" id="reason_e"  data-toggle="tooltip" data-placement="right" placeholder="دلیل منع تردد:" name="reason_e" style="direction: rtl;font-family: Tahoma;font-size: small;width: 95%"  required>
-                                            </div>
-                                            <div class="col-4" style="padding-left: 50px">
-                                                <button type="commit" class="btn btn-primary" id="addblock" style="font-family: Tahoma;font-size: small;text-align: center;width:80%">ثبت تغییرات</button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row" style="margin-top:45px">
-                        <div class="col" style="text-align:center">
-                            
-                        </div>
-                    </div>                    
-                </form>                
-            </div>
-        </div>
-    </div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

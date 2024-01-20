@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Models\Http\Controllers;
-use App\Models\Models\EnteringBlock;
-use App\Models\Models\CalendarHelper;
-use App\Models\Models\Enteringform;
-use App\Models\Models\Enteringhefazat;
-use App\Models\Models\Enteringhefazatcase;
-use App\Models\Models\Entering_personel_unique;
-use App\Models\Models\Enteringpeaple;
-use App\Models\Models\Enteringtitle;
+namespace App\Http\Controllers;
+
+use App\CalendarHelper;
+use App\Enteringform;
+use App\Enteringhefazat;
+use App\Enteringhefazatcase;
+use App\Entering_personel_unique;
+use App\Enteringpeaple;
+use App\Enteringtitle;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,220 +23,121 @@ class enteringpeoplesController extends Controller
     }
 
     public  function store(Request $request){
-        $peaple = EnteringBlock::where('national_code',$request->input('code_melli'))->get()->count();
-        
-        if( $peaple == 1){
-            $isBlocked = DB::table('enteringblocks')->where('national_code',$request->input('code_melli'))->orderBy('id_b', 'DESC')->first()->isBlocked;
-            if($isBlocked == 1){
-                return response()->json(['success'=>'hi','result'=>100]);
-            }else{
-                date_default_timezone_set('Asia/Tehran');
-                $g_y = Carbon::now()->year;
-                $g_m = Carbon::now()->month;
-                $g_d = Carbon::now()->day;
-                $Calendar=new CalendarHelper();
-                $date_shamsi_array=$Calendar->gregorian_to_jalali($g_y, $g_m, $g_d);
-                if($date_shamsi_array[1]<10){
-                    $date_shamsi_array[1]='0'.$date_shamsi_array[1];
-                }
-                if($date_shamsi_array[2]<10){
-                    $date_shamsi_array[2]='0'.$date_shamsi_array[2];
-                }
-                $id_user=auth()->user()->id;
-                $id_ef = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->id_ef;
-                $enteringpeaple=new Enteringpeaple();
-                $enteringpeaple->f_name=$request->input('f_name');
-                $enteringpeaple->l_name=$request->input('l_name');
-                $enteringpeaple->code_melli=$request->input('code_melli');
-                $code=$request->input('code_melli');
-                $enteringpeaple->mobile=$request->input('mobile');
-        
-                $date_shamsi_enter = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->date_shamsi_enter;
-                $date_shamsi_exit = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->date_shamsi_exit;
-                $time_enter = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->time_enter;
-                $time_exit = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->time_exit;
-        
-                $enteringpeaple->time_enter=$time_enter;
-        
-                $enteringpeaple->date_shamsi_enter=$date_shamsi_enter;
-                $enteringpeaple->time_exit=$time_exit;
-                $enteringpeaple->date_shamsi_exit=$date_shamsi_exit;
-        
-        
-                $string=$date_shamsi_exit;
-                $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-                $num = range(0, 9);
-                $date_no2=str_replace($persian,$num, $string);
-                $string=$date_shamsi_enter;
-                $date_no1=str_replace($persian,$num, $string);
-        
-        
-                $enteringpeaple->id_et=(int)$request->input('id_et');
-                $enteringpeaple->nationality=$request->input('nationality');
-                $enteringpeaple->id_ef=$id_ef;
-                $enteringpeaple->id_user=$id_user;
-        
-        
-                ////-----------------------------------------------------------------------------------------------------
-                if(DB::table('enteringpeaples')->where('code_melli','=',$code)->exists()){
-                    $date1 = DB::table('enteringpeaples')->where('code_melli','=',$code)->orderBy('id_ep', 'DESC')->first()->date_shamsi_enter;
-                    $date2 = DB::table('enteringpeaples')->where('code_melli','=',$code)->orderBy('id_ep', 'DESC')->first()->date_shamsi_exit;
-                    $date_no1_p= str_replace($persian,$num, $date1);
-                    $date_no2_p= str_replace($persian,$num, $date2);
-                }
-                else{
-                    $date_no1_p=0;
-                    $date_no2_p=0;
-                }
-                $title2 = DB::table('enteringforms')->where('id_ef','=',$id_ef)->first()->title;
-                $company = DB::table('enteringforms')->where('id_ef','=',$id_ef)->first()->company;
-        
-                if(($date_no1>$date_no2_p) and ($date_no1<=$date_no2)){
-        
-                    $enteringpeaple->save();
-                    $id_ep = DB::table('enteringpeaples')->where('id_ef',$id_ef)->orderBy('id_ep', 'DESC')->first()->id_ep;
-                    Enteringpeaple::where('code_melli', $code)->update(['notlet2'=>0]);
-                    $id_request_part = DB::table('enteringforms')->where('id_ef',$id_ef)->orderBy('id_ef', 'DESC')->first()->id_request_part;
-                    Enteringform::where('id_ef', $id_ef)->update(['s2'=>1]);
-                    Enteringpeaple::where('id_ep', $id_ep)->update(['date_no2'=>(int)$date_no2]);
-                    Enteringpeaple::where('id_ep', $id_ep)->update(['date_no1'=>(int)$date_no1]);
-                    Enteringpeaple::where('id_ef', $id_ef)->update(['id_request_part'=>$id_request_part]);
-                    $people=Enteringpeaple::where('id_ef',$id_ef)->get()->count();
-                    $s1=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s1;
-                    $s2=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s2;
-                    $s3=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s3;
-                    $s4=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s4;
-                    $s5=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s5;
-        
-                    if($s1==1 && $s2==1 && $s3==1 && $s4==1 && $s5==1){
-                        Enteringform::where('id_ef', $id_ef)->update(['level'=>1]);
-                    }else{
-                        Enteringform::where('id_ef', $id_ef)->update(['level'=>0]);
-                    }
-                    $id_ep = DB::table('enteringpeaples')->where('id_ef',$id_ef)->orderBy('id_ep', 'DESC')->first()->id_ep;
-                    Enteringpeaple::where('id_ep', $id_ep)->update(['notlet1'=>0,'notlet2'=>0]);
-                    return response()->json(['success'=>'hi','id_ep'=>$id_ep,'people'=>$people,'id_ef'=>$id_ef,
-                        'date_no1_p'=>$date_no1_p,'date_no2_p'=>$date_no2_p,
-                        'date_no1'=>$date_no1,'date_no2'=>$date_no2,
-                        'reapeted'=>0,'d_en'=>$date_shamsi_enter,'d_ex'=>$date_shamsi_exit,'t_en'=>$time_enter,'t_ex'=>$time_exit,'result'=>101]);
-        
-                }else{
-                    return response()->json(['success'=>'hi','reapeted'=>1,'date1'=>$date_no1_p,'date2'=>$date_no2_p,
-                        'date_no1_p'=>$date_no1_p,'date_no2_p'=>$date_no2_p,
-                        'date_no1'=>$date_no1,'date_no2'=>$date_no2,
-                        'company'=>$company,'title'=>$title2,'id_ef'=>$id_ef,
-                        'reapeted'=>1,'result'=>101]);
-                }
-            }         
+
+        // $n=Entering_personel_unique::where('code_melli',$request->input('code_melli'))->get()->count();
+        // if($n == 0){
+        //     DB::table('entering_personel_uniques')->insert([
+        //         'f_name' => $request->input('f_name'),
+        //         'l_name' => $request->input('l_name'),
+        //         'code_melli' => $request->input('code_melli')
+        //     ]);
+        // }
+
+
+        date_default_timezone_set('Asia/Tehran');
+        $g_y = Carbon::now()->year;
+        $g_m = Carbon::now()->month;
+        $g_d = Carbon::now()->day;
+        $Calendar=new CalendarHelper();
+        $date_shamsi_array=$Calendar->gregorian_to_jalali($g_y, $g_m, $g_d);
+        if($date_shamsi_array[1]<10){
+            $date_shamsi_array[1]='0'.$date_shamsi_array[1];
         }
-        // if($peaple == 0){
-        //     $blocked=0;
-        // }    
-        // return response()->json(['success'=>'hi','result'=>$blocked]);   
-        // if($blocked==0){
-        //     date_default_timezone_set('Asia/Tehran');
-        //     $g_y = Carbon::now()->year;
-        //     $g_m = Carbon::now()->month;
-        //     $g_d = Carbon::now()->day;
-        //     $Calendar=new CalendarHelper();
-        //     $date_shamsi_array=$Calendar->gregorian_to_jalali($g_y, $g_m, $g_d);
-        //     if($date_shamsi_array[1]<10){
-        //         $date_shamsi_array[1]='0'.$date_shamsi_array[1];
-        //     }
-        //     if($date_shamsi_array[2]<10){
-        //         $date_shamsi_array[2]='0'.$date_shamsi_array[2];
-        //     }
-        //     $id_user=auth()->user()->id;
-        //     $id_ef = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->id_ef;
-        //     $enteringpeaple=new Enteringpeaple();
-        //     $enteringpeaple->f_name=$request->input('f_name');
-        //     $enteringpeaple->l_name=$request->input('l_name');
-        //     $enteringpeaple->code_melli=$request->input('code_melli');
-        //     $code=$request->input('code_melli');
-        //     $enteringpeaple->mobile=$request->input('mobile');
-    
-        //     $date_shamsi_enter = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->date_shamsi_enter;
-        //     $date_shamsi_exit = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->date_shamsi_exit;
-        //     $time_enter = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->time_enter;
-        //     $time_exit = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->time_exit;
-    
-        //     $enteringpeaple->time_enter=$time_enter;
-    
-        //     $enteringpeaple->date_shamsi_enter=$date_shamsi_enter;
-        //     $enteringpeaple->time_exit=$time_exit;
-        //     $enteringpeaple->date_shamsi_exit=$date_shamsi_exit;
-    
-    
-        //     $string=$date_shamsi_exit;
-        //     $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-        //     $num = range(0, 9);
-        //     $date_no2=str_replace($persian,$num, $string);
-        //     $string=$date_shamsi_enter;
-        //     $date_no1=str_replace($persian,$num, $string);
-    
-    
-        //     $enteringpeaple->id_et=(int)$request->input('id_et');
-        //     $enteringpeaple->nationality=$request->input('nationality');
-        //     $enteringpeaple->id_ef=$id_ef;
-        //     $enteringpeaple->id_user=$id_user;
-    
-    
-        //     ////-----------------------------------------------------------------------------------------------------
-        //     if(DB::table('enteringpeaples')->where('code_melli','=',$code)->exists()){
-        //         $date1 = DB::table('enteringpeaples')->where('code_melli','=',$code)->orderBy('id_ep', 'DESC')->first()->date_shamsi_enter;
-        //         $date2 = DB::table('enteringpeaples')->where('code_melli','=',$code)->orderBy('id_ep', 'DESC')->first()->date_shamsi_exit;
-        //         $date_no1_p= str_replace($persian,$num, $date1);
-        //         $date_no2_p= str_replace($persian,$num, $date2);
-        //     }
-        //     else{
-        //         $date_no1_p=0;
-        //         $date_no2_p=0;
-        //     }
-        //     $title2 = DB::table('enteringforms')->where('id_ef','=',$id_ef)->first()->title;
-        //     $company = DB::table('enteringforms')->where('id_ef','=',$id_ef)->first()->company;
-    
-        //     if(($date_no1>$date_no2_p) and ($date_no1<=$date_no2)){
-    
-        //         $enteringpeaple->save();
-        //         $id_ep = DB::table('enteringpeaples')->where('id_ef',$id_ef)->orderBy('id_ep', 'DESC')->first()->id_ep;
-        //         Enteringpeaple::where('code_melli', $code)->update(['notlet2'=>0]);
-        //         $id_request_part = DB::table('enteringforms')->where('id_ef',$id_ef)->orderBy('id_ef', 'DESC')->first()->id_request_part;
-        //         Enteringform::where('id_ef', $id_ef)->update(['s2'=>1]);
-        //         Enteringpeaple::where('id_ep', $id_ep)->update(['date_no2'=>(int)$date_no2]);
-        //         Enteringpeaple::where('id_ep', $id_ep)->update(['date_no1'=>(int)$date_no1]);
-        //         Enteringpeaple::where('id_ef', $id_ef)->update(['id_request_part'=>$id_request_part]);
-        //         $people=Enteringpeaple::where('id_ef',$id_ef)->get()->count();
-        //         $s1=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s1;
-        //         $s2=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s2;
-        //         $s3=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s3;
-        //         $s4=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s4;
-        //         $s5=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s5;
-    
-        //         if($s1==1 && $s2==1 && $s3==1 && $s4==1 && $s5==1){
-        //             Enteringform::where('id_ef', $id_ef)->update(['level'=>1]);
-        //         }else{
-        //             Enteringform::where('id_ef', $id_ef)->update(['level'=>0]);
-        //         }
-        //         $id_ep = DB::table('enteringpeaples')->where('id_ef',$id_ef)->orderBy('id_ep', 'DESC')->first()->id_ep;
-        //         Enteringpeaple::where('id_ep', $id_ep)->update(['notlet1'=>0,'notlet2'=>0]);
-        //         return response()->json(['success'=>'hi','id_ep'=>$id_ep,'people'=>$people,'id_ef'=>$id_ef,
-        //             'date_no1_p'=>$date_no1_p,'date_no2_p'=>$date_no2_p,
-        //             'date_no1'=>$date_no1,'date_no2'=>$date_no2,
-        //             'reapeted'=>0,'d_en'=>$date_shamsi_enter,'d_ex'=>$date_shamsi_exit,'t_en'=>$time_enter,'t_ex'=>$time_exit,'result'=>101]);
-    
-        //     }else{
-        //         return response()->json(['success'=>'hi','reapeted'=>1,'date1'=>$date_no1_p,'date2'=>$date_no2_p,
-        //             'date_no1_p'=>$date_no1_p,'date_no2_p'=>$date_no2_p,
-        //             'date_no1'=>$date_no1,'date_no2'=>$date_no2,
-        //             'company'=>$company,'title'=>$title2,'id_ef'=>$id_ef,
-        //             'reapeted'=>1,'result'=>101]);
-        //     }
-        // }
-        // if($blocked==1){
-        //     return response()->json(['success'=>'hi','result'=>100]);
-        // }
-        // return response()->json(['success'=>'hi','result'=>$blocked]);
-        
+        if($date_shamsi_array[2]<10){
+            $date_shamsi_array[2]='0'.$date_shamsi_array[2];
+        }
+        $id_user=auth()->user()->id;
+        $id_ef = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->id_ef;
+        $enteringpeaple=new Enteringpeaple();
+        $enteringpeaple->f_name=$request->input('f_name');
+        $enteringpeaple->l_name=$request->input('l_name');
+        $enteringpeaple->code_melli=$request->input('code_melli');
+        $code=$request->input('code_melli');
+        $enteringpeaple->mobile=$request->input('mobile');
+
+        $date_shamsi_enter = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->date_shamsi_enter;
+        $date_shamsi_exit = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->date_shamsi_exit;
+        $time_enter = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->time_enter;
+        $time_exit = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->time_exit;
+
+        $enteringpeaple->time_enter=$time_enter;
+
+        $enteringpeaple->date_shamsi_enter=$date_shamsi_enter;
+        $enteringpeaple->time_exit=$time_exit;
+        $enteringpeaple->date_shamsi_exit=$date_shamsi_exit;
+
+
+        $string=$date_shamsi_exit;
+        $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        $num = range(0, 9);
+        $date_no2=str_replace($persian,$num, $string);
+        $string=$date_shamsi_enter;
+        $date_no1=str_replace($persian,$num, $string);
+
+
+        $enteringpeaple->id_et=(int)$request->input('id_et');
+        $enteringpeaple->nationality=$request->input('nationality');
+        $enteringpeaple->id_ef=$id_ef;
+        $enteringpeaple->id_user=$id_user;
+
+
+        ////-----------------------------------------------------------------------------------------------------
+        if(DB::table('enteringpeaples')->where('code_melli','=',$code)->exists()){
+            $date1 = DB::table('enteringpeaples')->where('code_melli','=',$code)->orderBy('id_ep', 'DESC')->first()->date_shamsi_enter;
+            $date2 = DB::table('enteringpeaples')->where('code_melli','=',$code)->orderBy('id_ep', 'DESC')->first()->date_shamsi_exit;
+            $date_no1_p= str_replace($persian,$num, $date1);
+            $date_no2_p= str_replace($persian,$num, $date2);
+        }
+        else{
+            $date_no1_p=0;
+            $date_no2_p=0;
+        }
+        $title2 = DB::table('enteringforms')->where('id_ef','=',$id_ef)->first()->title;
+        $company = DB::table('enteringforms')->where('id_ef','=',$id_ef)->first()->company;
+
+        if(($date_no1>$date_no2_p) and ($date_no1<=$date_no2)){
+
+            $enteringpeaple->save();
+            $id_ep = DB::table('enteringpeaples')->where('id_ef',$id_ef)->orderBy('id_ep', 'DESC')->first()->id_ep;
+            Enteringpeaple::where('code_melli', $code)->update(['notlet2'=>0]);
+            $id_request_part = DB::table('enteringforms')->where('id_ef',$id_ef)->orderBy('id_ef', 'DESC')->first()->id_request_part;
+            Enteringform::where('id_ef', $id_ef)->update(['s2'=>1]);
+            Enteringpeaple::where('id_ep', $id_ep)->update(['date_no2'=>(int)$date_no2]);
+            Enteringpeaple::where('id_ep', $id_ep)->update(['date_no1'=>(int)$date_no1]);
+            Enteringpeaple::where('id_ef', $id_ef)->update(['id_request_part'=>$id_request_part]);
+            $people=Enteringpeaple::where('id_ef',$id_ef)->get()->count();
+            $s1=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s1;
+            $s2=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s2;
+            $s3=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s3;
+            $s4=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s4;
+            $s5=DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->s5;
+
+            if($s1==1 && $s2==1 && $s3==1 && $s4==1 && $s5==1){
+                Enteringform::where('id_ef', $id_ef)->update(['level'=>1]);
+            }else{
+                Enteringform::where('id_ef', $id_ef)->update(['level'=>0]);
+            }
+            $id_ep = DB::table('enteringpeaples')->where('id_ef',$id_ef)->orderBy('id_ep', 'DESC')->first()->id_ep;
+            Enteringpeaple::where('id_ep', $id_ep)->update(['notlet1'=>0,'notlet2'=>0]);
+            return response()->json(['success'=>'hi','id_ep'=>$id_ep,'people'=>$people,'id_ef'=>$id_ef,
+                'date_no1_p'=>$date_no1_p,'date_no2_p'=>$date_no2_p,
+                'date_no1'=>$date_no1,'date_no2'=>$date_no2,
+                'reapeted'=>0,'d_en'=>$date_shamsi_enter,'d_ex'=>$date_shamsi_exit,'t_en'=>$time_enter,'t_ex'=>$time_exit]);
+
+        }else{
+            return response()->json(['success'=>'hi','reapeted'=>1,'date1'=>$date_no1_p,'date2'=>$date_no2_p,
+                'date_no1_p'=>$date_no1_p,'date_no2_p'=>$date_no2_p,
+                'date_no1'=>$date_no1,'date_no2'=>$date_no2,
+                'company'=>$company,'title'=>$title2,'id_ef'=>$id_ef,
+                'reapeted'=>1]);
+        }
+
+
+
+
+
+
+
     }
 
 

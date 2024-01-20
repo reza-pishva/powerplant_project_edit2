@@ -17,6 +17,8 @@
                 month = date2.substr(5,2)
                 year = date2.substr(0,4)
                 date2=year+month+day;
+                
+
                 event.preventDefault();
                 $.ajaxSetup({
                     headers: {
@@ -128,7 +130,7 @@
         <div class="row" style="height: 250px">
             <div class="col-2">
                 <div >
-                    <a href="http://127.0.0.1:8080/home">
+                    <a href="http://172.28.232.27:8000/home">
                         <img src="{{URL::to('/')}}/exit003.png" style="width: 70px;height: 70px;margin-top: 25px" data-toggle="tooltip" data-placement="bottom" title="بازگشت به صفحه قبل">
                     </a>
                 </div>
