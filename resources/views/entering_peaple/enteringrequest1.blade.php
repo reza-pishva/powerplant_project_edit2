@@ -94,16 +94,7 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                        alert('hi2')
-                        // alert(response.date_no1)
-                        // alert(response.date_no2)
-                        // alert(response.date_no1_p)
-                        // alert(response.date_no2_p)
-                        if(response.reapeted==1){
-                            alert('اشکال در انتخاب تاریخ: تاریخ انتخابی را مجددا بررسی نمایید. از برنامه خارج شوید و مجددا نسبت به تکمیل فرم اقدام نمایید')
-                            var alarm="بر اساس درخواست شماره "+response.id_ef+" از طرف شرکت  "+response.company+" این فرد در بخشی از بازه زمانی انتخاب شده  مجاز به ورود بوده و قبل از ثبت درخواست جدید توسط شما مجوز قبلی باید توسط مدیر حراست لغو گردد.برای این منظور شماره درخواست ذکر شده به مسئول حراست ارائه گردد"
-                            alert(alarm)
-                        }else{
+                        alert(response.blocked)
                             $("#date_shamsi_exit").val($("#date_shamsi_exit100").val());
                             $("#date_shamsi_enter").val($("#date_shamsi_enter100").val());
                             $("#time_exit").val($("#time_exit100").val());
@@ -209,9 +200,9 @@
                                 });
                                 $('#' + (Number(response.id_ep)+2000)).closest('tr').remove();
                             })
-                        }
+                         }
 
-                    }
+
                 });
 
             });
