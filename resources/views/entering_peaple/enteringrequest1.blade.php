@@ -78,7 +78,6 @@
                     }
             });
             $("#addpersons").on('submit',function(event) {
-                alert('hi1')
                 event.preventDefault();
                 $.ajaxSetup({
                     headers: {
@@ -94,7 +93,7 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                        alert(response.blocked)
+                        if(response.blocked){
                             $("#date_shamsi_exit").val($("#date_shamsi_exit100").val());
                             $("#date_shamsi_enter").val($("#date_shamsi_enter100").val());
                             $("#time_exit").val($("#time_exit100").val());
@@ -200,9 +199,10 @@
                                 });
                                 $('#' + (Number(response.id_ep)+2000)).closest('tr').remove();
                             })
-                         }
-
-
+                        }else{
+                            alert("he is not allowded")
+                        }
+                    }
                 });
 
             });
