@@ -22,13 +22,10 @@ class enteringpeoplesController extends Controller
         $englishNumbersOnly = str_replace($num, $persian, $string);
         return $englishNumbersOnly;
     }
-
     public  function store(Request $request){
-
         $sendIt = false;
         $blocked = false;
         $count = DB::table('enteringblocks')->where('national_code',$request->input('code_melli'))->orderBy('id_b', 'DESC')->count();
-        
         if($count > 0){
             $isBlocked = DB::table('enteringblocks')->where('national_code',$request->input('code_melli'))->orderBy('id_b', 'DESC')->first()->isBlocked;
             if($isBlocked == 0){
@@ -40,7 +37,6 @@ class enteringpeoplesController extends Controller
         }else{
             $sendIt = true;
         }
-
         if($sendIt){
             date_default_timezone_set('Asia/Tehran');
             $g_y = Carbon::now()->year;
@@ -144,19 +140,7 @@ class enteringpeoplesController extends Controller
         }else{
             return response()->json(['success'=>'hi','blocked'=>$sendIt]);
         }
-        
-
-        
-
-
-
-
-
-
-
     }
-
-
     public function delete($id){
         $id_user=auth()->user()->id;
         $id_ef = DB::table('enteringforms')->where('id_user',$id_user)->orderBy('id_ef', 'DESC')->first()->id_ef;
@@ -173,17 +157,7 @@ class enteringpeoplesController extends Controller
     }
     public function editform1(Request $request)
     {
-        // $n=Entering_personel_unique::where('code_melli',$request->input('code_melli'))->get()->count();
-        // if($n == 0){
-        //     DB::table('entering_personel_uniques')->insert([
-        //         'f_name' => $request->input('f_name'),
-        //         'l_name' => $request->input('l_name'),
-        //         'code_melli' => $request->input('code_melli')
-        //     ]);
-        // }
-
         $id_user=auth()->user()->id;
-
         $id_ep=$request->input('id_ep');
         $f_name=$request->input('f_name');
         $l_name=$request->input('l_name');
@@ -209,10 +183,6 @@ class enteringpeoplesController extends Controller
         $date_no1= str_replace($persian,$num, $string);
         $persons_no= DB::table('enteringpeaples')->where('code_melli',$code_melli)->count();
         $persons2= DB::table('enteringpeaples')->where('code_melli',$code_melli)->get()->toArray();
-
-//        $code_p = DB::table('enteringpeaples')->where('id_ep',$id_ep)->first()->code_melli;
-
-
             foreach ($persons2 as $person2) {
                 if($person2->id_ep != $id_ep){
                     $code_p=$person2->code_melli;
