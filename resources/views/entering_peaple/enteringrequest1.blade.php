@@ -200,7 +200,12 @@
                                 $('#' + (Number(response.id_ep)+2000)).closest('tr').remove();
                             })
                         }else{
-                            alert("he is not allowded")
+                            // alert("he is not allowded")
+                            Swal.fire({
+                            icon: "error",
+                            title: "...مشکل در صدور مجوز ",
+                            text: "این فرد توسط مدیر محترم حفاظت فیزیکی نیروگاه تا اطلاع ثانوی از ورود به نیروگاه منع شده"
+                            });
                         }
                     }
                 });
