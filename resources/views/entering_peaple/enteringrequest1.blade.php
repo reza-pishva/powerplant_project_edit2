@@ -241,41 +241,55 @@
                     contentType:false,
                     processData:false,
                     success: function (response) {
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(8)').text($("#code_melli_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(9)').text($("#mobile_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(10)').text($("#f_name_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(11)').text($("#l_name_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(12)').text($("#id_et_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(13)').text($("#nationality_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(14)').text($("#age_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(3)').text($("#time_enter_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(5)').text($("#time_exit_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(2)').text($("#date_shamsi_enter_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(4)').text($("#date_shamsi_exit_edit").val());
-                        $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(1)').text($("#f_name_edit").val()+' '+$("#l_name_edit").val());
-                            toastr.options = {
-                                "closeButton": true,
-                                "debug": false,
-                                "positionClass": "toast-top-right",
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "3000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            };
-                            if(response.repeat==0){
-                                toastr.info('اطلاعات مربوط به این فرد تغییر داده شد');
-                                $('#s2_2').modal('toggle')
-                            }else{
-                                $('#s2_2').modal('toggle')
-                                alert('تاریخ غیر مجاز')
-                            }
-
+                        alert(response.reapeted)
+                        if(response.blocked){
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(8)').text($("#code_melli_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(9)').text($("#mobile_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(10)').text($("#f_name_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(11)').text($("#l_name_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(12)').text($("#id_et_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(13)').text($("#nationality_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(14)').text($("#age_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(3)').text($("#time_enter_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(5)').text($("#time_exit_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(2)').text($("#date_shamsi_enter_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(4)').text($("#date_shamsi_exit_edit").val());
+                                $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(1)').text($("#f_name_edit").val()+' '+$("#l_name_edit").val());
+                                    toastr.options = {
+                                        "closeButton": true,
+                                        "debug": false,
+                                        "positionClass": "toast-top-right",
+                                        "onclick": null,
+                                        "showDuration": "300",
+                                        "hideDuration": "1000",
+                                        "timeOut": "3000",
+                                        "extendedTimeOut": "1000",
+                                        "showEasing": "swing",
+                                        "hideEasing": "linear",
+                                        "showMethod": "fadeIn",
+                                        "hideMethod": "fadeOut"
+                                    };
+                                    if(response.repeat==0){
+                                        toastr.info('اطلاعات مربوط به این فرد تغییر داده شد');
+                                        $('#s2_2').modal('toggle')
+                                    }else{
+                                        $('#s2_2').modal('toggle')
+                                        Swal.fire({
+                                        icon: "error",
+                                        title: "...مشکل در صدور مجوز ",
+                                        text: "برای این فرد مجوز دیگری صادر شده که با بخشی از بازه زمانی انتخابی شما در این درخواست همپوشانی دارد"
+                                        });
+                                    }
+                        }else{
+                            Swal.fire({
+                            icon: "error",
+                            title: "...مشکل در صدور مجوز ",
+                            text: "این فرد توسط مدیر محترم حفاظت فیزیکی نیروگاه تا اطلاع ثانوی از ورود به نیروگاه منع شده"
+                            });
                         }
+
+
+                    }
 
                 });
 
