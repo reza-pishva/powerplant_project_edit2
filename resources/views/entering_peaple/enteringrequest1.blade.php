@@ -93,6 +93,16 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
+                        alert(response.people)
+                        if(response.people==1){
+                                $('#s2_3_1').modal('toggle')
+                        }
+                        if(response.people>1){
+                                toastr.success("مشخصات این فرد به فرم اضافه گردید", "", {
+                                    "timeOut": "2000",
+                                    "extendedTImeout": "0"
+                                });
+                        }
                         if(response.blocked){
                             $("#date_shamsi_exit").val($("#date_shamsi_exit100").val());
                             $("#date_shamsi_enter").val($("#date_shamsi_enter100").val());
@@ -104,15 +114,15 @@
                             $("#next_s3").show()
                             $('#s8').hide()
                             $("#s2_1").fadeIn()
-                            if(response.people==1){
-                                $('#s2_3_1').modal('toggle')
-                            }
-                            if(response.people>1){
-                                toastr.success("مشخصات این فرد به فرم اضافه گردید", "", {
-                                    "timeOut": "2000",
-                                    "extendedTImeout": "0"
-                                });
-                            }
+                            // if(response.people==1){
+                            //     $('#s2_3_1').modal('toggle')
+                            // }
+                            // if(response.people>1){
+                            //     toastr.success("مشخصات این فرد به فرم اضافه گردید", "", {
+                            //         "timeOut": "2000",
+                            //         "extendedTImeout": "0"
+                            //     });
+                            // }
                             var id_ep = $('<td>' + response.id_ep + '</td>')
                             var id_et = $('<td hidden>' +$('#id_et').val() + '</td>')
                             var nationality = $('<td hidden>' + $('#nationality').val() + '</td>')
