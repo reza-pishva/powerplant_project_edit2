@@ -241,7 +241,6 @@
                     contentType:false,
                     processData:false,
                     success: function (response) {
-                        alert(response.reapeted)
                         if(response.blocked){
                                 $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(8)').text($("#code_melli_edit").val());
                                 $('#' + (Number(response.id_ep)+1000)).closest('tr').find('td:eq(9)').text($("#mobile_edit").val());
@@ -269,7 +268,7 @@
                                         "showMethod": "fadeIn",
                                         "hideMethod": "fadeOut"
                                     };
-                                    if(response.repeat==0){
+                                    if(response.repeat == 0){
                                         toastr.info('اطلاعات مربوط به این فرد تغییر داده شد');
                                         $('#s2_2').modal('toggle')
                                     }else{
