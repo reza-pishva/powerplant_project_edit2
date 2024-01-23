@@ -156,7 +156,7 @@ class enteringpeoplesController extends Controller
         return response()->json(['success'=>'hi','data'=>$id]);
     }
     public function editform1(Request $request)
-    {
+    {        
         $sendIt = false;
         $blocked = false;
         $count = DB::table('enteringblocks')->where('national_code',$request->input('code_melli'))->orderBy('id_b', 'DESC')->count();
@@ -171,7 +171,6 @@ class enteringpeoplesController extends Controller
         }else{
             $sendIt = true;
         }
-
         if($sendIt){
             $id_user=auth()->user()->id;
             $id_ep=$request->input('id_ep');
@@ -254,6 +253,123 @@ class enteringpeoplesController extends Controller
         }
 
 
+        // if(DB::table('enteringpeaples')->where('code_melli','=',$request->input('code_melli'))->exists()){            
+        //     $date1 = DB::table('enteringpeaples')->where('code_melli','=',$request->input('code_melli'))->orderBy('id_ep', 'DESC')->first()->date_shamsi_enter;
+        //     $date2 = DB::table('enteringpeaples')->where('code_melli','=',$request->input('code_melli'))->orderBy('id_ep', 'DESC')->first()->date_shamsi_exit;
+        //     $date_no1_p= str_replace($persian,$num, $date1);
+        //     $date_no2_p= str_replace($persian,$num, $date2);            
+        // }
+        // else{
+        //     $date_no1_p=0;
+        //     $date_no2_p=0;
+        // }
+
+        // if(($date_no1>$date_no2_p) and ($date_no1<=$date_no2)){
+            
+            // $sendIt = false;
+            // $blocked = false;
+            // $count = DB::table('enteringblocks')->where('national_code',$request->input('code_melli'))->orderBy('id_b', 'DESC')->count();
+            // if($count > 0){
+            //     $isBlocked = DB::table('enteringblocks')->where('national_code',$request->input('code_melli'))->orderBy('id_b', 'DESC')->first()->isBlocked;
+            //     if($isBlocked == 0){
+            //         $sendIt = true;
+            //     }
+            //     if($isBlocked == 1){
+            //         $sendIt = false;
+            //     }            
+            // }else{
+            //     $sendIt = true;
+            // }
+            // if($sendIt){
+            //     $id_user=auth()->user()->id;
+            //     $id_ep=$request->input('id_ep');
+            //     $f_name=$request->input('f_name');
+            //     $l_name=$request->input('l_name');
+            //     $nationality=$request->input('nationality');
+            //     $age=$request->input('age');
+            //     $code_melli=$request->input('code_melli');
+            //     $mobile=$request->input('mobile');
+            //     $time_enter=$request->input('time_enter');
+            //     $date_shamsi_enter=$request->input('date_shamsi_enter');
+            //     $date_shamsi_enter_array=explode('/',$date_shamsi_enter);
+            //     $date_shamsi_enter=$date_shamsi_enter_array[0].$date_shamsi_enter_array[1].$date_shamsi_enter_array[2];
+            //     $time_exit=$request->input('time_exit');
+            //     $date_shamsi_exit=$request->input('date_shamsi_exit');
+            //     $date_shamsi_exit_array=explode('/',$date_shamsi_exit);
+            //     $date_shamsi_exit=$date_shamsi_exit_array[0].$date_shamsi_exit_array[1].$date_shamsi_exit_array[2];
+            //     $id_et=(int)$request->input('id_et');
+        
+            //     $string= $date_shamsi_exit;
+            //     $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            //     $num = range(0, 9);
+            //     $date_no2= str_replace($persian,$num, $string);
+            //     $string= $date_shamsi_enter;
+            //     $date_no1= str_replace($persian,$num, $string);
+            //     $persons_no= DB::table('enteringpeaples')->where('code_melli',$code_melli)->count();
+            //     $persons2= DB::table('enteringpeaples')->where('code_melli',$code_melli)->get()->toArray();
+            //         foreach ($persons2 as $person2) {
+            //             if($person2->id_ep != $id_ep){
+            //                 $code_p=$person2->code_melli;
+            //                 $date1 = DB::table('enteringpeaples')->where('id_ep',$person2->id_ep)->first()->date_no1;
+            //                 $date2 = DB::table('enteringpeaples')->where('id_ep',$person2->id_ep)->first()->date_no2;
+        
+            //                 $date_no1_p= str_replace($persian,$num, $date1);
+            //                 $date_no2_p= str_replace($persian,$num, $date2);
+        
+            //                 if(($date_no1>=$date_no2_p) and ($date_no1<=$date_no2) and ($date_no1>$date_no1_p)){
+            //                     Enteringpeaple::where('id_ep', $id_ep)->update([
+            //                         'date_no1'=>$date_no1,
+            //                         'date_no2'=>$date_no2,
+            //                         'date_shamsi_enter'=>$date_shamsi_enter,
+            //                         'date_shamsi_exit'=>$date_shamsi_exit,
+            //                         'time_enter'=>$time_enter,
+            //                         'time_exit'=>$time_exit,
+            //                         'f_name' => $f_name,
+            //                         'l_name' => $l_name,
+            //                         'code_melli' => $code_melli,
+            //                         'mobile' => $mobile,
+            //                         'nationality' => $nationality,
+            //                         'age' => $age,
+            //                         'id_et' => $id_et]);
+            //                     return response()->json(['repeat' => 0,'id_ep'=>$id_ep,'blocked'=>$sendIt]);
+            //                 }
+            //                 return response()->json(['repeat' => 1,'blocked'=>$sendIt]);
+            //             }
+            //         }
+            //         if($persons_no==1 or $persons_no==0){
+            //             if($date_no1<=$date_no2){
+            //                 Enteringpeaple::where('id_ep', $id_ep)->update([
+            //                     'date_no1'=>$date_no1,
+            //                     'date_no2'=>$date_no2,
+            //                     'date_shamsi_enter'=>$date_shamsi_enter,
+            //                     'date_shamsi_exit'=>$date_shamsi_exit,
+            //                     'time_enter'=>$time_enter,
+            //                     'time_exit'=>$time_exit,
+            //                     'f_name' => $f_name,
+            //                     'l_name' => $l_name,
+            //                     'code_melli' => $code_melli,
+            //                     'mobile' => $mobile,
+            //                     'nationality' => $nationality,
+            //                     'age' => $age,
+            //                     'id_et' => $id_et]);
+            //                 return response()->json(['repeat' => 0,'id_ep'=>$id_ep,'blocked'=>$sendIt]);
+            //             }else{
+            //                 return response()->json(['repeat' => 1,'id_ep'=>$id_ep,'blocked'=>$sendIt]);
+            //             }
+            //         }
+            // }else{
+            //     return response()->json(['success'=>'hi','blocked'=>$sendIt]);
+            // }
+
+
+
+
+
+
+      
+        // }else{
+        //     return response()->json(['success'=>'hi','overlap'=>1]);
+        // }
     }
     public function editform2(Request $request)
     {
