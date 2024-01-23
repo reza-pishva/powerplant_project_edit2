@@ -37,7 +37,6 @@ class EnteringBlockController extends Controller
     }
     public function update(Request $request){
         
-        // if($n==0){
             $id_b_e=$request->id_b_e;
             EnteringBlock::where('id_b',$id_b_e)->update(['f_name' => $request->f_name_e,
             'l_name' => $request->l_name_e,
