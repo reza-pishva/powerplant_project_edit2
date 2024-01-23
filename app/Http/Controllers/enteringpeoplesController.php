@@ -258,7 +258,6 @@ class enteringpeoplesController extends Controller
     public function editform2(Request $request)
     {
         $id_user=auth()->user()->id;
-
         $id_ep=$request->input('id_ep');
         $f_name=$request->input('f_name');
         $l_name=$request->input('l_name');
@@ -275,7 +274,6 @@ class enteringpeoplesController extends Controller
         $date_shamsi_exit_array=explode('/',$date_shamsi_exit);
         $date_shamsi_exit=$date_shamsi_exit_array[0].$date_shamsi_exit_array[1].$date_shamsi_exit_array[2];
         $id_et=(int)$request->input('id_et');
-
         $string= $date_shamsi_exit;
         $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
         $num = range(0, 9);
