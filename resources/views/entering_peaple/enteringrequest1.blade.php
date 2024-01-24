@@ -324,7 +324,6 @@
                         }
                         $('#s9').hide()
                         if(response.cars==1){
-                            //alert(response.cars)
                             $("#s3_3_1").modal('toggle')
                         }
                         var id_ec = $('<td>' + response.id_ec + '</td>')
