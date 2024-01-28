@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Http\Controllers;
+namespace App\Http\Controllers;
 use App\Models\Entering_personel_unique;
 use App\Models\CalendarHelper;
 use App\Models\Enteringindividual;
