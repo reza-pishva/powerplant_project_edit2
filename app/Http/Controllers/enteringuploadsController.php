@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Http\Controllers;
+namespace App\Http\Controllers;
 
-use App\Models\Enteringeq;
-use App\Models\Enteringform;
-use App\Models\Enteringupload;
+use App\Enteringeq;
+use App\Enteringform;
+use App\Enteringupload;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

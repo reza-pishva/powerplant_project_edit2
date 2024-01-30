@@ -2,8 +2,8 @@
 
 namespace App\Models\Http\Controllers;
 
-use App\Models\Enteringform;
-use App\Models\Enteringin;
+use App\Enteringform;
+use App\Enteringin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

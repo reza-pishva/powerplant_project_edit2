@@ -2,8 +2,8 @@
 
 namespace App\Models\Http\Controllers;
 
-use App\Models\Entering_personel_unique;
-use App\Models\Enteringpeaple;
+use App\Entering_personel_unique;
+use App\Enteringpeaple;
 use Illuminate\Support\Facades\DB;
 
 class enteringPersonelUniqueController extends Controller
