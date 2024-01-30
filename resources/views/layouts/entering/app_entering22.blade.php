@@ -10,12 +10,14 @@
     <script src="{{URL::to('/')}}/persian-date.js"></script>
     <script src="{{URL::to('/')}}/persian-datepicker.js"></script>
     <link rel="stylesheet" href="{{URL::to('/')}}/persian-datepicker.css">
-    <script src="{{URL::to('/')}}/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="{{URL::to('/')}}/sweetalert.min.css">
+    {{-- <script src="{{URL::to('/')}}/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="{{URL::to('/')}}/sweetalert.min.css"> --}}
     <script src="{{URL::to('/')}}/toastr.min.js"></script>
     <link rel="stylesheet" href="{{URL::to('/')}}/toastr.min.css">
     <script src="{{URL::to('/')}}/jquery.timepicker.min.js"></script>
     <link rel="stylesheet" href="{{URL::to('/')}}/jquery.timepicker.min.css">
+    <script src="sweetalert.min.js"></script>
+    <script src="sweetalert2.js"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

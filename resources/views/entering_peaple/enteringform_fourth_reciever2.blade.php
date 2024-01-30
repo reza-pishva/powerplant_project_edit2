@@ -35,7 +35,6 @@
                 var code_melli= $('#code_melli').val().toString();
                 var date_enter= $('#date_shamsi_enter').val().toString();
                 var time_enter= $('#time_enter').val().toString();
-
                 var day=date_enter.substr(8,2)
                 var month=date_enter.substr(5,2)
                 var year=date_enter.substr(0,4)
@@ -52,12 +51,22 @@
                             "time": time_enter,
                             "_token": token,
                         },
+                        beforeSend: function(){
+                            $("#setTimeButton1").hide();
+                            $("#setTimeButton2").hide();
+                            $("#first_spinner").show();
+                        },
                         success: function (response) {
-                            if(response.enter_exit == 2){
-                                alert('عملیات ثبت قبلا برای این فرد اعمال شده است')
+                            $("#first_spinner").hide();
+                            $("#setTimeButton1").show();
+                            $("#setTimeButton2").show();
+                            if(response.enter_exit == 2){     
+                                //alert("ورود این فرد قبلا ثبت شده")                           
+                                // $("#notice1").attr("class", "alert-success");               
                             }
                             if(response.enter_exit == 1){
-                                alert('ورود این فرد ثبت شد')
+                                // $("#notice1").attr("class", "alert-danger"); 
+                                //alert("ورود این فرد ثبت شد")   
                             }
 
                         }
@@ -86,13 +95,23 @@
                             "time": time_enter,
                             "_token": token,
                         },
+                        beforeSend: function(){
+                            $("#setTimeButton1").hide();
+                            $("#setTimeButton2").hide();
+                            $("#first_spinner").show();                            
+                        },
                         success: function (response) {
-                            // alert(response.diff)
-                            if(response.enter_exit == 1){
-                                alert('عملیات ثبت قبلا برای این فرد اعمال شده است')
+                            $("#first_spinner").hide();
+                            $("#setTimeButton1").show();
+                            $("#setTimeButton2").show();
+                            // $("#dailyenter").hide();
+                            if(response.enter_exit == 1){   
+                                //Swal.fire('عملیات ثبت قبلا برای این فرد اعمال شده است', '', 'success')       
+                                //alert("خروج این فرد قبلا ثبت شده")                       
                             }
                             if(response.enter_exit == 2){
-                                alert('خروج این فرد ثبت شد')
+                                //Swal.fire('خروج این فرد با موفقیت ثبت شد', '', 'success')
+                                //alert("خروج این فرد با موفقیت ثبت شد")  
                             }
                         }
                     });
@@ -1972,63 +1991,57 @@
                 </div>
 
                 <!-- List -->
-                <div class="container"  style="margin: auto;background-color: #d7d7d7;width: 550px ;height: 170px;">
+                <div class="container"  style="margin: auto;background-color: #d7d7d7;width: 550px ;height:230px;">
 
                     <div class="row" style="margin-top: 10px">
 
                         <div id="person_div88" class="col" style="height:50px">
 
                             <div id="s2" class="container" style="text-align: left;background-color:#E4F1F3;width: 100%;border-radius: 5px;height:150px;direction: rtl;color: white;margin-top:2px;padding-top: 2px;">
-{{--                                <form method="post" encType="multipart/form-data" id="addindividuals" action="{{route('addindividuals.store')}}">--}}
-{{--                                    {{csrf_field()}}--}}
-{{--                                    <div class="row" style="height: 15px">--}}
-{{--                                        <select  class="form-control" name="enter_exit" id="enter_exit" style="width: 35%;font-family: Tahoma;font-size: small;margin-top: 10px;margin-right: 10px" required>--}}
-{{--                                            <option value=''>انتخاب ورود یا خروج</option>--}}
-{{--                                            <option value='1'>ثبت ورود</option>--}}
-{{--                                            <option value='2'>ثبت خروج</option>--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-{{--                                    <br>--}}
-{{--                                    <div class="row" style="height: 20px;margin-top: 20px">--}}
-{{--                                        <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">تاریخ ورود یا خروج:</p></div>--}}
-{{--                                        <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">ساعت ورود یا خروج:</p></div>--}}
-{{--                                    </div>--}}
                                     <input hidden type="text" id="code_melli" name="code_melli">
                                     <div class="row" style="height: 15px">
                                         <div class="col">
                                             <div class="form-group" >
                                                 <div class="row">
-                                                  <div class="col-6">
-{{--                                                              <img src="./PWER.png" id="bs5"  class="reza2" data-toggle="tooltip" data-placement="bottom" title="در این مرحله می توان لیست کلیه وسایل کار این نفرات را وارد کرد">--}}
-                                                              <img src="{{URL::to('/')}}/PWEG.png" id="setTimeButton1"  class="reza22" data-toggle="tooltip" data-placement="bottom" title="ثبت ورود به نیروگاه">
-                                                              <input hidden type="text" maxlength="10" class="form-control" id="date_shamsi_enter"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ شروع فعالیت:" name="date_enter" style="direction: rtl;font-family: Tahoma;font-size: smaller;width: 73%"  required title="تاریخ ورود یا خروج">
-                                                              <input hidden type="text" maxlength="10" class="form-control" id="time_enter"  data-toggle="tooltip"  name="time_enter" style="direction: rtl;font-family: Tahoma;font-size: smaller;width: 80%;text-align:center" required placeholder="ساعت ورود یا خروج">
 
-{{--                                                          <div class="col-5" style="text-align: right">--}}
-{{--                                                              <button type="button" id="setTimeButton1" style="font-family: Tahoma;font-size: 10px;text-align: center;width: 70%">ساعت فعلی</button>--}}
-{{--                                                          </div>--}}
-                                                  </div>
-                                                  <div class="col-6" style="text-align: right">
-                                                               <img src="{{URL::to('/')}}/PWER.png" id="setTimeButton2"  class="reza22" data-toggle="tooltip" data-placement="bottom" title="ثبت خروج از نیروگاه">
+
+                                                    <div class="row">
+                                                       <div class="col-4"></div>
+                                                       <div class="col-4">
+                                                            <div id="first_spinner" style="display: none;margin-top:15px;text-align:center;margin-left:130px">
+                                                                <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                                                            </div>
+                                                       </div>
+                                                       <div class="col-4"></div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-1"></div>
+                                                        <div class="col-5">
+                                                            <div style="margin-right: 50px">
+                                                                <img src="{{URL::to('/')}}/PWEG.png" id="setTimeButton1"  class="reza22" data-toggle="tooltip" data-placement="bottom" title="ثبت ورود به نیروگاه">
+                                                                <input hidden type="text" maxlength="10" class="form-control" id="date_shamsi_enter"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ شروع فعالیت:" name="date_enter" style="direction: rtl;font-family: Tahoma;font-size: smaller;width: 73%"  required title="تاریخ ورود یا خروج">
+                                                                <input hidden type="text" maxlength="10" class="form-control" id="time_enter"  data-toggle="tooltip"  name="time_enter" style="direction: rtl;font-family: Tahoma;font-size: smaller;width: 80%;text-align:center" required placeholder="ساعت ورود یا خروج">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <div style="text-align: right">
+                                                                <img src="{{URL::to('/')}}/PWER.png" id="setTimeButton2"  class="reza22" data-toggle="tooltip" data-placement="bottom" title="ثبت خروج از نیروگاه">
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-1"></div>
+                                                     </div>   
+
+                                                     <div class="alert alert-success" style="display: none" id="notice1" role="alert">
+                                                        ورود این فرد ثبت گردید
+                                                     </div>
+                                  
+                                                  
+                                                 
+                
                                                 </div>
                                             </div>
                                         </div>
-{{--                                        <div class="col">--}}
-{{--                                            <div class="form-group" >--}}
-
-{{--                                            </div>--}}
-{{--                                        </div>--}}
                                     </div>
-{{--                                    <br>--}}
-{{--                                    <div class="row" style="margin-top:30px">--}}
-{{--                                        <div class="col" style="text-align:center">--}}
-{{--                                            <button type="submit" class="btn btn-primary" id="btnupdate" style="text-align:left;font-family: Tahoma;font-size: small;text-align: center;width:50%">ثبت اطلاعات</button>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
-{{--                                </form>--}}
-
                             </div>
                         </div>
                     </div>

@@ -895,12 +895,6 @@
                             b4 = $('<button type="button" class="btn-outline-warning delete1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">حذف</button>').attr('id',response.result[i]['id_b']+3000)
                             t4 = $('<td style="width: 6%;text-align:center"></td>')
                             t4.append(b4)
-                            // if(response.result[i]['isBlocked']==0){
-                            //         row = $('<tr class="report_row" style="background-color: rgb(184,248,189)"></tr>')
-                            //     }
-                            // if(response.result[i]['isBlocked']==1){
-                            //         row = $('<tr class="report_row" style="background-color:rgb(248,186,184)"></tr>')
-                            // }
                             row = $('<tr class="report_row"></tr>')
                             row.append(id_b,t0,f_name,l_name,national_code,company_name,reason,t1,t2,t3,t4)
                             $("#block_table").append(row)
