@@ -60,13 +60,15 @@
                             $("#first_spinner").hide();
                             $("#setTimeButton1").show();
                             $("#setTimeButton2").show();
-                            if(response.enter_exit == 2){     
-                                //alert("ورود این فرد قبلا ثبت شده")                           
-                                // $("#notice1").attr("class", "alert-success");               
+                            if(response.enter_exit == 2){   
+                                $('.individuals20').show()
+                                $('.individuals20').toast('show');
+                                $("#individuals20").html("ورود این فرد قبلا ثبت شده")                    
                             }
                             if(response.enter_exit == 1){
-                                // $("#notice1").attr("class", "alert-danger"); 
-                                //alert("ورود این فرد ثبت شد")   
+                                $('.individuals20').show()
+                                $('.individuals20').toast('show');
+                                $("#individuals20").html("ورود این فرد ثبت شد")  
                             }
 
                         }
@@ -104,14 +106,15 @@
                             $("#first_spinner").hide();
                             $("#setTimeButton1").show();
                             $("#setTimeButton2").show();
-                            // $("#dailyenter").hide();
                             if(response.enter_exit == 1){   
-                                //Swal.fire('عملیات ثبت قبلا برای این فرد اعمال شده است', '', 'success')       
-                                //alert("خروج این فرد قبلا ثبت شده")                       
+                                $('.individuals20').show()
+                                $('.individuals20').toast('show');
+                                $("#individuals20").html("خروج این فرد قبلا ثبت شده")                    
                             }
                             if(response.enter_exit == 2){
-                                //Swal.fire('خروج این فرد با موفقیت ثبت شد', '', 'success')
-                                //alert("خروج این فرد با موفقیت ثبت شد")  
+                                $('.individuals20').show()
+                                $('.individuals20').toast('show');
+                                $("#individuals20").html("خروج این فرد ثبت شد")  
                             }
                         }
                     });
@@ -2029,18 +2032,28 @@
                                                           </div>
                                                         </div>
                                                         <div class="col-1"></div>
-                                                     </div>   
+                                                    </div>  
 
-                                                     <div class="alert alert-success" style="display: none" id="notice1" role="alert">
-                                                        ورود این فرد ثبت گردید
-                                                     </div>
+
+
                                   
                                                   
                                                  
                 
                                                 </div>
+
                                             </div>
+                                            <div class="row mt-4">
+                                                <div class="col-3"></div>
+                                                <div class="col-6">
+                                                    <div class="toast bg-info individuals20" style="margin: auto;border-radius: 10px;width:100%;height:53px;padding-top:3px">
+                                                        <div class="toast-body" style="text-align: center"><p id="individuals20" style="font-family: Tahoma;font-size: small;color: white;"></p></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3"></div>
+                                            </div> 
                                         </div>
+
                                     </div>
                             </div>
                         </div>
