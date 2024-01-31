@@ -696,8 +696,6 @@
             })
             $('#daftarsearach').click(function(event) {
                 $('#daftar_modal').modal('toggle');
-                // var date_exit_shamsi1=$('#date_exit_shamsi1').val();
-                // var date_exit_shamsi2=$('#date_exit_shamsi2').val();
                 var date_exit_shamsi1=$('#date_exit_shamsi1').val().toString();
                 var year1=date_exit_shamsi1.slice(0,4)
                 var month1=date_exit_shamsi1.slice(5,7)
@@ -1076,7 +1074,7 @@
                     </div>
                     <div class="row">
                         <div id="person_div" class="col" style="height:50px">
-                            <table id="person_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                            <table id="person_table"  style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                                 <tr style="color: black">
                                     <td class="person" style="width: 5%">کد</td>
                                     <td class="person" style="width: 10%">نام</td>
@@ -1094,6 +1092,11 @@
                             </table>
                         </div>
                     </div>
+
+
+
+
+                    
                     <div id="first1" class="row">
                         <div id="ec_txt" class="col" style="height:25px;text-align: right;">
                             <p style="font-family: Tahoma;font-size: smaller;color: black;margin-right: 15px;">مشخصات خودروهای مجاز به ورود به نیروگاه:</p>

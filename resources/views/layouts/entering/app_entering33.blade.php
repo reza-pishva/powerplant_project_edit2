@@ -342,25 +342,25 @@
 
                        </div>
                        <div class="col">
-                           <div>
+                           {{-- <div>
                                <a href="#">
                                    <img src="{{URL::to('/')}}/cardexpired002.png" id="fifth_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت مهمان منقضی شده">
                                </a>
-                           </div>
+                           </div> --}}
 
                        </div>
                        <div class="col">
-                           <div>
+                           {{-- <div>
                                <a href="#">
                                    <img src="{{URL::to('/')}}/card001.png" id="fourth_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت مهمان معتبر">
                                </a>
-                           </div>
+                           </div> --}}
 
                        </div>
                        <div class="col">
                            <div>
                                <a href="#">
-                                   <img src="{{URL::to('/')}}/blacklist.png" id="third2_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست افرادی که تاکنون برای مدتی وارد بلاک لیست شده اند">
+                                   <img src="{{URL::to('/')}}/blacklist.png" id="third2_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="مشاهده بلک لیست">
                                </a>
                            </div>
 
@@ -368,17 +368,17 @@
                        <div class="col">
                            <div>
                                <a href="#">
-                                   <img src="{{URL::to('/')}}/unauthorised002.jpg" id="third_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست افرادی که موقتا در بلاک لیست قرار گرفته اند">
+                                   <img src="{{URL::to('/')}}/unauthorised002.jpg" id="third_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="مدیریت بلک لیست">
                                </a>
                            </div>
 
                        </div>
                        <div class="col">
-                           <div>
+                           {{-- <div>
                                <a href="#">
                                    <img src="{{URL::to('/')}}/person_search002.png" id="second_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست افرادی که در بازه زمانی مجاز برای ورود به نیروگاه قرار دارند">
                                </a>
-                           </div>
+                           </div> --}}
 
                        </div>
                        <div class="col">

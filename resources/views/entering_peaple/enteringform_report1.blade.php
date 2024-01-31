@@ -678,7 +678,7 @@
                         var row = ''
                         var enterexit=''
                         var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;"><td style="border-left:1px white solid;">کد فرد</td><td style="border-left:1px white solid;">نام</td><td style="border-left:1px white solid;">نام خانوادگی</td><td style="border-left:1px white solid;">کد ملی</td><td style="border-left:1px white solid;">شماره تماس</td><td style="border-left:1px white solid;">تحت عنوان</td><td style="border-left:1px white solid;">#</td></tr>'
-                        $("#report_table").append(row_th)
+                        $("#block_table2").append(row_th)
 
                         for(var i = 0; i < response.results.length; i++) {
                             id_ep = $('<td style="width: 5%">' + response.results[i]['id_ep'] + '</td>')
@@ -736,6 +736,7 @@
                                             "_token": token,
                                         },
                                         success: function (response) {
+                                            
 
                                             var edit=''
                                             var del=''
@@ -764,7 +765,7 @@
                                                 t2 = $('<td style="width: 15%" class="personinfo2"></td>')
                                                 row = $('<tr class="report_row"></tr>')
                                                 row.append(id_ed,enter_exit,date,time,enter_exit_val)
-                                                $("#person_table77").append(row)//data-toggle="modal" data-target="#personinfo"
+                                                $("#block_table2").append(row)//data-toggle="modal" data-target="#personinfo"
                                             }
 
                                         }
@@ -781,14 +782,12 @@
                         $('.mylist20').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
-                        $(".mylist2").fadeToggle(2000);
+                        $(".mylist2").fadeToggle(200);
                     }})
 
             })
             $('#daftarsearach').click(function(event) {
                 $('#daftar_modal').modal('toggle');
-                // var date_exit_shamsi1=$('#date_exit_shamsi1').val();
-                // var date_exit_shamsi2=$('#date_exit_shamsi2').val();
                 var date_exit_shamsi1=$('#date_exit_shamsi1').val().toString();
                 var year1=date_exit_shamsi1.slice(0,4)
                 var month1=date_exit_shamsi1.slice(5,7)
@@ -816,7 +815,7 @@
                         var time_enter = ''
                         var row = ''
                         var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;"><td style="border-left:1px white solid;text-align: center">کد تردد</td><td style="border-left:1px white solid;text-align: center">نوع تردد</td><td style="border-left:1px white solid;text-align: center">نام</td><td style="border-left:1px white solid;text-align: center">نام خانوادگی</td><td style="border-left:1px white solid;text-align: center">کد ملی</td><td style="border-left:1px white solid;text-align: center">تاریخ</td><td style="border-left:1px white solid;text-align: center">ساعت</td><td style="border-left:1px white solid;text-align: center">ثبت کننده</td></tr>'
-                        $("#report_table").append(row_th)
+                        $("#block_table2").append(row_th)
                         for(var i = 0; i < response.results.length; i++) {
                             for(var z = 0; z < response.peaples.length; z++) {
                                 if(response.peaples[z]['code_melli']==response.results[i]['code_melli']){
@@ -847,14 +846,14 @@
                             time_enter = $('<td style="width: 10%;text-align: center;padding-right: 5px">' + response.results[i]['time_enter'] + '</td>')
                             row = $('<tr class="report_row"></tr>')
                             row.append(i_ed,enter_exit,f_name,l_name,code_melli,date_enter,time_enter,l_name2)
-                            $("#report_table").append(row)
+                            $("#block_table2").append(row)
                         }
                         $("#editlist").css("margin-top","100px");
                         $(".mylist").hide();
                         $('.mylist2').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
-                        $(".mylist2").fadeToggle(2000);
+                        $(".mylist2").fadeToggle(200);
                     }})
 
             })
@@ -2202,7 +2201,7 @@
 
                 <div class="row" style="margin-top: 10px">
                     <div id="person_div" class="col" style="height:50px">
-                        <table id="person_table33" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                        <table id="person_table33" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                             <tr style="color: black">
                                 <td class="person" style="width: 5%">کد</td>
                                 <td class="person" style="width: 10%">نام</td>
@@ -2497,7 +2496,7 @@
                     <div id="person_div2" class="col" style="height:50px">
                         <input hidden type="text" id="code_melli_s3">
 
-                        <table id="person_table66" align="center" style="width: 90%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                        <table id="person_table66"  style="width: 90%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                             <tr style="color: black">
                                 <td class="person" style="width: 5%">کد</td>
                                 <td class="person" style="width: 10%">ورود/خروج</td>
@@ -2553,7 +2552,7 @@
 
                 <div class="row" style="margin-top: 10px">
                     <div id="person_div" class="col" style="height:50px">
-                        <table id="person_table123" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                        <table id="person_table123" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                             <tr style="color: black">
                                 <td class="person" style="width: 5%">کد</td>
                                 <td class="person" style="width: 10%">نام</td>
@@ -2708,7 +2707,7 @@
 
                         </div>
                         <input hidden type="text" id="code_melli_s4">
-                        <table id="person_table77" align="center" style="width: 90%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                        <table id="person_table77" style="width: 90%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                             <tr style="color: black">
                                 <td class="person" style="width: 5%">کد</td>
                                 <td class="person" style="width: 10%">ورود/خروج</td>
@@ -3051,14 +3050,23 @@
             </div>
         </div>
     </div>
-</div></div>
+</div>
+</div>
 
 
 
 
 
 
-
+    <!-- دفتر گزارش روزانه -->
+    <div class="row mylist200" style="margin: auto;width:70%;display: none;margin-top: 5px">
+        <div class="col-12 pt-2" id="title_report" style="height: 35px;margin-top: 5px;border-radius: 5px;font-family: Tahoma;font-size: small;direction: rtl;color: white;text-align: right;background-color:rgb(38, 42, 152)">لیست کلیه افراد</div>
+    </div>
+    <div class="row mylist200" style="margin: auto;width:70%;height:310px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
+        <div class="col-12" style="direction: rtl;height: 300px;overflow-y: scroll;">
+            <table id="block_table2" text-align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top:5px"></table>
+        </div>
+    </div>
 
 
 
