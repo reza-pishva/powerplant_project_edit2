@@ -710,8 +710,16 @@
                 $.ajax({
                     url: "/total-individuals"+"/"+date_exit_shamsi1+"/"+date_exit_shamsi2,
                     type: 'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست ورود و خروج افراد به نیروگاه</p>')
                         var i_ed = ''
                         var enter_exit=""
