@@ -736,7 +736,7 @@
                                             "_token": token,
                                         },
                                         success: function (response) {
-                                            
+
 
                                             var edit=''
                                             var del=''
@@ -802,8 +802,12 @@
                 $.ajax({
                     url: "/total-individuals"+"/"+date_exit_shamsi1+"/"+date_exit_shamsi2,
                     type: 'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست ورود و خروج افراد به نیروگاه</p>')
                         var i_ed = ''
                         var enter_exit=""
@@ -853,7 +857,7 @@
                         $('.mylist2').hide();
                         $('.mylist3').hide();
                         $(".register").hide();
-                        $(".mylist2").fadeToggle(200);
+                        $(".mylist2").fadeToggle();
                     }})
 
             })
@@ -2158,7 +2162,11 @@
         <div class="col-12 pt-2" id="title_report" style="height: 35px;margin-top: 5px;border-radius: 5px;font-family: Tahoma;font-size: small;direction: rtl;color: white;text-align: right;background-color:rgb(38, 42, 152)">لیست کلیه افراد</div>
     </div>
     <div class="row mylist2" style="margin: auto;width:70%;height:310px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
+        
         <div class="col-12" style="direction: rtl;height: 300px;overflow-y: scroll;">
+            <div id="first_spinner" style="display: none;margin-top:105px;text-align:center;margin-left:50px">
+                <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+            </div>
             <table id="block_table2" text-align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top:5px"></table>
         </div>
     </div>
@@ -3073,7 +3081,7 @@
 
 
 
-
+ 
 
 
 
