@@ -18,8 +18,12 @@
                     dataType: 'JSON',
                     contentType: false,
                     processData: false,
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".reports").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         var enter_exit=''
                         var with_return=''
                         var id_exit = ''
@@ -127,14 +131,18 @@
                             $.ajax({
                                 url: '/workflow/'+id_exit,
                                 method:'GET',
-                                success: function (response) {
+                                beforeSend: function(){
                                     $('#myModal4').modal('show');
+                                    $(".workflowrows").remove();
+                                    $("#first_spinner2").show();
+                                },
+                                success: function (response) {
+                                    $("#first_spinner2").hide();
                                     var description = ''
                                     var date_shamsi = ''
                                     var time = ''
                                     var l_name = ''
-                                    var row = ''
-                                    $(".workflowrows").remove();
+                                    var row = ''                                    
                                     for(var i = 0; i < response.results.length; i++) {
                                         description = $('<td style="width: 70%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
                                         date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
@@ -211,7 +219,11 @@
             <div class="col-8">
                 <div class="row mylist" style="margin: auto;width:95%;height:320px;direction: rtl;margin-top: 15px;border: 1px solid black;border-radius: 5px;text-align: center;margin-right: 120px">
                     <div class="col-12" style="direction: rtl;height: 317px;overflow-y: scroll;background-color:rgba(0, 0,55, 0.4)">
-                        <table id="request_table2" align="center" style="width: 100%;font-family: Tahoma;font-size: small;color:white">
+                        
+                        <table id="request_table2"  style="width: 100%;font-family: Tahoma;font-size: small;color:white">
+                            <div id="first_spinner" style="display: none;margin-top:105px;text-align:center;margin-left:50px">
+                                <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                            </div>
                             <tr class="bg-info reports" style="color: white;height: 30px;"><td style="border-left:1px white solid;width: 5%">شماره درخواست</td><td style="border-left:1px white solid;width: 10%">تاریخ</td><td style="border-left:1px white solid;width:10%">درخواست کننده</td><td style="border-left:1px white solid;width: 45%">توضیحات</td><td style="border-left:1px white solid;width: 20%">مقدار</td><td style="border-left:1px white solid;width: 20%">وضعیت درخواست</td><td style="width: 10%">#</td></tr>
                         </table>
 
@@ -360,6 +372,9 @@
                 <!-- List -->
                 <div class="container"  style="margin: auto;background-color:#c4e6f5;width: 850px ;height: 400px;;overflow-y: scroll">
                     <table class="table table-striped" id="workflow" style="width: 800px">
+                        <div id="first_spinner2" style="display: none;margin-top:105px;text-align:center;margin-left:-25px">
+                            <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                        </div>
                     </table>
                 </div>
 
