@@ -15,8 +15,16 @@
                 $.ajax({
                     url: '/level5-entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد دریافتی جهت تایید</p>')
                         var id_ef = ''
                         var date_shamsi = ''
@@ -264,8 +272,16 @@
                 $.ajax({
                     url: '/level6-entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد ارسالی برای حراست</p>')
                         var id_ef = ''
                         var date_shamsi = ''
@@ -345,8 +361,16 @@
                 $.ajax({
                     url: '/3not-confirmed-boss3-entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست مواردی که توسط شما تایید نشده و بازگشت داده شده</p>')
                         var id_ef = ''
                         var date_shamsi = ''
@@ -437,9 +461,17 @@
                         $.ajax({
                             url: '/level5-entering',
                             method:'GET',
-                            success: function (response) {
-                                $('#myModal2').modal('toggle');
+                            beforeSend: function(){
                                 $(".report_row").remove();
+                                $(".mylist").hide();
+                                $('.mylist2').hide();
+                                $('.mylist3').hide();
+                                $(".register").hide();
+                                $("#first_spinner").show();
+                            },
+                            success: function (response) {
+                                $("#first_spinner").hide();
+                                $('#myModal2').modal('toggle');                                
                                 $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد دریافتی جهت تایید</p>')
                                 var id_ef = ''
                                 var date_shamsi = ''
