@@ -127,7 +127,12 @@
         <div class="col-10">
             <div class="row" style="border-radius: 5px;height: 740px;width: 100%;">
                 <div class="col-1"></div>
-                <div class="col-10">@yield('content')</div>
+                <div class="col-10">
+                    <div id="first_spinner" style="display:none;margin-top:90px;text-align:center;margin-left:110px">
+                        <img src="preloader22.gif" style="width:150px;height:140px;border-radius:10px">
+                    </div>
+                    @yield('content')
+                </div>
                 <div class="col-1"></div>
             </div>
         </div>

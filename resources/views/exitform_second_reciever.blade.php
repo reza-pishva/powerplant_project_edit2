@@ -9,8 +9,16 @@
                 $.ajax({
                     url: '/2level2',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد دریافتی جهت تایید</p>')
                         var id_exit = ''
                         var l_name = ''
@@ -214,8 +222,16 @@
                 $.ajax({
                     url: '/level3',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد ارسالی برای مدیر نیروگاه</p>')
                         var id_exit = ''
                         var l_name = ''
@@ -358,8 +374,16 @@
                 $.ajax({
                     url: '/2not-confirmed-boss2',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست مواردی که توسط شما تایید نشده و بازگشت داده شده</p>')
                         var id_exit = ''
                         var l_name = ''
@@ -502,8 +526,16 @@
                 $.ajax({
                     url: '/level-3',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست مواردی که مدیر نیروگاه تایید نکرده</p>')
                         var id_exit = ''
                         var l_name = ''
@@ -646,8 +678,16 @@
                 $.ajax({
                     url: '/level4-1',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد در انتظار خروج</p>')
                         var l_name=''
                         var id_exit = ''
@@ -756,8 +796,16 @@
                 $.ajax({
                     url: '/level6',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد در انتظار ورود</p>')
                         var l_name=''
                         var id_exit = ''
@@ -882,12 +930,19 @@
                     contentType:false,
                     processData:false,
                     success: function (response) {
-                        // refresh page--
                         $.ajax({
                             url: '/2level2',
                             method:'GET',
-                            success: function (response) {
-                                $(".report_row").remove();
+                            beforeSend: function(){
+                        $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                                 $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد دریافتی جهت تایید</p>')
                                 var id_exit = ''
                                 var l_name = ''
@@ -1112,8 +1167,16 @@
                 $.ajax({
                     url: '/show-archive',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد انتقالی به بایگانی</p>')
                         var id_exit = ''
                         var l_name = ''
@@ -1488,7 +1551,7 @@
     <!-- List of content -->
     <div class="row mylist" style="margin: auto;width:80%;height:185px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
         <div class="col-12" style="direction: rtl;height: 183px;overflow-y: scroll">
-            <table id="request_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small">
+            <table id="request_table" style="width: 100%;font-family: Tahoma;font-size: small">
                 <tr class="bg-primary" style="color: white">
                     <td>شماره درخواست</td>
                     <td>تاریخ درخواست</td>
