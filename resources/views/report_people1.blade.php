@@ -17,8 +17,16 @@
                     dataType: 'JSON',
                     contentType: false,
                     processData: false,
+                    beforeSend: function(){
+                        $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
                     success: function (response) {
-                        $(".reports").remove();
+                        $("#first_spinner").hide();
                         var enter_exit=''
                         var with_return=''
                         var id_exit = ''
@@ -50,7 +58,7 @@
                             condition=response.results[i]['level']
                             t1 = $('<td></td>')
 
-                            history = $('<button type="button" class="btn-sm btn-primary history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">گردش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                            history = $('<button type="button" class="btn-sm btn-outline-primary history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">گردش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
                             if(condition==1){
                                 t2 = $('<td style="text-align: right;padding-right: 3px">نزد مدیرقسمت</td>')
                             }
@@ -209,7 +217,10 @@
             <div class="col-8">
                 <div class="row mylist" style="margin: auto;width:95%;height:320px;direction: rtl;margin-top: 15px;border: 1px solid black;border-radius: 5px;text-align: center;margin-right: 120px">
                     <div class="col-12" style="direction: rtl;height: 317px;overflow-y: scroll;background-color:rgba(0, 0,55, 0.4)">
-                        <table id="request_table2" align="center" style="width: 100%;font-family: Tahoma;font-size: small;color:white">
+                        <table id="request_table2" style="width: 100%;font-family: Tahoma;font-size: small;color:white">
+                            <div id="first_spinner" style="display: none;margin-top:105px;text-align:center;margin-left:50px">
+                                <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                            </div>
                             <tr class="bg-info reports" style="color: white;height: 30px;"><td style="border-left:1px white solid;width: 5%">شماره درخواست</td><td style="border-left:1px white solid;width: 10%">تاریخ</td><td style="border-left:1px white solid;width:10%">درخواست کننده</td><td style="border-left:1px white solid;width: 45%">توضیحات</td><td style="border-left:1px white solid;width: 20%">مقدار</td><td style="border-left:1px white solid;width: 20%">وضعیت درخواست</td><td style="width: 10%">#</td></tr>
                         </table>
 
