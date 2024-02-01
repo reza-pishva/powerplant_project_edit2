@@ -9,8 +9,16 @@
                 $.ajax({
                     url: '/level3',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد دریافتی جهت تایید</p>')
 
                         var id_exit = ''
@@ -178,8 +186,16 @@
                 $.ajax({
                     url: '/level4',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد ارسالی به حراست</p>')
                         var id_requester=''
                         var id_exit = ''
@@ -303,8 +319,16 @@
                 $.ajax({
                     url: '/level-3',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                        
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle(200);
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست مواردی که توسط شما تایید نشده و بازگشت داده شده</p>')
                         var id_exit = ''
                         var l_name = ''
