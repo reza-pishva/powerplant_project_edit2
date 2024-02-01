@@ -180,7 +180,7 @@
                                 var _token = $("input[name='_token']").val();
                                 $.ajax({
                                     url: '/workflow/'+id_exit,
-                                    method:'GET',
+                                    method:'GET',                                    
                                     success: function (response) {
                                         $('#myModal4').modal('show');
                                         var description = ''
@@ -1682,7 +1682,8 @@
     <!-- content of report -->
     <div class="row mylist2" style="margin: auto;width:100%;height:302px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
         <div class="col-12" style="direction: rtl;height: 300px;overflow-y: scroll;">
-            <table id="report_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small"></table>
+            <table id="report_table" style="width: 100%;font-family: Tahoma;font-size: small">
+            </table>
         </div>
 
         <div class="toast bg-success" style="margin-top:20px;margin: auto;border-radius: 10px">
@@ -1844,6 +1845,9 @@
                 <!-- List -->
                 <div class="container"  style="margin: auto;background-color:#c4e6f5;width: 850px ;height: 400px;;overflow-y: scroll">
                     <table class="table table-striped" id="workflow" style="width: 800px">
+                        <div id="first_spinner2" style="display:none;margin-top:90px;text-align:center;margin-left:110px">
+                            <img src="preloader19.gif" style="width:150px;height:140px;border-radius:10px">
+                        </div>
                     </table>
                 </div>
 

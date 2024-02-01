@@ -346,7 +346,12 @@
     <div class="row" style="height: 100%;text-align: center">
         <div class="col-12 " >
             <div class="row" style="border-radius: 5px;height: 100%;width: 70%;">
-                <div class="col" style="text-align: center">@yield('content')</div>
+                <div class="col" style="text-align: center">
+                    <div id="first_spinner" style="display: none;margin-top:105px;text-align:center;margin-left:50px">
+                        <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                    </div>
+                    @yield('content')
+                </div>
             </div>
         </div>
     </div>

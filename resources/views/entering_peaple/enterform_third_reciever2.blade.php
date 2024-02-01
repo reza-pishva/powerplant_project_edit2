@@ -31,8 +31,16 @@
                 $.ajax({
                     url: '/level4-entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد دریافتی جهت تایید</p>')
                         var notconfirm=''
                         var day=''
@@ -816,8 +824,16 @@
                 $.ajax({
                     url: '/total-peaple',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">کلیه موارد</p>')
                         var notconfirm=''
                         var day=''
@@ -1627,8 +1643,16 @@
                 $.ajax({
                     url: '/level5-entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد ارسالی برای مدیر نیروگاه</p>')
                         var day=''
                         var month=''
@@ -1958,8 +1982,16 @@
                 $.ajax({
                     url: '/level3-3entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد تاید نشده توسط شما</p>')
                         var day=''
                         var month=''
@@ -2289,8 +2321,16 @@
                 $.ajax({
                     url: '/3not-confirmed-boss3-entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد تایید نشده توسط مدیر نیروگاه</p>')
                         var day=''
                         var month=''
@@ -2623,8 +2663,16 @@
                 $.ajax({
                     url: '/auth-peaple2',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست افراد مجاز به ورود به نیروگاه</p>')
                         var id_ep = ''
                         var f_name = ''
@@ -2791,7 +2839,16 @@
                 $.ajax({
                     url: '/presence',
                     method:'GET',
+                    beforeSend: function(){
+                        $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
                     success: function (response) {
+                        $("#first_spinner").hide();
                         alert('تعداد حاضرین: '+response.count_persons+'نفر ');
                         $(".report_row").remove();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست افراد وارد شده به نیروگاه</p>')

@@ -162,8 +162,6 @@
                         </div>
                         <div>
                             <img src="{{URL::to('/')}}/enter011.jpg" id="exit_part" class="reza2" data-toggle="tooltip" data-placement="left" title="از اینجا می توانید مواردی که جهت خروج از نیروگاه مجوز گرفته اند ببینید و اطلاعات مربوط به خروج را برای آنها تکمیل کنید">
-                        </div>
-                        <div>
                             <img src="{{URL::to('/')}}/enter001.png" id="enter_part" class="reza2" data-toggle="tooltip" data-placement="left" title="از اینجا می توانید مواردی که جهت ورود به نیروگاه مجوز گرفته اند ببینید و اطلاعات مربوط به ورود آنها تکمیل کنید">
                         </div>
                         <div class="bg-secondary" style="height: 30px;width: 100%;margin-top: 5px;border-radius: 3px;padding-top:3px">

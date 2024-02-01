@@ -8,7 +8,16 @@
                 $.ajax({
                     url: '/level1-entering',
                     method:'GET',
+                    beforeSend: function(){
+                        $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
                     success: function (response) {
+                        $("#first_spinner").hide();
                         $(".report_row").remove();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد دریافتی جهت تایید</p>')
                         var id_ef = ''
@@ -44,9 +53,9 @@
                             }
                             t3 = $('<td style="width: 14%"></td>')
                             t1 = $('<td style="width: 8%"></td>')
-                            detail = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">جزئیات درخواست</button>').attr('id',  response.results[i]['id_ef'] +2000)
-                            edit1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">عدم تایید</button>').attr('id',  response.results[i]['id_ef'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">تایید</button>').attr('id',  response.results[i]['id_ef'])
+                            detail = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">جزئیات درخواست</button>').attr('id',  response.results[i]['id_ef'] +2000)
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">عدم تایید</button>').attr('id',  response.results[i]['id_ef'] + 1000)
+                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">تایید</button>').attr('id',  response.results[i]['id_ef'])
                             t1.append(edit1)
                             t2 = $('<td style="width: 8%"></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -257,8 +266,17 @@
                 $.ajax({
                     url: '/level2-entering',
                     method:'GET',
+                    beforeSend: function(){
+                        $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
                     success: function (response) {
                         $(".report_row").remove();
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد ارسالی برای مسئول ایمنی</p>')
                         var id_ef = ''
                         var date_shamsi = ''
@@ -292,7 +310,7 @@
                             // t3 = $('<td style="width: 14%"></td>')
                             // t1 = $('<td style="width: 8%"></td>')
                             //edit1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">عدم تایید</button>').attr('id',  response.results[i]['id_ef'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef'])
+                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef'])
                             //t1.append(edit1)
                             t2 = $('<td style="width: 17%"></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -338,8 +356,16 @@
                 $.ajax({
                     url: '/not-confirmed-boss2-entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست مواردی که توسط شما تایید نشده و بازگشت داده شده</p>')
                         var id_ef = ''
                         var date_shamsi = ''
@@ -373,7 +399,7 @@
                             t3 = $('<td style="width: 14%"></td>')
                             t1 = $('<td style="width: 8%"></td>')
                             //edit1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">عدم تایید</button>').attr('id',  response.results[i]['id_ef'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef'])
+                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef'])
                             //t1.append(edit1)
                             t2 = $('<td style="width: 12%"></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -418,8 +444,17 @@
                 $.ajax({
                     url: '/not-confirmed-boss3-entering',
                     method:'GET',
+                    beforeSend: function(){
+                        $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
                     success: function (response) {
                         $(".report_row").remove();
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست مواردی که توسط مدیرحراست تایید نشده و بازگشت داده شده</p>')
                         var id_ef = ''
                         var date_shamsi = ''
@@ -453,7 +488,7 @@
                             //t3 = $('<td style="width: 14%"></td>')
                             //t1 = $('<td style="width: 10%"></td>')
                             //edit1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">عدم تایید</button>').attr('id',  response.results[i]['id_ef'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef'])
+                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef'])
                             //t1.append(edit1)
                             t2 = $('<td style="width: 15%"></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -499,8 +534,17 @@
                 $.ajax({
                     url: '/totalparts',
                     method:'GET',
+                    beforeSend: function(){
+                        $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                    },
                     success: function (response) {
                         $(".report_row").remove();
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست کلیه موارد ارسالی در بخش شما</p>')
                         var id_ef = ''
                         var date_shamsi = ''
@@ -526,10 +570,10 @@
                             title = $('<td>' +response.results[i]['title'] + '</td>')
                             company = $('<td style="text-align: right">' + response.results[i]['company'] + '</td>')
                             // t1 = $('<td style="width:5%"></td>')
-                            detail2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width:100%" data-toggle="modal" data-target="#myModal4">مشاهده جزئیات</button>').attr('id',  response.results[i]['id_ef'] + 2000)
-                            edit1 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width:100%" data-toggle="modal" data-target="#myModal2">ویرایش</button>').attr('id',  response.results[i]['id_ef'] + 3000)
-                            del2 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width:100%">حذف</button>').attr('id',  response.results[i]['id_ef'])
-                            history = $('<button type="button" class="btn-sm btn-info history" style="font-family: Tahoma;font-size: smaller;text-align: center;width:100%">گردش مدرک</button>').attr('id',  response.results[i]['id_ef']+4000)
+                            detail2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width:100%" data-toggle="modal" data-target="#myModal4">مشاهده جزئیات</button>').attr('id',  response.results[i]['id_ef'] + 2000)
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width:100%" data-toggle="modal" data-target="#myModal2">ویرایش</button>').attr('id',  response.results[i]['id_ef'] + 3000)
+                            del2 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width:100%">حذف</button>').attr('id',  response.results[i]['id_ef'])
+                            history = $('<button type="button" class="btn-sm btn-outline-info history" style="font-family: Tahoma;font-size: smaller;text-align: center;width:100%">گردش مدرک</button>').attr('id',  response.results[i]['id_ef']+4000)
                             // t1.append(edit1)
                             // t2 = $('<td style="width:5%"></td>')
                             t3 = $('<td></td>')
