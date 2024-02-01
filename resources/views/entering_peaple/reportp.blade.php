@@ -19,10 +19,6 @@
                     processData: false,
                     beforeSend: function(){
                         $(".reports").remove();
-                        $(".mylist").hide();
-                        $('.mylist2').hide();
-                        $('.mylist3').hide();
-                        $(".register").hide();
                         $("#first_spinner").show();
                     },
                     success: function (response) {
@@ -61,19 +57,6 @@
                             '<td style="text-align: center;width: 8%;border-left:1px white solid;font-size: smaller">#</td>' +
                             '<td style="text-align: center;width: 8%;border-left:1px white solid;font-size: smaller">#</td>' +
                             '<td style="text-align: center;width: 8%;border-left:1px white solid;font-size: smaller">#</td></tr>'
-                        // var row_th2 = '<tr style="height: 1px;">' +
-                        //     '<td style="width: 50%;"></td>' +
-                        //     '<td style="width: 50%;"></td></tr>'
-                        // var row_th3 = '<tr style="height: 1px;">' +
-                        //     '<td style="width: 10%;"></td>' +
-                        //     '<td style="width: 10%;"></td>' +
-                        //     '<td style="width: 10%;"></td>' +
-                        //     '<td style="width: 10%;"></td>' +
-                        //     '<td style="width: 10%;"></td>' +
-                        //     '<td style="width: 10%;"></td>' +
-                        //     '<td style="width: 10%;"></td>' +
-                        //     '<td style="width: 10%;"></td>' +
-                        //     '<td style="width: 10%;"></td></tr>'
                         $("#request_table2").append(row_th)
                         for (var i = 0; i < response.results.length; i++) {
 
@@ -113,11 +96,7 @@
                                 }
 
                             }
-
                             row.append(id_ef,f_name,l_name,code_melli,date_shamsi_enter,date_shamsi_exit,title,t2,t1,t3,date_shamsi_enter2,date_shamsi_exit2)
-
-
-                            //$("#request_table2").append(row_th3)
                             $("#request_table2").append(row)
                         }
                         $(".history").on('click',function () {
@@ -131,14 +110,19 @@
                             $.ajax({
                                 url: '/workflow/'+id_ef,
                                 method:'GET',
+                                beforeSend: function(){
+                                    $(".workflowrows").remove();
+                                    $("#first_spinner2").show();
+                                },
                                 success: function (response) {
+                                    $("#first_spinner2").hide();
                                     $('#myModal44').modal('show');
                                     var description = ''
                                     var date_shamsi = ''
                                     var time = ''
                                     var l_name=''
                                     var row = ''
-                                    $(".workflowrows").remove();
+                                    
                                     for(var i = 0; i < response.results.length; i++) {
                                         description = $('<td style="width: 80%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
                                         date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
@@ -176,9 +160,12 @@
                                     data: {
                                         "id": code_melli,
                                         "_token": token,
+                                    }, beforeSend: function(){
+                                        $(".personinfo2").remove();
+                                        $("#first_spinner3").show();
                                     },
                                     success: function (response) {
-
+                                        $("#first_spinner3").hide();
                                         var edit=''
                                         var del=''
                                         var t1=''
@@ -188,7 +175,7 @@
                                         var date = ''
                                         var time = ''
                                         var row = ''
-                                        $(".personinfo2").remove();
+                                        
                                         for(var i = 0; i < response.individuals.length; i++) {
                                             id_ed = $('<td style="width:11%;text-align: center" class="personinfo2">' + response.individuals[i]['i_ed'] + '</td>')
                                             var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.individuals[i]['enter_exit']+ '</td>')
@@ -464,8 +451,8 @@
                 <div class="row mylist" style="margin: auto;width:100%;height:320px;direction: rtl;margin-top: 15px;border: 1px solid black;border-radius: 5px;text-align: center;margin-right: 120px">
                     <div class="col-12" style="direction: rtl;height: 317px;overflow-y: scroll;background-color:rgba(0, 0,55, 0.4)">
                         <table id="request_table2" style="width: 100%;font-family: Tahoma;font-size: small;color:white">
-                            <div id="first_spinner" style="display: none;margin-top:105px;text-align:center;margin-left:50px">
-                                <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                            <div id="first_spinner" style="display: none;margin-top:70px;text-align:center;margin-left:50px">
+                                <img src="preloader12.gif" style="width:200px;height:180px;border-radius:10px">
                             </div>
                             <tr class="bg-info reports" style="color: white;height: 30px;"><td style="border-left:1px white solid;width: 5%">شماره درخواست</td><td style="border-left:1px white solid;width: 10%">نام</td><td style="border-left:1px white solid;width:10%">نام خانوادگی</td><td style="border-left:1px white solid;width: 10%">کد ملی</td><td style="border-left:1px white solid;width: 10%">تاریخ ورود</td><td style="border-left:1px white solid;width: 10%">تاریخ خروج</td><td style="border-left:1px white solid;width: 10%">#</td><td style="border-left:1px white solid;width: 10%">#</td></tr>
                         </table>
@@ -571,6 +558,9 @@
                 <!-- List -->
                 <div class="container"  style="margin: auto;background-color:#c4e6f5;width: 850px ;height: 400px;;overflow-y: scroll">
                     <table class="table table-striped" id="workflow" style="width: 800px">
+                        <div id="first_spinner2" style="display: none;margin-top:100px;text-align:center;margin-left:-5px">
+                            <img src="preloader10.gif" style="width:200px;height:120px;border-radius:10px">
+                        </div>
                     </table>
                 </div>
 
@@ -610,13 +600,16 @@
                     <div class="row" style="margin-top: 10px">
                         <div id="person_div2" class="col" style="height:50px">
                             <input hidden type="text" id="code_melli_s3">
-                            <table id="person_table77" align="center" style="width: 90%;font-family: Tahoma;font-size: small;margin-top: 5px;">
-                                <tr style="color: black">
+                            <table id="person_table77" style="width: 90%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                                <div id="first_spinner3" style="display: none;margin-top:10px;text-align:center;margin-left:-5px">
+                                    <img src="preloader10.gif" style="width:200px;height:120px;border-radius:10px">
+                                </div>
+                                {{-- <tr style="color: black">
                                     <td class="person" style="width: 5%">کد</td>
                                     <td class="person" style="width: 10%">ورود/خروج</td>
                                     <td class="person" style="width: 10%">تاریخ</td>
                                     <td class="person" style="width: 7%">ساعت</td>
-                                </tr>
+                                </tr> --}}
                             </table>
                         </div>
                     </div>
@@ -686,7 +679,7 @@
                     </div>
                     <div class="row">
                         <div id="person_div" class="col" style="height:50px">
-                            <table id="person_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                            <table id="person_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                                 <tr style="color: black">
                                     <td class="person" style="width: 5%">کد</td>
                                     <td class="person" style="width: 10%">نام</td>
