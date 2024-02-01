@@ -452,7 +452,7 @@
                     <div class="col-12" style="direction: rtl;height: 317px;overflow-y: scroll;background-color:rgba(0, 0,55, 0.4)">
                         <table id="request_table2" style="width: 100%;font-family: Tahoma;font-size: small;color:white">
                             <div id="first_spinner" style="display: none;margin-top:70px;text-align:center;margin-left:50px">
-                                <img src="preloader12.gif" style="width:200px;height:180px;border-radius:10px">
+                                <img src="preloader13.gif" style="width:200px;height:180px;border-radius:10px">
                             </div>
                             <tr class="bg-info reports" style="color: white;height: 30px;"><td style="border-left:1px white solid;width: 5%">شماره درخواست</td><td style="border-left:1px white solid;width: 10%">نام</td><td style="border-left:1px white solid;width:10%">نام خانوادگی</td><td style="border-left:1px white solid;width: 10%">کد ملی</td><td style="border-left:1px white solid;width: 10%">تاریخ ورود</td><td style="border-left:1px white solid;width: 10%">تاریخ خروج</td><td style="border-left:1px white solid;width: 10%">#</td><td style="border-left:1px white solid;width: 10%">#</td></tr>
                         </table>
@@ -602,7 +602,7 @@
                             <input hidden type="text" id="code_melli_s3">
                             <table id="person_table77" style="width: 90%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                                 <div id="first_spinner3" style="display: none;margin-top:10px;text-align:center;margin-left:-5px">
-                                    <img src="preloader10.gif" style="width:200px;height:120px;border-radius:10px">
+                                    <img src="preloader14.gif" style="width:200px;height:120px;border-radius:10px">
                                 </div>
                                 {{-- <tr style="color: black">
                                     <td class="person" style="width: 5%">کد</td>
