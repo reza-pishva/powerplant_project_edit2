@@ -806,6 +806,7 @@
                         $(".mylist").hide();
                         $('.mylist2').hide();
                         $('.mylist3').hide();
+                        $(".mylist20").hide();
                         $(".register").hide();                        
                         $(".report_row").remove();
                         $("#first_spinner").show();

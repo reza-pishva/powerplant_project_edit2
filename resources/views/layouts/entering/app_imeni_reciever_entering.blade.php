@@ -51,8 +51,6 @@
             filter: alpha(opacity=100);
             outline: 2px solid white;
             outline-offset: 1px;
-            /*width:80px;*/
-            /*height:80px;*/
             cursor: pointer;
         }
         img.reza2
@@ -261,7 +259,12 @@
         <div class="col-10">
             <div class="row" style="border-radius: 5px;height: 630px;width: 100%;">
                 <div class="col-1"></div>
-                <div class="col-10">@yield('content')</div>
+                <div class="col-10">
+                    <div id="first_spinner" style="display:none;margin-top:125px;text-align:center;margin-left:200px">
+                        <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                    </div>
+                    @yield('content')
+                </div>
                 <div class="col-1"></div>
             </div>
         </div>
@@ -281,7 +284,7 @@
                             <img src="{{URL::to('/')}}/enter010.jpg" id="for_requester2" class="reza2" data-toggle="tooltip" data-placement="left" title="موارد تایید نشده توسط شما">
                         </div>
                         <div>
-                            <img src="{{URL::to('/')}}/person_search002.png" id="present" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست حاضرین ">
+                            {{-- <img src="{{URL::to('/')}}/person_search002.png" id="present" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست حاضرین "> --}}
                         </div>
                         <div class="bg-secondary" style="height:45px;width: 100%;margin-top: 10px;border-radius: 3px;padding-top: 6px">
                             <p style="font-family: Tahoma;font-size: small;margin-top: 4px;color: white">فرم گزارش گیری</p>

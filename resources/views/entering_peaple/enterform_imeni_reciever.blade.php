@@ -8,8 +8,16 @@
                 $.ajax({
                     url: '/level2-imeni_entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();                        
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد دریافتی جهت بررسی و ارسال</p>')
                         var day=''
                         var month=''
@@ -349,8 +357,16 @@
                 $.ajax({
                     url: '/level-herasatboss-entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();                        
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white"> لیست موارد ارسال شده برای مسئول حراست</p>')
                         var day=''
                         var month=''
@@ -699,8 +715,16 @@
                 $.ajax({
                     url: '/not-confirmed-imeni-entering',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();                        
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد تایید نشده توسط مسئول حراست</p>')
                         var day=''
                         var month=''
@@ -1114,7 +1138,7 @@
     <!-- content of report -->
     <div class="row mylist2" style="margin: auto;width:100%;height:302px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
         <div class="col-12" style="direction: rtl;height: 300px;overflow-y: scroll;">
-            <table id="report_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small"></table>
+            <table id="report_table" style="width: 100%;font-family: Tahoma;font-size: small"></table>
         </div>
 
         <div class="toast bg-success" style="margin-top:20px;margin: auto;border-radius: 10px">
