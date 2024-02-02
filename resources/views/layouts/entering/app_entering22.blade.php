@@ -321,16 +321,16 @@
                        </div>
                        <div class="col">
                            <div>
-                               <a href="#">
+                               {{-- <a href="#">
                                    <img src="{{URL::to('/')}}/cardexpired002.png" id="fifth_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت مهمان منقضی شده">
-                               </a>
+                               </a> --}}
                            </div>
                        </div>
                        <div class="col">
                            <div>
-                               <a href="#">
+                               {{-- <a href="#">
                                    <img src="{{URL::to('/')}}/card001.png" id="fourth_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت مهمان معتبر">
-                               </a>
+                               </a> --}}
                            </div>
 
                        </div>
@@ -375,7 +375,12 @@
     <div class="row" style="height: 850px;margin-top:80px">
         <div class="col ">
             <div class="row" style="border-radius: 5px;height: 100%;width: 100%;">
-                <div class="col">@yield('content')</div>
+                <div class="col">
+                    <div id="first_spinner1000" style="display:none;margin-top:55px;text-align:center;margin-left:20px">
+                        <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                    </div>
+                    @yield('content')
+                </div>
             </div>
         </div>
     </div>

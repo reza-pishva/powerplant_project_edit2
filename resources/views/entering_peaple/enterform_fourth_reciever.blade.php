@@ -655,7 +655,7 @@
     <!-- List of content -->
         <div class="row mylist" style="margin: auto;width:80%;height:185px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
           <div class="col-12" style="direction: rtl;height: 183px;overflow-y: scroll">
-            <table id="request_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small">
+            <table id="request_table" style="width: 100%;font-family: Tahoma;font-size: small">
                 <tr class="bg-primary" style="color: white">
                     <td style="border-left:1px white solid;">شماره درخواست</td>
                     <td style="border-left:1px white solid;">تاریخ درخواست</td>
@@ -677,7 +677,7 @@
     <!-- content of report -->
     <div class="row mylist2" style="margin: auto;width:100%;height:302px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
         <div class="col-12" style="direction: rtl;height: 300px;overflow-y: scroll;">
-            <table id="report_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small"></table>
+            <table id="report_table" style="width: 100%;font-family: Tahoma;font-size: small"></table>
         </div>
 
         <div class="toast bg-success" style="margin-top:20px;margin: auto;border-radius: 10px">
@@ -737,7 +737,7 @@
                     </div>
                     <div class="row">
                         <div id="person_div" class="col" style="height:50px">
-                            <table id="person_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                            <table id="person_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                                 <tr style="color: black">
                                     <td class="person" style="width: 5%">کد</td>
                                     <td class="person" style="width: 10%">نام</td>
@@ -848,7 +848,7 @@
 
                     <div class="row" style="margin-top: 10px">
                         <div id="person_div" class="col" style="height:50px">
-                            <table id="person_table33" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                            <table id="person_table33" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                                 <tr style="color: black">
                                     <td class="person" style="width: 5%">کد</td>
                                     <td class="person" style="width: 10%">نام</td>
@@ -989,7 +989,7 @@
 
                     <div class="row" style="margin-top: 10px">
                         <div id="person_div" class="col" style="height:50px">
-                            <table id="person_table44" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                            <table id="person_table44" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                                 <tr style="color: black">
                                     <td class="person" style="width: 5%">کد</td>
                                     <td class="person" style="width: 10%">نام</td>
@@ -1164,5 +1164,4 @@
             </div>
         </div>
     </div>
-
 @endsection

@@ -20,6 +20,7 @@
 
 
         $(document).ready(function(){
+            $("#first_spinner1000").hide();
             $('#notebook').click(function(event) {
                 $('#daftar_modal').modal('toggle');
             })
@@ -155,6 +156,7 @@
                             "id": code_melli,
                             "_token": token,
                         },
+                        
                         success: function (response) {
                             var edit=''
                             var del=''
@@ -165,7 +167,7 @@
                             var date = ''
                             var time = ''
                             var row = ''
-                            $(".personinfo2").remove();
+                            
                             for(var i = 0; i < response.individuals.length; i++) {
                                 id_ed = $('<td style="width:11%;text-align: center" class="personinfo2">' + response.individuals[i]['i_ed'] + '</td>')
                                 var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.individuals[i]['enter_exit']+ '</td>')
@@ -179,41 +181,11 @@
                                 var year=response.individuals[i]['date_enter'].substr(0,4)
                                 var date = $('<td style="text-align: center;padding-right: 5px;width: 22%" class="personinfo2">' + year +'/'+month+'/'+day+'</td>')
                                 time = $('<td style="width: 22%;text-align: center" class="personinfo2">' + response.individuals[i]['time_enter'] + '</td>')
-                                // edit = $('<button type="button" class="btn-sm btn-info" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#dailyenter2">اصلاح</button>').attr('id',  response.individuals[i]['i_ed']+1000)
-                                // del = $('<button type="button" class="btn-sm btn-danger" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',  response.individuals[i]['i_ed']+2000)
                                 t1 = $('<td style="width: 15%" class="personinfo2"></td>')
                                 t2 = $('<td style="width: 15%" class="personinfo2"></td>')
-                                // t1.append(edit)
-                                // t2.append(del)
                                 row = $('<tr class="report_row"></tr>')
                                 row.append(id_ed,enter_exit,date,time,enter_exit_val)
-                                $("#person_table66").append(row)//data-toggle="modal" data-target="#personinfo"
-                                // $('#' + Number(response.individuals[i]['i_ed']+2000)).click(function () {
-                                //     var id_ed = $(this).closest('tr').find('td:eq(0)').text();
-                                //     var token = $("meta[name='csrf-token']").attr("content");
-                                //     $.ajax(
-                                //         {
-                                //             url: "/deleteindividuals/" + id_ed,
-                                //             type: 'DELETE',
-                                //             data: {
-                                //                 "id": id_ed,
-                                //                 "_token": token,
-                                //             },
-                                //             success: function (response) {
-                                //                 $('.individuals2').show()
-                                //                 $('.individuals2').toast('show');
-                                //                 $("#individuals2").html("مورد انتخابی حذف گردید")
-                                //             }
-                                //         });
-                                //     $(this).closest('tr').remove()
-                                //
-                                // })
-                                // $('#' + Number(response.individuals[i]['i_ed']+1000)).click(function () {
-                                //     $("#id_ed_edit").val($(this).closest('tr').find('td:eq(0)').text())
-                                //     $("#enter_exit_edit").val($(this).closest('tr').find('td:eq(6)').text())
-                                //     $("#date_shamsi_enter_edit").val($(this).closest('tr').find('td:eq(2)').text())
-                                //     $("#time_enter_edit").val($(this).closest('tr').find('td:eq(3)').text())
-                                // });
+                                $("#person_table66").append(row)
                             }
 
                         }
@@ -236,6 +208,7 @@
                             "id": code_melli,
                             "_token": token,
                         },
+
                         success: function (response) {
 
                             var edit=''
@@ -247,7 +220,7 @@
                             var date = ''
                             var time = ''
                             var row = ''
-                            $(".personinfo2").remove();
+                            
                             for(var i = 0; i < response.individuals.length; i++) {
                                 id_ed = $('<td style="width:11%;text-align: center" class="personinfo2">' + response.individuals[i]['i_ed'] + '</td>')
                                 var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.individuals[i]['enter_exit']+ '</td>')
@@ -306,8 +279,16 @@
                 $.ajax({
                     url: '/truecars',
                     method:'GET',
+                    beforeSend: function(){
+                            $(".mylist").hide();
+                            $('.mylist2').hide();
+                            $('.mylist3').hide();
+                            $(".register").hide();                        
+                            $(".report_row").remove();
+                            $("#first_spinner1000").show();
+                        },
                     success: function (response) {
-                        $(".report_row").remove();
+                        $("#first_spinner1000").hide();
                         $('#title_report3').html('<p id="title" style="margin-top: 7px;color: white">لیست خودروهای مجاز به ورود به نیروگاه </p>')
                         var id_ef
                         var id_ec = ''
@@ -524,8 +505,17 @@
                 $.ajax({
                     url: '/falsecars',
                     method:'GET',
+                    beforeSend: function(){
+                            $(".mylist").hide();
+                            $('.mylist2').hide();
+                            $('.mylist3').hide();
+                            $(".register").hide();                        
+                            $(".report_row").remove();
+                            $("#first_spinner1000").show();
+                        },
                     success: function (response) {
-                        $(".report_row").remove();
+                        $("#first_spinner1000").hide();
+                        $(".mylist3").fadeToggle(2000);
                         $('#title_report3').html('<p id="title" style="margin-top: 7px;color: white">لیست خودروهای غیر مجاز به ورود به نیروگاه </p>')
                         var id_ef
                         var id_ec = ''
@@ -737,7 +727,16 @@
                 $.ajax({
                     url: '/presence',
                     method:'GET',
+                    beforeSend: function(){
+                            $(".mylist").hide();
+                            $('.mylist2').hide();
+                            $('.mylist3').hide();
+                            $(".register").hide();                        
+                            $(".report_row").remove();
+                            $("#first_spinner1000").show();
+                        },
                     success: function (response) {
+                        $("#first_spinner1000").hide();
                         alert('تعداد حاضرین: '+response.count_persons+'نفر ');
                         $(".report_row").remove();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست افراد وارد شده به نیروگاه</p>')
@@ -863,6 +862,7 @@
                 $.ajax({
                     url: '/unauth-peaple2',
                     method:'GET',
+                    
                     success: function (response) {
                         $(".report_row").remove();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست افراد غیر مجاز برای ورود به نیروگاه</p>')
@@ -1217,7 +1217,9 @@
                             "id": code_melli,
                             "_token": token,
                         },
+
                         success: function (response) {
+
                             if((response.x3>=response.x1 && response.x3<=response.x2) && response.let_show =="1" && response.notlet2 =="0"){
                                 alert('این فرد در بازه زمانی مجاز برای ورود به نیروگاه می باشد');
                                 $("#sixth_report33").show();
@@ -1548,8 +1550,16 @@
                 $.ajax({
                     url: "/total-individuals"+"/"+date_exit_shamsi1+"/"+date_exit_shamsi2,
                     type: 'GET',
+                    beforeSend: function(){
+                            $(".mylist").hide();
+                            $('.mylist2').hide();
+                            $('.mylist3').hide();
+                            $(".register").hide();                        
+                            $(".report_row").remove();
+                            $("#first_spinner1000").show();
+                        },
                     success: function (response) {
-                        $(".report_row").remove();
+                        $("#first_spinner1000").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست ورود و خروج افراد به نیروگاه</p>')
                         var i_ed = ''
                         var enter_exit=""

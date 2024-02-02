@@ -276,7 +276,7 @@
             <div class="row" style="border-radius: 5px;height: 630px;width: 100%;">
                 <div class="col-1"></div>
                 <div class="col-10">
-                    <div id="first_spinner" style="margin-top:125px;text-align:center;margin-left:200px">
+                    <div id="first_spinner1000" style="display:none;margin-top:125px;text-align:center;margin-left:200px">
                         <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
                     </div>
                     @yield('content')
