@@ -32,12 +32,13 @@
                     method:'GET',
                     beforeSend: function(){
                         $("#first_spinner").show();
-                        $("#report_table").hide();
+                        $(".report_row").remove();
+                        // $("#report_table").hide();
                     },
                     success: function (response) {
                         $("#first_spinner").hide();
-                        $("#report_table").show();
-                        $(".report_row").remove();
+                        // $("#report_table").show();
+                        
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد دریافتی جهت تایید</p>')
                         var id_ef = ''
                         var date_shamsi = ''
@@ -142,7 +143,10 @@
                         <div id="first_spinner" style="display: none;margin-top: 90px">
                             <img src="preloader10.gif" style="width:200px;height:120px;border-radius: 100px">
                         </div>
-                        <table id="report_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small">
+                        <table id="report_table" style="width: 100%;font-family: Tahoma;font-size: small">
+                            <div id="first_spinner" style="margin-top:50px;text-align:center;margin-left:200px">
+                                <img src="preloader10.gif" style="width:150px;height:110px;border-radius: 100px">
+                            </div>
                         </table>
                     </div>
                 </div>
@@ -160,24 +164,10 @@
                                 <div class="col" style="text-align: center"><label for="date_exit_shamsi2" style="font-family: Tahoma;font-size: small;display: inline"> تاریخ پایان:</label></div>
                                 <div class="col" style="text-align: right"><input type="text" maxlength="20" class="form-control" id="date_exit_shamsi2"  data-toggle="tooltip" data-placement="right"  name="date_exit_shamsi2" style="direction: rtl;font-family: Tahoma;font-size: small;width: 100px" required title="تاریخ پایان گزارش گیری"></div>
                             </div>
-                         
-                            {{-- <div class="row field mt-1">
-                                <div class="col-5" style="text-align: center">
-                                    <label for="code_melli" style="font-family: Tahoma;font-size: small;"> کد ملی:</label>
-                                </div>
-                                <div class="col-7" style="text-align: right">
-                                    <input type="text" maxlength="20" class="form-control" id="code_melli" data-toggle="tooltip" data-placement="right" placeholder="کد ملی:" name="code_melli" required style="direction:rtl;font-family:Tahoma;font-size:small;width: 100%"  title="کد ملی">
-                                </div>
-                            </div> --}}
                             <div class="row mt-3">
                                 <div class="col"><button type="submit" class="btn btn-success" id="btnAdd" style="font-family: Tahoma;font-size: small;text-align: right">جستجو</button></div>
                                 <div class="col">
-                                    {{-- <a href="{{url('/selectindividuals2/14010101/14010619')}}" class="btnprn3 btn">
-                                        <p><img src="{{URL::to('/')}}/printer.png" style="width: 35px;height:35px;border-radius: 10px;"></p>
-
-                                    </a> --}}
                                 </div>
-
                             </div>
                         </div>
 

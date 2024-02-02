@@ -19,10 +19,10 @@
                     processData: false,
                     beforeSend: function(){
                         $(".reports").remove();
-                        $("#first_spinner").show();
+                        $("#first_spinner3").show();
                     },
                     success: function (response) {
-                        $("#first_spinner").hide();
+                        $("#first_spinner3").hide();
                         var day=''
                         var month=''
                         var year=''
@@ -444,7 +444,7 @@
         <div class="row" style="height: 250px">
             <div class="col-1">
                 <a href="/herasat2">
-                    <img src="{{URL::to('/')}}/exit003.png" style="width: 50px;height: 50px;margin-top: 25px" data-toggle="tooltip" data-placement="bottom" title="بازگشت به صفحه قبل">
+                    <img src="{{URL::to('/')}}/exit003.png" style="width: 40px;height: 40px;margin-top: 25px" data-toggle="tooltip" data-placement="bottom" title="بازگشت به صفحه قبل">
                 </a>
             </div>
             <div class="col-7">
@@ -604,12 +604,6 @@
                                 <div id="first_spinner3" style="display: none;margin-top:10px;text-align:center;margin-left:-5px">
                                     <img src="preloader14.gif" style="width:200px;height:120px;border-radius:10px">
                                 </div>
-                                {{-- <tr style="color: black">
-                                    <td class="person" style="width: 5%">کد</td>
-                                    <td class="person" style="width: 10%">ورود/خروج</td>
-                                    <td class="person" style="width: 10%">تاریخ</td>
-                                    <td class="person" style="width: 7%">ساعت</td>
-                                </tr> --}}
                             </table>
                         </div>
                     </div>

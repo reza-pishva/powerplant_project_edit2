@@ -226,10 +226,6 @@
         {
             border-right: 1px solid black;
         }
-        /*.container{*/
-        /*    width: 800px;*/
-        /*    margin: 0 auto;*/
-        /*}*/
         .title_tab{
             font-family: Tahoma;
             font-size: smaller;
@@ -298,22 +294,12 @@
             </div>
         </div>
     </div>
-{{--    <nav class="navbar navbar-expand bg-info rounded col-12" style="height: 30px;direction: rtl;margin-top: 1px">--}}
-
-{{--        <ul class="navbar-nav" >--}}
-{{--            <li class="nav-item">--}}
-{{--                <a class="nav-link" href={{$page}}>صفحه اصلی</a>--}}
-{{--            </li>--}}
-{{--        </ul>--}}
-{{--                </nav>--}}
     <div class="row" style="height: 594px">
         <div class="col-12 mt-1">
                     @yield('content')
         </div>
     </div>
 </div>
-<!-- Scripts -->
-{{--@include('sweetalert::alert')--}}
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

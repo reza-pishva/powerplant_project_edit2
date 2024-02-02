@@ -19,12 +19,11 @@
                     processData: false,
                     beforeSend: function(){
                         $("#first_spinner").show();
-                        $("#request_table2").hide();
+                        $(".reports").remove();
                     },
                     success: function (response) {
                         $("#first_spinner").hide();
-                        $("#request_table2").show();
-                        $(".reports").remove();
+                      
                         var day=''
                         var month=''
                         var year=''
@@ -118,18 +117,18 @@
             <div class="col-2">
                 <div >
                     <a href="./herasat2">
-                        <img src="{{URL::to('/')}}/exit003.png" style="width: 70px;height: 70px;margin-top: 25px" data-toggle="tooltip" data-placement="bottom" title="بازگشت به صفحه قبل">
+                        <img src="{{URL::to('/')}}/exit003.png" style="width: 40px;height: 40px;margin-top: 25px" data-toggle="tooltip" data-placement="bottom" title="بازگشت به صفحه قبل">
                     </a>
                 </div>
             </div>
             <div class="col-5">
                 <div class="row mylist" style="margin: auto;width:100%;height:320px;direction: rtl;margin-top: 15px;border: 1px solid black;border-radius: 5px;text-align: center;margin-right: 120px">
                     <div class="col-12" style="direction: rtl;height: 317px;overflow-y: scroll;background-color:rgba(0, 0,55, 0.4)">
-                        <div id="first_spinner" style="display: none;margin-top: 90px">
-                            <img src="spinner-sm.gif" style="width:170px;height:135px;border-radius: 100px">
-                        </div>
-                        <table id="request_table2" align="center" style="width: 100%;font-family: Tahoma;font-size: small;color:white">
-                            <tr class="bg-info reports" style="color: white;height: 30px;"><td style="border-left:1px white solid;width: 5%;text-align: center">کد تردد</td><td style="border-left:1px white solid;width: 10%;text-align: center">نوع تردد</td><td style="border-left:1px white solid;width:10%;text-align: center">مربوط به تاریخ</td><td style="border-left:1px white solid;width: 10%;text-align: center">ساعت تردد</td></tr>
+
+                        <table id="request_table2" style="width: 100%;font-family: Tahoma;font-size: small;color:white">
+                            <div id="first_spinner" style="display: none;margin-top: 80px">
+                                <img src="preloader10.gif" style="width:230px;height:135px;border-radius: 100px">
+                            </div>                            
                         </table>
                     </div>
                 </div>
@@ -240,7 +239,7 @@
                     <div class="row" style="margin-top: 10px">
                         <div id="person_div2" class="col" style="height:50px">
                             <input hidden type="text" id="code_melli_s3">
-                            <table id="person_table77" align="center" style="width: 90%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                            <table id="person_table77" style="width: 90%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                                 <tr style="color: black">
                                     <td class="person" style="width: 5%">کد</td>
                                     <td class="person" style="width: 10%">ورود/خروج</td>
@@ -316,7 +315,7 @@
                     </div>
                     <div class="row">
                         <div id="person_div" class="col" style="height:50px">
-                            <table id="person_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                            <table id="person_table" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                                 <tr style="color: black">
                                     <td class="person" style="width: 5%">کد</td>
                                     <td class="person" style="width: 10%">نام</td>
