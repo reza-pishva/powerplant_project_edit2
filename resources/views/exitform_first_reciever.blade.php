@@ -8,8 +8,16 @@
                 $.ajax({
                     url: '/level1',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();               
+
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد دریافتی جهت تایید</p>')
                         var id_exit = ''
                         var l_name = ''
@@ -155,14 +163,7 @@
                                 $('#with_return22').val($(this).closest('tr').find('td:eq(13)').text());
                                 $('#origin_destination22').val($(this).closest('tr').find('td:eq(11)').text());//true
                             })
-
-
-
-
                         }
-                        $(".mylist").hide();
-                        $(".mylist2").hide();
-                        $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
                     }})
             })
@@ -171,8 +172,15 @@
                 $.ajax({
                     url: '/level2',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();  
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد ارسالی برای سرپرست حراست</p>')
                         var id_exit = ''
                         var l_name = ''
@@ -277,9 +285,6 @@
 
 
                         }
-                        $(".mylist").hide();
-                        $(".mylist2").hide();
-                        $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
                     }})
 
@@ -289,7 +294,15 @@
                 $.ajax({
                     url: '/not-confirmed-boss2',
                     method:'GET',
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();
+                        $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
                     success: function (response) {
+                        $("#first_spinner").hide();  
                         $(".report_row").remove();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست مواردی که توسط شما تایید نشده و بازگشت داده شده</p>')
                         var id_exit = ''
@@ -395,9 +408,6 @@
 
 
                         }
-                        $(".mylist").hide();
-                        $(".mylist2").hide();
-                        $(".register").hide();
                         $(".mylist2").fadeToggle(2000);
                     }})
             })
@@ -407,8 +417,15 @@
                 $.ajax({
                     url: '/level-2',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست مواردی که مسئول حراست تایید نکرده</p>')
                         var id_exit = ''
                         var date_request_shamsi = ''
@@ -515,10 +532,7 @@
                                 })
                             })
                         }
-                        $(".mylist").hide();
-                        $(".mylist2").hide();
-                        $(".register").hide();
-                        $(".mylist2").fadeToggle(2000);
+                        $(".mylist2").fadeToggle(200);
                     }})
             })
             $("#edit_form_request").on('submit',function(event) {
