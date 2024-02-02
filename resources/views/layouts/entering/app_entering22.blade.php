@@ -79,6 +79,16 @@
             height:60px;
             margin-top: 10px;
         }
+        img.reza5
+        {
+            border: 1px solid rgb(14,53,126);
+            border-radius: 15px;
+            opacity: 0.7;
+            filter: alpha(opacity=100);
+            width:40px;
+            height:40px;
+            margin-top: 10px;
+        }
 
         img.reza22:hover
         {
@@ -294,23 +304,17 @@
            <div class="row" style="margin-top:1px;height: 110px">
                <div class="col-2">
                        <a href="/herasat2">
-                           <img src="{{URL::to('/')}}/exit003.png" id="report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت منقضی شده">
+                           <img src="{{URL::to('/')}}/exit003.png" id="report" class="reza5" data-toggle="tooltip" data-placement="bottom" title="بازگشت به صفحه اصلی">
                        </a>
                </div>
                <div class="col-8" style="background: rgba(0, 45, 90, 0.7);border-radius: 8px;height:100px;font-size: smaller">
                    <div class="row" style="border-radius: 5px;height:100%;margin-top:6px">
-{{--                       <div class="col">--}}
-{{--                           <a href="#">--}}
-{{--                               <img src="./reports.png" id="report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت منقضی شده">--}}
-{{--                           </a>--}}
-{{--                       </div>--}}
                        <div class="col">
                            <div>
                                <a href="#">
                                    <img src="{{URL::to('/')}}/notcar001.png" id="eighth_report"  class="reza2" data-toggle="tooltip" data-placement="bottom" title="خودروهای غیر مجاز برای ورود به نیروگاه">
                                </a>
                            </div>
-
                        </div>
                        <div class="col">
                            <div>
@@ -321,16 +325,10 @@
                        </div>
                        <div class="col">
                            <div>
-                               {{-- <a href="#">
-                                   <img src="{{URL::to('/')}}/cardexpired002.png" id="fifth_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت مهمان منقضی شده">
-                               </a> --}}
                            </div>
                        </div>
                        <div class="col">
                            <div>
-                               {{-- <a href="#">
-                                   <img src="{{URL::to('/')}}/card001.png" id="fourth_report" class="reza2" data-toggle="tooltip" data-placement="bottom" title="لیست صاحبان کارت مهمان معتبر">
-                               </a> --}}
                            </div>
 
                        </div>
