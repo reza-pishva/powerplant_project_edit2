@@ -19,10 +19,10 @@
                     processData: false,
                     beforeSend: function(){
                         $(".reports").remove();
-                        $("#first_spinner3").show();
+                        $("#first_spinner").show();
                     },
                     success: function (response) {
-                        $("#first_spinner3").hide();
+                        $("#first_spinner").hide();
                         var day=''
                         var month=''
                         var year=''
@@ -451,8 +451,8 @@
                 <div class="row mylist" style="margin: auto;width:100%;height:320px;direction: rtl;margin-top: 15px;border: 1px solid black;border-radius: 5px;text-align: center;margin-right: 120px">
                     <div class="col-12" style="direction: rtl;height: 317px;overflow-y: scroll;background-color:rgba(0, 0,55, 0.4)">
                         <table id="request_table2" style="width: 100%;font-family: Tahoma;font-size: small;color:white">
-                            <div id="first_spinner" style="display: none;margin-top:70px;text-align:center;margin-left:50px">
-                                <img src="preloader13.gif" style="width:200px;height:180px;border-radius:10px">
+                            <div id="first_spinner" style="display: none;margin-top:110px;text-align:center;margin-left:50px">
+                                <img src="preloader13.gif" style="width:200px;height:90px;border-radius:10px">
                             </div>
                             <tr class="bg-info reports" style="color: white;height: 30px;"><td style="border-left:1px white solid;width: 5%">شماره درخواست</td><td style="border-left:1px white solid;width: 10%">نام</td><td style="border-left:1px white solid;width:10%">نام خانوادگی</td><td style="border-left:1px white solid;width: 10%">کد ملی</td><td style="border-left:1px white solid;width: 10%">تاریخ ورود</td><td style="border-left:1px white solid;width: 10%">تاریخ خروج</td><td style="border-left:1px white solid;width: 10%">#</td><td style="border-left:1px white solid;width: 10%">#</td></tr>
                         </table>
