@@ -288,7 +288,7 @@
                                                 }
 
                                             }
-                                            condition = $('<button type="button" class="btn-sm btn-primary condition" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#c_modal">الزامات حفاظت فیزیکی</button>').attr('id', response.results[i]['id_ep'])
+                                            condition = $('<button type="button" class="btn-sm btn-outline-primary condition" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#c_modal">الزامات حفاظت فیزیکی</button>').attr('id', response.results[i]['id_ep'])
                                             row = $('<tr class="report_row2" style="color: white"></tr>')
                                             t4.append(condition)
                                             row.append(id_ep, f_name, l_name,title, t4)
@@ -424,8 +424,8 @@
                                             id_ep = $('<td class="persons_edit">' + response.persons[i]['id_ep'] + '</td>')
                                             l_name2 = $('<td class="persons_edit">' + response.persons[i]['f_name'] +' '+response.persons[i]['l_name'] + '</td>')
                                             l_name = $('<td hidden class="persons_edit">' + response.persons[i]['l_name'] + '</td>')
-                                            edit1 = $('<button type="button" class="btn-sm btn-primary edit11" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s2_2">ویرایش</button>').attr('id',(Number(response.persons[i]['id_ep'])+8000))
-                                            del1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',(Number(response.persons[i]['id_ep'])+9000))
+                                            edit1 = $('<button type="button" class="btn-sm btn-outline-primary edit11" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s2_2">ویرایش</button>').attr('id',(Number(response.persons[i]['id_ep'])+8000))
+                                            del1 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',(Number(response.persons[i]['id_ep'])+9000))
                                             f_name = $('<td hidden class="persons_edit">' + response.persons[i]['f_name'] + '</td>')
                                             id_et = $('<td hidden class="persons_edit">' + response.persons[i]['id_et'] + '</td>')
                                             nationality = $('<td hidden class="persons">' + response.persons[i]['nationality'] + '</td>')
@@ -525,8 +525,8 @@
                                         for(var j = 0; j <response.cars.length; j++) {
                                             id_ec = $('<td>' + response.cars[j]['id_ec'] + '</td>')
                                             car_name = $('<td>' +response.cars[j]['car_name'] + '</td>')
-                                            edit2 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s3_2">ویرایش</button>').attr('id',response.cars[j]['id_ec'] + 8000)
-                                            del2 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.cars[j]['id_ec']+9000)
+                                            edit2 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s3_2">ویرایش</button>').attr('id',response.cars[j]['id_ec'] + 8000)
+                                            del2 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.cars[j]['id_ec']+9000)
                                             part1 = $('<td hidden class="cars">' + response.cars[j]['car_no'].substr(3,3) + '</td>')
                                             part2 = $('<td hidden class="cars">' + response.cars[j]['car_no'].substr(0,1) + '</td>')
                                             part3 = $('<td hidden class="cars">' + response.cars[j]['car_no'].substr(1,2) + '</td>')
@@ -616,8 +616,8 @@
                                             id_ei = $('<td class="els">' + response.els[z]['id_ei'] + '</td>')
                                             description1 = $('<td class="els">' +response.els[z]['description'] + '</td>')
                                             serial_no1 = $('<td hidden class="el2">' +response.els[z]['serial_no'] + '</td>')
-                                            edit3 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s4_2">ویرایش</button>').attr('id',response.els[z]['id_ei'] + 8000)
-                                            del3 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.els[z]['id_ei']+9000)
+                                            edit3 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s4_2">ویرایش</button>').attr('id',response.els[z]['id_ei'] + 8000)
+                                            del3 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.els[z]['id_ei']+9000)
                                             row = $('<tr class="els_row" style="font-family: Tahoma;font-size: 12px;color: white"></tr>')
                                             t4 = $('<td></td>')
                                             t5 = $('<td></td>')
@@ -687,8 +687,8 @@
                                             id_ee = $('<td class="eqs">' + response.eqs[k]['id_ee'] + '</td>')
                                             description2 = $('<td class="eqs">'+response.eqs[k]['description']+'</td>')
                                             row = $('<tr class="eqs_row" style="font-family: Tahoma;font-size: 12px;color: black"></tr>')
-                                            edit4 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s5_2">ویرایش</button>').attr('id',response.eqs[k]['id_ee']+8000)
-                                            del4 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.eqs[k]['id_ee']+9000)
+                                            edit4 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s5_2">ویرایش</button>').attr('id',response.eqs[k]['id_ee']+8000)
+                                            del4 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.eqs[k]['id_ee']+9000)
                                             t6 = $('<td></td>')
                                             t7 = $('<td></td>')
                                             t6.append(edit4)
@@ -755,7 +755,7 @@
                                             id_eup = $('<td>' + response.equs[g]['id_eup'] + '</td>')
                                             description3 = $('<td class="equs1"><a href="./documents/'+response.equs[g]['id_eup']+'.pdf">'+response.equs[g]['description']+'</a> </td>')
                                             row = $('<tr class="equs_row" style="font-family: Tahoma;font-size: 12px;color: black"></tr>')
-                                            del5 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.equs[g]['id_eup']+9000)
+                                            del5 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.equs[g]['id_eup']+9000)
                                             t8 = $('<td></td>')
                                             t8.append(del5)
                                             row.append(id_eup,description3,t8)
@@ -1078,7 +1078,7 @@
                                                 }
 
                                             }
-                                            condition = $('<button type="button" class="btn-sm btn-primary condition" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#c_modal">الزامات حفاظت فیزیکی</button>').attr('id', response.results[i]['id_ep'])
+                                            condition = $('<button type="button" class="btn-sm btn-outline-primary condition" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#c_modal">الزامات حفاظت فیزیکی</button>').attr('id', response.results[i]['id_ep'])
                                             row = $('<tr class="report_row2" style="color: white"></tr>')
                                             t4.append(condition)
                                             row.append(id_ep, f_name, l_name,title, t4)
@@ -1201,9 +1201,9 @@
                                             id_ep = $('<td class="persons_edit">' + response.persons[i]['id_ep'] + '</td>')
                                             l_name2 = $('<td class="persons_edit">' + response.persons[i]['f_name'] +' '+response.persons[i]['l_name'] + '</td>')
                                             l_name = $('<td hidden class="persons_edit">' + response.persons[i]['l_name'] + '</td>')
-                                            edit1 = $('<button type="button" class="btn-sm btn-primary edit11" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s2_2">ویرایش</button>').attr('id',(Number(response.persons[i]['id_ep'])+8000))
-                                            del1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',(Number(response.persons[i]['id_ep'])+9000))
-                                            history = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo4">سابقه فرد</button>').attr('id',(Number(response.persons[i]['id_ep'])+7000))
+                                            edit1 = $('<button type="button" class="btn-sm btn-outline-primary edit11" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s2_2">ویرایش</button>').attr('id',(Number(response.persons[i]['id_ep'])+8000))
+                                            del1 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',(Number(response.persons[i]['id_ep'])+9000))
+                                            history = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo4">سابقه فرد</button>').attr('id',(Number(response.persons[i]['id_ep'])+7000))
                                             f_name = $('<td hidden class="persons_edit">' + response.persons[i]['f_name'] + '</td>')
                                             id_et = $('<td hidden class="persons_edit">' + response.persons[i]['id_et'] + '</td>')
                                             nationality = $('<td hidden class="persons">' + response.persons[i]['nationality'] + '</td>')
@@ -1344,8 +1344,8 @@
                                         for(var j = 0; j <response.cars.length; j++) {
                                             id_ec = $('<td>' + response.cars[j]['id_ec'] + '</td>')
                                             car_name = $('<td>' +response.cars[j]['car_name'] + '</td>')
-                                            edit2 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s3_2">ویرایش</button>').attr('id',response.cars[j]['id_ec'] + 8000)
-                                            del2 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.cars[j]['id_ec']+9000)
+                                            edit2 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s3_2">ویرایش</button>').attr('id',response.cars[j]['id_ec'] + 8000)
+                                            del2 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.cars[j]['id_ec']+9000)
                                             part1 = $('<td hidden class="cars">' + response.cars[j]['car_no'].substr(3,3) + '</td>')
                                             part2 = $('<td hidden class="cars">' + response.cars[j]['car_no'].substr(0,1) + '</td>')
                                             part3 = $('<td hidden class="cars">' + response.cars[j]['car_no'].substr(1,2) + '</td>')
@@ -1435,8 +1435,8 @@
                                             id_ei = $('<td class="els">' + response.els[z]['id_ei'] + '</td>')
                                             description1 = $('<td class="els">' +response.els[z]['description'] + '</td>')
                                             serial_no1 = $('<td hidden class="el2">' +response.els[z]['serial_no'] + '</td>')
-                                            edit3 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s4_2">ویرایش</button>').attr('id',response.els[z]['id_ei'] + 8000)
-                                            del3 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.els[z]['id_ei']+9000)
+                                            edit3 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s4_2">ویرایش</button>').attr('id',response.els[z]['id_ei'] + 8000)
+                                            del3 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.els[z]['id_ei']+9000)
                                             row = $('<tr class="els_row" style="font-family: Tahoma;font-size: 12px;color: white"></tr>')
                                             t4 = $('<td></td>')
                                             t5 = $('<td></td>')
@@ -1506,8 +1506,8 @@
                                             id_ee = $('<td class="eqs">' + response.eqs[k]['id_ee'] + '</td>')
                                             description2 = $('<td class="eqs">'+response.eqs[k]['description']+'</td>')
                                             row = $('<tr class="eqs_row" style="font-family: Tahoma;font-size: 12px;color: black"></tr>')
-                                            edit4 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s5_2">ویرایش</button>').attr('id',response.eqs[k]['id_ee']+8000)
-                                            del4 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.eqs[k]['id_ee']+9000)
+                                            edit4 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s5_2">ویرایش</button>').attr('id',response.eqs[k]['id_ee']+8000)
+                                            del4 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.eqs[k]['id_ee']+9000)
                                             t6 = $('<td></td>')
                                             t7 = $('<td></td>')
                                             t6.append(edit4)
@@ -1574,7 +1574,7 @@
                                             id_eup = $('<td>' + response.equs[g]['id_eup'] + '</td>')
                                             description3 = $('<td class="equs1"><a href="./documents/'+response.equs[g]['id_eup']+'.pdf">'+response.equs[g]['description']+'</a> </td>')
                                             row = $('<tr class="equs_row" style="font-family: Tahoma;font-size: 12px;color: black"></tr>')
-                                            del5 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.equs[g]['id_eup']+9000)
+                                            del5 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.equs[g]['id_eup']+9000)
                                             t8 = $('<td></td>')
                                             t8.append(del5)
                                             row.append(id_eup,description3,t8)
@@ -1691,9 +1691,9 @@
 
                             }
                             t3 = $('<td style="width: 14%"></td>')
-                            detail = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">جزئیات درخواست</button>').attr('id',  response.results[i]['id_ef'] +2000)
+                            detail = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">جزئیات درخواست</button>').attr('id',  response.results[i]['id_ef'] +2000)
                             // del2 = $('<button type="button" class="btn-sm btn-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#p_modal">لیست نفرات</button>').attr('id',  response.results[i]['id_ef'])
-                            confirm = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef']+3000)
+                            confirm = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef']+3000)
                             // t2 = $('<td style="width: 12%"></td>')
                             t4 = $('<td style="width: 20%"></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -1891,7 +1891,7 @@
                                                 }
 
                                             }
-                                            condition = $('<button type="button" class="btn-sm btn-primary condition" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#c_modal">الزامات حفاظت فیزیکی</button>').attr('id', response.results[i]['id_ep'])
+                                            condition = $('<button type="button" class="btn-sm btn-outline-primary condition" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#c_modal">الزامات حفاظت فیزیکی</button>').attr('id', response.results[i]['id_ep'])
                                             row = $('<tr class="report_row2" style="color: white"></tr>')
                                             t4.append(condition)
                                             row.append(id_ep, f_name, l_name,title, t4)
@@ -2030,9 +2030,9 @@
 
                             }
                             t3 = $('<td style="width: 14%"></td>')
-                            detail = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">جزئیات درخواست</button>').attr('id',  response.results[i]['id_ef'] +2000)
+                            detail = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">جزئیات درخواست</button>').attr('id',  response.results[i]['id_ef'] +2000)
                             // del2 = $('<button type="button" class="btn-sm btn-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#p_modal">لیست نفرات</button>').attr('id',  response.results[i]['id_ef'])
-                            confirm = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef']+3000)
+                            confirm = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef']+3000)
                             // t2 = $('<td style="width: 12%"></td>')
                             t4 = $('<td style="width: 20%"></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -2230,7 +2230,7 @@
                                                 }
 
                                             }
-                                            condition = $('<button type="button" class="btn-sm btn-primary condition" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#c_modal">الزامات حفاظت فیزیکی</button>').attr('id', response.results[i]['id_ep'])
+                                            condition = $('<button type="button" class="btn-sm btn-outline-primary condition" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#c_modal">الزامات حفاظت فیزیکی</button>').attr('id', response.results[i]['id_ep'])
                                             row = $('<tr class="report_row2" style="color: white"></tr>')
                                             t4.append(condition)
                                             row.append(id_ep, f_name, l_name,title, t4)
@@ -2371,9 +2371,9 @@
 
                             }
                             t3 = $('<td style="width: 13%"></td>')
-                            detail = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">جزئیات درخواست</button>').attr('id',  response.results[i]['id_ef'] +2000)
+                            detail = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">جزئیات درخواست</button>').attr('id',  response.results[i]['id_ef'] +2000)
                             // del2 = $('<button type="button" class="btn-sm btn-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#p_modal">لیست نفرات</button>').attr('id',  response.results[i]['id_ef'])
-                            confirm = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef']+3000)
+                            confirm = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_ef']+3000)
                             // t2 = $('<td style="width: 12%"></td>')
                             t4 = $('<td style="width: 19%"></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -2571,7 +2571,7 @@
                                                 }
 
                                             }
-                                            condition = $('<button type="button" class="btn-sm btn-primary condition" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#c_modal">الزامات حفاظت فیزیکی</button>').attr('id', response.results[i]['id_ep'])
+                                            condition = $('<button type="button" class="btn-sm btn-outline-primary condition" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#c_modal">الزامات حفاظت فیزیکی</button>').attr('id', response.results[i]['id_ep'])
                                             row = $('<tr class="report_row2" style="color: white"></tr>')
                                             t4.append(condition)
                                             row.append(id_ep, f_name, l_name,title, t4)
@@ -2703,7 +2703,7 @@
                                 }
 
                             }
-                            form = $('<button type="button" class="btn-sm btn-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo">توضیحات</button>').attr('id',  response.results[i]['id_ep'])
+                            form = $('<button type="button" class="btn-sm btn-outline-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo">توضیحات</button>').attr('id',  response.results[i]['id_ep'])
                             t3 = $('<td style="width: 12%"></td>')
                             row = $('<tr class="report_row"></tr>')
                             t3.append(form)
@@ -2891,7 +2891,7 @@
                                 }
 
                             }
-                            form = $('<button type="button" class="btn-sm btn-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo">توضیحات</button>').attr('id',  response.results[i]['id_ep'])
+                            form = $('<button type="button" class="btn-sm btn-outline-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo">توضیحات</button>').attr('id',  response.results[i]['id_ep'])
                             t3 = $('<td style="width: 12%"></td>')
                             row = $('<tr class="report_row"></tr>')
                             t3.append(form)
@@ -2982,7 +2982,16 @@
                             "id": code_melli,
                             "_token": token,
                         },
+                        beforeSend: function(){
+                        $(".report_row").remove();
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();
+                        $("#first_spinner").show();
+                        },
                         success: function (response) {
+                        $("#first_spinner").hide();
                             var notlet2=response.notlet2;
                             $('#personinfo6').modal("show");
                             $(".personinfo").remove();
@@ -3134,7 +3143,7 @@
                                 }
 
                             }
-                            form = $('<button type="button" class="btn-sm btn-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo">توضیحات</button>').attr('id',  response.results[i]['id_ep'])
+                            form = $('<button type="button" class="btn-sm btn-outline-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo">توضیحات</button>').attr('id',  response.results[i]['id_ep'])
                             t3 = $('<td style="width: 12%"></td>')
                             row = $('<tr class="report_row"></tr>')
                             t3.append(form)
@@ -3300,7 +3309,7 @@
                                 }
 
                             }
-                            form = $('<button type="button" class="btn-sm btn-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo">توضیحات</button>').attr('id',  response.results[i]['id_ep'])
+                            form = $('<button type="button" class="btn-sm btn-outline-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo">توضیحات</button>').attr('id',  response.results[i]['id_ep'])
                             t3 = $('<td style="width: 12%"></td>')
                             row = $('<tr class="report_row"></tr>')
                             t3.append(form)
@@ -3414,7 +3423,7 @@
                                 }
 
                             }
-                            form = $('<button type="button" class="btn-sm btn-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo">توضیحات</button>').attr('id',  response.results[i]['id_ep'])
+                            form = $('<button type="button" class="btn-sm btn-outline-info del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#personinfo">توضیحات</button>').attr('id',  response.results[i]['id_ep'])
                             t3 = $('<td style="width: 12%"></td>')
                             row = $('<tr class="report_row"></tr>')
                             t3.append(form)
@@ -3613,9 +3622,9 @@
                                     }
                                     t3 = $('<td style="width: 14%"></td>')
                                     t1 = $('<td style="width: 8%"></td>')
-                                    detail = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">جزئیات درخواست</button>').attr('id',  response.results[i]['id_ef'] +2000)
-                                    edit1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">عدم تایید</button>').attr('id',  response.results[i]['id_ef'] + 1000)
-                                    del2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">تایید</button>').attr('id',  response.results[i]['id_ef'])
+                                    detail = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">جزئیات درخواست</button>').attr('id',  response.results[i]['id_ef'] +2000)
+                                    edit1 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">عدم تایید</button>').attr('id',  response.results[i]['id_ef'] + 1000)
+                                    del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">تایید</button>').attr('id',  response.results[i]['id_ef'])
                                     t1.append(edit1)
                                     t2 = $('<td style="width: 8%"></td>')
                                     row = $('<tr class="report_row"></tr>')
@@ -3881,8 +3890,8 @@
                         var date_shamsi_exit = $('<td hidden>' + year +'/'+month+'/'+day+ '</td>')
                         var code_melli = $('<td hidden>' + $('#code_melli').val() + '</td>')
                         var mobile = $('<td hidden>' + $('#mobile').val() + '</td>')
-                        var edit1 = $('<button type="button" class="btn-sm btn-primary edit1" style="font-family: Tahoma;font-size: xx-small;text-align: center;width: 100%" data-toggle="modal" data-target="#s2_2">ویرایش</button>').attr('id',response.id_ep + 8000)
-                        var del1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: xx-small;text-align: center;width: 100%">حذف</button>').attr('id',response.id_ep+9000)
+                        var edit1 = $('<button type="button" class="btn-sm btn-outline-primary edit1" style="font-family: Tahoma;font-size: xx-small;text-align: center;width: 100%" data-toggle="modal" data-target="#s2_2">ویرایش</button>').attr('id',response.id_ep + 8000)
+                        var del1 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: xx-small;text-align: center;width: 100%">حذف</button>').attr('id',response.id_ep+9000)
                         var t1=$('<td></td>')
                         var t2=$('<td></td>')
                         t1.append(edit1)
@@ -4214,8 +4223,8 @@
                         var id_ei = $('<td class="els">' + response.id_ei + '</td>')
                         var description = $('<td class="els">' + $('#description').val() +'</td>')
                         var serial_no = $('<td hidden class="els">' + $('#serial_no').val() +'</td>')
-                        var edit1 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s4_2">ویرایش</button>').attr('id',response.id_ei + 8000)
-                        var del1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.id_ei+9000)
+                        var edit1 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s4_2">ویرایش</button>').attr('id',response.id_ei + 8000)
+                        var del1 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.id_ei+9000)
                         var t1=$('<td></td>')
                         var t2=$('<td></td>')
                         t1.append(edit1)
@@ -4378,8 +4387,8 @@
                         var part3 = $('<td hidden>' + $('#car_no').val().toString().substr(1,2) +'</td>')
                         var part2 = $('<td hidden>' + $('#car_no').val().toString().substr(0,1) +'</td>')
                         var part1 = $('<td hidden>' + $('#car_no').val().toString().substr(3,3) +'</td>')
-                        var edit2 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s3_2">ویرایش</button>').attr('id',response.id_ec + 8000)
-                        var del2 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.id_ec+9000)
+                        var edit2 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s3_2">ویرایش</button>').attr('id',response.id_ec + 8000)
+                        var del2 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.id_ec+9000)
                         var t2 = $('<td></td>')
                         var t3 = $('<td></td>')
                         t2.append(edit2)
@@ -4524,8 +4533,8 @@
                         });
                         var id_ee = $('<td class="eqs">' + response.id_ee + '</td>')
                         var description = $('<td class="eqs">' + $('#description_eq').val() +'</td>')
-                        var edit1 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s5_2">ویرایش</button>').attr('id',response.id_ee + 8000)
-                        var del1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.id_ee+9000)
+                        var edit1 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#s5_2">ویرایش</button>').attr('id',response.id_ee + 8000)
+                        var del1 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.id_ee+9000)
                         var t1=$('<td></td>')
                         var t2=$('<td></td>')
                         t1.append(edit1)
@@ -4775,7 +4784,7 @@
                             $("#s5_1_2").fadeIn();
                             var id_eup = $('<td style="width: 5%">' + response.id_eup + '</td>')
                             var description = $('<td style="text-align: right;padding-right: 10px;width: 65%">' + $('#description_upload').val() +'</td>')
-                            var del1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.id_eup+2000)
+                            var del1 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',response.id_eup+2000)
                             var t2=$('<td style="width: 25%"></td>')
                             t2.append(del1)
                             var row=$('<tr></tr>')
@@ -4892,7 +4901,7 @@
                     </div>
                     <div class="row" style="margin-top: 30px">
                         <div class="col">
-                            <button type="button" id="codesearach2" class="btn btn-success" style="font-family: Tahoma;font-size: small;color: white;width: 70%">بررسی وضعیت شخص</button>
+                            <button type="button" id="codesearach2" class="btn btn-outline-success" style="font-family: Tahoma;font-size: small;color: white;width: 70%">بررسی وضعیت شخص</button>
                         </div>
                     </div>
 
@@ -4983,7 +4992,7 @@
                                 </div>
                             </div>
                             <div class="col" style="margin-top: 20px">
-                                <button type="submit" class="btn btn-primary" id="btnupdate55" style="font-family: Tahoma;font-size: small;text-align: right">ذخیره</button>
+                                <button type="submit" class="btn btn-outline-primary" id="btnupdate55" style="font-family: Tahoma;font-size: small;text-align: right">ذخیره</button>
                             </div>
                         </div>
 
@@ -5253,7 +5262,7 @@
                         <div class="row">
                             <div class="col-2" style="text-align: center"></div>
                             <div class="col-8" style="text-align: center">
-                                <button type="submit" class="btn btn-success" id="btnupdate88" style="font-family: Tahoma;font-size: small;text-align: center;width: 100%">ثبت</button>
+                                <button type="submit" class="btn btn-outline-success" id="btnupdate88" style="font-family: Tahoma;font-size: small;text-align: center;width: 100%">ثبت</button>
                                 <div class="toast bg-info" style="margin-top:15px;border-radius: 10px;display: none">
                                     <div class="toast-body"><p id="mytoast22" style="font-family: Tahoma;font-size: small;color: white;"></p></div>
                                 </div>
@@ -5546,7 +5555,7 @@
 
                                         <div class="row" style="margin-top:30px">
                                             <div class="col" style="text-align:center">
-                                                <button type="submit" class="btn btn-dark" id="btnupdate" disabled style="text-align:left;font-family: Tahoma;font-size: small;text-align: center;width:60%">ثبت مورد جدید</button>
+                                                <button type="submit" class="btn btn-outline-dark" id="btnupdate" disabled style="text-align:left;font-family: Tahoma;font-size: small;text-align: center;width:60%">ثبت مورد جدید</button>
                                             </div>
                                         </div>
 
@@ -5589,7 +5598,7 @@
                                         </div>
                                         <div class="row" style="margin-top:15px">
                                             <div class="col">
-                                                <button type="submit" class="btn btn-dark" id="btncar" disabled style="font-family: Tahoma;font-size: small;text-align: center;width: 80%;display: none">ثبت اطلاعات</button>
+                                                <button type="submit" class="btn btn-outline-dark" id="btncar" disabled style="font-family: Tahoma;font-size: small;text-align: center;width: 80%;display: none">ثبت اطلاعات</button>
                                             </div>
                                         </div>
                                         <hr style="border-top: 1px solid white">
@@ -5690,7 +5699,7 @@
                                         </div>
                                         <div class="row" style="margin-top: 15px">
                                             <div class="col">
-                                                <button type="submit" class="btn btn-dark" id="btnic" disabled style="font-family: Tahoma;font-size: small;text-align: center;width: 80%;display: none">ثبت اطلاعات</button>
+                                                <button type="submit" class="btn btn-outline-dark" id="btnic" disabled style="font-family: Tahoma;font-size: small;text-align: center;width: 80%;display: none">ثبت اطلاعات</button>
                                             </div>
                                         </div>
                                         <hr style="border-top: 1px solid white">
@@ -5757,7 +5766,7 @@
                                     <hr style="border-top: 1px solid white">
                                     <div class="row" style="margin-top: 5px">
                                         <div class="col">
-                                            <button type="submit" class="btn btn-dark" id="btneq2" disabled style="font-family: Tahoma;font-size: small;text-align: center;width: 80%;display: none">ثبت تغییرات</button>
+                                            <button type="submit" class="btn btn-outline-dark" id="btneq2" disabled style="font-family: Tahoma;font-size: small;text-align: center;width: 80%;display: none">ثبت تغییرات</button>
                                         </div>
                                     </div>
 
@@ -5767,7 +5776,7 @@
                                         <input type="text" hidden maxlength="50" class="form-control" id="id_ef1003"   name="id_ef">
                                         <div class="row" style="margin-top: 5px">
                                             <div class="col">
-                                                <button type="submit" class="btn btn-dark" id="btneq" style="font-family: Tahoma;font-size: small;text-align: center;width: 80%;">ثبت تغییرات</button>
+                                                <button type="submit" class="btn btn-outline-dark" id="btneq" style="font-family: Tahoma;font-size: small;text-align: center;width: 80%;">ثبت تغییرات</button>
                                             </div>
                                         </div>
                                         <div class="row eq_title" style="height: 10px;margin-top: 10px">
@@ -5789,7 +5798,7 @@
                                         <input type="text" hidden maxlength="50" class="form-control" id="id_ef1004"   name="id_ef">
                                         <div class="row" style="margin-top: 0px">
                                             <div class="col">
-                                                <button type="submit" class="btn btn-dark" id="btneq3" style="font-family: Tahoma;font-size: small;text-align: center;width: 80%;">ثبت تغییرات</button>
+                                                <button type="submit" class="btn btn-outline-dark" id="btneq3" style="font-family: Tahoma;font-size: small;text-align: center;width: 80%;">ثبت تغییرات</button>
                                             </div>
                                         </div>
                                         <div class="row upload" style="margin-top: 12px;height: 20px">
@@ -5910,7 +5919,7 @@
 
                                 <div class="row" style="margin-top: 45px">
                                     <div class="col">
-                                        <button type="submit" class="btn btn-dark" id="firststage" style="font-family: Tahoma;font-size: small;text-align: center;width: 70%">ثبت تغییرات</button>
+                                        <button type="submit" class="btn btn-outline-dark" id="firststage" style="font-family: Tahoma;font-size: small;text-align: center;width: 70%">ثبت تغییرات</button>
                                     </div>
                                 </div>
                                 <div id="alert1" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>
@@ -6066,7 +6075,7 @@
 
                         <div class="row" style="margin-top: 35px">
                             <div class="col" style="text-align:center">
-                                <button type="submit" class="btn btn-primary" id="updatepeople2" style="text-align:left;font-family: Tahoma;font-size: small;text-align: center;width:50%;margin-top: 5px">ثبت تغییرات</button>
+                                <button type="submit" class="btn btn-outline-primary" id="updatepeople2" style="text-align:left;font-family: Tahoma;font-size: small;text-align: center;width:50%;margin-top: 5px">ثبت تغییرات</button>
                             </div>
                         </div>
 
@@ -6167,7 +6176,7 @@
 
                         <div class="row" style="margin-top: 45px">
                             <div class="col">
-                                <button type="submit" class="btn btn-primary" id="btncar2" style="font-family: Tahoma;font-size: small;text-align: right;margin-bottom: 10px">ثبت اطلاعات</button>
+                                <button type="submit" class="btn btn-outline-primary" id="btncar2" style="font-family: Tahoma;font-size: small;text-align: right;margin-bottom: 10px">ثبت اطلاعات</button>
                             </div>
                         </div>
                     </form>
@@ -6232,7 +6241,7 @@
                         </div>
                         <div class="row" style="margin-top: 45px;margin-bottom: 10px">
                             <div class="col">
-                                <button type="submit" class="btn btn-primary" id="updateins" style="font-family: Tahoma;font-size: small;text-align: right;">ثبت اطلاعات</button>
+                                <button type="submit" class="btn btn-outline-primary" id="updateins" style="font-family: Tahoma;font-size: small;text-align: right;">ثبت اطلاعات</button>
                             </div>
                         </div>
                     </form>
@@ -6290,7 +6299,7 @@
 
                         <div class="row" style="margin-top: 45px">
                             <div class="col">
-                                <button type="submit" class="btn btn-primary" id="updateins" style="font-family: Tahoma;font-size: small;text-align: right;margin-bottom: 10px">ثبت اطلاعات</button>
+                                <button type="submit" class="btn btn-outline-primary" id="updateins" style="font-family: Tahoma;font-size: small;text-align: right;margin-bottom: 10px">ثبت اطلاعات</button>
                             </div>
                         </div>
                     </form>

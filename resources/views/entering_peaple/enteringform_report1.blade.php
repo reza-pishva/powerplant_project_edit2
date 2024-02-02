@@ -803,11 +803,16 @@
                     url: "/total-individuals"+"/"+date_exit_shamsi1+"/"+date_exit_shamsi2,
                     type: 'GET',
                     beforeSend: function(){
+                        $(".mylist").hide();
+                        $('.mylist2').hide();
+                        $('.mylist3').hide();
+                        $(".register").hide();                        
                         $(".report_row").remove();
                         $("#first_spinner").show();
                     },
                     success: function (response) {
                         $("#first_spinner").hide();
+                        $(".mylist2").fadeToggle();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست ورود و خروج افراد به نیروگاه</p>')
                         var i_ed = ''
                         var enter_exit=""
@@ -853,11 +858,7 @@
                             $("#block_table2").append(row)
                         }
                         $("#editlist").css("margin-top","100px");
-                        $(".mylist").hide();
-                        $('.mylist2').hide();
-                        $('.mylist3').hide();
-                        $(".register").hide();
-                        $(".mylist2").fadeToggle();
+
                     }})
 
             })
