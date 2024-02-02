@@ -275,7 +275,12 @@
         <div class="col-10">
             <div class="row" style="border-radius: 5px;height: 630px;width: 100%;">
                 <div class="col-1"></div>
-                <div class="col-10">@yield('content')</div>
+                <div class="col-10">
+                    <div id="first_spinner" style="margin-top:125px;text-align:center;margin-left:200px">
+                        <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                    </div>
+                    @yield('content')
+                </div>
                 <div class="col-1"></div>
             </div>
         </div>
@@ -288,9 +293,6 @@
                         <div>
                             <img src="{{URL::to('/')}}/person_search002.png" id="first_report" class="reza2" data-toggle="tooltip" data-placement="left" title="بررسی وضعیت مجوزهایی که برای فرد صادر شده">
                         </div>
-{{--                        <div>--}}
-{{--                            <img src="./dailyenter003.png" id="sixth_report" class="reza2" data-toggle="tooltip" data-placement="left" title="لیست صاحبان کارت منقضی شده">--}}
-{{--                        </div>--}}
                         <div>
                             <img src="{{URL::to('/')}}/authorised003.png" id="second_report" class="reza2" data-toggle="tooltip" data-placement="left" title="لیست افرادی که در بازه زمانی مجاز برای ورود به نیروگاه قرار دارند">
                         </div>
