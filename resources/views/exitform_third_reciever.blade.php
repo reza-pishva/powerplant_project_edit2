@@ -98,12 +98,12 @@
                                 }
                             }
                             with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
-                            t1 = $('<td style="width: 8%"></td>')
+                            t1 = $('<td style="width: 9%"></td>')
                             edit1 = $('<button  type="button" class="btn-sm btn-outline-danger del" style="width:100%;font-family: Tahoma;font-size: smaller;text-align: center" data-toggle="modal" data-target="#myModal2">عدم تایید</button>').attr('id',  response.results[i]['id_exit'] + 1000)
                             del2 = $('<button  type="button" class="btn-sm btn-outline-success del" style="width:100%;font-family: Tahoma;font-size: smaller;text-align: center">تایید</button>').attr('id',  response.results[i]['id_exit'])
                             edit2 = $('<button  type="button" class="btn-sm btn-outline-primary del" style="width:100%;font-family: Tahoma;font-size: smaller;text-align: center" data-toggle="modal" data-target="#myModaledit">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 2000)
                             t1.append(edit1)
-                            t2 = $('<td style="width: 6%"></td>')
+                            t2 = $('<td style="width: 5%"></td>')
                             t3 = $('<td style="width: 6%"></td>')
                             row = $('<tr class="report_row"></tr>')
                             t2.append(del2)
