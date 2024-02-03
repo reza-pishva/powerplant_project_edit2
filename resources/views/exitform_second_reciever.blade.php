@@ -705,7 +705,7 @@
                         var del2 = ''
                         var t2 = ''
                         var row = ''
-                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;font-size: x-small"><td>شماره درخواست</td><td>تاریخ درخواست</td><td>شرح درخواست</td><td>تعداد موارد</td><td>شماره جمعداری</td><td>نوع قطعه</td><td>همراه بازگشت</td><td>درخواست کننده</td><td>#</td></tr>'
+                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;font-size: x-small"><td>شماره درخواست</td><td>تاریخ درخواست</td><td>شرح درخواست</td><td>تعداد موارد</td><td>شماره جمعداری</td><td>نوع قطعه</td><td>همراه بازگشت</td><td>درخواست کننده</td><td style="text-align:center">#</td></tr>'
                         $("#report_table").append(row_th)
                         for(var i = 0; i < response.results.length; i++) {
                             id_exit = $('<td style="width:4%;font-size:10px" class="id_exit">' + response.results[i]['id_exit'] + '</td>')
@@ -739,7 +739,7 @@
                             edit1 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal2">انتقال به بایگانی</button>').attr('id',  response.results[i]['id_exit'] + 1000)
                             del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: small;text-align: center">انتقال به بایگانی</button>').attr('id',  response.results[i]['id_exit'])
                             t1.append(edit1)
-                            t2 = $('<td></td>')
+                            t2 = $('<td style="text-align:center"></td>')
                             row = $('<tr class="report_row"></tr>')
                             t2.append(del2)
                             row.append(id_exit, date_request_shamsi, description, exit_no, jamdari_no, goods_type_value, with_return,l_name,origin_destination,id_goods_type,with_return_value,t2)
@@ -825,7 +825,7 @@
                         var edit2 = ''
                         var t3 = ''
                         var row = ''
-                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;"><td>شماره درخواست</td><td>تاریخ درخواست</td><td>شرح درخواست</td><td>تعداد موارد</td><td>شماره جمعداری</td><td>نوع قطعه</td><td>همراه بازگشت</td><td>درخواست کننده</td><td>#</td></tr>'
+                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;"><td>شماره درخواست</td><td>تاریخ درخواست</td><td>شرح درخواست</td><td>تعداد موارد</td><td>شماره جمعداری</td><td>نوع قطعه</td><td>همراه بازگشت</td><td>درخواست کننده</td><td style="text-align:center">#</td></tr>'
                         $("#report_table").append(row_th)
                         for(var i = 0; i < response.results.length; i++) {
                             id_exit = $('<td style="width:4%;font-size:10px" class="id_exit">' + response.results[i]['id_exit'] + '</td>')
@@ -860,29 +860,13 @@
                             del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: small;text-align: center">انتقال به بایگانی</button>').attr('id',  response.results[i]['id_exit'])
 
                             t1.append(edit1)
-                            t2 = $('<td></td>')
+                            t2 = $('<td style="text-align:center"></td>')
                             row = $('<tr class="report_row"></tr>')
                             t2.append(del2)
 
                             row.append(id_exit, date_request_shamsi, description, exit_no, jamdari_no, goods_type_value, with_return,l_name,origin_destination,id_goods_type,with_return_value,t2)
                             $("#report_table").append(row)
                             $("#editlist").css("margin-top","100px");
-                            // $('#' + (response.results[i]['id_exit']+1000)).on('click',function(){
-                            //
-                            //     $('#ajax-alert1').hide();
-                            //     $('#ajax-alert2').hide();
-                            //     $('#ajax-alert3').hide();
-                            //
-                            //     $('#id_exit2').val($(this).closest('tr').find('td:eq(0)').text());
-                            //     $('#description2').val($(this).closest('tr').find('td:eq(2)').text());
-                            //     $('#exit_no2').val($(this).closest('tr').find('td:eq(3)').text());
-                            //     $('#jamdari_no2').val($(this).closest('tr').find('td:eq(4)').text());
-                            //     $('#id_goods_type2').val($(this).closest('tr').find('td:eq(10)').text());
-                            //     $('#with_return2').val($(this).closest('tr').find('td:eq(11)').text());
-                            //     $('#origin_destination2').val($(this).closest('tr').find('td:eq(9)').text());//true
-                            //
-                            // })
-
                             $('#' + response.results[i]['id_exit']).click(function () {
 
                                 var id_exit = $(this).closest('tr').find('td:eq(0)').text();
