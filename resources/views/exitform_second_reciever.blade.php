@@ -165,8 +165,7 @@
                                 $('#with_return22').val($(this).closest('tr').find('td:eq(13)').text());
                                 $('#origin_destination22').val($(this).closest('tr').find('td:eq(11)').text());//true
                             })
-                            $(".history").on('click',function () {
-
+                            $('#' + (response.results[i]['id_exit']+5000)).on('click',function () {
                                 var id_exit = $(this).closest('tr').find('td:eq(0)').text();
                                 $.ajaxSetup({
                                     headers: {
@@ -178,14 +177,12 @@
                                     url: '/workflow/'+id_exit,
                                     method:'GET',      
                                     beforeSend: function(){
-                                        $('#myModal4').modal('show');
-                                        $("#workflowrows").remove();
-                                        // $("#first_spinner2").show();
+                                        $(".workflowrows").remove();
+                                        $("#first_spinner2").show();
+                                        $('#myModal4').modal('show');                                
                                     },                           
                                     success: function (response) {
-
-                                        // $("#first_spinner2").hide();
-   
+                                        $("#first_spinner2").hide();   
                                         var description = ''
                                         var date_shamsi = ''
                                         var time = ''
@@ -203,7 +200,7 @@
                                                 }
 
                                             }
-                                            row = $('<tr id="workflowrows"></tr>')
+                                            row = $('<tr class="workflowrows"></tr>')
                                             row.append(date_shamsi,time,description,l_name)
                                             $("#workflow").append(row)
                                         }
@@ -1779,7 +1776,7 @@
                 <!-- List -->
                 <div class="container"  style="margin: auto;background-color:#c4e6f5;width: 850px ;height: 400px;;overflow-y: scroll">
                     <table class="table table-striped" id="workflow" style="width: 800px">
-                        <div id="first_spinner2" style="display:none;margin-top:90px;text-align:center;margin-left:110px">
+                        <div id="first_spinner2" style="display:none;margin-top:120px;text-align:center;margin-left:-10px">
                             <img src="preloader19.gif" style="width:150px;height:140px;border-radius:10px">
                         </div>
                     </table>

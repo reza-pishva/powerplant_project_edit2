@@ -120,7 +120,6 @@
                             $("#request_table2").append(row)
                         }
                         $(".history").on('click',function () {
-
                             var id_exit = $(this).closest('tr').find('td:eq(0)').text();
                             $.ajaxSetup({
                                 headers: {
