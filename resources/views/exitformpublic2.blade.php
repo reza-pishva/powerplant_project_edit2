@@ -188,20 +188,24 @@
                             $.ajax({
                                 url: '/workflow/'+id_exit,
                                 method:'GET',
+                                beforeSend: function(){
+                                    $(".workflows").remove();
+                                    $("#first_spinner2").show();
+                                },
                                 success: function (response) {
+                                    $("#first_spinner2").hide();
                                     $('#myModal4').modal('show');
                                     var description = ''
                                     var date_shamsi = ''
                                     var time = ''
-                                    var row = ''
-                                    $(".workflowrows").remove();
+                                    var row = ''                                    
                                     for(var i = 0; i < response.results.length; i++) {
                                         description = $('<td style="width: 80%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
                                         date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
                                         time = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
-                                                row = $('<tr class="workflowrows"></tr>')
-                                                row.append(date_shamsi,time,description)
-                                                $("#workflow").append(row)
+                                        row = $('<tr class="workflowrows"></tr>')
+                                        row.append(date_shamsi,time,description)
+                                        $("#workflow").append(row)
                                     }
                                 }
                             })
@@ -368,13 +372,18 @@
                                 $.ajax({
                                     url: '/workflow2/'+id_exit,
                                     method:'GET',
+                                    beforeSend: function(){
+                                        $(".workflow").remove();
+                                        $("#first_spinner2").show();
+                                    },
                                     success: function (response) {
+                                        $("#first_spinner2").hide();
                                         $('#myModal4').modal('show');
                                         var description = ''
                                         var date_shamsi = ''
                                         var time = ''
                                         var row = ''
-                                        $(".workflowrows").remove();
+                                        
                                         for(var i = 0; i < response.results.length; i++) {
                                             description = $('<td style="width: 80%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
                                             date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
@@ -832,13 +841,19 @@
                                         $.ajax({
                                             url: '/workflow2/'+id_exit,
                                             method:'GET',
+                                            beforeSend: function(){
+                                                $(".mylist").hide();
+                                                $(".mylist2").hide();
+                                                $(".register").hide();
+                                                $(".workflow").remove();
+                                                $("#first_spinner2").show();
+                                            },
                                             success: function (response) {
                                                 $('#myModal4').modal('show');
                                                 var description = ''
                                                 var date_shamsi = ''
                                                 var time = ''
                                                 var row = ''
-                                                $(".workflowrows").remove();
                                                 for(var i = 0; i < response.results.length; i++) {
                                                     description = $('<td style="width: 80%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
                                                     date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
@@ -851,9 +866,7 @@
                                         })
                                     })
                                 }
-                                $(".mylist").hide();
-                                $(".mylist2").hide();
-                                $(".register").hide();
+
                                 $(".mylist2").fadeToggle(2000);
                             }})
                     }
@@ -1184,12 +1197,9 @@
                 <!-- List -->
                 <div class="container"  style="margin: auto;background-color:#c4e6f5;width: 850px ;height: 400px;;overflow-y: scroll">
                     <table class="table table-striped" id="workflow" style="width: 800px">
-{{--                        <thead>--}}
-{{--                        <tr style="background-color: darkslateblue;color: #f9f9f9;font-family: Tahoma;font-size: small">--}}
-{{--                            <th>لیست گردش درخواست</th>--}}
-{{--                        </tr>--}}
-{{--                        </thead>--}}
-{{--                        <tbody></tbody>--}}
+                        <div id="first_spinner2" style="display: none;margin-top:105px;text-align:center;margin-left:50px">
+                            <img src="preloader22.gif" style="width:150px;height:120px;border-radius: 100px">
+                        </div>
                     </table>
                 </div>
 
