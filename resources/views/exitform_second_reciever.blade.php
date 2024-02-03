@@ -1058,44 +1058,50 @@
                                         $('#with_return22').val($(this).closest('tr').find('td:eq(13)').text());
                                         $('#origin_destination22').val($(this).closest('tr').find('td:eq(11)').text());//true
                                     })
-                                    $(".history").on('click',function () {
-
-                                        var id_exit = $(this).closest('tr').find('td:eq(0)').text();
-                                        $.ajaxSetup({
-                                            headers: {
-                                                'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                                            }
-                                        });
-                                        var _token = $("input[name='_token']").val();
-                                        $.ajax({
-                                            url: '/workflow/'+id_exit,
-                                            method:'GET',
-                                            success: function (response) {
-                                                $('#myModal4').modal('show');
-                                                var description = ''
-                                                var date_shamsi = ''
-                                                var time = ''
-                                                var l_name = ''
-                                                var row = ''
-                                                $(".workflowrows").remove();
-                                                for(var i = 0; i < response.results.length; i++) {
-                                                    description = $('<td style="width: 70%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
-                                                    date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
-                                                    time = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
-                                                    for(var z = 0; z < response.users.length; z++) {
-                                                        if(response.users[z]['id']==response.results[i]['id_user']){
-                                                            l_name = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.users[z]['l_name'] + '</td>')
-                                                            break;
-                                                        }
-
-                                                    }
-                                                    row = $('<tr class="workflowrows"></tr>')
-                                                    row.append(date_shamsi,time,description,l_name)
-                                                    $("#workflow").append(row)
+                                    $('#' + (response.results[i]['id_exit']+5000)).on('click',function () {
+                                var id_exit = $(this).closest('tr').find('td:eq(0)').text();
+                                $.ajaxSetup({
+                                    headers: {
+                                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                                    }
+                                });
+                                var _token = $("input[name='_token']").val();
+                                $.ajax({
+                                    url: '/workflow/'+id_exit,
+                                    method:'GET',      
+                                    beforeSend: function(){
+                                        $(".workflowrows").remove();
+                                        $("#first_spinner2").show();
+                                        $('#myModal4').modal('show');                                
+                                    },                           
+                                    success: function (response) {
+                                        $("#first_spinner2").hide();   
+                                        var description = ''
+                                        var date_shamsi = ''
+                                        var time = ''
+                                        var l_name = ''
+                                        var row = ''
+                                        
+                                        for(var i = 0; i < response.results.length; i++) {
+                                            description = $('<td style="width: 70%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
+                                            date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
+                                            time = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
+                                            for(var z = 0; z < response.users.length; z++) {
+                                                if(response.users[z]['id']==response.results[i]['id_user']){
+                                                    l_name = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.users[z]['l_name'] + '</td>')
+                                                    break;
                                                 }
+
                                             }
-                                        })
-                                    })
+                                            row = $('<tr class="workflowrows"></tr>')
+                                            row.append(date_shamsi,time,description,l_name)
+                                            $("#workflow").append(row)
+                                        }
+                                    }
+                                    
+                                })
+                                
+                            })
                                 }
                                 $(".mylist").hide();
                                 $(".mylist2").hide();
@@ -1420,44 +1426,50 @@
                                         $('#with_return22').val($(this).closest('tr').find('td:eq(13)').text());
                                         $('#origin_destination22').val($(this).closest('tr').find('td:eq(11)').text());//true
                                     })
-                                    $(".history").on('click',function () {
-
-                                        var id_exit = $(this).closest('tr').find('td:eq(0)').text();
-                                        $.ajaxSetup({
-                                            headers: {
-                                                'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                                            }
-                                        });
-                                        var _token = $("input[name='_token']").val();
-                                        $.ajax({
-                                            url: '/workflow/'+id_exit,
-                                            method:'GET',
-                                            success: function (response) {
-                                                $('#myModal4').modal('show');
-                                                var description = ''
-                                                var date_shamsi = ''
-                                                var time = ''
-                                                var l_name = ''
-                                                var row = ''
-                                                $(".workflowrows").remove();
-                                                for(var i = 0; i < response.results.length; i++) {
-                                                    description = $('<td style="width: 70%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
-                                                    date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
-                                                    time = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
-                                                    for(var z = 0; z < response.users.length; z++) {
-                                                        if(response.users[z]['id']==response.results[i]['id_user']){
-                                                            l_name = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.users[z]['l_name'] + '</td>')
-                                                            break;
-                                                        }
-
-                                                    }
-                                                    row = $('<tr class="workflowrows"></tr>')
-                                                    row.append(date_shamsi,time,description,l_name)
-                                                    $("#workflow").append(row)
+                                    $('#' + (response.results[i]['id_exit']+5000)).on('click',function () {
+                                var id_exit = $(this).closest('tr').find('td:eq(0)').text();
+                                $.ajaxSetup({
+                                    headers: {
+                                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                                    }
+                                });
+                                var _token = $("input[name='_token']").val();
+                                $.ajax({
+                                    url: '/workflow/'+id_exit,
+                                    method:'GET',      
+                                    beforeSend: function(){
+                                        $(".workflowrows").remove();
+                                        $("#first_spinner2").show();
+                                        $('#myModal4').modal('show');                                
+                                    },                           
+                                    success: function (response) {
+                                        $("#first_spinner2").hide();   
+                                        var description = ''
+                                        var date_shamsi = ''
+                                        var time = ''
+                                        var l_name = ''
+                                        var row = ''
+                                        
+                                        for(var i = 0; i < response.results.length; i++) {
+                                            description = $('<td style="width: 70%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
+                                            date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
+                                            time = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
+                                            for(var z = 0; z < response.users.length; z++) {
+                                                if(response.users[z]['id']==response.results[i]['id_user']){
+                                                    l_name = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.users[z]['l_name'] + '</td>')
+                                                    break;
                                                 }
+
                                             }
-                                        })
-                                    })
+                                            row = $('<tr class="workflowrows"></tr>')
+                                            row.append(date_shamsi,time,description,l_name)
+                                            $("#workflow").append(row)
+                                        }
+                                    }
+                                    
+                                })
+                                
+                            })
 
 
 
