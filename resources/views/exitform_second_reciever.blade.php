@@ -745,22 +745,6 @@
                             row.append(id_exit, date_request_shamsi, description, exit_no, jamdari_no, goods_type_value, with_return,l_name,origin_destination,id_goods_type,with_return_value,t2)
                             $("#report_table").append(row)
                             $("#editlist").css("margin-top","100px");
-                            // $('#' + (response.results[i]['id_exit']+1000)).on('click',function(){
-                            //
-                            //     $('#ajax-alert1').hide();
-                            //     $('#ajax-alert2').hide();
-                            //     $('#ajax-alert3').hide();
-                            //
-                            //     $('#id_exit2').val($(this).closest('tr').find('td:eq(0)').text());
-                            //     $('#description2').val($(this).closest('tr').find('td:eq(2)').text());
-                            //     $('#exit_no2').val($(this).closest('tr').find('td:eq(3)').text());
-                            //     $('#jamdari_no2').val($(this).closest('tr').find('td:eq(4)').text());
-                            //     $('#id_goods_type2').val($(this).closest('tr').find('td:eq(10)').text());
-                            //     $('#with_return2').val($(this).closest('tr').find('td:eq(11)').text());
-                            //     $('#origin_destination2').val($(this).closest('tr').find('td:eq(9)').text());//true
-                            //
-                            // })
-
                             $('#' + response.results[i]['id_exit']).click(function () {
 
                                 var id_exit = $(this).closest('tr').find('td:eq(0)').text();
