@@ -17,8 +17,15 @@
                 $.ajax({
                     url: '/level4-1',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                       
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد در انتظار خروج</p>')
                         var l_name=''
                         var id_exit = ''
@@ -69,9 +76,9 @@
                             }
                             with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
                             t1 = $('<td style="width:15%"></td>')
-                            history = $('<button type="button" class="btn-sm btn-primary history" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal10" disabled>سابقه</button>').attr('id',  response.results[i]['id_exit'] + 10000)
-                            edit1 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal2">تکمیل اطلاعات خروج</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: small;text-align: right">حذف</button>').attr('id',  response.results[i]['id_exit'])
+                            history = $('<button type="button" class="btn-sm btn-outline-primary history" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal10" disabled>سابقه</button>').attr('id',  response.results[i]['id_exit'] + 10000)
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal2">تکمیل اطلاعات خروج</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                            del2 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: small;text-align: right">حذف</button>').attr('id',  response.results[i]['id_exit'])
                             t1.append(edit1)
                             t2 = $('<td></td>')
                             t3 = $('<td></td>')
@@ -127,9 +134,7 @@
                             })
 
                         }
-                        $(".mylist").hide();
-                        $(".mylist2").hide();
-                        $(".register").hide();
+
                         $(".mylist2").fadeToggle(2000);
                     }
                 })
@@ -140,8 +145,15 @@
                 $.ajax({
                     url: '/level6',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                       
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد در انتظار ورود</p>')
                         var l_name=''
                         var id_exit = ''
@@ -192,9 +204,9 @@
                             }
                             with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
                             t1 = $('<td style="width:15%"></td>')
-                            history = $('<button type="button" class="btn-sm btn-primary history" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal10" disabled>سابقه</button>').attr('id',  response.results[i]['id_exit'] + 10000)
-                            edit1 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal3">تکمیل اطلاعات ورود</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: small;text-align: right">حذف</button>').attr('id',  response.results[i]['id_exit'])
+                            history = $('<button type="button" class="btn-sm btn-outline-primary history" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal10" disabled>سابقه</button>').attr('id',  response.results[i]['id_exit'] + 10000)
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal3">تکمیل اطلاعات ورود</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                            del2 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: small;text-align: right">حذف</button>').attr('id',  response.results[i]['id_exit'])
                             t1.append(edit1)
                             t2 = $('<td></td>')
                             t3 = $('<td></td>')
@@ -266,8 +278,15 @@
                 $.ajax({
                     url: '/level5',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                       
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد قابل ویرایش و یا بازگشت به کارتابل</p>')
                         var l_name = ''
                         var part100=''
@@ -299,8 +318,8 @@
                             part300=$('<td style="width: 2%">'+response.results[i]['car_no_exit'].toString().substr(3,3)+'</td>')
                             time_exit = $('<td style="width: 10%">' + response.results[i]['time_exit'] + '</td>')
                             t1 = $('<td style="width: 15%"></td>')
-                            edit1 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal4">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: right">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_exit'])
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal4">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: right">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_exit'])
                             t1.append(edit1)
                             t2 = $('<td style="width: 15%"></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -366,8 +385,15 @@
                 $.ajax({
                     url: '/level7',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
                         $(".report_row").remove();
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();                       
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد قابل ویرایش و یا بازگشت به کارتابل</p>')
                         var iscomplete=''
                         var part100=''
@@ -400,8 +426,8 @@
                             part200=$('<td style="width: 1%">'+response.results[i]['car_no_enter'].toString().substr(0,1)+'</td>')
                             part300=$('<td style="width: 2%">'+response.results[i]['car_no_enter'].toString().substr(3,3)+'</td>')
                             t1 = $('<td style="width: 15%"></td>')
-                            edit1 = $('<button type="button" class="btn-sm btn-primary edit1" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal5">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: right">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_exit'])
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-primary edit1" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal5">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: right">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_exit'])
                             t1.append(edit1)
                             t2 = $('<td style="width: 15%"></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -585,8 +611,8 @@
                                     time_exit = $('<td style="width: 10%">' + response.results[i]['time_exit'] + '</td>')
 
                                     t1 = $('<td style="width: 15%"></td>')
-                                    edit1 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal4">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                                    del2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: right">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_exit'])
+                                    edit1 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal4">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                                    del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: right">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_exit'])
                                     t1.append(edit1)
                                     t2 = $('<td style="width: 15%"></td>')
                                     row = $('<tr class="report_row"></tr>')
@@ -790,8 +816,8 @@
                                     part200=$('<td style="width: 1%">'+response.results[i]['car_no_enter'].toString().substr(0,1)+'</td>')
                                     part300=$('<td style="width: 2%">'+response.results[i]['car_no_enter'].toString().substr(3,3)+'</td>')
                                     t1 = $('<td style="width: 15%"></td>')
-                                    edit1 = $('<button type="button" class="btn-sm btn-primary edit1" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal5">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                                    del2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: right">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_exit'])
+                                    edit1 = $('<button type="button" class="btn-sm btn-outline-primary edit1" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal5">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                                    del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: right">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_exit'])
                                     t1.append(edit1)
                                     t2 = $('<td style="width: 15%"></td>')
                                     row = $('<tr class="report_row"></tr>')
@@ -1041,7 +1067,7 @@
                             <div class="col">
                                 <div class="form-group" style="text-align: right">
                                     <input maxlength="12" id="time_exit2" class="form-control" type="text" style="width: 50%;font-size: 12px;display: inline;text-align: center" class="time" name="time_exit" required placeholder="ساعت خروج"/>
-                                    <button class="btn btn-success" id="setTimeButton2" style="font-family: Tahoma;font-size: 10px;text-align: right">ساعت فعلی</button>
+                                    <button class="btn btn-outline-success" id="setTimeButton2" style="font-family: Tahoma;font-size: 10px;text-align: right">ساعت فعلی</button>
                                 </div>
                             </div>
                         </div>
@@ -1105,7 +1131,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-primary" id="btnupdate" style="font-family: Tahoma;font-size: small;text-align: right">ثبت اطلاعات</button>
+                                <button type="submit" class="btn btn-outline-primary" id="btnupdate" style="font-family: Tahoma;font-size: small;text-align: right">ثبت اطلاعات</button>
                             </div>
                         </div>
                         <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>
@@ -1166,12 +1192,12 @@
                             <div class="col">
                                 <div class="form-group" style="text-align: right">
                                     <input maxlength="12" id="time_enter2" class="form-control" type="text" style="width: 50%;font-size: 12px;display: inline;text-align: center" class="time" name="time_enter" required placeholder="ساعت ورود" title="لطفا ساعت ورود را وارد کنید"/>
-                                    <button class="btn btn-success" id="setTimeButton" style="font-family: Tahoma;font-size: 10px;text-align: right">ساعت فعلی</button>
+                                    <button class="btn btn-outline-success" id="setTimeButton" style="font-family: Tahoma;font-size: 10px;text-align: right">ساعت فعلی</button>
                                 </div>
                             </div>
 {{--                            <div class="col">--}}
 {{--                                <div class="form-group" style="text-align: right;width:100%">--}}
-{{--                                    <button class="btn btn-primary" id="setTimeButton" style="font-family: Tahoma;font-size: 10px;text-align: right">ساعت فعلی</button>--}}
+{{--                                    <button class="btn btn-outline-primary" id="setTimeButton" style="font-family: Tahoma;font-size: 10px;text-align: right">ساعت فعلی</button>--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
                         </div>
@@ -1245,7 +1271,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-primary" id="btnupdate3" style="font-family: Tahoma;font-size: small;text-align: right">ثبت اطلاعات</button>
+                                <button type="submit" class="btn btn-outline-primary" id="btnupdate3" style="font-family: Tahoma;font-size: small;text-align: right">ثبت اطلاعات</button>
                             </div>
                         </div>
                         <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>
@@ -1362,7 +1388,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-primary" id="btnupdate4" style="font-family: Tahoma;font-size: small;text-align: right">ثبت اطلاعات</button>
+                                <button type="submit" class="btn btn-outline-primary" id="btnupdate4" style="font-family: Tahoma;font-size: small;text-align: right">ثبت اطلاعات</button>
                             </div>
                         </div>
                         <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>
@@ -1479,7 +1505,7 @@
                                 </div>
                             </div>
                             <div class="col mt-2">
-                                <button type="submit" class="btn btn-primary" id="btnupdate5" style="font-family: Tahoma;font-size: small;text-align: right">ثبت اطلاعات</button>
+                                <button type="submit" class="btn btn-outline-primary" id="btnupdate5" style="font-family: Tahoma;font-size: small;text-align: right">ثبت اطلاعات</button>
                             </div>
 
                         </div>
