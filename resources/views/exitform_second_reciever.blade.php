@@ -139,7 +139,6 @@
 
                                 var id_exit = $(this).closest('tr').find('td:eq(0)').text();
                                 var token = $("meta[name='csrf-token']").attr("content");
-                                //$('.toast').toast('show');
                                 $.ajax(
                                     {
                                         url: "/confirm2/" + id_exit,
@@ -158,9 +157,6 @@
 
                             })
                             $('#' + (response.results[i]['id_exit']+2000)).on('click',function(){
-                                // $('#ajax-alert1').hide();
-                                // $('#ajax-alert2').hide();
-                                // $('#ajax-alert3').hide();
                                 $('#id_exit22').val($(this).closest('tr').find('td:eq(0)').text());
                                 $('#description22').val($(this).closest('tr').find('td:eq(2)').text());
                                 $('#exit_no22').val($(this).closest('tr').find('td:eq(3)').text());
@@ -180,15 +176,22 @@
                                 var _token = $("input[name='_token']").val();
                                 $.ajax({
                                     url: '/workflow/'+id_exit,
-                                    method:'GET',                                    
-                                    success: function (response) {
+                                    method:'GET',      
+                                    beforeSend: function(){
                                         $('#myModal4').modal('show');
+                                        $("#workflowrows").remove();
+                                        // $("#first_spinner2").show();
+                                    },                           
+                                    success: function (response) {
+
+                                        // $("#first_spinner2").hide();
+   
                                         var description = ''
                                         var date_shamsi = ''
                                         var time = ''
                                         var l_name = ''
                                         var row = ''
-                                        $(".workflowrows").remove();
+                                        
                                         for(var i = 0; i < response.results.length; i++) {
                                             description = $('<td style="width: 70%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
                                             date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
@@ -200,22 +203,22 @@
                                                 }
 
                                             }
-                                            row = $('<tr class="workflowrows"></tr>')
+                                            row = $('<tr id="workflowrows"></tr>')
                                             row.append(date_shamsi,time,description,l_name)
                                             $("#workflow").append(row)
                                         }
                                     }
+                                    
                                 })
+                                
                             })
-
+                            
 
 
                         }
-                        $(".mylist").hide();
-                        $(".mylist2").hide();
-                        $(".register").hide();
-                        $(".mylist2").fadeToggle(2000);
+                        
                     }})
+                    $(".mylist3").show();
             })
             $('#for_modir').click(function(event) {
                 event.preventDefault();

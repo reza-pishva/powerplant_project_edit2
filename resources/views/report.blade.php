@@ -152,7 +152,6 @@
                                                 l_name = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.users[z]['l_name'] + '</td>')
                                                 break;
                                             }
-
                                         }
                                         row = $('<tr class="workflowrows"></tr>')
                                         row.append(date_shamsi,time,description,l_name)
