@@ -41,7 +41,7 @@
                         var t4 = ''
                         var t2 = ''
                         var row = ''
-                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;font-size: x-small"><td  style="border-left:1px white solid;font-size: x-small">شماره درخواست</td><td  style="border-left:1px white solid;font-size: x-small">تاریخ درخواست</td><td  style="border-left:1px white solid;font-size: x-small">شرح درخواست</td><td  style="border-left:1px white solid;font-size: x-small">تعداد موارد</td><td  style="border-left:1px white solid;font-size: x-small">نوع قطعه</td><td  style="border-left:1px white solid;font-size: x-small">نوع درخواست</td><td  style="border-left:1px white solid;font-size: x-small">همراه با بازگشت</td><td  style="border-left:1px white solid;font-size: x-small">درخواست کننده</td><td  style="border-left:1px white solid;">#</td><td  style="border-left:1px white solid;">#</td><td  style="border-left:1px white solid;">#</td><td  style="border-left:1px white solid;">#</td></tr>'
+                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;font-size: x-small"><td  style="border-left:1px white solid;font-size: x-small">شماره درخواست</td><td  style="border-left:1px white solid;font-size: x-small">تاریخ درخواست</td><td  style="border-left:1px white solid;font-size: x-small">شرح درخواست</td><td  style="border-left:1px white solid;font-size: x-small">تعداد موارد</td><td  style="border-left:1px white solid;font-size: x-small">نوع قطعه</td><td  style="border-left:1px white solid;font-size: x-small">نوع درخواست</td><td  style="border-left:1px white solid;font-size: x-small">همراه با بازگشت</td><td  style="border-left:1px white solid;font-size: x-small">درخواست کننده</td><td  style="border-left:1px white solid;text-align:center;">#</td><td  style="border-left:1px white solid;text-align:center;">#</td><td  style="border-left:1px white solid;text-align:center;">#</td><td  style="border-left:1px white solid;text-align:center;">#</td></tr>'
                         $("#report_table").append(row_th)
 
                         $('tr').find('td:eq(2)').removeClass('description');//true
@@ -249,7 +249,7 @@
                         var del2 = ''
                         var t2 = ''
                         var row = ''
-                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;font-size: x-small"><td  style="border-left:1px white solid;">شماره درخواست</td><td  style="border-left:1px white solid;">تاریخ درخواست</td><td  style="border-left:1px white solid;">شرح درخواست</td><td  style="border-left:1px white solid;">تعداد موارد</td><td  style="border-left:1px white solid;">نوع قطعه</td><td  style="border-left:1px white solid;">نوع درخواست</td><td  style="border-left:1px white solid;">همراه با بازگشت</td><td  style="border-left:1px white solid;">درخواست کننده</td><td  style="border-left:1px white solid;">#</td></tr>'
+                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;font-size: x-small"><td  style="border-left:1px white solid;">شماره درخواست</td><td  style="border-left:1px white solid;">تاریخ درخواست</td><td  style="border-left:1px white solid;">شرح درخواست</td><td  style="border-left:1px white solid;">تعداد موارد</td><td  style="border-left:1px white solid;">نوع قطعه</td><td  style="border-left:1px white solid;">نوع درخواست</td><td  style="border-left:1px white solid;text-align:center;">همراه با بازگشت</td><td  style="border-left:1px white solid;text-align:center;">درخواست کننده</td><td  style="text-align:center;order-left:1px white solid;text-align:center;">#</td></tr>'
                         $("#report_table").append(row_th)
 
                         $('tr').find('td:eq(2)').removeClass('description');//true
@@ -401,7 +401,7 @@
                         var del2 = ''
                         var t2 = ''
                         var row = ''
-                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;font-size: x-small"><td  style="border-left:1px white solid;font-size: x-small">شماره درخواست</td><td  style="border-left:1px white solid;font-size: x-small">تاریخ درخواست</td><td  style="border-left:1px white solid;font-size: x-small">شرح درخواست</td><td  style="border-left:1px white solid;font-size: x-small">تعداد موارد</td><td  style="border-left:1px white solid;font-size: x-small">نوع قطعه</td><td style="border-left:1px white solid;font-size: x-small">نوع درخواست</td><td style="border-left:1px white solid;font-size: x-small">همراه با بازگشت</td><td style="border-left:1px white solid;font-size: x-small">درخواست کننده</td><td style="border-left:1px white solid;font-size: x-small">#</td></tr>'
+                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;font-size: x-small"><td  style="border-left:1px white solid;font-size: x-small">شماره درخواست</td><td  style="border-left:1px white solid;font-size: x-small">تاریخ درخواست</td><td  style="border-left:1px white solid;font-size: x-small">شرح درخواست</td><td  style="border-left:1px white solid;font-size: x-small">تعداد موارد</td><td  style="border-left:1px white solid;font-size: x-small">نوع قطعه</td><td style="border-left:1px white solid;font-size: x-small">نوع درخواست</td><td style="border-left:1px white solid;font-size: x-small">همراه با بازگشت</td><td style="border-left:1px white solid;font-size: x-small">درخواست کننده</td><td style="border-left:1px white solid;font-size: x-small;text-align:center;">#</td></tr>'
                         $("#report_table").append(row_th)
 
                         $('tr').find('td:eq(2)').removeClass('description');//true
@@ -554,7 +554,7 @@
                         var del2 = ''
                         var t2 = ''
                         var row = ''
-                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;font-size: x-small"><td style="border-left:1px white solid;">شماره درخواست</td><td style="border-left:1px white solid;">تاریخ درخواست</td><td style="border-left:1px white solid;">شرح درخواست</td><td style="border-left:1px white solid;">تعداد موارد</td><td style="border-left:1px white solid;">نوع قطعه</td><td style="border-left:1px white solid;">نوع درخواست</td><td style="border-left:1px white solid;">همراه با بازگشت</td><td style="border-left:1px white solid;">درخواست کننده</td><td style="border-left:1px white solid;">#</td></tr>'
+                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;font-size: x-small"><td style="border-left:1px white solid;">شماره درخواست</td><td style="border-left:1px white solid;">تاریخ درخواست</td><td style="border-left:1px white solid;">شرح درخواست</td><td style="border-left:1px white solid;">تعداد موارد</td><td style="border-left:1px white solid;">نوع قطعه</td><td style="border-left:1px white solid;">نوع درخواست</td><td style="border-left:1px white solid;">همراه با بازگشت</td><td style="border-left:1px white solid;">درخواست کننده</td><td style="border-left:1px white solid;text-align:center;">#</td></tr>'
                         $("#report_table").append(row_th)
 
                         $('tr').find('td:eq(2)').removeClass('description');//true
@@ -737,7 +737,7 @@
                             with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
                             t1 = $('<td style="width:15%"></td>')
                             edit1 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal2">انتقال به بایگانی</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: small;text-align: right">انتقال به بایگانی</button>').attr('id',  response.results[i]['id_exit'])
+                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: small;text-align: center">انتقال به بایگانی</button>').attr('id',  response.results[i]['id_exit'])
                             t1.append(edit1)
                             t2 = $('<td></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -857,7 +857,7 @@
                             with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
                             t1 = $('<td style="width:15%"></td>')
                             edit1 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: right" data-toggle="modal" data-target="#myModal2">انتقال به بایگانی</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: small;text-align: right">انتقال به بایگانی</button>').attr('id',  response.results[i]['id_exit'])
+                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: small;text-align: center">انتقال به بایگانی</button>').attr('id',  response.results[i]['id_exit'])
 
                             t1.append(edit1)
                             t2 = $('<td></td>')
@@ -1082,9 +1082,6 @@
 
                                     })
                                     $('#' + (response.results[i]['id_exit']+2000)).on('click',function(){
-                                        // $('#ajax-alert1').hide();
-                                        // $('#ajax-alert2').hide();
-                                        // $('#ajax-alert3').hide();
                                         $('#id_exit22').val($(this).closest('tr').find('td:eq(0)').text());
                                         $('#description22').val($(this).closest('tr').find('td:eq(2)').text());
                                         $('#exit_no22').val($(this).closest('tr').find('td:eq(3)').text());
@@ -1131,9 +1128,6 @@
                                             }
                                         })
                                     })
-
-
-
                                 }
                                 $(".mylist").hide();
                                 $(".mylist2").hide();
@@ -1146,13 +1140,7 @@
                         $('#ajax-alert3').addClass('alert-primary').show(function(){
                             $(this).html("درخواست انتخاب شده بازگشت داده شد و دلیل عدم تایید مشخص گردید");
                         });
-                        // $("#id_exit2").val('')
-                        // $("#description2").val('')
-                        // $("#origin_destination2").val('')
-                        // $("#id_goods_type").text('')
                         $("#reason1").val('')
-
-
                     }
                 });
             });
@@ -1194,7 +1182,7 @@
                         var del2 = ''
                         var t2 = ''
                         var row = ''
-                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;"><td  style="border-left:1px white solid;">شماره درخواست</td><td  style="border-left:1px white solid;">تاریخ درخواست</td><td  style="border-left:1px white solid;">شرح درخواست</td><td  style="border-left:1px white solid;">تعداد موارد</td><td  style="border-left:1px white solid;">نوع قطعه</td><td  style="border-left:1px white solid;">نوع درخواست</td><td  style="border-left:1px white solid;">همراه با بازگشت</td><td  style="border-left:1px white solid;">درخواست کننده</td><td  style="border-left:1px white solid;">#</td></tr>'
+                        var row_th ='<tr class="bg-info report_row" style="color: white;height: 30px;"><td  style="border-left:1px white solid;">شماره درخواست</td><td  style="border-left:1px white solid;">تاریخ درخواست</td><td  style="border-left:1px white solid;">شرح درخواست</td><td  style="border-left:1px white solid;">تعداد موارد</td><td  style="border-left:1px white solid;">نوع قطعه</td><td  style="border-left:1px white solid;">نوع درخواست</td><td  style="border-left:1px white solid;">همراه با بازگشت</td><td  style="border-left:1px white solid;">درخواست کننده</td><td  style="text-align:center;border-left:1px white solid;">#</td></tr>'
                         $("#report_table").append(row_th)
 
                         $('tr').find('td:eq(2)').removeClass('description');//true
@@ -1247,8 +1235,8 @@
                             }
                             with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
                             t1 = $('<td hidden style="width: 10%"></td>')
-                            edit1 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">عدم تایید</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_exit'])
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">عدم تایید</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                            del2 = $('<button type="button" class="btn-sm btn-outline-success del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">بازگشت به کارتابل</button>').attr('id',  response.results[i]['id_exit'])
                             t1.append(edit1)
                             t2 = $('<td style="width: 13%"></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -1257,31 +1245,6 @@
                             $("#report_table").append(row)
                             $("#editlist").css("margin-top","100px");
 
-
-                            // $('#' + (response.results[i]['id_exit']+1000)).on('click',function(){
-                            //
-                            //     $('#ajax-alert1').hide();
-                            //     $('#ajax-alert2').hide();
-                            //     $('#ajax-alert3').hide();
-                            //
-                            //     $('#id_exit2').val($(this).closest('tr').find('td:eq(0)').text());
-                            //     $('#description2').val($(this).closest('tr').find('td:eq(2)').text());
-                            //     $('#exit_no2').val($(this).closest('tr').find('td:eq(3)').text());
-                            //     $('#jamdari_no2').val($(this).closest('tr').find('td:eq(4)').text());
-                            //     $('#id_goods_type2').val($(this).closest('tr').find('td:eq(13)').text());
-                            //     $('#with_return2').val($(this).closest('tr').find('td:eq(12)').text());
-                            //     $('#origin_destination2').val($(this).closest('tr').find('td:eq(11)').text());//true
-                            //
-                            //     $(this).closest('tr').find('td:eq(2)').addClass('description');//true
-                            //     $(this).closest('tr').find('td:eq(3)').addClass('exit_no');//true
-                            //     $(this).closest('tr').find('td:eq(4)').addClass('jamdari_no');//true
-                            //     $(this).closest('tr').find('td:eq(5)').addClass('goods_type');
-                            //     $(this).closest('tr').find('td:eq(6)').addClass('with_return');
-                            //     $(this).closest('tr').find('td:eq(11)').addClass('origin_destination');//true
-                            //     $(this).closest('tr').find('td:eq(13)').addClass('goods_type_value');//true
-                            //     $(this).closest('tr').find('td:eq(12)').addClass('with_return_text');
-                            //
-                            // })
                             $('#' + response.results[i]['id_exit']).click(function () {
 
                                 var id_exit = $(this).closest('tr').find('td:eq(0)').text();
