@@ -9,8 +9,15 @@
                 $.ajax({
                     url: '/not-confirmed',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد ارسالی برای سرپرست مستقیم که هنوز مورد بررسی قرار نگرفته است</p>')
                         var id_exit = ''
                         var date_request_shamsi = ''
@@ -51,8 +58,8 @@
                             }
                             with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
                             t1 = $('<td></td>')
-                            edit1 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                            del2 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',  response.results[i]['id_exit'])
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                            del2 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',  response.results[i]['id_exit'])
                             t1.append(edit1)
                             t2 = $('<td></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -108,9 +115,7 @@
                             })
 
                         }
-                        $(".mylist").hide();
-                        $(".mylist2").hide();
-                        $(".register").hide();
+
                         $(".mylist2").fadeToggle(2000);
                     }
                 })
@@ -121,8 +126,15 @@
                 $.ajax({
                     url: '/total-sent',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست موارد در جریان</p>')
                         var id_exit = ''
                         var date_request_shamsi = ''
@@ -157,7 +169,7 @@
                                 }
                             }
                             t1 = $('<td style="width:20%"></td>')
-                            history = $('<button type="button" class="btn-sm btn-primary history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">گردش درخواست</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                            history = $('<button type="button" class="btn-sm btn-outline-primary history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">گردش درخواست</button>').attr('id',  response.results[i]['id_exit'] + 1000)
                             t1.append(history)
                             row = $('<tr class="report_row"></tr>')
                             row.append(id_exit, date_request_shamsi, description, exit_no, jamdari_no, goods_type_value, with_return,t1)
@@ -206,8 +218,15 @@
                 $.ajax({
                     url: '/not-confirmed-boss',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست مواردی که مسئول قسمت تایید نکرده</p>')
                         var id_exit = ''
                         var date_request_shamsi = ''
@@ -253,10 +272,10 @@
                             reason1=$('<td style="width: 18%">' + response.results[i]['reason1'] + '</td>')
                             with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
                             t1 = $('<td style="width: 5%"></td>')
-                            edit1 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center" data-toggle="modal" data-target="#myModal3">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 2000)
-                            del2 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center">حذف</button>').attr('id',  response.results[i]['id_exit']+3000)
-                            send_again = $('<button type="button" class="btn-sm btn-success send_again" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">ارسال مجدد</button>').attr('id',  response.results[i]['id_exit']+4000)
-                            reasons = $('<button type="button" class="btn-sm btn-success history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">دلایل عدم تایید</button>').attr('id',  response.results[i]['id_exit']+5000)
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center" data-toggle="modal" data-target="#myModal3">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 2000)
+                            del2 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center">حذف</button>').attr('id',  response.results[i]['id_exit']+3000)
+                            send_again = $('<button type="button" class="btn-sm btn-outline-success send_again" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">ارسال مجدد</button>').attr('id',  response.results[i]['id_exit']+4000)
+                            reasons = $('<button type="button" class="btn-sm btn-outline-success history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">دلایل عدم تایید</button>').attr('id',  response.results[i]['id_exit']+5000)
                             t1.append(edit1)
                             t2 = $('<td style="width: 5%"></td>')
                             t2.append(del2)
@@ -380,8 +399,15 @@
                 $.ajax({
                     url: '/returned',
                     method:'GET',
-                    success: function (response) {
+                    beforeSend: function(){
+                        $(".mylist").hide();
+                        $(".mylist2").hide();
+                        $(".register").hide();
                         $(".report_row").remove();
+                        $("#first_spinner").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner").hide();
                         $('#title_report').html('<p id="title" style="margin-top: 7px;color: white">لیست مواردی که مجوز ورود یا خروج گرفته اند</p>')
                         var id_exit = ''
                         var date_request_shamsi = ''
@@ -423,8 +449,8 @@
                             }
                             with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
                             t1 = $('<td></td>')
-                            edit1 = $('<button hidden type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: small;text-align: right" data-toggle="modal" data-target="#myModal2">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                            del2 = $('<button  hidden type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: small;text-align: right">حذف</button>').attr('id',  response.results[i]['id_exit'])
+                            edit1 = $('<button hidden type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: small;text-align: right" data-toggle="modal" data-target="#myModal2">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                            del2 = $('<button  hidden type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: small;text-align: right">حذف</button>').attr('id',  response.results[i]['id_exit'])
                             t1.append(edit1)
                             t2 = $('<td></td>')
                             row = $('<tr class="report_row"></tr>')
@@ -565,8 +591,8 @@
                                     }
                                     with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
                                     t1 = $('<td></td>')
-                                    edit1 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
-                                    del2 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',  response.results[i]['id_exit'])
+                                    edit1 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal2">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                                    del2 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',  response.results[i]['id_exit'])
                                     t1.append(edit1)
                                     t2 = $('<td></td>')
                                     row = $('<tr class="report_row"></tr>')
@@ -710,10 +736,10 @@
                                     reason1=$('<td style="width: 18%">' + response.results[i]['reason1'] + '</td>')
                                     with_return_value = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
                                     t1 = $('<td style="width: 5%"></td>')
-                                    edit1 = $('<button type="button" class="btn-sm btn-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center" data-toggle="modal" data-target="#myModal3">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 2000)
-                                    del2 = $('<button type="button" class="btn-sm btn-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center">حذف</button>').attr('id',  response.results[i]['id_exit']+3000)
-                                    send_again = $('<button type="button" class="btn-sm btn-success send_again" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">ارسال مجدد</button>').attr('id',  response.results[i]['id_exit']+4000)
-                                    reasons = $('<button type="button" class="btn-sm btn-success history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">دلایل عدم تایید</button>').attr('id',  response.results[i]['id_exit']+5000)
+                                    edit1 = $('<button type="button" class="btn-sm btn-outline-primary del" style="font-family: Tahoma;font-size: smaller;text-align: center" data-toggle="modal" data-target="#myModal3">ویرایش</button>').attr('id',  response.results[i]['id_exit'] + 2000)
+                                    del2 = $('<button type="button" class="btn-sm btn-outline-danger del" style="font-family: Tahoma;font-size: smaller;text-align: center">حذف</button>').attr('id',  response.results[i]['id_exit']+3000)
+                                    send_again = $('<button type="button" class="btn-outline-sm btn-success send_again" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">ارسال مجدد</button>').attr('id',  response.results[i]['id_exit']+4000)
+                                    reasons = $('<button type="button" class="btn-sm btn-outline-success history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#myModal4">دلایل عدم تایید</button>').attr('id',  response.results[i]['id_exit']+5000)
                                     t1.append(edit1)
                                     t2 = $('<td style="width: 5%"></td>')
                                     t2.append(del2)
@@ -846,7 +872,7 @@
     <!-- List of content -->
         <div class="row mylist" style="margin: auto;width:100%;height:185px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
           <div class="col-12" style="direction: rtl;height: 183px;overflow-y: scroll">
-            <table id="request_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small">
+            <table id="request_table"  style="width: 100%;font-family: Tahoma;font-size: small">
                 <tr class="bg-primary" style="color: white">
                     <td>شماره درخواست</td>
                     <td>تاریخ درخواست</td>
@@ -1140,7 +1166,7 @@
                 <!-- Modal Header -->
                 <div class="modal-header bg-dark" style="height: 35px;padding-top: 5px;width: 850px " >
                     <div class="row" style="width: 100%">
-                        <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">گردش درخواست</p></div>
+                        <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">گردش</p></div>
                         <div class="col-6">
                             <div class="row" style="width: 100%">
                                 <div class="col-10">.</div>
