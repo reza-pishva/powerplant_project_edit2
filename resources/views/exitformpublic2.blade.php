@@ -169,7 +169,7 @@
                                 }
                             }
                             t1 = $('<td style="width:20%"></td>')
-                            history = $('<button type="button" class="btn-sm btn-outline-primary history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">گردش درخواست</button>').attr('id',  response.results[i]['id_exit'] + 1000)
+                            history = $('<button type="button" class="btn-sm btn-outline-primary history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">گردش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
                             t1.append(history)
                             row = $('<tr class="report_row"></tr>')
                             row.append(id_exit, date_request_shamsi, description, exit_no, jamdari_no, goods_type_value, with_return,t1)
