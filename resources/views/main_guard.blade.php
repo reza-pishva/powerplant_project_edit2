@@ -14,38 +14,38 @@
                     var third_reciever_link='';
                     for (var i = 0; i < response.results.length; i++) {
                         if(response.results[i]['id_gr']==274 || response.results[i]['id_gr']==278){
-                            second_reciever_link = $('<div class="row" ><div class="col-12"><a href="/second-reciever" ><img src="/herasat004.png" class="reza2"  data-toggle="tooltip" data-placement="bottom" title="مسئول حراست در اینجا درخواست مجوز را تایید و برای مدیر نیروگاه ارسال می کند"></a></div></div>');
+                            second_reciever_link = $('<div class="row" ><div class="col-12"><a href="/second-reciever" ><img src="./herasat004.png" class="reza2"  data-toggle="tooltip" data-placement="bottom" title="مسئول حراست در اینجا درخواست مجوز را تایید و برای مدیر نیروگاه ارسال می کند"></a></div></div>');
                             break;
                         }
                         second_reciever_link = $('<div class="row" ><div class="col-12"><a  href="#"><img src="./herasat004.png" class="reza3"  data-toggle="tooltip" data-placement="bottom" title="مسئول حراست در اینجا درخواست مجوز را تایید و برای مدیر نیروگاه ارسال می کند" ></a></div></div>');
                     }
                     for (var i = 0; i < response.results.length; i++) {
                         if(response.results[i]['id_gr']==273 || response.results[i]['id_gr']==278){
-                            first_reciever_link = $('<div class="row" ><div class="col-12"><a href="/first-reciever" ><img src="/modir001.png" class="reza2" data-toggle="tooltip" data-placement="bottom" title="سرپرست مستقیم فرد درخواست کننده مجوز"></a></div></div>');
+                            first_reciever_link = $('<div class="row" ><div class="col-12"><a href="/first-reciever" ><img src="./modir001.png" class="reza2" data-toggle="tooltip" data-placement="bottom" title="سرپرست مستقیم فرد درخواست کننده مجوز"></a></div></div>');
                             break;
                         }
                         first_reciever_link = $('<div class="row" ><div class="col-12"><a  href="#"><img src="./modir001.png" class="reza3"  data-toggle="tooltip" data-placement="bottom" title="سرپرست مستقیم فرد درخواست کننده مجوز" ></a></div></div>');
                     }
                     for (var i = 0; i < response.results.length; i++) {
                         if(response.results[i]['id_gr']==272 || response.results[i]['id_gr']==278){
-                            requester_link = $('<div class="row" ><div class="col-12"><a href="/requester" ><img src="/requester001.png" class="reza2" data-toggle="tooltip" data-placement="bottom" title="درخواست کننده مجوز ورود یا خروج قطعات به نیروگاه"></a></div></div>');
+                            requester_link = $('<div class="row" ><div class="col-12"><a href="/requester" ><img src="./requester001.png" class="reza2" data-toggle="tooltip" data-placement="bottom" title="درخواست کننده مجوز ورود یا خروج قطعات به نیروگاه"></a></div></div>');
                             break;
                         }
-                        requester_link = $('<div class="row" ><div class="col-12"><a  href="#"><img src="/requester001.png" class="reza3"  data-toggle="tooltip" data-placement="bottom" title="درخواست کننده مجوز ورود یا خروج قطعات به نیروگاه"></a></div></div>');
+                        requester_link = $('<div class="row" ><div class="col-12"><a  href="#"><img src="./requester001.png" class="reza3"  data-toggle="tooltip" data-placement="bottom" title="درخواست کننده مجوز ورود یا خروج قطعات به نیروگاه"></a></div></div>');
                     }
                     for (var i = 0; i < response.results.length; i++) {
                         if(response.results[i]['id_gr']==276 || response.results[i]['id_gr']==278){
-                            fourth_reciever_link = $('<div class="row" ><div class="col-12"><a href="/fourth-reciever" ><img src="/herasat005.png" class="reza2" data-toggle="tooltip" data-placement="bottom" title="حراست نیروگاه درمورد قطعات و یا تجهیزاتی که مجوز ورود یا خروج آنها اخذ شده اجازه انتقال می دهند"></a></div></div>');
+                            fourth_reciever_link = $('<div class="row" ><div class="col-12"><a href="./fourth-reciever" ><img src="/herasat005.png" class="reza2" data-toggle="tooltip" data-placement="bottom" title="حراست نیروگاه درمورد قطعات و یا تجهیزاتی که مجوز ورود یا خروج آنها اخذ شده اجازه انتقال می دهند"></a></div></div>');
                             break;
                         }
                         fourth_reciever_link = $('<div class="row" ><div class="col-12"><a  href="#"><img src="./herasat005.png" class="reza3"  data-toggle="tooltip" data-placement="bottom" title="حراست نیروگاه درمورد قطعات و یا تجهیزاتی که مجوز ورود یا خروج آنها اخذ شده اجازه انتقال می دهند"></a></div></div>');
                     }
                     for (var i = 0; i < response.results.length; i++) {
                         if(response.results[i]['id_gr']==275 || response.results[i]['id_gr']==278){
-                            third_reciever_link = $('<div class="row" ><div class="col-12"><a href="/third-reciever" ><img src="/modir004.jpg" class="reza2" data-toggle="tooltip" data-placement="bottom" title="مدیر نیروگاه درخواست مجوز را تایید نهایی می کند و به حراست نیروگاه انتقال می دهد"></a></div></div>');
+                            third_reciever_link = $('<div class="row" ><div class="col-12"><a href="./third-reciever" ><img src="/modir004.jpg" class="reza2" data-toggle="tooltip" data-placement="bottom" title="مدیر نیروگاه درخواست مجوز را تایید نهایی می کند و به حراست نیروگاه انتقال می دهد"></a></div></div>');
                             break;
                         }
-                        third_reciever_link = $('<div class="row" ><div class="col-12"><a  href="#"><img src="/modir004.jpg" class="reza3"  data-toggle="tooltip" data-placement="bottom" title="مدیر نیروگاه درخواست مجوز را تایید نهایی می کند و به حراست نیروگاه انتقال می دهد"></a></div></div>');
+                        third_reciever_link = $('<div class="row" ><div class="col-12"><a  href="#"><img src="./modir004.jpg" class="reza3"  data-toggle="tooltip" data-placement="bottom" title="مدیر نیروگاه درخواست مجوز را تایید نهایی می کند و به حراست نیروگاه انتقال می دهد"></a></div></div>');
                     }
 
 

@@ -132,7 +132,7 @@
             <div class="col-2">
                 <div >
                     <a href="http://172.28.232.27:8000/home">
-                        <img src="{{URL::to('/')}}/exit003.png" style="width: 70px;height: 70px;margin-top: 25px" data-toggle="tooltip" data-placement="bottom" title="بازگشت به صفحه قبل">
+                        <img src="{{URL::to('/')}}/exit003.png" style="width: 40px;height: 40px;margin-top: 25px" data-toggle="tooltip" data-placement="bottom" title="بازگشت به صفحه قبل">
                     </a>
                 </div>
             </div>
@@ -144,9 +144,9 @@
                             <img src="preloader10.gif" style="width:200px;height:120px;border-radius: 100px">
                         </div>
                         <table id="report_table" style="width: 100%;font-family: Tahoma;font-size: small">
-                            <div id="first_spinner" style="margin-top:50px;text-align:center;margin-left:200px">
+                            {{-- <div id="first_spinner" style="margin-top:50px;text-align:center;margin-left:200px">
                                 <img src="preloader10.gif" style="width:150px;height:110px;border-radius: 100px">
-                            </div>
+                            </div> --}}
                         </table>
                     </div>
                 </div>
