@@ -1130,8 +1130,6 @@
             $('#ID_UN_REP').val('0')
             $('#ID_TT_REP').val('0')
             $('#ID_TA_REP').val('0')
-            // $('#DATE_BEGIN_SH_REP').val('')
-            // $('#DATE_END_SH_REP').val('')
             $('#CONFIR_REP').val('0')
             $('#ANGAM_REP').val('0')
             $("#tamirat_table_report").empty();
@@ -1147,7 +1145,6 @@
                 url: '/m-tapr-total',
                 method:'GET',
                 success: function (response) {
-
                     if(response.results.length>0){
                         var day = ''
                         var month = ''
@@ -1211,25 +1208,6 @@
                                 }
                             }
                             edit1 = $('<button type="button" class="btn-sm border-success edit1" style="font-family: Tahoma;font-size: x-small;text-align: center;border-right:1px dotted black;width: 100%;border-radius: 6px" data-toggle="modal" data-target="#myModal1">ویرایش</button>').on('click',function () {
-                                // alert($(this).closest('tr').find('td:eq(0)').text())
-                                // alert($(this).closest('tr').find('td:eq(1)').text())
-                                // alert($(this).closest('tr').find('td:eq(2)').text())
-                                // alert($(this).closest('tr').find('td:eq(3)').text())
-                                // alert($(this).closest('tr').find('td:eq(4)').text())
-                                // alert($(this).closest('tr').find('td:eq(5)').text())
-                                // alert($(this).closest('tr').find('td:eq(6)').text())
-                                // alert($(this).closest('tr').find('td:eq(7)').text())
-                                // alert($(this).closest('tr').find('td:eq(8)').text())
-                                // alert($(this).closest('tr').find('td:eq(9)').text())
-                                // alert($(this).closest('tr').find('td:eq(10)').text())
-                                // alert($(this).closest('tr').find('td:eq(11)').text())
-                                // alert($(this).closest('tr').find('td:eq(12)').text())
-                                // alert($(this).closest('tr').find('td:eq(13)').text())
-                                // alert($(this).closest('tr').find('td:eq(14)').text())
-                                // alert($(this).closest('tr').find('td:eq(15)').text())
-                                // alert($(this).closest('tr').find('td:eq(16)').text())
-                                // alert($(this).closest('tr').find('td:eq(17)').text())
-                                // alert($(this).closest('tr').find('td:eq(18)').text())
 
                                 $('#ANGAM_EDIT').prop('checked', false);
                                 $('#CONFIR_EDIT').prop('checked', false);
@@ -1260,7 +1238,6 @@
                                 Swal.fire({
                                     title: 'مایل به حذف این برنامه تعمیراتی هستید؟',
                                     showDenyButton: true,
-                                    //showCancelButton: true,
                                     cancelButtonText: `بازگشت`,
                                     confirmButtonText: `انصراف از حذف`,
                                     denyButtonText: 'حذف شود',
@@ -1425,8 +1402,12 @@
                 dataType: 'JSON',
                 contentType: false,
                 processData: false,
+                beforeSend: function(){
+                    $("#tamirat_table_report").empty();
+                    $("#first_spinner2").show();
+                },
                 success: function (response) {
-
+                    $("#first_spinner2").hide();
                     if(response.results.length>0){
                         var day = ''
                         var month = ''
@@ -1459,7 +1440,6 @@
                         var t4 = ''
                         var row = ''
                         var th = $('<tr class="bg-primary" style="color: white;font-size:x-small;"><td>#</td><td>کد</td><td style="text-align: center">واحد</td><td style="text-align: center">نوع تعمیرات</td><td style="text-align: center">شرکت تعمیرکار</td><td style="text-align: center">شروع تعمیرات</td><td style="text-align: center">پایان تعمیرات</td><td style="text-align: center">کارکرد واقعی</td><td style="text-align: center">کارکرد معادل</td><td style="text-align: center">تایید شد</td><td style="text-align: center">انجام شد</td><td>#</td><td>#</td><td>#</td></tr>')
-                        $("#tamirat_table_report").empty();
                         $("#tamirat_table_report").append(th)
                         for (var i = 0; i < response.results.length; i++) {
                             for (var j = 0; j < response.ID_UNS.length; j++) {
@@ -2126,7 +2106,10 @@
                         <div class="col-12">
                             <div class="row mylist" style="margin: auto;width:100%;height:285px;direction: rtl;margin-top: 12px;border: 1px solid black;border-radius: 5px;background-color: beige">
                                 <div class="col-12" style="direction: rtl;height: 282px;overflow-y: scroll">
-                                    <table id="tamirat_table_report" class="table2" align="center" style="width: 100%;font-family: Tahoma;font-size: small">
+                                    <div id="first_spinner2" style="display:none;margin-top:65px;text-align:center;margin-left:20px">
+                                        <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                                    </div>
+                                    <table id="tamirat_table_report" class="table2" style="width: 100%;font-family: Tahoma;font-size: small">
                                         <tr class="bg-primary" style="color: white;font-size:x-small;">
                                             <td>کد</td>
                                             <td>نام شرکت</td>
