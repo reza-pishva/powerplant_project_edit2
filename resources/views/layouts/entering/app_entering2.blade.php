@@ -147,7 +147,7 @@
                <div class="col-3">
                    <div >
                        <a href="/herasat2">
-                           <img src="{{URL::to('/')}}/exit003.png" style="width: 70px;height: 70px;margin-top: 25px" data-toggle="tooltip" data-placement="bottom" title="بازگشت به صفحه قبل">
+                           <img src="{{URL::to('/')}}/exit003.png" style="width: 40px;height: 40px;margin-top: 25px" data-toggle="tooltip" data-placement="bottom" title="بازگشت به صفحه قبل">
                        </a>
                    </div>
                </div>
