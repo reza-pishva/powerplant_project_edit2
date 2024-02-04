@@ -181,6 +181,9 @@
     <div class="row" style="height: 530px;">
         <div class="col-10" >
                 <div style="border-radius: 5px;height: 440px;margin-top:-20px">
+                    <div id="first_spinner" style="display:none;margin-top:125px;text-align:center;margin-left:200px">
+                        <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                    </div>
                     @yield('content')
                 </div>
         </div>

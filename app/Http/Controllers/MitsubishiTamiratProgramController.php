@@ -93,8 +93,6 @@ class MitsubishiTamiratProgramController extends Controller
         $atp->save();
         return response()->json([
             'message'   => $request->file('select_file')
-//            'uploaded_image' => '<img src="/images/'.$new_name.'" class="img-thumbnail" width="300" />',
-//           'class_name'  => 'alert-success'
         ]);
     }
     public function create()
