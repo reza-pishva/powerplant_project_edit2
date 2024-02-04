@@ -534,12 +534,17 @@
                     dataType: 'JSON',
                     contentType: false,
                     processData: false,
-                    success: function (response) {
 
+                    beforeSend: function(){
                         $("#add_recieve").hide();
                         $("#description2").text('');
                         $("#ID_T_SUB2").text('');
+                        $("#table1").empty();
                         $("#table2").empty();
+                        $("#first_spinner4").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner4").hide();    
                         var day = ''
                         var month = ''
                         var year = ''
@@ -599,7 +604,12 @@
                                 $.ajax({
                                     url: '/get-history-bazsazi-prog2/' + id_t,
                                     method: 'GET',
+                                    beforeSend: function(){
+                                        $("#table_history").empty();
+                                        $("#first_spinner1").show();
+                                    },
                                     success: function (response) {
+                                        $("#first_spinner1").hide();
                                         var ID_S = ''
                                         var ID_T = ''
                                         var TIME_WORK = ''
@@ -1960,6 +1970,9 @@
                            </div>
                            <div style="width:100%;height: 265px;background-color:rgba(72,103,121,0.5);margin-right: 2px;margin-top:3px;border-radius: 3px">
                                <div style="width: 95%;height: 250px;background-color: #5a6268;margin: auto;margin-top:3px;border-radius: 3px;overflow-y: scroll;">
+                                    <div id="first_spinner4" style="display:none;margin-top:40px;text-align:center;margin-left:-10px">
+                                      <img src="preloader23.gif" style="width:200px;height:150px;border-radius: 100px">
+                                   </div>
                                    <table id="table1" align="center" style="width: 100%;font-family: Tahoma;font-size: small;direction: rtl;background-color: white;">
                                    </table>
                                </div>
@@ -2362,7 +2375,10 @@
                 <div class="container"  style="margin: auto;background-color:lightgray;height: 375px;width:120%;">
                     <div class="row mylist" style="margin: auto;width:100%;height:368px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;background-color: beige;overflow-y: scroll">
                         <div class="col-12" style="direction: rtl;height: 370px">
-                            <table id="table_history" align="center" style="width: 100%;font-family: Tahoma;font-size: small">
+                            <div id="first_spinner1" style="margin-top:95px;text-align:center;margin-left:-10px">
+                                <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                            </div>
+                            <table id="table_history" style="width: 100%;font-family: Tahoma;font-size: small">
                                 <tr class="bg-primary" style="color: white;font-size:x-small;">
                                     <td>کد</td>
                                     <td>کارکرد</td>
