@@ -1973,7 +1973,7 @@
                                     <div id="first_spinner4" style="display:none;margin-top:40px;text-align:center;margin-left:-10px">
                                       <img src="preloader23.gif" style="width:200px;height:150px;border-radius: 100px">
                                    </div>
-                                   <table id="table1" align="center" style="width: 100%;font-family: Tahoma;font-size: small;direction: rtl;background-color: white;">
+                                   <table id="table1" style="width: 100%;font-family: Tahoma;font-size: small;direction: rtl;background-color: white;">
                                    </table>
                                </div>
 
@@ -2375,7 +2375,7 @@
                 <div class="container"  style="margin: auto;background-color:lightgray;height: 375px;width:120%;">
                     <div class="row mylist" style="margin: auto;width:100%;height:368px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;background-color: beige;overflow-y: scroll">
                         <div class="col-12" style="direction: rtl;height: 370px">
-                            <div id="first_spinner1" style="margin-top:95px;text-align:center;margin-left:-10px">
+                            <div id="first_spinner1" style="margin-top:115px;text-align:center;margin-left:-10px">
                                 <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
                             </div>
                             <table id="table_history" style="width: 100%;font-family: Tahoma;font-size: small">

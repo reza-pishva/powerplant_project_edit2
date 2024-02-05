@@ -496,11 +496,15 @@
                     dataType: 'JSON',
                     contentType: false,
                     processData: false,
-                    success: function (response) {
+                    beforeSend: function(){
                         $("#add_recieve").hide();
                         $("#description2").text('');
                         $("#ID_T_SUB2").text('');
-                        $("#table2").empty();
+                        $("#table1").empty();
+                        $("#first_spinner1").show();
+                    },
+                    success: function (response) {
+                        $("#first_spinner1").hide();
                         var day = ''
                         var month = ''
                         var year = ''
@@ -625,7 +629,12 @@
                                 $.ajax({
                                     url: '/m-get-history-anbar-prog2/' + id_t,
                                     method: 'GET',
+                                    beforeSend: function(){
+                                        $("#table_history").empty();
+                                        $("#first_spinner2").show();
+                                    },
                                     success: function (response) {
+                                        $("#first_spinner2").hide();
                                         var ID_S = ''
                                         var ID_T = ''
                                         var TIME_WORK = ''
@@ -636,7 +645,7 @@
                                         var TYPE_INSTAL = ''
                                         var row = ''
                                         var th = $('<tr class="bg-primary" style="color: white;font-size:x-small;text-align: center"><td>شماره سریال</td><td>نوع قطعه</td><td style="text-align: center">کارکرد</td><td style="text-align: right">میزان خرابی</td><td style="text-align: right">وضعیت نصب</td><td style="text-align: right">توضیحات</td></tr>')
-                                        $("#table_history").empty();
+                                       
                                         $("#table_history").append(th)
                                         for (var i = 0; i < response.results.length; i++) {
                                             ID_S = $('<td hidden style="width:10%;text-align: center;font-family: Tahoma;font-size: x-small">' + response.results[i]['ID_S'] + '</td>')
@@ -1865,7 +1874,10 @@
                            </div>
                            <div style="width:100%;height: 265px;background-color:rgba(105,105,105,0.5);margin-right: 2px;margin-top:3px;border-radius: 3px">
                                <div style="width: 95%;height: 250px;background-color: #5a6268;margin: auto;margin-top:3px;border-radius: 3px;overflow-y: scroll;">
-                                   <table id="table1" align="center" style="width: 100%;font-family: Tahoma;font-size: small;direction: rtl;background-color: white;">
+                                    <div id="first_spinner1" style="display:none;margin-top:55px;text-align:center;margin-left:-10px">
+                                        <img src="preloader23.gif" style="width:200px;height:110px;border-radius: 100px">
+                                    </div>
+                                   <table id="table1" style="width: 100%;font-family: Tahoma;font-size: small;direction: rtl;background-color: white;">
                                    </table>
                                </div>
 
@@ -1916,7 +1928,7 @@
                             </div>
                             <div style="width:100%;height: 200px;margin-right: 2px;margin-top:3px;border-radius: 3px;text-align: center;background-color:rgba(105,105,105,0.5)">
                                 <div style="word-wrap: break-word;width: 85%;height: 185px;background-color: #5a6268;margin: auto;margin-top:3px;border-radius: 3px;overflow-y: scroll;">
-                                   <table id="table2" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 3px;direction: rtl;background-color: white"></table>
+                                   <table id="table2"  style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 3px;direction: rtl;background-color: white"></table>
                                 </div>
                             </div>
                         </div>
@@ -2241,7 +2253,10 @@
                 <div class="container"  style="margin: auto;background-color:lightgray;height: 375px;width:120%;">
                     <div class="row mylist" style="margin: auto;width:100%;height:368px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;background-color: beige;overflow-y: scroll">
                         <div class="col-12" style="direction: rtl;height: 370px">
-                            <table id="table_history" align="center" style="width: 100%;font-family: Tahoma;font-size: small">
+                            <div id="first_spinner2" style="display:none;margin-top:115px;text-align:center;margin-left:-10px">
+                                <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                            </div>
+                            <table id="table_history"  style="width: 100%;font-family: Tahoma;font-size: small">
                                 <tr class="bg-primary" style="color: white;font-size:x-small;">
                                     <td>کد</td>
                                     <td>کارکرد</td>
