@@ -940,7 +940,7 @@
     <!-- List of content -->
         <div class="row mylist" style="margin: auto;width:80%;height:185px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
           <div class="col-12" style="direction: rtl;height: 183px;overflow-y: scroll">
-            <table id="request_table" align="center" style="width: 100%;font-family: Tahoma;font-size: small">
+            <table id="request_table"  style="width: 100%;font-family: Tahoma;font-size: small">
                 <tr class="bg-primary" style="color: white">
                     <td style="border-left:1px white solid;">شماره درخواست</td>
                     <td style="border-left:1px white solid;">تاریخ درخواست</td>

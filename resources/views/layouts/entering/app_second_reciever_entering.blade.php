@@ -209,33 +209,58 @@
         {
             border-right: 1px solid black;
         }
+        div.sticky
+        {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            /* background-color: #666;
+            padding: 40px;
+            font-size: 25px; */
+        }
+        div.sticky
+        {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            /* background-color: #666;
+            padding: 40px;
+            font-size: 25px; */
+        }
     </style>
 </head>
 <body style="margin:0;text-align: center;background-image: url('{{URL::to('/')}}/12.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;backdrop-filter: brightness(40%);">
+    
 <div class="container-fluid">
-    <div class="row justify-content-center" style="height: 100px">
-        <div class="col-12">
-            <div class="bg-dark" style="width: 100%;height:95px;margin-top: 3px;border-radius: 5px">
-                <div class="row justify-content-center" style="height: 100px">
-                    <div class="col-2"><img src="{{URL::to('/')}}/mapna.jpg" class="rounded-circle mt-3 ml-3" alt="Cinque Terre"></div>
-                    <div class="col-1">.</div>
-                    <div class="col-1">.</div>
-                    <div class="col-1">.</div>
-                    <div class="col-5"><p style="color: white;text-align: right;margin-top: 10px;font-family: Tahoma;font-size: large;font-weight: bold">نیروگاه سیکل ترکیبی کازرون</p><p style="color: white;text-align: right;font-family: Tahoma;font-size: small;font-weight: bold">نرم افزار مدیریت درخواست مجوز ورود افراد به نیروگاه</p></div>
-                    <div class="col-2 mt-3"><img src="{{URL::to('/')}}/modir004.jpg" class="rounded-circle" style="width: 30%;height: 50%"><p style="color: white;text-align: center;font-family: Tahoma;font-size: small">{{$full_name}}</p></div>
+    <div style="z-index: 100">
+        <div class="row justify-content-center" style="height: 100px">
+            <div class="col-12">
+                <div class="bg-dark" style="width: 100%;height:95px;margin-top: 3px;border-radius: 5px">
+                    <div class="row justify-content-center" style="height: 100px">
+                        <div class="col-2"><img src="{{URL::to('/')}}/mapna.jpg" class="rounded-circle mt-3 ml-3" alt="Cinque Terre"></div>
+                        <div class="col-1">.</div>
+                        <div class="col-1">.</div>
+                        <div class="col-1">.</div>
+                        <div class="col-5"><p style="color: white;text-align: right;margin-top: 10px;font-family: Tahoma;font-size: large;font-weight: bold">نیروگاه سیکل ترکیبی کازرون</p><p style="color: white;text-align: right;font-family: Tahoma;font-size: small;font-weight: bold">نرم افزار مدیریت درخواست مجوز ورود افراد به نیروگاه</p></div>
+                        <div class="col-2 mt-3"><img src="{{URL::to('/')}}/modir004.jpg" class="rounded-circle" style="width: 30%;height: 50%"><p style="color: white;text-align: center;font-family: Tahoma;font-size: small">{{$full_name}}</p></div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="row justify-content-center" style="height: 100px">
+            <div class="col-12">
+                <nav class="navbar navbar-expand bg-info rounded col-12 sticky" style="height: 30px;direction: rtl;margin-top: 1px">
+                    <ul class="navbar-nav" >
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">صفحه اصلی</a>
+                        </li>
+            
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
-    <nav class="navbar navbar-expand bg-info rounded col-12" style="height: 30px;direction: rtl;margin-top: 1px">
-        <ul class="navbar-nav" >
-            <li class="nav-item">
-                <a class="nav-link" href="/home">صفحه اصلی</a>
-            </li>
-
-        </ul>
-    </nav>
-    <div class="row" style="height: 600px">
+    <div class="row" style="height: 800px;margin-top:-65px">
         <div class="col-10">
             <div class="row" style="border-radius: 5px;height: 600px;width: 100%;">
                 <div class="col-1"></div>
@@ -248,8 +273,8 @@
             </div>
         </div>
         <div class="col-2">
-            <div class="row mt-1" style="height:600px;margin: auto;width:100%">
-                <div class="col-10" style="border-radius: 5px;height: 550px;background-color:rgba(14,53,126,0.5);text-align: center">
+            <div class="row mt-1" style="height:800px;margin: auto;width:100%">
+                <div class="col-10" style="border-radius: 5px;height: 500px;background-color:rgba(14,53,126,0.5);text-align: center">
                     <div class="bg-secondary" style="height:63px;width: 100%;margin-top: 5px;border-radius: 3px;padding-top: 7px">
                         <p style="font-family: Tahoma;font-size: small;margin-top: 4px;color: white">گزارشات مربوط به گردش درخواست</p>
                     </div>
@@ -287,18 +312,17 @@
 
                     </div>
                     <div>
-                        <div>
-                            <a href="/reportp">
-                                <img src="{{URL::to('/')}}/reports.png" class="reza2" data-toggle="tooltip" data-placement="left" title="از اینجا می توانید گزارشات مورد نظر خود را تهیه کنید">
-                            </a>
-                        </div>
-
-                    </div>
-                    <div>
-                        <div>
-                            <a href="/reporti">
-                                <img src="{{URL::to('/')}}/individual.png" class="reza2" data-toggle="tooltip" data-placement="left" title="از اینجا می توانید گزارشات تردد را تهیه کنید">
-                            </a>
+                        <div class="row">
+                            <div class="col">
+                                <a href="/reportp">
+                                    <img src="{{URL::to('/')}}/reports.png" class="reza2" data-toggle="tooltip" data-placement="left" title="از اینجا می توانید گزارشات مورد نظر خود را تهیه کنید">
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="/reporti">
+                                    <img src="{{URL::to('/')}}/individual.png" class="reza2" data-toggle="tooltip" data-placement="left" title="از اینجا می توانید گزارشات تردد را تهیه کنید">
+                                </a>
+                            </div>
                         </div>
 
                     </div>
@@ -306,6 +330,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
