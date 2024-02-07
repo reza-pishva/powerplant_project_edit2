@@ -143,15 +143,16 @@
                                     var l_name = ''
                                     var row = ''                                    
                                     for(var i = 0; i < response.results.length; i++) {
-                                        description = $('<td style="width: 70%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
-                                        date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
-                                        time = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
-                                        for(var z = 0; z < response.users.length; z++) {
-                                            if(response.users[z]['id']==response.results[i]['id_user']){
-                                                l_name = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.users[z]['l_name'] + '</td>')
-                                                break;
+                                            description = $('<td style="width: 65%;font-family: Tahoma;font-size: 11px;text-align: right">' + response.results[i]['description'] + '</td>')
+                                            date_shamsi = $('<td style="width: 12%;font-family: Tahoma;font-size: 11px;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
+                                            time = $('<td style="width: 11%;font-family: Tahoma;font-size: 11px;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
+                                            for(var z = 0; z < response.users.length; z++) {
+                                                if(response.users[z]['id']==response.results[i]['id_user']){
+                                                    l_name = $('<td style="width: 12%;font-family: Tahoma;font-size: 9px;text-align: right">' + response.users[z]['l_name'] + '</td>')
+                                                    break;
+                                                }
+
                                             }
-                                        }
                                         row = $('<tr class="workflowrows"></tr>')
                                         row.append(date_shamsi,time,description,l_name)
                                         $("#workflow").append(row)
@@ -371,7 +372,7 @@
                 <div class="container"  style="margin: auto;background-color:#c4e6f5;width: 850px ;height: 400px;;overflow-y: scroll">
                     <table class="table table-striped" id="workflow" style="width: 800px">
                         <div id="first_spinner2" style="display: none;margin-top:105px;text-align:center;margin-left:-25px">
-                            <img src="preloader10.gif" style="width:200px;height:110px;border-radius: 100px">
+                            <img src="preloader19.gif" style="width:150px;height:140px;border-radius: 100px">
                         </div>
                     </table>
                 </div>

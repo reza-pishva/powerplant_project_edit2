@@ -190,12 +190,12 @@
                                         var row = ''
                                         
                                         for(var i = 0; i < response.results.length; i++) {
-                                            description = $('<td style="width: 70%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
-                                            date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
-                                            time = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
+                                            description = $('<td style="width: 65%;font-family: Tahoma;font-size: 11px;text-align: right">' + response.results[i]['description'] + '</td>')
+                                            date_shamsi = $('<td style="width: 12%;font-family: Tahoma;font-size: 11px;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
+                                            time = $('<td style="width: 11%;font-family: Tahoma;font-size: 11px;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
                                             for(var z = 0; z < response.users.length; z++) {
                                                 if(response.users[z]['id']==response.results[i]['id_user']){
-                                                    l_name = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.users[z]['l_name'] + '</td>')
+                                                    l_name = $('<td style="width: 12%;font-family: Tahoma;font-size: 9px;text-align: right">' + response.users[z]['l_name'] + '</td>')
                                                     break;
                                                 }
 

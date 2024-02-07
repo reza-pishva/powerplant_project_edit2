@@ -124,13 +124,13 @@
                                     var row = ''
                                     
                                     for(var i = 0; i < response.results.length; i++) {
-                                        description = $('<td style="width: 80%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
-                                        date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
-                                        time = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
+                                        description = $('<td style="width: 70%;font-family: Tahoma;font-size:11px;text-align: right">' + response.results[i]['description'] + '</td>')
+                                        date_shamsi = $('<td style="width: 8%;font-family: Tahoma;font-size:10px;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
+                                        time = $('<td style="width: 7%;font-family: Tahoma;font-size:10px;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
                                         row = $('<tr class="workflowrows"></tr>')
                                         for(var z = 0; z < response.users.length; z++) {
                                             if(response.users[z]['id']==response.results[i]['id_user']){
-                                                l_name = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.users[z]['l_name'] + '</td>')
+                                                l_name = $('<td style="width: 15%;font-family: Tahoma;font-size:9px;text-align: right">' + response.users[z]['l_name'] + '</td>')
                                                 break;
                                             }
 
@@ -419,12 +419,12 @@
                         var row = ''
                         $(".workflowrows").remove();
                         for(var i = 0; i < response.results.length; i++) {
-                            description = $('<td style="width: 70%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['description'] + '</td>')
-                            date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
-                            time = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
+                            description = $('<td style="width: 70%;font-family: Tahoma;font-size: 8px;text-align: right">' + response.results[i]['description'] + '</td>')
+                            date_shamsi = $('<td style="width: 10%;font-family: Tahoma;font-size: 8pt;text-align: right">' + response.results[i]['date_shamsi'] + '</td>')
+                            time = $('<td style="width: 10%;font-family: Tahoma;font-size: 8pt;text-align: right">' + response.results[i]['created_at'].substring(11,19) + '</td>')
                             for(var z = 0; z < response.users.length; z++) {
                                 if(response.users[z]['id']==response.results[i]['id_user']){
-                                    l_name = $('<td style="width: 10%;font-family: Tahoma;font-size: 10pt;text-align: right">' + response.users[z]['l_name'] + '</td>')
+                                    l_name = $('<td style="width: 10%;font-family: Tahoma;font-size: 6pt;text-align: right">' + response.users[z]['l_name'] + '</td>')
                                     break;
                                 }
 
@@ -451,8 +451,8 @@
                 <div class="row mylist" style="margin: auto;width:100%;height:320px;direction: rtl;margin-top: 15px;border: 1px solid black;border-radius: 5px;text-align: center;margin-right: 120px">
                     <div class="col-12" style="direction: rtl;height: 317px;overflow-y: scroll;background-color:rgba(0, 0,55, 0.4)">
                         <table id="request_table2" style="width: 100%;font-family: Tahoma;font-size: small;color:white">
-                            <div id="first_spinner" style="display: none;margin-top:70px;text-align:center;margin-left:50px">
-                                <img src="preloader18.gif" style="width:150px;height:130px;border-radius:10px">
+                            <div id="first_spinner" style="display: none;margin-top:90px;text-align:center;margin-left:50px">
+                                <img src="preloader23.gif" style="width:210px;height:130px;border-radius:10px">
                             </div>
                             <tr class="bg-info reports" style="color: white;height: 30px;"><td style="border-left:1px white solid;width: 5%">شماره درخواست</td><td style="border-left:1px white solid;width: 10%">نام</td><td style="border-left:1px white solid;width:10%">نام خانوادگی</td><td style="border-left:1px white solid;width: 10%">کد ملی</td><td style="border-left:1px white solid;width: 10%">تاریخ ورود</td><td style="border-left:1px white solid;width: 10%">تاریخ خروج</td><td style="border-left:1px white solid;width: 10%">#</td><td style="border-left:1px white solid;width: 10%">#</td></tr>
                         </table>
@@ -559,7 +559,7 @@
                 <div class="container"  style="margin: auto;background-color:#c4e6f5;width: 850px ;height: 400px;;overflow-y: scroll">
                     <table class="table table-striped" id="workflow" style="width: 800px">
                         <div id="first_spinner2" style="display: none;margin-top:100px;text-align:center;margin-left:-5px">
-                            <img src="preloader10.gif" style="width:200px;height:120px;border-radius:10px">
+                            <img src="preloader19.gif" style="width:150px;height:140px;border-radius: 100px">
                         </div>
                     </table>
                 </div>
