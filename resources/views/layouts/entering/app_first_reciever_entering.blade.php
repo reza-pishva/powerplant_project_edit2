@@ -202,7 +202,7 @@
         }
     </style>
 </head>
-<body style="margin:0;text-align: center;background-image: url('{{URL::to('/')}}/bg001.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;backdrop-filter: brightness(40%);">
+<body style="margin:0;text-align: center;background-image: url('{{URL::to('/')}}/kz6.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;backdrop-filter: brightness(40%);">
 <div class="container-fluid">
     <div class="row justify-content-center" style="height: 100px">
         <div class="col-12">

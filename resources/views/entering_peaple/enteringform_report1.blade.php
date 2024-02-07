@@ -888,11 +888,11 @@
                         $("#block_table").append(row_th)
                         for(var i = 0; i < response.result.length; i++) {
                             id_b=$('<td style="display: none">' + response.result[i]['id_b'] + '</td>')
-                            f_name = $('<td style="width: 8%;text-align:center">' + response.result[i]['f_name'] + '</td>')
-                            l_name = $('<td style="width: 10%;text-align:center">' + response.result[i]['l_name'] + '</td>')
-                            national_code = $('<td style="width: 10%;text-align:center">' + response.result[i]['national_code'] + '</td>')
-                            company_name = $('<td style="width: 17%;text-align:center">' + response.result[i]['company_name'] + '</td>')
-                            reason = $('<td style="width: 25%;text-align:center">' + response.result[i]['reason'] + '</td>')
+                            f_name = $('<td style="width: 8%;text-align:center;font-size:10px">' + response.result[i]['f_name'] + '</td>')
+                            l_name = $('<td style="width: 10%;text-align:center;font-size:10px">' + response.result[i]['l_name'] + '</td>')
+                            national_code = $('<td style="width: 10%;text-align:center;font-size:10px">' + response.result[i]['national_code'] + '</td>')
+                            company_name = $('<td style="width: 17%;text-align:center;font-size:10px">' + response.result[i]['company_name'] + '</td>')
+                            reason = $('<td style="width: 25%;text-align:center;font-size:10px">' + response.result[i]['reason'] + '</td>')
                             t0 = $('<td style="width: 3%;text-align:center"><button type="button" class="btn-light select1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">>></button></td>')
                             t1 = $('<td style="width: 7%;text-align:center"><button type="button" class="btn-outline-danger block1" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">لغو مجوز</button></td>')
                             t2 = $('<td style="width: 8%;text-align:center"><button type="button" class="btn-outline-success set_free" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%;border-radius:5px">دادن مجوز</button></td>')
@@ -1089,7 +1089,7 @@
                                     var row_th ='<tr style="color: black"><td class="person" style="width: 15%">تاریخ</td><td class="person" style="width: 15%">ساعت</td><td class="person" style="width: 45%">سابقه</td><td class="person" style="width: 15%">درخواست کننده</td></tr>';
                                     $("#block_history").append(row_th)
                                     for(var i = 0; i < response.result.length; i++) {
-                                        date_shamsi = $('<td style="width: 15%;text-align:center" class="person">' + response.result[i]['date_shamsi'] + '</td>')
+                                        date_shamsi = $('<td style="width: 15%;text-align:center;" class="person">' + response.result[i]['date_shamsi'] + '</td>')
                                         time = $('<td style="width: 15%;text-align:center" class="person">' + response.result[i]['time'] + '</td>')
                                         requester = $('<td style="width: 45%;text-align:center" class="person">' + response.result[i]['requester'] + '</td>')
                                         reason = $('<td style="width: 25%;text-align:center" class="person">' + response.result[i]['reason'] + '</td>')
