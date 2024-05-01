@@ -422,9 +422,9 @@
                                     </a>
                                 </div>
                                 <div class="col-2">
-                                    <a href="/reporti2">
+                                    {{-- <a href="/reporti2">
                                         <img src="person2.jpg" class="reza10" data-toggle="tooltip" data-placement="bottom" title="گزارش کارکرد">
-                                    </a>
+                                    </a> --}}
                                 </div>
                                 <div class="col-2">
                                     <a href="/report">

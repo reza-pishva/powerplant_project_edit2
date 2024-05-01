@@ -133,6 +133,7 @@
                         }
                     });
             })
+            //this is my target
             $('#sixth_report35').click(function(event) {
                 $('.mylist2').hide();
                 $('.mylist3').hide();
@@ -176,7 +177,7 @@
                                 var year=response.individuals[i]['date_enter'].substr(0,4)
                                 var date = $('<td style="text-align: center;padding-right: 5px;width: 22%" class="personinfo2">' + year +'/'+month+'/'+day+'</td>')
                                 time = $('<td style="width: 22%;text-align: center" class="personinfo2">' + response.individuals[i]['time_enter'] + '</td>')
-                                edit = $('<button type="button"  disabled class="btn-sm btn-info" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#dailyenter2">اصلاح</button>').attr('id',  response.individuals[i]['i_ed']+1000)
+                                edit = $('<button type="button" class="btn-sm btn-info" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#dailyenter2">اصلاح</button>').attr('id',  response.individuals[i]['i_ed']+1000)
                                 del = $('<button type="button" class="btn-sm btn-danger" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',  response.individuals[i]['i_ed']+2000)
                                 t1 = $('<td style="width: 15%" class="personinfo2"></td>')
                                 t2 = $('<td style="width: 15%" class="personinfo2"></td>')
@@ -1690,58 +1691,58 @@
                 });
 
             });
-            $("#addindividuals").on('submit',function(event) {
+            // $("#addindividuals").on('submit',function(event) {
                 
-                event.preventDefault();
-                $.ajaxSetup({
-                    headers: {
-                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                    }
-                });
-                var _token = $("input[name='_token']").val();
-                $.ajax({
-                    url: "/addindividuals2",
-                    method: 'POST',
-                    data: new FormData(this),
-                    dataType: 'JSON',
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
+            //     event.preventDefault();
+            //     $.ajaxSetup({
+            //         headers: {
+            //             'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            //         }
+            //     });
+            //     var _token = $("input[name='_token']").val();
+            //     $.ajax({
+            //         url: "/addindividuals2",
+            //         method: 'POST',
+            //         data: new FormData(this),
+            //         dataType: 'JSON',
+            //         contentType: false,
+            //         processData: false,
+            //         success: function (response) {
                         
-                        $("#time_enter").val('');
-                        $("#enter_exit").val('');
-                        var enter_exit = 0;
-                        var i_ed = $('<td style="text-align: center" class="personinfo2">' + response.i_ed + '</td>')
-                        var date_enter = $('<td style="text-align: center" class="personinfo2">' + response.date_enter + '</td>')
-                        var time_enter = $('<td style="text-align: center" class="personinfo2">' + response.time_enter + '</td>')
-                        var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.enter_exit+ '</td>')
-                        if(response.enter_exit==1){
-                            enter_exit = $('<td style="text-align: center" class="personinfo2">' +'ورود'+ '</td>')
-                        }else{
-                            enter_exit = $('<td style="text-align: center" class="personinfo2">' +'خروج'+ '</td>')
-                        }
-                        var edit1 = $('<button  disabled type="button" class="btn-sm btn-info edit1 personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%" data-toggle="modal" data-target="#dailyenter2">اصلاح</button>').attr('id',response.i_ed+1000)
-                        var del1 = $('<button type="button" class="btn-sm btn-danger del personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%">حذف</button>').attr('id',response.i_ed+2000)
-                        var t1=$('<td></td>')
-                        var t2=$('<td></td>')
-                        t1.append(edit1)
-                        t2.append(del1)
-                        var row=$('<tr></tr>')
-                        row.append(i_ed, enter_exit, date_enter, time_enter,t1,t2,enter_exit_val)
-                        $("#person_table77").append(row)
+            //             $("#time_enter").val('');
+            //             $("#enter_exit").val('');
+            //             var enter_exit = 0;
+            //             var i_ed = $('<td style="text-align: center" class="personinfo2">' + response.i_ed + '</td>')
+            //             var date_enter = $('<td style="text-align: center" class="personinfo2">' + response.date_enter + '</td>')
+            //             var time_enter = $('<td style="text-align: center" class="personinfo2">' + response.time_enter + '</td>')
+            //             var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.enter_exit+ '</td>')
+            //             if(response.enter_exit==1){
+            //                 enter_exit = $('<td style="text-align: center" class="personinfo2">' +'ورود'+ '</td>')
+            //             }else{
+            //                 enter_exit = $('<td style="text-align: center" class="personinfo2">' +'خروج'+ '</td>')
+            //             }
+            //             var edit1 = $('<button  disabled type="button" class="btn-sm btn-info edit1 personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%" data-toggle="modal" data-target="#dailyenter2">اصلاح</button>').attr('id',response.i_ed+1000)
+            //             var del1 = $('<button type="button" class="btn-sm btn-danger del personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%">حذف</button>').attr('id',response.i_ed+2000)
+            //             var t1=$('<td></td>')
+            //             var t2=$('<td></td>')
+            //             t1.append(edit1)
+            //             t2.append(del1)
+            //             var row=$('<tr></tr>')
+            //             row.append(i_ed, enter_exit, date_enter, time_enter,t1,t2,enter_exit_val)
+            //             $("#person_table77").append(row)
 
-                        $('#' + Number(response.i_ed+1000)).click(function () {
-                            $("#id_ed_edit").val($(this).closest('tr').find('td:eq(0)').text())
-                            $("#enter_exit_edit").val($(this).closest('tr').find('td:eq(6)').text())
-                            $("#date_shamsi_enter_edit").val($(this).closest('tr').find('td:eq(2)').text())
-                            $("#time_enter_edit").val($(this).closest('tr').find('td:eq(3)').text())
-                        });
-                        $('.individuals333').show()
-                        $('.individuals333').toast('show');
-                        $("#individuals333").html("اطلاعات این فرد ثبت گردید")
-                    }
-                });
-            });
+            //             $('#' + Number(response.i_ed+1000)).click(function () {
+            //                 $("#id_ed_edit").val($(this).closest('tr').find('td:eq(0)').text())
+            //                 $("#enter_exit_edit").val($(this).closest('tr').find('td:eq(6)').text())
+            //                 $("#date_shamsi_enter_edit").val($(this).closest('tr').find('td:eq(2)').text())
+            //                 $("#time_enter_edit").val($(this).closest('tr').find('td:eq(3)').text())
+            //             });
+            //             $('.individuals333').show()
+            //             $('.individuals333').toast('show');
+            //             $("#individuals333").html("اطلاعات این فرد ثبت گردید")
+            //         }
+            //     });
+            // });
             $('#setTimeButton1').on('click', function() {
                 $('#time_enter').timepicker('setTime', new Date());
                 var code_melli= $('#code_melli').val().toString();
@@ -2396,7 +2397,7 @@
                     <div class="row" style="margin-top: 10px">
 
                         <div id="person_div2" class="col" style="height:50px">
-                            <table id="person_table55" align="center" style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
+                            <table id="person_table55"  style="width: 100%;font-family: Tahoma;font-size: small;margin-top: 5px;">
                                 <tr style="color: black">
                                     <td class="person" style="width: 5%">کد</td>
                                     <td class="person" style="width: 10%">ورود/خروج</td>

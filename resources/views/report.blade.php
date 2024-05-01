@@ -57,40 +57,40 @@
 
                             history = $('<button type="button" class="btn-sm btn-primary history" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">گردش</button>').attr('id',  response.results[i]['id_exit'] + 1000)
                             if(condition==1){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">نزد مدیرقسمت</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">نزد مدیرقسمت</td>')
                             }
                             if(condition==-1){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">تایید نشده مدیرقسمت</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">تایید نشده مدیرقسمت</td>')
                             }
                             if(condition==2){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">نزد مسئول حراست</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">نزد مسئول حراست</td>')
                             }
                             if(condition==-2){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">تایید نشده مدیرحراست</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">تایید نشده مدیرحراست</td>')
                             }
                             if(condition==3){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">نزد مدیر نیروگاه</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">نزد مدیر نیروگاه</td>')
                             }
                             if(condition==-3){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">تایید نشده مدیر نیروگاه</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">تایید نشده مدیر نیروگاه</td>')
                             }
                             if(condition==4){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">منتظر خروج</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">منتظر خروج</td>')
                             }
                             if(condition==5){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">خروج از نیروگاه</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">خروج از نیروگاه</td>')
                             }
                             if(condition==6){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">منتظر ورود</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">منتظر ورود</td>')
                             }
                             if(condition==7){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">ورود به نیروگاه</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">ورود به نیروگاه</td>')
                             }
                             if(condition==8){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">خروج از نیروگاه</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">خروج از نیروگاه</td>')
                             }
                             if(condition>20){
-                                t2 = $('<td style="text-align: center;padding-right: 3px">بایگانی موقت</td>')
+                                t2 = $('<td style="text-align: center;padding-right: 3px;font-size:small">بایگانی موقت</td>')
                             }
                             for(var z = 0; z < response.users.length; z++) {
                                 if(response.users[z]['id']==response.results[i]['id_requester']){

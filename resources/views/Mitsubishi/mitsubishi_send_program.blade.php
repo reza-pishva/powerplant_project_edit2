@@ -1969,8 +1969,8 @@
                            </div>
                            <div style="width:100%;height: 265px;background-color:rgba(72,103,121,0.5);margin-right: 2px;margin-top:3px;border-radius: 3px">
                                <div style="width: 95%;height: 250px;background-color: #5a6268;margin: auto;margin-top:3px;border-radius: 3px;overflow-y: scroll;">
-                                   <div id="first_spinner4" style="display:none;margin-top:40px;text-align:center;margin-left:-10px">
-                                        <img src="preloader23.gif" style="width:200px;height:150px;border-radius: 100px">
+                                   <div id="first_spinner4" style="display:none;margin-top:60px;text-align:center;margin-left:-10px">
+                                        <img src="preloader23.gif" style="width:210px;height:110px;border-radius: 100px">
                                    </div>
                                    <table id="table1" style="width: 100%;font-family: Tahoma;font-size: small;direction: rtl;background-color: white;">
                                    </table>

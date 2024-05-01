@@ -89,26 +89,26 @@
                                         var mobile=""
                                         $(".persons_row").remove();
                                         for(var i = 0; i < response.persons.length; i++) {
-                                            id_ep = $('<td class="persons">' + response.persons[i]['id_ep'] + '</td>')
-                                            f_name = $('<td class="persons">' + response.persons[i]['f_name'] + '</td>')
-                                            l_name = $('<td class="persons">' + response.persons[i]['l_name'] + '</td>')
-                                            nationality = $('<td class="persons">' + response.persons[i]['nationality'] + '</td>')
-                                            age = $('<td class="persons">' + response.persons[i]['age'] + '</td>')
-                                            time_enter = $('<td class="persons">' + response.persons[i]['time_enter'] + '</td>')
+                                            id_ep = $('<td class="person">' + response.persons[i]['id_ep'] + '</td>')
+                                            f_name = $('<td class="person">' + response.persons[i]['f_name'] + '</td>')
+                                            l_name = $('<td class="person">' + response.persons[i]['l_name'] + '</td>')
+                                            nationality = $('<td class="person">' + response.persons[i]['nationality'] + '</td>')
+                                            age = $('<td class="person">' + response.persons[i]['age'] + '</td>')
+                                            time_enter = $('<td class="person">' + response.persons[i]['time_enter'] + '</td>')
                                             year=response.persons[i]['date_shamsi_enter'].substr(0, 4);
                                             month=response.persons[i]['date_shamsi_enter'].substr(4, 2);
                                             day=response.persons[i]['date_shamsi_enter'].substr(6, 2);
                                             date_shamsi_enter = $('<td class="persons">' + year+'/'+month+'/'+day + '</td>')
-                                            time_exit = $('<td class="persons">' + response.persons[i]['time_exit'] + '</td>')
+                                            time_exit = $('<td class="person">' + response.persons[i]['time_exit'] + '</td>')
                                             year=response.persons[i]['date_shamsi_exit'].substr(0, 4);
                                             month=response.persons[i]['date_shamsi_exit'].substr(4, 2);
                                             day=response.persons[i]['date_shamsi_exit'].substr(6, 2);
-                                            date_shamsi_exit = $('<td class="persons">' + year+'/'+month+'/'+day + '</td>')
-                                            code_melli = $('<td class="persons">' + response.persons[i]['code_melli'] + '</td>')
-                                            mobile = $('<td class="persons">' + response.persons[i]['mobile'] + '</td>')
+                                            date_shamsi_exit = $('<td class="person">' + year+'/'+month+'/'+day + '</td>')
+                                            code_melli = $('<td class="person">' + response.persons[i]['code_melli'] + '</td>')
+                                            mobile = $('<td class="person">' + response.persons[i]['mobile'] + '</td>')
                                             for(var z = 0; z < response.titles.length; z++) {
                                                 if(response.titles[z]['id_et']==response.persons[i]['id_et']){
-                                                    id_et = $('<td class="persons">' + response.titles[z]['description'] + '</td>')
+                                                    id_et = $('<td class="person">' + response.titles[z]['description'] + '</td>')
                                                     break;
                                                 }
 

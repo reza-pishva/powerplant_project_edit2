@@ -36,7 +36,7 @@ class confirm3_entering extends Controller
     }
     public function total_peaple()
     {
-        $data = Enteringform::limit(1000)->where('level', 6)->orderBy('id_ef','desc')->get()->toArray();
+        $data = Enteringform::limit(2000)->where('level', 6)->orderBy('id_ef','desc')->get()->toArray();
         $data3 = DB::table('users')->where('id','>',0)->get()->toArray();
         return response()->json(['results'=> $data,'users'=>$data3]);
     }
