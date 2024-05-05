@@ -187,7 +187,7 @@
                                 row.append(id_ed,enter_exit,date,time,t1,t2,enter_exit_val)
                                 $("#person_table77").append(row)
                                 $('#' + Number(response.individuals[i]['i_ed']+2000)).click(function () {
-                                    alert('ورود و خروج این فرد بطور همزمان حذف خواهد شد.در ادامه شما باید ورود و خروج این فرد را مجددا وارد کنید')
+                                    $(this).closest('tr').remove();
                                     var id_ed = $(this).closest('tr').find('td:eq(0)').text();
                                     var token = $("meta[name='csrf-token']").attr("content");
                                     $.ajax(
@@ -205,7 +205,7 @@
                                                 $("#individuals222").html("ردیف انتخابی حذف گردید")
                                             }
                                         });
-                                        $(".personinfo2").remove();
+                                        // $(".personinfo2").remove();
 
                                 })
                                 $('#' + Number(response.individuals[i]['i_ed']+1000)).click(function () {
@@ -1619,6 +1619,7 @@
                         }
                     });
             })
+            //target2
             $("#addindividuals2").on('submit',function(event) {
                 alert('hi1')
                 event.preventDefault();
@@ -1692,7 +1693,7 @@
                 });
 
             });
-            //target2
+            //target3
             $("#addindividuals").on('submit',function(event) {
                 
                 event.preventDefault();
@@ -1710,38 +1711,123 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                        
-                        $("#time_enter").val('');
-                        $("#enter_exit").val('');
-                        var enter_exit = 0;
-                        var i_ed = $('<td style="text-align: center" class="personinfo2">' + response.i_ed + '</td>')
-                        var date_enter = $('<td style="text-align: center" class="personinfo2">' + response.date_enter + '</td>')
-                        var time_enter = $('<td style="text-align: center" class="personinfo2">' + response.time_enter + '</td>')
-                        var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.enter_exit+ '</td>')
-                        if(response.enter_exit==1){
-                            enter_exit = $('<td style="text-align: center" class="personinfo2">' +'ورود'+ '</td>')
-                        }else{
-                            enter_exit = $('<td style="text-align: center" class="personinfo2">' +'خروج'+ '</td>')
-                        }
-                        var edit1 = $('<button  disabled type="button" class="btn-sm btn-info edit1 personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%" data-toggle="modal" data-target="#dailyenter2">اصلاح</button>').attr('id',response.i_ed+1000)
-                        var del1 = $('<button type="button" class="btn-sm btn-danger del personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%">حذف</button>').attr('id',response.i_ed+2000)
-                        var t1=$('<td></td>')
-                        var t2=$('<td></td>')
-                        t1.append(edit1)
-                        t2.append(del1)
-                        var row=$('<tr></tr>')
-                        row.append(i_ed, enter_exit, date_enter, time_enter,t1,t2,enter_exit_val)
-                        $("#person_table77").append(row)
 
-                        $('#' + Number(response.i_ed+1000)).click(function () {
-                            $("#id_ed_edit").val($(this).closest('tr').find('td:eq(0)').text())
-                            $("#enter_exit_edit").val($(this).closest('tr').find('td:eq(6)').text())
-                            $("#date_shamsi_enter_edit").val($(this).closest('tr').find('td:eq(2)').text())
-                            $("#time_enter_edit").val($(this).closest('tr').find('td:eq(3)').text())
-                        });
                         $('.individuals333').show()
                         $('.individuals333').toast('show');
                         $("#individuals333").html("اطلاعات این فرد ثبت گردید")
+                        
+                        $("#time_enter").val('');
+                        $("#enter_exit").val('');
+
+                        var code_melli = $('#code_melli_s3').val();
+
+                    var token = $("meta[name='csrf-token']").attr("content");
+                    $.ajax(
+                        {
+                            url: "/personinfo4/" + code_melli,
+                            type: 'GET',
+                            data: {
+                                "id": code_melli,
+                                "_token": token,
+                            },
+                            success: function (response) {
+
+                                var edit=''
+                                var del=''
+                                var t1=''
+                                var t2=''
+                                var enter_exit = ''
+                                var id_ed = ''
+                                var date = ''
+                                var time = ''
+                                var row = ''
+                                $(".personinfo2").remove();
+                                for(var i = 0; i < response.individuals.length; i++) {
+                                    id_ed = $('<td style="width:11%;text-align: center" class="personinfo2">' + response.individuals[i]['i_ed'] + '</td>')
+                                    var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.individuals[i]['enter_exit']+ '</td>')
+                                    if(response.individuals[i]['enter_exit']==1){
+                                        enter_exit = $('<td style="width: 15%;text-align: center" class="personinfo2">' +'ورود'+ '</td>')
+                                    }else{
+                                        enter_exit = $('<td style="width: 15%;text-align: center" class="personinfo2">' +'خروج'+ '</td>')
+                                    }
+                                    var day=response.individuals[i]['date_enter'].substr(6,2)
+                                    var month=response.individuals[i]['date_enter'].substr(4,2)
+                                    var year=response.individuals[i]['date_enter'].substr(0,4)
+                                    var date = $('<td style="text-align: center;padding-right: 5px;width: 22%" class="personinfo2">' + year +'/'+month+'/'+day+'</td>')
+                                    time = $('<td style="width: 22%;text-align: center" class="personinfo2">' + response.individuals[i]['time_enter'] + '</td>')
+                                    edit = $('<button type="button" class="btn-sm btn-info" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%" data-toggle="modal" data-target="#dailyenter2">اصلاح</button>').attr('id',  response.individuals[i]['i_ed']+1000)
+                                    del = $('<button type="button" class="btn-sm btn-danger" style="font-family: Tahoma;font-size: smaller;text-align: center;width: 100%">حذف</button>').attr('id',  response.individuals[i]['i_ed']+2000)
+                                    t1 = $('<td style="width: 15%" class="personinfo2"></td>')
+                                    t2 = $('<td style="width: 15%" class="personinfo2"></td>')
+                                    t1.append(edit)
+                                    t2.append(del)
+                                    row = $('<tr class="report_row"></tr>')
+                                    row.append(id_ed,enter_exit,date,time,t1,t2,enter_exit_val)
+                                    $("#person_table77").append(row)
+                                    $('#' + Number(response.individuals[i]['i_ed']+2000)).click(function () {
+                                        $(this).closest('tr').remove();
+                                        var id_ed = $(this).closest('tr').find('td:eq(0)').text();
+                                        var token = $("meta[name='csrf-token']").attr("content");
+                                        $.ajax(
+                                            {
+                                                
+                                                url: "/deleteindividuals/" + id_ed,
+                                                type: 'DELETE',
+                                                data: {
+                                                    "id": id_ed,
+                                                    "_token": token,
+                                                },
+                                                success: function (response) {
+                                                    
+                                                    $('.individuals222').show()
+                                                    $('.individuals222').toast('show');
+                                                    $("#individuals222").html("ردیف انتخابی حذف گردید")
+                                                }
+                                            });
+                                            // $(".personinfo2").remove();
+
+                                    })
+                                    $('#' + Number(response.individuals[i]['i_ed']+1000)).click(function () {
+                                        $("#id_ed_edit").val($(this).closest('tr').find('td:eq(0)').text())
+                                        $("#enter_exit_edit").val($(this).closest('tr').find('td:eq(6)').text())
+                                        $("#date_shamsi_enter_edit").val($(this).closest('tr').find('td:eq(2)').text())
+                                        $("#time_enter_edit").val($(this).closest('tr').find('td:eq(3)').text())
+                                    });
+                                }
+
+                            }
+                        });
+
+
+                        // var enter_exit = 0;
+                        // var i_ed = $('<td style="text-align: center" class="personinfo2">' + response.i_ed + '</td>')
+                        // var date_enter = $('<td style="text-align: center" class="personinfo2">' + response.date_enter + '</td>')
+                        // var time_enter = $('<td style="text-align: center" class="personinfo2">' + response.time_enter + '</td>')
+                        // var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.enter_exit+ '</td>')
+                        // if(response.enter_exit==1){
+                        //     enter_exit = $('<td style="text-align: center" class="personinfo2">' +'ورود'+ '</td>')
+                        // }else{
+                        //     enter_exit = $('<td style="text-align: center" class="personinfo2">' +'خروج'+ '</td>')
+                        // }
+                        // var edit1 = $('<button  disabled type="button" class="btn-sm btn-info edit1 personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%" data-toggle="modal" data-target="#dailyenter2">اصلاح</button>').attr('id',response.i_ed+1000)
+                        // var del1 = $('<button type="button" class="btn-sm btn-danger del personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%">حذف</button>').attr('id',response.i_ed+2000)
+                        // var t1=$('<td></td>')
+                        // var t2=$('<td></td>')
+                        // t1.append(edit1)
+                        // t2.append(del1)
+                        // var row=$('<tr></tr>')
+                        // row.append(i_ed, enter_exit, date_enter, time_enter,t1,t2,enter_exit_val)
+                        // $("#person_table77").append(row)
+
+                        // $('#' + Number(response.i_ed+1000)).click(function () {
+                        //     $("#id_ed_edit").val($(this).closest('tr').find('td:eq(0)').text())
+                        //     $("#enter_exit_edit").val($(this).closest('tr').find('td:eq(6)').text())
+                        //     $("#date_shamsi_enter_edit").val($(this).closest('tr').find('td:eq(2)').text())
+                        //     $("#time_enter_edit").val($(this).closest('tr').find('td:eq(3)').text())
+                        // });
+                        // $('.individuals333').show()
+                        // $('.individuals333').toast('show');
+                        // $("#individuals333").html("اطلاعات این فرد ثبت گردید")
                     }
                 });
             });
@@ -2736,10 +2822,10 @@
 
             <!-- Modal footer -->
             <div class="modal-footer bg-info" style="height: 20px;width:600px">
-                    <div class="toast bg-danger individuals222" style="margin-top:5px;margin: auto;border-radius: 10px">
+                    <div class="toast bg-danger individuals222" style="margin-top:-5px;margin: auto;border-radius: 10px">
                         <div class="toast-body"><p id="individuals222" style="font-family: Tahoma;font-size: small;color: white;"></p></div>
                     </div>
-                    <div class="toast bg-success individuals333" style="margin-top:5px;margin: auto;border-radius: 10px">
+                    <div class="toast bg-success individuals333" style="margin-top:-15px;margin: auto;border-radius: 10px">
                         <div class="toast-body"><p id="individuals333" style="font-family: Tahoma;font-size: small;color: white;"></p></div>
                     </div>
             </div>
@@ -2777,7 +2863,7 @@
                     <div id="person_div88_edit" class="col" style="height:50px">
 
                         <div id="s2_edit" class="container" style="text-align: left;background-color:#17a2b8;width: 100%;border-radius: 5px;height:125px;direction: rtl;color: white;margin-top:2px;padding-top: 2px;">
-                            <form method="post" encType="multipart/form-data" id="addindividuals2" action="{{route('addindividuals.store')}}">
+                            <form method="post" encType="multipart/form-data" id="addindividuals2" action="{{route('updateindividuals.store')}}">
                                 {{csrf_field()}}
                                 <div class="row" style="height: 15px">
                                     <div class="col-9">
@@ -2795,7 +2881,7 @@
                                 </div>
                                 <br>
                                 <br>
-                                <input hidden type="text" id="code_melli" name="code_melli">
+                                <input hidden type="text" id="code_melli_edit" name="code_melli">
                                 <input hidden type="text" name="i_ed" id="id_ed_edit"/>
                                 <div class="row" style="height: 15px">
                                     <div class="col">

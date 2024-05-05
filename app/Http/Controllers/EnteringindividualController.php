@@ -335,56 +335,19 @@ class EnteringindividualController extends Controller
     }
     public function updateindividuals(Request $request)
     {
-        // $code_melli=$request->input('code_melli');
-        // $f_name = DB::table('enteringpeaples')->where('code_melli', $code_melli)->orderBy('id_ep', 'DESC')->get()->first()->f_name;
+        $i_ed=$request->input('i_ed');
+        $code_melli = DB::table('enteringindividuals')->where('i_ed', $i_ed)->orderBy('i_ed', 'DESC')->get()->first()->code_melli;
+        //dd($code_melli);
         // $l_name = DB::table('enteringpeaples')->where('code_melli', $code_melli)->orderBy('id_ep', 'DESC')->get()->first()->l_name;
-        // $date_shamsi_enter_array=explode('/',$request->input('date_enter'));
-        // $date_enter=$this->convert($date_shamsi_enter_array[0].$date_shamsi_enter_array[1].$date_shamsi_enter_array[2]);
-        // $id_user=auth()->user()->id;
-        // $time_enter=$request->input('time_enter');
-        // $enter_exit=$request->input('enter_exit');
-        // $value=['code_melli'=>$code_melli,'f_name'=>$f_name,'l_name'=>$l_name,'date_enter'=>$date_enter,'id_user'=>$id_user,
-        // 'time_enter'=>$time_enter,'enter_exit'=>$enter_exit];                
-        // Enteringindividual::where('code_melli', $code_melli)->update($value); 
-        // Enteringpeaple::where('code_melli', $code_melli)->update(['presence'=>$enter_exit]);
-
-
-        date_default_timezone_set('Asia/Tehran');
-        $Calendar=new CalendarHelper();
-        $id_ed=(int)$request->input('i_ed');
-        $date=$request->input('date_enter');        
-        $date_shamsi_exit_array=explode('/',$request->input('date_enter'));
-        $date_enter=$this->convert($date_shamsi_exit_array[0].$date_shamsi_exit_array[1].$date_shamsi_exit_array[2]);
-        $date_shamsi_exit_array=$Calendar->jalali_to_gregorian($date_shamsi_exit_array[0], $date_shamsi_exit_array[1], $date_shamsi_exit_array[2]);
-        
+        $date_shamsi_enter_array=explode('/',$request->input('date_enter'));
+        $date_enter=$this->convert($date_shamsi_enter_array[0].$date_shamsi_enter_array[1].$date_shamsi_enter_array[2]);
+        $id_user=auth()->user()->id;
         $time_enter=$request->input('time_enter');
-        // $time_stamp=explode(':',$request->input('time_enter'));
-
-        // $am_pm=substr($time_stamp[1],2,1);
-        // if($am_pm =='p'){
-        //     $hour=$time_stamp[0]+12;
-        // }else{
-        //     $hour=$time_stamp[0];
-        // }
-        // $minute=substr($time_stamp[1],0,2);
-        // $year=$date_shamsi_exit_array[0];
-        // $month=$date_shamsi_exit_array[1];
-        // $day=$date_shamsi_exit_array[2];
-        // $d1=mktime($hour,$minute, 0,$month,$day,$year);
-        
         $enter_exit=$request->input('enter_exit');
-        Enteringindividual::where('i_ed', $id_ed)->update(['date_enter'=>$date_enter,'time_enter'=>$time_enter,'enter_exit'=>$enter_exit,'DATE_TIMESTAMP'=>$d1]);
-
-        
-        // $id = Enteringindividual::where('i_ed',  $id_ed)->get()->first()->code_melli;
-        // $i_ed = Enteringindividual::where('code_melli', $id)->where('enter_exit', 2)->orderBy('i_ed', 'DESC')->get()->first()->i_ed;
-        // $last_timestamp = Enteringindividual::where('code_melli', $id)->where('enter_exit', 1)->where('i_ed','<',$i_ed)->orderBy('i_ed', 'DESC')->get()->first()->DATE_TIMESTAMP;
-        // if($enter_exit == 2){
-        //     Enteringindividual::where('i_ed', $i_ed)->update(['DIFFERENCE'=>$d1-$last_timestamp]);
-        // }
-
-        // ,'time'=>$d1,'date'=>$date
-        return response()->json(['success'=>'the information has successfuly saved','id_ed'=>$id_ed]);
+        $value=['date_enter'=>$date_enter,'time_enter'=>$time_enter,'enter_exit'=>$enter_exit];                
+        Enteringindividual::where('i_ed', $i_ed)->update($value); 
+        Enteringpeaple::where('code_melli', $code_melli)->update(['presence'=>$enter_exit]);
+        return response()->json(['success'=>'the information has successfuly saved','id_ed'=>$i_ed]);
     }
     public function selectindp()
     {
