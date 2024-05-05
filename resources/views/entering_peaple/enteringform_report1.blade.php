@@ -1621,7 +1621,6 @@
             })
             //target2
             $("#addindividuals2").on('submit',function(event) {
-                alert('hi1')
                 event.preventDefault();
                 $.ajaxSetup({
                     headers: {
@@ -1637,10 +1636,6 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                        alert('hi')
-                        // alert(response.time)
-                        // alert(response.date)
-
                         $('#' + (Number(response.id_ed)+1000)).closest('tr').find('td:eq(6)').text($("#enter_exit_edit").val());
                         $('#' + (Number(response.id_ed)+1000)).closest('tr').find('td:eq(2)').text($("#date_shamsi_enter_edit").val());
                         $('#' + (Number(response.id_ed)+1000)).closest('tr').find('td:eq(3)').text($("#time_enter_edit").val());
@@ -1650,13 +1645,16 @@
                         if($('#' + (Number(response.id_ed)+1000)).closest('tr').find('td:eq(6)').text()==2){
                             $('#' + (Number(response.id_ed)+1000)).closest('tr').find('td:eq(1)').text('خروج');
                         }
-                        $("#time_enter_edit").val('');
-                        $("#enter_exit_edit").val('');
-                        $("#date_shamsi_enter_edit").val('');
+                        // $("#time_enter_edit").val('');
+                        // $("#enter_exit_edit").val('');
+                        // $("#date_shamsi_enter_edit").val('');
+                     
 
                         $('.individuals22').show()
                         $('.individuals22').toast('show');
                         $("#individuals22").html("تغییرات اعمال گردید")
+
+                        
                     }
                 });
             });
@@ -2798,7 +2796,7 @@
                                 <br>
                                 <div class="row" style="margin-top:45px">
                                     <div class="col" style="text-align:center">
-                                        <button type="submit" class="btn btn-primary" id="btnupdate" style="text-align:left;font-family: Tahoma;font-size: small;text-align: center;width:25%">ثبتت اطلاعات</button>
+                                        <button type="submit" class="btn btn-primary" id="btnupdate" style="text-align:left;font-family: Tahoma;font-size: small;text-align: center;width:25%">ثبت اطلاعات</button>
                                     </div>
                                 </div>
 
@@ -2834,11 +2832,11 @@
     </div>
     </div>
     <div class="modal fade mt-2" id="dailyenter2" style="direction: rtl;">
-    <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 50px;margin-left: 435px">
+    <div class="modal-dialog modal-md" id="editlist2" style="margin-top: 65px;margin-left: 435px">
         <div class="modal-content">
 
             <!-- Modal Header -->
-            <div class="modal-header bg-dark" style="height: 35px;padding-top: 5px;width: 550px " >
+            <div class="modal-header bg-success" style="height: 35px;padding-top: 5px;width: 550px " >
                 <div class="row" style="width: 100%">
                     <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">اصلاح اطلاعات ورود و خروج</p></div>
                     <div class="col-6">
@@ -2869,7 +2867,7 @@
                                     <div class="col-9">
                                         <select  class="form-control" name="enter_exit" id="enter_exit_edit" style="width: 35%;font-family: Tahoma;font-size: small;margin-top: 10px;margin-right: 10px" required>
                                             <option value=''>انتخاب ورود یا خروج</option>
-                                            <option value='1'>ثبت وروود</option>
+                                            <option value='1'>ثبت ورود</option>
                                             <option value='2'>ثبت خروج</option>
                                         </select>
                                     </div>

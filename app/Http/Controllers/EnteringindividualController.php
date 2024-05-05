@@ -346,6 +346,8 @@ class EnteringindividualController extends Controller
         $enter_exit=$request->input('enter_exit');
         $value=['date_enter'=>$date_enter,'time_enter'=>$time_enter,'enter_exit'=>$enter_exit];                
         Enteringindividual::where('i_ed', $i_ed)->update($value); 
+
+        $enter_exit = DB::table('enteringindividuals')->where('i_ed', $i_ed)->orderBy('i_ed', 'DESC')->get()->first()->enter_exit;
         Enteringpeaple::where('code_melli', $code_melli)->update(['presence'=>$enter_exit]);
         return response()->json(['success'=>'the information has successfuly saved','id_ed'=>$i_ed]);
     }
