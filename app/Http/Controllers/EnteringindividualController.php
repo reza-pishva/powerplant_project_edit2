@@ -73,6 +73,7 @@ class EnteringindividualController extends Controller
         'time_enter'=>$time_enter,'enter_exit'=>$enter_exit];                
         DB::table('enteringindividuals')->insert($value);  
         Enteringpeaple::where('code_melli', $code_melli)->update(['presence'=>$enter_exit]);
+        return response()->json(['success'=>'hi']);
 
 
         // $enteringpeaple=new Enteringindividual();
@@ -334,27 +335,29 @@ class EnteringindividualController extends Controller
     }
     public function updateindividuals(Request $request)
     {
-        $code_melli=$request->input('code_melli');
-        $f_name = DB::table('enteringpeaples')->where('code_melli', $code_melli)->orderBy('id_ep', 'DESC')->get()->first()->f_name;
-        $l_name = DB::table('enteringpeaples')->where('code_melli', $code_melli)->orderBy('id_ep', 'DESC')->get()->first()->l_name;
-        $date_shamsi_enter_array=explode('/',$request->input('date_enter'));
-        $date_enter=$this->convert($date_shamsi_enter_array[0].$date_shamsi_enter_array[1].$date_shamsi_enter_array[2]);
-        $id_user=auth()->user()->id;
-        $time_enter=$request->input('time_enter');
-        $enter_exit=$request->input('enter_exit');
-        $value=['code_melli'=>$code_melli,'f_name'=>$f_name,'l_name'=>$l_name,'date_enter'=>$date_enter,'id_user'=>$id_user,
-        'time_enter'=>$time_enter,'enter_exit'=>$enter_exit];                
-        Enteringindividual::where('code_melli', $code_melli)->update($value); 
-        Enteringpeaple::where('code_melli', $code_melli)->update(['presence'=>$enter_exit]);
-        // date_default_timezone_set('Asia/Tehran');
-        // $Calendar=new CalendarHelper();
-        // $id_ed=(int)$request->input('i_ed');
-        // $date=$request->input('date_enter');        
-        // $date_shamsi_exit_array=explode('/',$request->input('date_enter'));
-        // $date_enter=$this->convert($date_shamsi_exit_array[0].$date_shamsi_exit_array[1].$date_shamsi_exit_array[2]);
-        // $date_shamsi_exit_array=$Calendar->jalali_to_gregorian($date_shamsi_exit_array[0], $date_shamsi_exit_array[1], $date_shamsi_exit_array[2]);
-        
+        // $code_melli=$request->input('code_melli');
+        // $f_name = DB::table('enteringpeaples')->where('code_melli', $code_melli)->orderBy('id_ep', 'DESC')->get()->first()->f_name;
+        // $l_name = DB::table('enteringpeaples')->where('code_melli', $code_melli)->orderBy('id_ep', 'DESC')->get()->first()->l_name;
+        // $date_shamsi_enter_array=explode('/',$request->input('date_enter'));
+        // $date_enter=$this->convert($date_shamsi_enter_array[0].$date_shamsi_enter_array[1].$date_shamsi_enter_array[2]);
+        // $id_user=auth()->user()->id;
         // $time_enter=$request->input('time_enter');
+        // $enter_exit=$request->input('enter_exit');
+        // $value=['code_melli'=>$code_melli,'f_name'=>$f_name,'l_name'=>$l_name,'date_enter'=>$date_enter,'id_user'=>$id_user,
+        // 'time_enter'=>$time_enter,'enter_exit'=>$enter_exit];                
+        // Enteringindividual::where('code_melli', $code_melli)->update($value); 
+        // Enteringpeaple::where('code_melli', $code_melli)->update(['presence'=>$enter_exit]);
+
+
+        date_default_timezone_set('Asia/Tehran');
+        $Calendar=new CalendarHelper();
+        $id_ed=(int)$request->input('i_ed');
+        $date=$request->input('date_enter');        
+        $date_shamsi_exit_array=explode('/',$request->input('date_enter'));
+        $date_enter=$this->convert($date_shamsi_exit_array[0].$date_shamsi_exit_array[1].$date_shamsi_exit_array[2]);
+        $date_shamsi_exit_array=$Calendar->jalali_to_gregorian($date_shamsi_exit_array[0], $date_shamsi_exit_array[1], $date_shamsi_exit_array[2]);
+        
+        $time_enter=$request->input('time_enter');
         // $time_stamp=explode(':',$request->input('time_enter'));
 
         // $am_pm=substr($time_stamp[1],2,1);
@@ -369,8 +372,8 @@ class EnteringindividualController extends Controller
         // $day=$date_shamsi_exit_array[2];
         // $d1=mktime($hour,$minute, 0,$month,$day,$year);
         
-        // $enter_exit=$request->input('enter_exit');
-        // Enteringindividual::where('i_ed', $id_ed)->update(['date_enter'=>$date_enter,'time_enter'=>$time_enter,'enter_exit'=>$enter_exit,'DATE_TIMESTAMP'=>$d1]);
+        $enter_exit=$request->input('enter_exit');
+        Enteringindividual::where('i_ed', $id_ed)->update(['date_enter'=>$date_enter,'time_enter'=>$time_enter,'enter_exit'=>$enter_exit,'DATE_TIMESTAMP'=>$d1]);
 
         
         // $id = Enteringindividual::where('i_ed',  $id_ed)->get()->first()->code_melli;
@@ -380,8 +383,8 @@ class EnteringindividualController extends Controller
         //     Enteringindividual::where('i_ed', $i_ed)->update(['DIFFERENCE'=>$d1-$last_timestamp]);
         // }
 
-
-        // return response()->json(['success'=>'the information has successfuly saved','id_ed'=>$id_ed,'time'=>$d1,'date'=>$date]);
+        // ,'time'=>$d1,'date'=>$date
+        return response()->json(['success'=>'the information has successfuly saved','id_ed'=>$id_ed]);
     }
     public function selectindp()
     {

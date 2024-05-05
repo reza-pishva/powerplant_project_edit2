@@ -1620,6 +1620,7 @@
                     });
             })
             $("#addindividuals2").on('submit',function(event) {
+                alert('hi1')
                 event.preventDefault();
                 $.ajaxSetup({
                     headers: {
@@ -1635,7 +1636,7 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                        // alert(response.id_ed)
+                        alert('hi')
                         // alert(response.time)
                         // alert(response.date)
 
@@ -1691,58 +1692,59 @@
                 });
 
             });
-            // $("#addindividuals").on('submit',function(event) {
+            //target2
+            $("#addindividuals").on('submit',function(event) {
                 
-            //     event.preventDefault();
-            //     $.ajaxSetup({
-            //         headers: {
-            //             'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            //         }
-            //     });
-            //     var _token = $("input[name='_token']").val();
-            //     $.ajax({
-            //         url: "/addindividuals2",
-            //         method: 'POST',
-            //         data: new FormData(this),
-            //         dataType: 'JSON',
-            //         contentType: false,
-            //         processData: false,
-            //         success: function (response) {
+                event.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "/addindividuals2",
+                    method: 'POST',
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
                         
-            //             $("#time_enter").val('');
-            //             $("#enter_exit").val('');
-            //             var enter_exit = 0;
-            //             var i_ed = $('<td style="text-align: center" class="personinfo2">' + response.i_ed + '</td>')
-            //             var date_enter = $('<td style="text-align: center" class="personinfo2">' + response.date_enter + '</td>')
-            //             var time_enter = $('<td style="text-align: center" class="personinfo2">' + response.time_enter + '</td>')
-            //             var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.enter_exit+ '</td>')
-            //             if(response.enter_exit==1){
-            //                 enter_exit = $('<td style="text-align: center" class="personinfo2">' +'ورود'+ '</td>')
-            //             }else{
-            //                 enter_exit = $('<td style="text-align: center" class="personinfo2">' +'خروج'+ '</td>')
-            //             }
-            //             var edit1 = $('<button  disabled type="button" class="btn-sm btn-info edit1 personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%" data-toggle="modal" data-target="#dailyenter2">اصلاح</button>').attr('id',response.i_ed+1000)
-            //             var del1 = $('<button type="button" class="btn-sm btn-danger del personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%">حذف</button>').attr('id',response.i_ed+2000)
-            //             var t1=$('<td></td>')
-            //             var t2=$('<td></td>')
-            //             t1.append(edit1)
-            //             t2.append(del1)
-            //             var row=$('<tr></tr>')
-            //             row.append(i_ed, enter_exit, date_enter, time_enter,t1,t2,enter_exit_val)
-            //             $("#person_table77").append(row)
+                        $("#time_enter").val('');
+                        $("#enter_exit").val('');
+                        var enter_exit = 0;
+                        var i_ed = $('<td style="text-align: center" class="personinfo2">' + response.i_ed + '</td>')
+                        var date_enter = $('<td style="text-align: center" class="personinfo2">' + response.date_enter + '</td>')
+                        var time_enter = $('<td style="text-align: center" class="personinfo2">' + response.time_enter + '</td>')
+                        var enter_exit_val = $('<td hidden style="text-align: center" class="personinfo2">' +response.enter_exit+ '</td>')
+                        if(response.enter_exit==1){
+                            enter_exit = $('<td style="text-align: center" class="personinfo2">' +'ورود'+ '</td>')
+                        }else{
+                            enter_exit = $('<td style="text-align: center" class="personinfo2">' +'خروج'+ '</td>')
+                        }
+                        var edit1 = $('<button  disabled type="button" class="btn-sm btn-info edit1 personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%" data-toggle="modal" data-target="#dailyenter2">اصلاح</button>').attr('id',response.i_ed+1000)
+                        var del1 = $('<button type="button" class="btn-sm btn-danger del personinfo2" style="font-family: Tahoma;font-size: x-small;text-align: center;width: 100%">حذف</button>').attr('id',response.i_ed+2000)
+                        var t1=$('<td></td>')
+                        var t2=$('<td></td>')
+                        t1.append(edit1)
+                        t2.append(del1)
+                        var row=$('<tr></tr>')
+                        row.append(i_ed, enter_exit, date_enter, time_enter,t1,t2,enter_exit_val)
+                        $("#person_table77").append(row)
 
-            //             $('#' + Number(response.i_ed+1000)).click(function () {
-            //                 $("#id_ed_edit").val($(this).closest('tr').find('td:eq(0)').text())
-            //                 $("#enter_exit_edit").val($(this).closest('tr').find('td:eq(6)').text())
-            //                 $("#date_shamsi_enter_edit").val($(this).closest('tr').find('td:eq(2)').text())
-            //                 $("#time_enter_edit").val($(this).closest('tr').find('td:eq(3)').text())
-            //             });
-            //             $('.individuals333').show()
-            //             $('.individuals333').toast('show');
-            //             $("#individuals333").html("اطلاعات این فرد ثبت گردید")
-            //         }
-            //     });
-            // });
+                        $('#' + Number(response.i_ed+1000)).click(function () {
+                            $("#id_ed_edit").val($(this).closest('tr').find('td:eq(0)').text())
+                            $("#enter_exit_edit").val($(this).closest('tr').find('td:eq(6)').text())
+                            $("#date_shamsi_enter_edit").val($(this).closest('tr').find('td:eq(2)').text())
+                            $("#time_enter_edit").val($(this).closest('tr').find('td:eq(3)').text())
+                        });
+                        $('.individuals333').show()
+                        $('.individuals333').toast('show');
+                        $("#individuals333").html("اطلاعات این فرد ثبت گردید")
+                    }
+                });
+            });
             $('#setTimeButton1').on('click', function() {
                 $('#time_enter').timepicker('setTime', new Date());
                 var code_melli= $('#code_melli').val().toString();
