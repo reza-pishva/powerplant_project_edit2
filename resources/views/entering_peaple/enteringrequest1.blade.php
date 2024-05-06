@@ -1392,12 +1392,12 @@
             <div class="row" style="height: 15px">
                 <div class="col">
                     <div class="form-group" >
-                        <input type="text" maxlength="10" class="form-control" id="date_shamsi_enter100"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ شروع فعالیت:" name="date_shamsi_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 90%" required title="تاریخ شروع به کار فرد در نیروگاه وارد شود">
+                        <input type="text" maxlength="10" class="form-control" id="date_shamsi_enter100"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ شروع فعالیت:" name="date_shamsi_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 90%" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group" >
-                        <input type="time" maxlength="10" class="form-control" id="time_enter100"  data-toggle="tooltip" data-placement="right" placeholder="ساعت شروع فعالیت:" name="time_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 90%" value="07:30" required title="ساعت شروع به کار فرد در نیروگاه وارد شود">
+                        <input type="time" maxlength="10" class="form-control" id="time_enter100"  data-toggle="tooltip" data-placement="right" placeholder="ساعت شروع فعالیت:" name="time_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 90%" value="07:30" required>
                     </div>
                 </div>
             </div>
@@ -1408,12 +1408,12 @@
             <div class="row" style="height: 15px">
                 <div class="col">
                     <div class="form-group" >
-                        <input type="text" maxlength="10" class="form-control" id="date_shamsi_exit100"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ پایان فعالیت:" name="date_shamsi_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 90%" required title="تاریخ پایان کار فرد در نیروگاه وارد شود">
+                        <input type="text" maxlength="10" class="form-control" id="date_shamsi_exit100"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ پایان فعالیت:" name="date_shamsi_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 90%" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group" >
-                        <input type="time" maxlength="10" class="form-control" id="time_exit100"  data-toggle="tooltip" data-placement="right" placeholder="ساعت پایان فعالیت:" name="time_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 90%" value="19:30" required title="ساعت پایان کار فرد در نیروگاه وارد شود">
+                        <input type="time" maxlength="10" class="form-control" id="time_exit100"  data-toggle="tooltip" data-placement="right" placeholder="ساعت پایان فعالیت:" name="time_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 90%" value="19:30" required>
                     </div>
                 </div>
             </div>
@@ -1425,7 +1425,7 @@
             <div class="row" style="margin-top: 10px">
                 <div class="col-12">
                     <div class="form-group" style="height: 15px">
-                        <input type="text" maxlength="50" class="form-control" id="title" data-toggle="tooltip" data-placement="right" placeholder="عنوان فعالیت:" name="title" style="direction:rtl;font-family:Tahoma;font-size:small" required title="در اینجا عنوان فعالیتی که قرار است انجام شود وارد کنید">
+                        <input type="text" maxlength="50" class="form-control" id="title" data-toggle="tooltip" data-placement="right" placeholder="عنوان فعالیت:" name="title" style="direction:rtl;font-family:Tahoma;font-size:small" required>
                     </div>
                 </div>
             </div>
@@ -1436,7 +1436,7 @@
             <div class="row" style="height: 15px">
                 <div class="col">
                     <div class="form-group" >
-                        <input type="text" maxlength="30" class="form-control" id="company"  data-toggle="tooltip" data-placement="right" placeholder="نام شرکت یا مرکز:" name="company" style="direction: rtl;font-family: Tahoma;font-size: small;width: 80%" required title="نام شرکت یا مرکزی که این فرد یا افراد از آنجا به نیروگاه معرفی شده اند وارد گردد">
+                        <input type="text" maxlength="30" class="form-control" id="company"  data-toggle="tooltip" data-placement="right" placeholder="نام شرکت یا مرکز:" name="company" style="direction: rtl;font-family: Tahoma;font-size: small;width: 80%" required>
                     </div>
                 </div>
             </div>
@@ -1473,12 +1473,12 @@
             <div class="row" style="margin-top: 10px">
                 <div class="col-6">
                     <div class="form-group" style="height: 15px">
-                        <input type="text" maxlength="15" class="form-control" id="f_name" data-toggle="tooltip" data-placement="right" placeholder="نام مهمان:" name="f_name" style="direction:rtl;font-family:Tahoma;font-size:small" required title="در اینجا نام فرد دعوت شده وارد شود">
+                        <input type="text" maxlength="15" class="form-control" id="f_name" data-toggle="tooltip" data-placement="right" placeholder="نام مهمان:" name="f_name" style="direction:rtl;font-family:Tahoma;font-size:small" required>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group" style="height: 15px">
-                        <input type="text" maxlength="20" class="form-control" id="l_name" data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی مهمان:" name="l_name" style="direction:rtl;font-family:Tahoma;font-size:small" required title="در اینجا نام خانوادگی فرد دعوت شده وارد شود">
+                        <input type="text" maxlength="20" class="form-control" id="l_name" data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی مهمان:" name="l_name" style="direction:rtl;font-family:Tahoma;font-size:small" required>
                     </div>
                 </div>
             </div>
@@ -1489,7 +1489,7 @@
             <div class="row" style="margin-top: 10px">
                 <div class="col-6">
                     <div class="form-group" style="height: 15px">
-                        <select class="form-control" name="id_et" id="id_et" style="width: 150px;font-family: Tahoma;font-size: small;" required title="عنوان این فرد وارد شود">
+                        <select class="form-control" name="id_et" id="id_et" style="width: 150px;font-family: Tahoma;font-size: small;" required>
                             <option value=''>----</option>
                             @foreach($persons as $person)
                                 <option value="{{$person->id_et}}">{{$person->description}}</option>
@@ -1519,7 +1519,7 @@
                 </div>
                 <div class="col-3">
                     <div class="form-group" style="height: 15px">
-                        <input hidden type="number" max=100 min=1 class="form-control" id="age"  data-toggle="tooltip" data-placement="right" placeholder="سن:" name="age" style="direction: rtl;font-family: Tahoma;font-size: x-small;width: 100%"  title="سن این فرد وارد شود">
+                        <input hidden type="number" max=100 min=1 class="form-control" id="age"  data-toggle="tooltip" data-placement="right" placeholder="سن:" name="age" style="direction: rtl;font-family: Tahoma;font-size: x-small;width: 100%">
                     </div>
                 </div>
             </div>
@@ -1531,12 +1531,12 @@
             <div hidden class="row" style="height: 15px">
                 <div class="col">
                     <div class="form-group" >
-                        <input type="text" maxlength="10" class="form-control" id="date_shamsi_enter"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ شروع فعالیت:" name="date_shamsi_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%" required title="تاریخ شروع به کار فرد در نیروگاه وارد شود">
+                        <input type="text" maxlength="10" class="form-control" id="date_shamsi_enter"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ شروع فعالیت:" name="date_shamsi_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group" >
-                        <input type="time" maxlength="10" class="form-control" id="time_enter"  data-toggle="tooltip" data-placement="right" placeholder="ساعت شروع فعالیت:" name="time_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%"  required title="ساعت شروع به کار فرد در نیروگاه وارد شود">
+                        <input type="time" maxlength="10" class="form-control" id="time_enter"  data-toggle="tooltip" data-placement="right" placeholder="ساعت شروع فعالیت:" name="time_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%"  required>
                     </div>
                 </div>
             </div>
@@ -1548,12 +1548,12 @@
             <div hidden class="row" style="height: 15px">
                 <div class="col">
                     <div class="form-group" >
-                        <input type="text" maxlength="10" class="form-control" id="date_shamsi_exit"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ پایان فعالیت:" name="date_shamsi_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%" required title="تاریخ پایان کار فرد در نیروگاه وارد شود">
+                        <input type="text" maxlength="10" class="form-control" id="date_shamsi_exit"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ پایان فعالیت:" name="date_shamsi_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group" >
-                        <input type="time" maxlength="10" class="form-control" id="time_exit"  data-toggle="tooltip" data-placement="right" placeholder="ساعت پایان فعالیت:" name="time_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%"  required title="ساعت پایان کار فرد در نیروگاه وارد شود">
+                        <input type="time" maxlength="10" class="form-control" id="time_exit"  data-toggle="tooltip" data-placement="right" placeholder="ساعت پایان فعالیت:" name="time_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%"  required>
                     </div>
                 </div>
             </div>
@@ -1565,12 +1565,12 @@
             <div class="row" style="height: 15px">
                 <div class="col">
                     <div class="form-group" >
-                        <input type="text"  pattern="[0-9]{10}" class="form-control" id="code_melli"  data-toggle="tooltip" data-placement="right" placeholder="کد ملی:" name="code_melli" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%" required title="کد ملی فرد وارد گردد">
+                        <input type="text"  pattern="[0-9]{10}" class="form-control" id="code_melli"  data-toggle="tooltip" data-placement="right" placeholder="کد ملی:" name="code_melli" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group" >
-                        <input type="text" maxlength="11" class="form-control" id="mobile"  data-toggle="tooltip" data-placement="right" placeholder="شماره تلفن:" name="mobile" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%"  title="شماره موبایل فرد وارد گردد">
+                        <input type="text" maxlength="11" class="form-control" id="mobile"  data-toggle="tooltip" data-placement="right" placeholder="شماره تلفن:" name="mobile" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%">
                     </div>
                 </div>
             </div>
@@ -1623,7 +1623,7 @@
             <div class="row car_title" style="margin-top: 12px;height: 20px;display: none" id="car_title2">
                 <div class="col">
                     <div class="form-group car_title">
-                        <input type="text" maxlength="15" class="form-control" id="car_name" placeholder="نام خودرو:" name="car_name" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 200px" required title="نام خودرو وارد گردد">
+                        <input type="text" maxlength="15" class="form-control" id="car_name" placeholder="نام خودرو:" name="car_name" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 200px" required>
                     </div>
                 </div>
                 <div class="col">
@@ -1642,7 +1642,7 @@
             <div class="row car_title" style="height: 15px;display: none" id="car_title4">
                 <div class="col">
                     <div class="form-group" >
-                        <input type="text" maxlength="20" class="form-control" id="driver_name"  data-toggle="tooltip" data-placement="right" placeholder="نام راننده:" name="driver_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 200px" required title="نام راننده وارد گردد">
+                        <input type="text" maxlength="20" class="form-control" id="driver_name"  data-toggle="tooltip" data-placement="right" placeholder="نام راننده:" name="driver_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 200px" required>
                     </div>
                 </div>
                 <div class="col">
@@ -1715,7 +1715,7 @@
             <div class="row el_title" style="margin-top: 12px;height: 20px;display: none">
                 <div class="col">
                     <div class="form-group">
-                        <input type="text" maxlength="40" class="form-control" id="description" placeholder="نام وسیله الکترونیکی:" name="description" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 90%" required title="نام وسیله الکترونیکی وارد گردد">
+                        <input type="text" maxlength="40" class="form-control" id="description" placeholder="نام وسیله الکترونیکی:" name="description" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 90%" required>
                     </div>
                 </div>
             </div>
@@ -1727,7 +1727,7 @@
             <div class="row el_title" style="margin-top: 12px;height: 20px;display: none">
                 <div class="col">
                     <div class="form-group">
-                        <input type="text" maxlength="20" class="form-control" id="serial_no" placeholder="شماره سریال:" name="serial_no" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 50%" title="شماره سریال در صورت وجود وارد شود">
+                        <input type="text" maxlength="20" class="form-control" id="serial_no" placeholder="شماره سریال:" name="serial_no" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 50%">
                     </div>
                 </div>
             </div>
@@ -1785,7 +1785,7 @@
             <div class="row eq_title" style="margin-top: 12px;height: 20px">
                 <div class="col">
                     <div class="form-group">
-                        <input type="text" maxlength="35" class="form-control" id="description_eq" placeholder="نام وسیله:" name="description" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 90%" required title="نام وسیله وارد گردد">
+                        <input type="text" maxlength="35" class="form-control" id="description_eq" placeholder="نام وسیله:" name="description" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 90%" required>
                     </div>
                 </div>
             </div>
@@ -1801,7 +1801,7 @@
             <div class="row upload" style="margin-top: 12px;height: 20px">
                 <div class="col">
                     <div class="form-group">
-                        <input hidden type="text" maxlength="100" class="form-control" id="description_upload" placeholder="انتخاب نام فایل جهت ارسال:" name="description_upload" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 85%" required title="نام انتخابی برای فایل" value="لیست وسایل">
+                        <input hidden type="text" maxlength="100" class="form-control" id="description_upload" placeholder="انتخاب نام فایل جهت ارسال:" name="description_upload" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 85%" required value="لیست وسایل">
                     </div>
                 </div>
             </div>
@@ -1882,12 +1882,12 @@
                         <div class="row" style="margin-top: 10px">
                             <div class="col-6">
                                 <div class="form-group" style="height: 15px">
-                                    <input type="text" maxlength="20" class="form-control" id="f_name_edit" data-toggle="tooltip" data-placement="right" placeholder="نام مهمان:" name="f_name" style="direction:rtl;font-family:Tahoma;font-size:small" required title="در اینجا نام فرد دعوت شده وارد شود">
+                                    <input type="text" maxlength="20" class="form-control" id="f_name_edit" data-toggle="tooltip" data-placement="right" placeholder="نام مهمان:" name="f_name" style="direction:rtl;font-family:Tahoma;font-size:small" required>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group" style="height: 15px">
-                                    <input type="text" maxlength="25" class="form-control" id="l_name_edit" data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی مهمان:" name="l_name" style="direction:rtl;font-family:Tahoma;font-size:small" required title="در اینجا نام خانوادگی فرد دعوت شده وارد شود">
+                                    <input type="text" maxlength="25" class="form-control" id="l_name_edit" data-toggle="tooltip" data-placement="right" placeholder="نام خانوادگی مهمان:" name="l_name" style="direction:rtl;font-family:Tahoma;font-size:small" required>
                                 </div>
                             </div>
                         </div>
@@ -1928,7 +1928,7 @@
                             </div>
                             <div class="col-3">
                                 <div class="form-group" style="height: 15px">
-                                    <input hidden type="number" max=100 min=1 class="form-control" id="age_edit"  data-toggle="tooltip" data-placement="right" placeholder="سن:" name="age" style="direction: rtl;font-family: Tahoma;font-size: x-small;width: 100%"  title="سن این فرد وارد شود">
+                                    <input hidden type="number" max=100 min=1 class="form-control" id="age_edit"  data-toggle="tooltip" data-placement="right" placeholder="سن:" name="age" style="direction: rtl;font-family: Tahoma;font-size: x-small;width: 100%">
                                 </div>
                             </div>
                         </div>
@@ -1940,12 +1940,12 @@
                         <div class="row"  style="height: 15px">
                             <div class="col">
                                 <div class="form-group" >
-                                    <input type="text" maxlength="10" class="form-control" id="date_shamsi_enter_edit"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ شروع فعالیت:" name="date_shamsi_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%"  title="تاریخ شروع به کار فرد در نیروگاه وارد شود">
+                                    <input type="text" maxlength="10" class="form-control" id="date_shamsi_enter_edit"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ شروع فعالیت:" name="date_shamsi_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%">
                                 </div>
                             </div>
                             <div class="col" >
                                 <div class="form-group" >
-                                    <input type="time" maxlength="10" class="form-control" id="time_enter_edit"  data-toggle="tooltip" data-placement="right" placeholder="ساعت شروع فعالیت:" name="time_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%"  title="ساعت شروع به کار فرد در نیروگاه وارد شود">
+                                    <input type="time" maxlength="10" class="form-control" id="time_enter_edit"  data-toggle="tooltip" data-placement="right" placeholder="ساعت شروع فعالیت:" name="time_enter" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%">
                                 </div>
                             </div>
                         </div>
@@ -1957,12 +1957,12 @@
                         <div class="row"  style="height: 15px">
                             <div class="col">
                                 <div class="form-group" >
-                                    <input type="text" maxlength="10" class="form-control" id="date_shamsi_exit_edit"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ پایان فعالیت:" name="date_shamsi_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%"  title="تاریخ پایان کار فرد در نیروگاه وارد شود">
+                                    <input type="text" maxlength="10" class="form-control" id="date_shamsi_exit_edit"  data-toggle="tooltip" data-placement="right" placeholder="تاریخ پایان فعالیت:" name="date_shamsi_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group" >
-                                    <input type="time" maxlength="10" class="form-control" id="time_exit_edit"  data-toggle="tooltip" data-placement="right" placeholder="ساعت پایان فعالیت:" name="time_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%"  title="ساعت پایان کار فرد در نیروگاه وارد شود">
+                                    <input type="time" maxlength="10" class="form-control" id="time_exit_edit"  data-toggle="tooltip" data-placement="right" placeholder="ساعت پایان فعالیت:" name="time_exit" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%">
                                 </div>
                             </div>
                         </div>
@@ -1974,12 +1974,12 @@
                         <div class="row" style="height: 15px">
                             <div class="col">
                                 <div class="form-group" >
-                                    <input type="text"  pattern="[0-9]{10}" class="form-control" id="code_melli_edit"  data-toggle="tooltip" data-placement="right" placeholder="کد ملی:" name="code_melli" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%" required title="کد ملی فرد وارد گردد">
+                                    <input type="text"  pattern="[0-9]{10}" class="form-control" id="code_melli_edit"  data-toggle="tooltip" data-placement="right" placeholder="کد ملی:" name="code_melli" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group" >
-                                    <input type="text" maxlength="11" class="form-control" id="mobile_edit"  data-toggle="tooltip" data-placement="right" placeholder="شماره تلفن:" name="mobile" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%"  title="شماره موبایل فرد وارد گردد">
+                                    <input type="text" maxlength="11" class="form-control" id="mobile_edit"  data-toggle="tooltip" data-placement="right" placeholder="شماره تلفن:" name="mobile" style="direction: rtl;font-family: Tahoma;font-size: small;width: 70%">
                                 </div>
                             </div>
                         </div>
@@ -2052,7 +2052,7 @@
                         <div class="row car_title" style="margin-top: 12px;height: 20px;display: none" id="car_title2">
                             <div class="col">
                                 <div class="form-group car_title">
-                                    <input type="text" maxlength="15" class="form-control" id="car_name_edit" placeholder="نام خودرو:" name="car_name" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 200px" required title="نام خودرو وارد گردد">
+                                    <input type="text" maxlength="15" class="form-control" id="car_name_edit" placeholder="نام خودرو:" name="car_name" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 200px" required>
                                 </div>
                             </div>
                             <div class="col">
@@ -2071,7 +2071,7 @@
                         <div class="row car_title" style="height: 15px;display: none" id="car_title4">
                             <div class="col">
                                 <div class="form-group" >
-                                    <input type="text" maxlength="15" class="form-control" id="driver_name_edit"  data-toggle="tooltip" data-placement="right" placeholder="نام راننده:" name="driver_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 200px" required title="نام راننده وارد گردد">
+                                    <input type="text" maxlength="15" class="form-control" id="driver_name_edit"  data-toggle="tooltip" data-placement="right" placeholder="نام راننده:" name="driver_name" style="direction: rtl;font-family: Tahoma;font-size: small;width: 200px" required>
                                 </div>
                             </div>
                             <div class="col">
@@ -2160,7 +2160,7 @@
                         <div class="row el_title" style="margin-top: 12px;height: 20px;" id="el_title2">
                             <div class="col">
                                 <div class="form-group el_title">
-                                    <input type="text" maxlength="50" class="form-control" id="description_edit"  name="description" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 80%" required title="نام قطعه وارد گردد">
+                                    <input type="text" maxlength="50" class="form-control" id="description_edit"  name="description" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 80%" required>
                                 </div>
                             </div>
                         </div>
@@ -2172,7 +2172,7 @@
                         <div class="row el_title" style="margin-top: 12px;height: 20px;">
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="text" maxlength="50" class="form-control" id="serial_no_edit" placeholder="شماره سریال:" name="serial_no" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 50%"  title="شماره سریال در صورت وجود وارد شود">
+                                    <input type="text" maxlength="50" class="form-control" id="serial_no_edit" placeholder="شماره سریال:" name="serial_no" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 50%">
                                 </div>
                             </div>
                         </div>
@@ -2249,7 +2249,7 @@
                         <div class="row eq_title" style="margin-top: 12px;height: 20px;" id="eq_title2">
                             <div class="col">
                                 <div class="form-group eq_title">
-                                    <input type="text" maxlength="100" class="form-control" id="description_eq_edit"  name="description" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 80%" required title="نام وسیله وارد گردد">
+                                    <input type="text" maxlength="100" class="form-control" id="description_eq_edit"  name="description" data-toggle="tooltip" data-placement="right" style="direction:rtl;font-family:Tahoma;font-size:small;width: 80%" required>
                                 </div>
                             </div>
                         </div>

@@ -301,9 +301,9 @@ class EnteringindividualController extends Controller
 
             $i_ed = Enteringindividual::where('code_melli', $id)->where('enter_exit', 2)->orderBy('i_ed', 'DESC')->get()->first()->i_ed;
             $last_timestamp = Enteringindividual::where('code_melli', $id)->where('enter_exit', 1)->orderBy('i_ed', 'DESC')->get()->first()->DATE_TIMESTAMP;
-            if($last_timestamp != 'undefind'){
-                Enteringindividual::where('i_ed', $i_ed)->update(['DIFFERENCE'=>$d1-$last_timestamp]);
-            }
+            // if($last_timestamp != 'undefind'){
+            //     Enteringindividual::where('i_ed', $i_ed)->update(['DIFFERENCE'=>$d1-$last_timestamp]);
+            // }
             
 
             $i_ed1 = Enteringindividual::where('code_melli', $id)->where('enter_exit',1)->orderBy('i_ed', 'DESC')->get()->first()->i_ed;
