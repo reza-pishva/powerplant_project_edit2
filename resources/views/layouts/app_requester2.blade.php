@@ -136,7 +136,7 @@
 
     <div class="row" style="height: 680px">
         <div class="col-11">
-            <div class="row" style="border-radius: 5px;height: 680px;width: 100%;">
+            <div class="row" style="height: 680px;width: 100%;">
                 <div class="col-1"></div>
                 <div class="col-10">@yield('content')</div>
                 <div class="col-1"></div>
@@ -151,7 +151,7 @@
                                 <img src="{{URL::to('/')}}/exit002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
                             </a>
                         </div>
-                        <div >
+                        <div class="mt-4">
                             <a href="/requester">
                                 <img src="{{URL::to('/')}}/exit002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
                             </a>
