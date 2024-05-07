@@ -272,29 +272,11 @@
                                                                     <br><br><br>
 
                                                             </div>
-{{--                            @if($forms->enter_exit==2)--}}
 
-{{--                                <div  hidden class="form-group" style="text-align: right">--}}
-{{--                                    <label for="with_return" style="font-family: Tahoma;font-size: small;display: inline"> همراه با بازگشت:</label>--}}
-{{--                                    <select class="form-control isclicked1" name="with_return" id="with_return" style="width: 110px;font-family: Tahoma;font-size: small;display: inline">--}}
-{{--                                        <option value=1>بله</option>--}}
-{{--                                        <option value=2>خیر</option>--}}
-{{--                                    </select>--}}
-{{--                                    <br><br><br>--}}
 
-{{--                                </div>--}}
-{{--                            @endif--}}
-{{--                            @if($forms->enter_exit==1)--}}
-{{--                                <div  class="form-group" style="text-align: right">--}}
-{{--                                     <label for="with_return" style="font-family: Tahoma;font-size: small;display: inline"> همراه با بازگشت:</label>--}}
-{{--                                        <select class="form-control isclicked1" name="with_return" id="with_return" style="width: 110px;font-family: Tahoma;font-size: small;display: inline">--}}
-{{--                                            <option value=1>بله</option>--}}
-{{--                                            <option value=2>خیر</option>--}}
-{{--                                        </select>--}}
-{{--                                        <br><br><br>--}}
 
-{{--                                </div>--}}
-{{--                            @endif--}}
+
+
 
                             <button type="submit" class="btn btn-primary" id="btnAdd" style="font-family: Tahoma;font-size: small;text-align: right">ثبت درخواست</button>
                         </div>
@@ -302,7 +284,7 @@
                     @include('shared.errors')
                     <div id="ajax-alert1" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>
                     <div id="ajax-alert2" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>
-{{--                    <div id="validation" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>--}}
+
                     <input type="hidden" class="form-control" id="id_exit">
 
                 </form>
@@ -316,7 +298,7 @@
     <!-- List of content -->
         <div class="row mylist" style="margin: auto;width:100%;height:185px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;display: none;background-color: beige">
           <div class="col-12" style="direction: rtl;height: 183px;overflow-y: scroll">
-            <table id="request_table1" align="center" style="width: 100%;font-family: Tahoma;font-size: small">
+            <table id="request_table1" style="width: 100%;font-family: Tahoma;font-size: small">
                 <tr class="bg-primary" style="color: white">
                     <td>شماره درخواست</td>
                     <td>تاریخ درخواست</td>

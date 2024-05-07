@@ -36,18 +36,13 @@
     })
 </script>
 
-    <div class="container" style="direction: rtl">
+    <div class="container" style="direction: rtl;margin:auto">
         <div class="row">
             <div class="col-6  mt-3">
                 <form method="post" action={{route('form.store')}}>
                     {{csrf_field()}}
                     <div class="form-group">
-{{--                        <p style="display: inline;font-family: Tahoma;font-size: small">انتخاب نوع مجوز:</p>--}}
-                        <select class="form-control" name="enter_exit" id="enter_exit" style="display: inline;font-family: Tahoma;font-size: small;width: 150px">
-                            <option value=0>انتخاب نوع مجوز</option>
-                            <option value=1>مجوز خروج</option>
-                            <option value=2>مجوز ورود</option>
-                        </select>
+
                         <button type="button" style="display: inline;font-family: Tahoma;font-size: small" class="btn btn-primary" id="first_btn" data-toggle="modal" data-target="#myModal">ایجاد فرم</button>
                     </div>
                     <div class="form-group">
@@ -108,6 +103,52 @@
             </div>
             <div class="col-3">.</div>
             <div class="col-3">.</div>
+        </div>
+        <div class="row" style="margin: auto;width:100%;direction: rtl">
+            <div class="col-1 mt-5">.</div>
+            <div class="col-10 pt-3" style="background-color: gainsboro;border-radius: 5px;margin-top: 3px;">
+                <form method="post" encType="multipart/form-data" id="upload_form_request" action={{route('exit.store')}}>
+                    {{csrf_field()}}
+                     <div class="row">
+                        <div class="col">
+                            <input type="hidden" class="form-control" id="id_form"  name="id_form">
+                            <input type="hidden" class="form-control" id="enter_exit"  name="enter_exit">
+                            <input type="hidden" class="form-control" id="date_request_shamsi"  name="date_request_shamsi">
+                            <input type="hidden" class="form-control" id="date_request_miladi"  name="date_request_miladi">
+                            <input type="hidden" class="form-control" id="time_request"  name="time_request">
+                            <input type="hidden" class="form-control" id="request_timestamp"  name="request_timestamp">
+                            <input type="hidden" class="form-control" id="id_requester" placeholder="Enter the id of requester" name="id_requester">
+                            <input type="hidden" class="form-control" id="id_request_part" name="id_request_part" value={{$part}}>
+                            <div class="form-group" >
+                                <input type="text" maxlength="30" class="form-control isclicked1" id="origin_destination" data-toggle="tooltip" data-placement="right" placeholder="مبدا یا مقصد قطعه:" name="origin_destination" style="direction: rtl;font-family: Tahoma;font-size: small;width: 200px" required title="لطفا مبدا یا مقصد این قطعه را وارد کنید">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div  class="form-group" style="text-align: right">
+                                <label for="with_return" style="font-family: Tahoma;font-size: small;display: inline"> همراه با بازگشت:</label>
+                                <select class="form-control isclicked1" name="with_return" id="with_return" style="width: 110px;font-family: Tahoma;font-size: small;display: inline">
+                                    <option value=1>بله</option>
+                                    <option value=2>خیر</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <select class="form-control" name="enter_exit" id="enter_exit" style="display: inline;font-family: Tahoma;font-size: small;width: 150px">
+                                <option value=0>انتخاب نوع مجوز</option>
+                                <option value=1>مجوز خروج</option>
+                                <option value=2>مجوز ورود</option>
+                            </select>
+                        </div>
+                    </div>
+                    @include('shared.errors')
+                    <div id="ajax-alert1" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>
+                    <div id="ajax-alert2" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>
+
+                    <input type="hidden" class="form-control" id="id_exit">
+
+                </form>
+            </div>
+            <div class="col-1 mt-5">.</div>
         </div>
     </div>
 

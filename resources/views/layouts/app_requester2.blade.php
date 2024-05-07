@@ -45,8 +45,8 @@
             filter: alpha(opacity=100);
             outline: 2px solid white;
             outline-offset: 1px;
-            width:60%;
-            height:80px;
+            width:100%;
+            height:50px;
             cursor: pointer;
         }
         img.reza2
@@ -55,8 +55,8 @@
             border-radius: 15px;
             opacity: 0.7;
             filter: alpha(opacity=100);
-            width:60%;
-            height:70px;
+            width:100%;
+            height:50px;
             margin-top: 10px;
         }
         li a
@@ -105,7 +105,6 @@
     </style>
     <script>
         $(document).ready(function(){
-            // $("#not_confirmed2").attr('disabled',true)
             $('[data-toggle="tooltip"]').tooltip();
         })
     </script>
@@ -136,23 +135,47 @@
     </nav>
 
     <div class="row" style="height: 680px">
-        <div class="col-10">
+        <div class="col-11">
             <div class="row" style="border-radius: 5px;height: 680px;width: 100%;">
                 <div class="col-1"></div>
                 <div class="col-10">@yield('content')</div>
                 <div class="col-1"></div>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-1">
             <div class="row mt-1" style="height:100%;margin: auto;width:100%">
                 <div class="row mt-1" style="height:100%;margin: auto;width:233px">
-                    <div class="col-10" style="border-radius: 5px;height: 660px;background-color:rgba(14,53,126,0.5);text-align: center">
+                    <div class="col" style="border-radius: 5px;height: 660px;background-color:rgba(14,53,126,0.5);text-align: center">
                         <div >
                             <a href="/requester">
                                 <img src="{{URL::to('/')}}/exit002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
                             </a>
                         </div>
-
+                        <div >
+                            <a href="/requester">
+                                <img src="{{URL::to('/')}}/exit002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
+                            </a>
+                        </div>
+                        <div >
+                            <a href="/requester">
+                                <img src="{{URL::to('/')}}/exit002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
+                            </a>
+                        </div>
+                        <div >
+                            <a href="/requester">
+                                <img src="{{URL::to('/')}}/exit002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
+                            </a>
+                        </div>
+                        <div >
+                            <a href="/requester">
+                                <img src="{{URL::to('/')}}/exit002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
+                            </a>
+                        </div>
+                        <div >
+                            <a href="/requester">
+                                <img src="{{URL::to('/')}}/exit002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
