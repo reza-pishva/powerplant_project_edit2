@@ -63,19 +63,21 @@ class formcreate extends Controller
     }
     public function store(Request $request)
     {
-        Form::create($request->except('_token'));
-        $user = auth()->user()->id;
-        $forms=Form::where('id_requester',$user)->orderBy('id_form', 'DESC')->first();
         $g_y = Carbon::now()->year;
         $g_m = Carbon::now()->month;
         $g_d = Carbon::now()->day;
         $Calendar=new CalendarHelper();
         $date_shamsi_array=$Calendar->gregorian_to_jalali($g_y, $g_m, $g_d);
-        $date_shamsi=$date_shamsi_array[0].'/'.$date_shamsi_array[1].'/'.$date_shamsi_array[2];
-        $mytime=Carbon::now();
-        $part = auth()->user()->id_request_part;
-        $goodstypes=Goodstype::all();
-        $requests=Exit_goods_permission::where('id_requester',$user)->where('level',1)->get();
-        return view('exitformpublic',compact('goodstypes','date_shamsi','user','part','requests','mytime','forms'));
+
+        $id_requester = auth()->user()->id;
+        $enter_exit = $request->input('enter_exit');       
+        $date_shamsi = $date_shamsi_array[0].'/'.$date_shamsi_array[1].'/'.$date_shamsi_array[2];
+        $timestamp = Carbon::now()->timestamp;
+        $date_miladi = Carbon::now();       
+
+        $values = array('id_requester' => $id_requester,'enter_exit' =>$enter_exit,'date_shamsi' => $date_shamsi,'timestamp' => $timestamp,'date_miladi' =>$date_miladi);
+        DB::table('forms')->insert($values);        
+        
     }
+
 }
