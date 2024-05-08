@@ -5,32 +5,9 @@
         var condition="";
         var date_shamsi=$("#date_shamsi").val();
         $("#first_btn").click(function() {
-            var enter_exit=$("#enter_exit").val();
-            if(enter_exit==0){
-                $("#comm1").text('متاسفانه شما');
-                $("#note").text(' نوع مجوز را انتخاب نکرده اید.');
-                $("#comm2").text('لطفا مجددا جهت');
-                $("#comm3").text('تعیین نوع مجوز');
-                $("#comm4").text('به فرم مربوطه مراجعه کنید');
-                $('#sub').attr("disabled", true);
-            }
-            if(enter_exit==1){
-                $("#comm1").text('فرمی برای دریافت');
-                $("#note").text('مجوز خروج');
-                $("#comm2").text('توسط شما درخواست شده.در صورت اطمینان از این انتخاب');
-                $("#comm3").text('بر روی دکمه');
-                $("#comm4").text('ایجاد فرم کلیک کنید.در غیراینصورت بر روی دکمه بازگشت کلیک کنید.');
-                $('#sub').attr("disabled", false);
-            }
-            if(enter_exit==2){
-                $("#comm1").text('فرمی برای دریافت');
-                $("#note").text('مجوز ورود');
-                $("#comm2").text('توسط شما درخواست شده.در صورت اطمینان از این انتخاب');
-                $("#comm3").text('بر روی دکمه');
-                $("#comm4").text('ایجاد فرم کلیک کنید.در غیراینصورت بر روی دکمه بازگشت کلیک کنید.');
-                $('#sub').attr("disabled", false);
-            }
-
+            $("#enter_exit").val($("#enter_exit2").val());
+            $("#origin_destination").val($("#origin_destination2").val());
+            $("#with_return").val($("#with_return2").val());
         });
 
     })
@@ -44,7 +21,7 @@
                     {{csrf_field()}}
                     <div class="row">
                         <div class="col-3">
-                            <select class="form-control" name="enter_exit" id="enter_exit" style="display: inline;font-family: Tahoma;font-size: small;width: 150px">
+                            <select class="form-control" name="enter_exit" id="enter_exit2" style="display: inline;font-family: Tahoma;font-size: small;width: 150px">
                                 <option value=0>انتخاب نوع مجوز</option>
                                 <option value=1>مجوز خروج</option>
                                 <option value=2>مجوز ورود</option>
@@ -52,21 +29,17 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group" >
-                                <input type="text" maxlength="30" class="form-control" id="origin_destination" placeholder="مبدا یا مقصد قطعه:" name="origin_destination" style="font-family: Tahoma;font-size: small;width: 100%" required>
+                                <input type="text" maxlength="30" class="form-control" id="origin_destination2" placeholder="مبدا یا مقصد قطعه:" name="origin_destination" style="font-family: Tahoma;font-size: small;width: 100%" required>
                             </div>
                         </div>
                         <div class="col-3">
-                            <select class="form-control" name="with_return" id="with_return" style="width:100%;font-family: Tahoma;font-size: small;display: inline">
+                            <select class="form-control" name="with_return" id="with_return2" style="width:100%;font-family: Tahoma;font-size: small;display: inline">
                                 <option value=0>همراه بازگشت؟</option>
                                 <option value=1>همراه بازگشت</option>
                                 <option value=2>بدون بازگشت</option>
                             </select>
                         </div>
                     </div>                       
-                    {{-- <input type="hidden" class="form-control" id="date_request_shamsi"  name="date_request_shamsi">
-                    <input type="hidden" class="form-control" id="date_request_miladi"  name="date_request_miladi">
-                    <input type="hidden" class="form-control" id="time_request"  name="time_request">
-                    <input type="hidden" class="form-control" id="request_timestamp"  name="request_timestamp"> --}}
                     <div class="row">
                         <div class="col">
                             <button type="commit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="first_btn">ثبت فرم وشروع ثبت قطعات و کالا</button>
@@ -79,6 +52,9 @@
         </div>
         <div class="row mt-2" style="margin-right:40px;width:100%;direction: rtl">
            <div class="col-4 bg-info" style="height:300px">
+                <input type="text" id="origin_destination" style="display: none">
+                <input type="text" id="enter_exit" style="display: none">
+                <input type="text" id="with_return" style="display: none">
                 <div class="form-group mt-3">
                     <input type="text" maxlength="50" class="form-control isclicked1" id="description" data-toggle="tooltip" data-placement="right" placeholder="شرح کالا یا قطعه:" name="description" style="direction:rtl;font-family:Tahoma;font-size:small" required>
                 </div>
