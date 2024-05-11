@@ -40,7 +40,7 @@ class formcreate extends Controller
                     $user = auth()->user()->id;
                     $g_y = Carbon::now()->year;
                     $g_m = Carbon::now()->month;
-                    $g_d = Carbon::now()->day;
+                    $g_d = Carbon::now()->day;                    
                     $Calendar=new CalendarHelper();
                     $date_shamsi_array=$Calendar->gregorian_to_jalali($g_y, $g_m, $g_d);
                     $date_shamsi=$date_shamsi_array[0].'/'.$date_shamsi_array[1].'/'.$date_shamsi_array[2];

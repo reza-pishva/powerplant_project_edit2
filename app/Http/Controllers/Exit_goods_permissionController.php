@@ -18,7 +18,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 
-
 class Exit_goods_permissionController extends Controller
 {
     public function convert($string) {
@@ -268,31 +267,35 @@ class Exit_goods_permissionController extends Controller
     }
     public  function store(Request $request){
 
+        $exitform= new Exit_goods_permission();
+        date_default_timezone_set('Asia/Tehran');
+        $mytime=Carbon::now()->format('g:i:s');
+        $g_y = Carbon::now()->year;
+        $g_m = Carbon::now()->month;
+        $g_d = Carbon::now()->day;
+        $date_miladi = Carbon::now()->format('Y/m/d');
+        $Calendar=new CalendarHelper();
+        $date_shamsi_array=$Calendar->gregorian_to_jalali($g_y, $g_m, $g_d);
+        $date_shamsi=$date_shamsi_array[0].'/'.$date_shamsi_array[1].'/'.$date_shamsi_array[2];        
 
-        $exitform=new Exit_goods_permission();
-        $exitform->id_form=$request->input('id_form');
-        $exitform->enter_exit=$request->input('enter_exit');
-        $enter_exit=$request->input('enter_exit');
-        $exitform->date_request_shamsi=$request->input('date_request_shamsi');
-        $exitform->date_request_miladi=$request->input('date_request_miladi');
-        $exitform->time_request=$request->input('time_request');
-        $exitform->request_timestamp=$request->input('request_timestamp');
-        $exitform->id_requester=$request->input('id_requester');
-        $exitform->id_request_part=$request->input('id_request_part');
-        $exitform->origin_destination=$request->input('origin_destination');
-        $exitform->description=$request->input('description');
+        $exitform->origin_destination = $request->input('origin_destination');
+        $exitform->description = $request->input('description');
+        $exitform->jamdari_no = $request->input('jamdari_no');
+        $exitform->with_return = $request->input('with_return');
+        $exitform->enter_exit = $request->input('enter_exit');
+        $exitform->date_request_shamsi = $date_shamsi;
+        $exitform->date_request_miladi = $date_miladi;
+        $exitform->time_request = $mytime;
+        $exitform->request_timestamp = Carbon::now()->timestamp;
+        $exitform->id_requester = auth()->user()->id;
+        $exitform->id_goods_type = $request->input('id_goods_type');
+        $id_goods_type = $request->input('id_goods_type');
+        $exitform->id_request_part = DB::table('users')->orderBy('id', 'DESC')->first()->id_request_part;
         $unit=$request->input('unit');
-        $exitform->exit_no=$request->input('exit_no').' '.$unit;
-        $exitform->jamdari_no=$request->input('jamdari_no');
-        $exitform->id_goods_type=$request->input('id_goods_type');
-        $exitform->with_return=$request->input('with_return');
-        $exitform->level=1;
-        $exitform->reason1='';
-        $exitform->reason2='';
-        $exitform->reason3='';
+        $exitform->exit_no = $request->input('exit_no').' '.$unit;
+        $description2 = $request->input('description12');
 
-        $description2=$request->input('description12');
-        $date_request_shamsi2=$request->input('date_request_shamsi');
+        $date_request_shamsi2 = $date_shamsi;
         $date_request_shamsi2_array=explode('/',$date_request_shamsi2);
         if(strlen($date_request_shamsi2_array[1])==1){
             $date_request_shamsi2_array[1]='0'.$date_request_shamsi2_array[1];
@@ -302,23 +305,29 @@ class Exit_goods_permissionController extends Controller
         }
         $date_request_shamsi2=$date_request_shamsi2_array[0].$date_request_shamsi2_array[1].$date_request_shamsi2_array[2];
         $exitform->date_request_shamsi2=$date_request_shamsi2;
-
-        $id_goods_type=$request->input('id_goods_type');
-        $user = auth()->user()->l_name;
         $exitform->goods_type = DB::table('goodstypes')->where('id_goods_type',$id_goods_type)->orderBy('id_goods_type', 'DESC')->first()->description;
+        $user = auth()->user()->l_name;       
         $exitform->requester_name=$user;
+        $exitform->id_form = 0;
+        // $exitform->id_form=$request->input('id_form');       
+        $exitform->level=1;
+        $exitform->reason1='';
+        $exitform->reason2='';
+        $exitform->reason3='';
+        if($description2 == null){
+            $description2="ندارد";
+        }
+        $exitform->reason4= $description2;
 
         $exitform->save();
+
         $id_exit = DB::table('exit_goods_permissions')->orderBy('id_exit', 'DESC')->first()->id_exit;
         $id_user = auth()->user()->id;
         $values = array('level' => 1,'id_exit' =>$id_exit,'id_user' => $id_user,'date_shamsi' => $request->input('date_request_shamsi'),'description' =>"درخواست کننده:ایجاد فرم درخواست");
-        DB::table('workflows')->insert($values);
-        if($description2==null){
-            $description2="ندارد";
-        }
+        DB::table('workflows')->insert($values);        
         $values = array('level' => 1,'id_exit' =>$id_exit,'id_user' => $id_user,'date_shamsi' => $request->input('date_request_shamsi'),'description' =>"توضیحات درخواست کننده:".$description2);
         DB::table('workflows')->insert($values);
-        return response()->json(['success'=>'hi','data'=>$id_exit,'enter_exit'=>$enter_exit]);
+        // return response()->json(['success'=>'hi','data'=>$id_exit,'enter_exit'=>$enter_exit]);
     }
     public function delete($id){
         Exit_goods_permission::where('id_exit', $id)->delete();
