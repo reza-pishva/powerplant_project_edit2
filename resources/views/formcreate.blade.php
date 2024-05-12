@@ -2,12 +2,147 @@
 @section('content')
 <script>
     $(document).ready(function() {
-        var condition="";
-        var date_shamsi=$("#date_shamsi").val();
-        $("#first_btn").click(function() {
+        $("#form_create").on('submit',function(event) {
             $("#enter_exit").val($("#enter_exit2").val());
             $("#origin_destination").val($("#origin_destination2").val());
             $("#with_return").val($("#with_return2").val());
+                event.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "/formreg",
+                    method: 'POST',
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        toastr.info("فرم جدید با موفقیت ایجاد گردید", "", {
+                            "timeOut": "3500",
+                            "extendedTImeout": "0"
+                        });
+                    }
+                });
+
+        });
+        $("#exit_create").on('submit',function(event) {
+                
+                event.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "/exit-store",
+                    method: 'POST',
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        toastr.success("درخواست جدید با موفقیت به فرم الصاق گردید", "", {
+                            "timeOut": "3500",
+                            "extendedTImeout": "0"
+                        });
+                            var id_exit = $('<td class="id_exit" style="font-size: 10px">' + data.id_exit + '</td>')
+                            var description = $('<td style="font-size: 10px;text-align:right">' + data.description + '</td>')
+                            var exit_no = $('<td style="font-size: 10px">' + data.exit_no + '</td>')
+                            var t1 = $('<td></td>')
+                            var select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>')
+                            var edit1 = $('<button type="button" class="btn-sm btn-outline-primary" style="font-family: Tahoma;font-size: smaller;width:100%">ویرایش</button>').attr('id',data.data + 5000)
+                            var del2 = $('<button type="button" class="btn-sm btn-outline-danger" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').attr('id',data.data+4000)
+                            t1.append(edit1)
+                            var t2 = $('<td></td>')
+                            var row = $('<tr></tr>')
+                            t2.append(del2)
+                            row.append(select,id_exit,description,exit_no,t1,t2)
+                            $("#request_table1").append(row)
+                            $('#jamdari_no').val('');
+                            $('#description').val('');
+                            $('#description12').val('');
+                            $('#exit_no').val('');
+                            $('#id_goods_type').prop("selectedIndex", 0);
+                            $('#unit').prop("selectedIndex", 0);
+                            
+
+                            
+                            $('#' + (Number(data.data) + 5000)).click(function () {
+                                //alert($(this).closest('tr').find('td:eq(11)').text());
+                                $('#ajax-alert3').hide();
+                                $('#id_exit2').val($(this).closest('tr').find('td:eq(0)').text());
+                                $('#description2').val($(this).closest('tr').find('td:eq(2)').text());
+                                $('#exit_no2').val($(this).closest('tr').find('td:eq(3)').text());
+                                $('#jamdari_no2').val($(this).closest('tr').find('td:eq(4)').text());
+                                $('#id_goods_type2').val($(this).closest('tr').find('td:eq(10)').text());
+                                $('#with_return2').val($(this).closest('tr').find('td:eq(11)').text());
+                                $('#origin_destination2').val($(this).closest('tr').find('td:eq(9)').text());
+
+                                $('tr').find('td:eq(2)').removeClass('description');
+                                $('tr').find('td:eq(3)').removeClass('exit_no');
+                                $('tr').find('td:eq(4)').removeClass('jamdari_no');
+                                $('tr').find('td:eq(5)').removeClass('goods_type');
+                                $('tr').find('td:eq(6)').removeClass('with_return');
+                                $('tr').find('td:eq(9)').removeClass('origin_destination');
+                                $('tr').find('td:eq(10)').removeClass('goods_type_value');
+                                $('tr').find('td:eq(11)').removeClass('with_return_text');
+
+                                $(this).closest('tr').find('td:eq(2)').addClass('description');
+                                $(this).closest('tr').find('td:eq(3)').addClass('exit_no');
+                                $(this).closest('tr').find('td:eq(4)').addClass('jamdari_no');
+                                $(this).closest('tr').find('td:eq(5)').addClass('goods_type');
+                                $(this).closest('tr').find('td:eq(6)').addClass('with_return');
+                                $(this).closest('tr').find('td:eq(9)').addClass('origin_destination');
+                                $(this).closest('tr').find('td:eq(10)').addClass('goods_type_value');
+                                $(this).closest('tr').find('td:eq(11)').addClass('with_return_text');
+
+
+                            })
+                            $('#' + (Number(data.data)+4000)).click(function () {
+                                var id_exit = $('#' + (Number(data.data)+4000)).closest('tr').find('td:eq(0)').text();
+                                var token = $("meta[name='csrf-token']").attr("content");
+                                $.ajax({
+                                    url: "/exit-delete/" + id_exit,
+                                    type: 'DELETE',
+                                    data: {
+                                        "id": id_exit,
+                                        "_token": token,
+                                    },
+                                    success: function () {
+                                        toastr.options = {
+                                            "closeButton": true,
+                                            "debug": false,
+                                            "positionClass": "toast-top-right",
+                                            "onclick": null,
+                                            "showDuration": "300",
+                                            "hideDuration": "1000",
+                                            "timeOut": "3000",
+                                            "extendedTimeOut": "1000",
+                                            "showEasing": "swing",
+                                            "hideEasing": "linear",
+                                            "showMethod": "fadeIn",
+                                            "hideMethod": "fadeOut"
+                                        };
+                                        toastr.error('این درخواست از این فرم حذف گردید');
+                                        // $('#ajax-alert1').addClass('alert-danger').show(function () {
+                                        //     $(this).html("این آیتم با موفقیت از فرم درخواست جاری حذف گردید");
+                                        // });
+                                        $('#ajax-alert1').hide();
+                                        $('#ajax-alert2').hide();
+                                        $('#ajax-alert3').hide();
+
+                                    }
+                                });
+                                $('#' + (Number(data.data)+4000)).closest('tr').remove();
+                        })
+                    }
+                });
+
         });
 
     })
@@ -50,8 +185,7 @@
             </div>
             <div class="col-2 mt-5"></div>
         </div>
-        <div class="row mt-2" style="margin-right:40px;width:100%;direction: rtl">
-   
+        <div class="row mt-2" style="margin-right:40px;width:100%;direction: rtl">   
            <div class="col-4 bg-info" style="height:300px">
                 <form method="post" encType="multipart/form-data" id="exit_create" action={{route('exit.store')}}>
                     {{csrf_field()}}
@@ -95,7 +229,7 @@
                         <input type="text" maxlength="50" class="form-control isclicked1" id="jamdari_no"  placeholder="کد جمعداری:" name="jamdari_no" style="direction:rtl;font-family:Tahoma;font-size:small">
                     </div>
                     <div class="form-group mt-2">
-                        <button type="submit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="first_btn">ثبت اطلاعات</button>
+                        <button type="submit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="second_btn">ثبت اطلاعات</button>
                     </div>                    
                 </form> 
            </div>
@@ -106,8 +240,8 @@
                           <tr class="bg-primary" style="color: white">
                               <td style="width:5%">#</td>
                               <td style="width:10%">شماره</td>
-                              <td style="width:50%">شرح درخواست</td>
-                              <td style="width:11%">تعداد</td>
+                              <td style="width:45%;text-align:right">شرح درخواست</td>
+                              <td style="width:16%">تعداد</td>
                               <td style="width:12%">#</td>
                               <td style="width:12%">#</td>
                           </tr>

@@ -280,6 +280,7 @@ class Exit_goods_permissionController extends Controller
 
         $exitform->origin_destination = $request->input('origin_destination');
         $exitform->description = $request->input('description');
+        $description = $request->input('description');
         $exitform->jamdari_no = $request->input('jamdari_no');
         $exitform->with_return = $request->input('with_return');
         $exitform->enter_exit = $request->input('enter_exit');
@@ -327,7 +328,11 @@ class Exit_goods_permissionController extends Controller
         DB::table('workflows')->insert($values);        
         $values = array('level' => 1,'id_exit' =>$id_exit,'id_user' => $id_user,'date_shamsi' => $request->input('date_request_shamsi'),'description' =>"توضیحات درخواست کننده:".$description2);
         DB::table('workflows')->insert($values);
-        // return response()->json(['success'=>'hi','data'=>$id_exit,'enter_exit'=>$enter_exit]);
+        $exit_no = $request->input('exit_no').' '.$unit;
+        return response()->json(['success'=>'the information has successfuly saved',
+            'id_exit'=>$id_exit,
+            'description'=>$description,
+            'exit_no'=>$exit_no]);
     }
     public function delete($id){
         Exit_goods_permission::where('id_exit', $id)->delete();

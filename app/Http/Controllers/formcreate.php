@@ -76,7 +76,8 @@ class formcreate extends Controller
         $date_miladi = Carbon::now();       
 
         $values = array('id_requester' => $id_requester,'enter_exit' =>$enter_exit,'date_shamsi' => $date_shamsi,'timestamp' => $timestamp,'date_miladi' =>$date_miladi);
-        DB::table('forms')->insert($values);        
+        DB::table('forms')->insert($values);    
+        return response()->json(['success'=>'the information has successfuly saved']);    
         
     }
 
