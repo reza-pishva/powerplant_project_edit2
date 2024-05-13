@@ -3,6 +3,15 @@
 <script>
     $(document).ready(function() {
         $("#form_create").on('submit',function(event) {
+            // $('#requests').css('display','flex');
+            $('#requests').fadeIn(1500);
+
+            $('#enter_exit2').prop('disabled',true);
+            $('#origin_destination2').prop('disabled',true);
+            $('#with_return2').prop('disabled',true);
+            $('#ignor_btn').prop('disabled',false);
+            $('#first_btn').prop('disabled',true);
+
             $("#enter_exit").val($("#enter_exit2").val());
             $("#origin_destination").val($("#origin_destination2").val());
             $("#with_return").val($("#with_return2").val());
@@ -144,12 +153,27 @@
                 });
 
         });
+        $("#ignor_btn").on('click',function(event) {
+            $("#enter_exit").val("");
+            $("#origin_destination").val("");
+            $("#with_return").val("");
+            $("#enter_exit2").val(0);
+            $("#origin_destination2").val("");
+            $("#with_return2").val(0);
+
+            $('#requests').fadeOut(1500);
+            $('#enter_exit2').prop('disabled',false);
+            $('#origin_destination2').prop('disabled',false);
+            $('#with_return2').prop('disabled',false);
+            $('#ignor_btn').prop('disabled',true);
+            $('#first_btn').prop('disabled',false);
+        });
 
     })
 </script>
 
     <div class="container" style="direction: rtl">
-        <div class="row mt-3" style="margin-right:40px;width:100%;direction: rtl;height:120px">
+        <div class="row mt-3" style="margin-right:-40px;width:100%;direction: rtl;height:120px">
             <div class="col-1 mt-5"></div>
             <div class="col-9 pt-3" style="background-color: gainsboro;border-radius: 5px;margin-top: 3px;">
                 <form method="post" encType="multipart/form-data" id="form_create" action={{route('form.store')}}>
@@ -178,6 +202,7 @@
                     <div class="row">
                         <div class="col">
                             <button type="commit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="first_btn">ثبت فرم وشروع ثبت قطعات و کالا</button>
+                            <button type="button" disabled style="display;font-family: Tahoma;font-size: small" class="btn btn-danger" id="ignor_btn">انصراف و حذف فرم جاری</button>
                         </div>
                     </div>
                    
@@ -185,7 +210,7 @@
             </div>
             <div class="col-2 mt-5"></div>
         </div>
-        <div class="row mt-2" style="margin-right:40px;width:100%;direction: rtl">   
+        <div class="row mt-2" id="requests" style="margin-right:-40px;width:100%;direction: rtl;display:none">   
            <div class="col-4 bg-info" style="height:300px">
                 <form method="post" encType="multipart/form-data" id="exit_create" action={{route('exit.store')}}>
                     {{csrf_field()}}
@@ -230,6 +255,7 @@
                     </div>
                     <div class="form-group mt-2">
                         <button type="submit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="second_btn">ثبت اطلاعات</button>
+                        <button type="submit" style="display;font-family: Tahoma;font-size: small" class="btn btn-info" id="second_btn">بستن درخواست و خروج</button>
                     </div>                    
                 </form> 
            </div>
