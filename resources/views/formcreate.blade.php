@@ -211,7 +211,7 @@
             <div class="col-2 mt-5"></div>
         </div>
         <div class="row mt-2" id="requests" style="margin-right:-40px;width:100%;direction: rtl;display:none">   
-           <div class="col-4 bg-info" style="height:300px">
+           <div class="col-4" style="height:310px;background-color:rgb(77, 77, 113);border-radius: 5px">
                 <form method="post" encType="multipart/form-data" id="exit_create" action={{route('exit.store')}}>
                     {{csrf_field()}}
                     <input type="text" id="origin_destination" style="display: none">
@@ -259,9 +259,9 @@
                     </div>                    
                 </form> 
            </div>
-           <div class="col-8 bg-danger" style="height:300px">
-                <div class="row mylist" style="margin: auto;width:100%;height:290px;direction: rtl;margin-top: 4px;border: 1px solid black;border-radius: 5px;background-color: beige">
-                    <div class="col-12" style="direction: rtl;height: 288px;overflow-y: scroll">
+           <div class="col-8" style="height:310px;background-color:rgb(77, 77, 113);border-radius: 5px">
+                <div class="row mylist" style="margin: auto;width:100%;height:301px;direction: rtl;margin-top:8px;border: 1px solid black;border-radius: 5px;background-color: beige">
+                    <div class="col-12" style="direction: rtl;height: 288px;overflow-y: scroll;margin-top:12px">
                       <table id="request_table1" style="width: 100%;font-family: Tahoma;font-size: small">
                           <tr class="bg-primary" style="color: white">
                               <td style="width:5%">#</td>
