@@ -3,15 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="{{URL::to('/')}}/jquery.min.js"></script>
-    <script src="{{URL::to('/')}}/popper.min.js"></script>
-    <script src="{{URL::to('/')}}/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{{URL::to('/')}}/bootstrap.min.css">
-    <script src="{{URL::to('/')}}/persian-date.js"></script>
-    <script src="{{URL::to('/')}}/persian-datepicker.js"></script>
-    <link rel="stylesheet" href="{{URL::to('/')}}/persian-datepicker.css">
-    <script src="{{URL::to('/')}}/toastr.min.js"></script>
-    <link rel="stylesheet" href="{{URL::to('/')}}/toastr.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="persian-date.js"></script>
+    <script src="persian-datepicker.js"></script>
+    <link rel="stylesheet" href="persian-datepicker.css">
+    <script src="toastr.min.js"></script>
+    <link rel="stylesheet" href="toastr.min.css">
+    <script src="sweetalert.min.js"></script>
+    <link rel="stylesheet" href="sweetalert.min.css">
+    <script src="sweetalert2.js"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -21,6 +24,28 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
+        .swal-title {
+            font-size: 16px; /* تغییر اندازه فونت عنوان */
+            font-family: 'tahoma'; /* تغییر خانواده فونت عنوان */
+        }
+
+        .swal-text {
+            font-size: 10px; /* تغییر اندازه فونت متن */
+            font-family: 'tahoma', sans-serif; /* تغییر خانواده فونت متن */
+        }
+
+        .swal-confirm {
+            font-size: 6px; /* تغییر اندازه فونت عنوان */
+            font-family: 'tahoma'; /* تغییر خانواده فونت عنوان */
+        }
+        .swal-deny {
+            font-size: 6px; /* تغییر اندازه فونت متن */
+            font-family: 'tahoma', sans-serif; /* تغییر خانواده فونت متن */
+        }
+        .swal-cancel {
+            font-size: 6px; /* تغییر اندازه فونت متن */
+            font-family: 'tahoma', sans-serif; /* تغییر خانواده فونت متن */
+        }
         table {
             border-collapse: collapse;
         }
@@ -109,7 +134,7 @@
         })
     </script>
 </head>
-<body style="margin:0;text-align: center;background-image: url('{{URL::to('/')}}/bg001.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;backdrop-filter: brightness(40%);">
+<body style="margin:0;text-align: center;background-image: url('{{URL::to('/')}}/kz2.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;backdrop-filter: brightness(40%);">
 <div class="container-fluid">
     <div class="row justify-content-center" style="height: 100px">
         <div class="col-12">

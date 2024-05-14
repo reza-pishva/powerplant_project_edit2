@@ -9,7 +9,7 @@
             $('#enter_exit2').prop('disabled',true);
             $('#origin_destination2').prop('disabled',true);
             $('#with_return2').prop('disabled',true);
-            $('#ignor_btn').prop('disabled',false);
+            $('#ignore_btn').prop('disabled',false);
             $('#first_btn').prop('disabled',true);
 
             $("#enter_exit").val($("#enter_exit2").val());
@@ -55,7 +55,8 @@
                     contentType: false,
                     processData: false,
                     success: function (data) {
-                        toastr.success("درخواست جدید با موفقیت به فرم الصاق گردید", "", {
+                        var id_t = 0
+                        toastr.success("درخواست جدید با موفقیت به فرم اضافه گردید", "", {
                             "timeOut": "3500",
                             "extendedTImeout": "0"
                         });
@@ -64,8 +65,47 @@
                             var exit_no = $('<td style="font-size: 10px">' + data.exit_no + '</td>')
                             var t1 = $('<td></td>')
                             var select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>')
-                            var edit1 = $('<button type="button" class="btn-sm btn-outline-primary" style="font-family: Tahoma;font-size: smaller;width:100%">ویرایش</button>').attr('id',data.data + 5000)
-                            var del2 = $('<button type="button" class="btn-sm btn-outline-danger" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').attr('id',data.data+4000)
+                            var edit1 = $('<button type="button" class="btn-sm btn-outline-primary" style="font-family: Tahoma;font-size: smaller;width:100%">ویرایش</button>').attr('id',id_t + 5000)
+                            var del2 = $('<button type="button" class="btn-sm btn-outline-danger delete" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').on('click',function () {   
+                                id_t = $(this).closest('tr').find('td:eq(1)').text();
+                                var token = $("meta[name='csrf-token']").attr("content");
+                                Swal.fire({
+                                    title: 'مایل به حذف این درخواست هستید؟',
+                                    position: 'top',
+                                    customClass:{
+                                        title:'swal-title',
+                                        content:'swal-text',
+                                        confirmButton:'swal-confirm',
+                                        denyButton:'swal-deny',
+                                        cancelButton:'swal-cancel',
+                                    },
+
+                                    showDenyButton: true,
+                                    cancelButtonText: `بازگشت`,
+                                    confirmButtonText: `انصراف از حذف`,
+                                    denyButtonText: 'حذف شود',
+                                }).then((result) => {
+                                     if (result.isConfirmed) {
+                                        Swal.fire('رکورد انتخابی حذف نشد', '', 'info')
+                                    } else if (result.isDenied) {
+                                        $.ajax({
+                                            url:"/exit-delete/" + id_t,
+                                            type: 'DELETE',
+                                            data: {
+                                                "id": id_t,
+                                                "_token": token,
+                                            },
+                                            success: function (response) {
+                                                if(true){
+                                                    $('.delete').closest('tr').remove();
+                                                    toastr.error('درخواست انتخابی حذف گردید');
+                                                }
+                                            }
+                                        });
+                                    }        
+
+                                })
+                            })
                             t1.append(edit1)
                             var t2 = $('<td></td>')
                             var row = $('<tr></tr>')
@@ -153,7 +193,7 @@
                 });
 
         });
-        $("#ignor_btn").on('click',function(event) {
+        $("#ignore_btn").on('click',function(event) {
             $("#enter_exit").val("");
             $("#origin_destination").val("");
             $("#with_return").val("");
@@ -168,7 +208,6 @@
             $('#ignor_btn').prop('disabled',true);
             $('#first_btn').prop('disabled',false);
         });
-
     })
 </script>
 
@@ -202,7 +241,7 @@
                     <div class="row">
                         <div class="col">
                             <button type="commit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="first_btn">ثبت فرم وشروع ثبت قطعات و کالا</button>
-                            <button type="button" disabled style="display;font-family: Tahoma;font-size: small" class="btn btn-danger" id="ignor_btn">انصراف و حذف فرم جاری</button>
+                            <button type="button" disabled style="display;font-family: Tahoma;font-size: small" class="btn btn-danger" id="ignore_btn">انصراف و حذف فرم جاری</button>
                         </div>
                     </div>
                    
@@ -211,7 +250,7 @@
             <div class="col-2 mt-5"></div>
         </div>
         <div class="row mt-2" id="requests" style="margin-right:-40px;width:100%;direction: rtl;display:none">   
-           <div class="col-4" style="height:310px;background-color:rgb(77, 77, 113);border-radius: 5px">
+           <div class="col-4" style="height:315px;background-color:rgb(56, 56, 115);border-radius: 5px">
                 <form method="post" encType="multipart/form-data" id="exit_create" action={{route('exit.store')}}>
                     {{csrf_field()}}
                     <input type="text" id="origin_destination" style="display: none">
@@ -255,14 +294,14 @@
                     </div>
                     <div class="form-group mt-2">
                         <button type="submit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="second_btn">ثبت اطلاعات</button>
-                        <button type="submit" style="display;font-family: Tahoma;font-size: small" class="btn btn-info" id="second_btn">بستن درخواست و خروج</button>
+                        <button type="submit" style="display;font-family: Tahoma;font-size: small" class="btn btn-info" id="third_btn">بستن درخواست و خروج</button>
                     </div>                    
                 </form> 
            </div>
-           <div class="col-8" style="height:310px;background-color:rgb(77, 77, 113);border-radius: 5px">
-                <div class="row mylist" style="margin: auto;width:100%;height:301px;direction: rtl;margin-top:8px;border: 1px solid black;border-radius: 5px;background-color: beige">
+           <div class="col-8" style="height:315px;background-color:rgb(56, 56, 115);border-radius: 5px">
+                <div class="row mylist" style="margin: auto;width:100%;height:305px;direction: rtl;margin-top:8px;border: 1px solid black;border-radius: 5px;background-color: beige">
                     <div class="col-12" style="direction: rtl;height: 288px;overflow-y: scroll;margin-top:12px">
-                      <table id="request_table1" style="width: 100%;font-family: Tahoma;font-size: small">
+                      <table id="request_table1" style="width: 102%;font-family: Tahoma;font-size: small">
                           <tr class="bg-primary" style="color: white">
                               <td style="width:5%">#</td>
                               <td style="width:10%">شماره</td>
