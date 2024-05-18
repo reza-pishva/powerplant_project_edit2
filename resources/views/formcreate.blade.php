@@ -54,20 +54,52 @@
                     dataType: 'JSON',
                     contentType: false,
                     processData: false,
-                    success: function (data) {
+                    success: function (response) {
                         var id_t = 0
+                        var id_exit =''
+                        var id_goods_type =''
+                        var id_request_part =''
+                        var with_return =''
+                        var id_requester =''
+                        var jamdari_no =''
+                        var date_request_shamsi =''
+                        var date_request_miladi =''
+                        var id_form =''
+                        var reason4 =''
+                        var date_request_shamsi2 =''
+                        var t1 =''
+                        var edit1 =''
+                        var del2 =''
+                        var t2 =''
+                        var row =''
                         toastr.success("درخواست جدید با موفقیت به فرم اضافه گردید", "", {
                             "timeOut": "3500",
                             "extendedTImeout": "0"
                         });
-                            var id_exit = $('<td class="id_exit" style="font-size: 10px">' + data.id_exit + '</td>')
-                            var description = $('<td style="font-size: 10px;text-align:right">' + data.description + '</td>')
-                            var exit_no = $('<td style="font-size: 10px">' + data.exit_no + '</td>')
-                            var t1 = $('<td></td>')
-                            var select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>')
-                            var edit1 = $('<button type="button" class="btn-sm btn-outline-primary" style="font-family: Tahoma;font-size: smaller;width:100%">ویرایش</button>').attr('id',id_t + 5000)
-                            var del2 = $('<button type="button" class="btn-sm btn-outline-danger delete" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').on('click',function () {   
+                        $(".report_row").remove();
+                        for(var i = 0; i < response.results.length; i++) {
+                            id_exit = $('<td class="id_exit" style="font-size: 10px">' + response.results[i]['id_exit'] + '</td>')
+                            description = $('<td style="font-size: 10px;text-align:right">' + response.results[i]['description'] + '</td>')
+                            exit_no = $('<td style="font-size: 10px">' + response.results[i]['exit_no'] + '</td>')     
+
+                            id_goods_type = $('<td hidden>' + response.results[i]['id_goods_type'] + '</td>')
+                            id_request_part = $('<td hidden>' + response.results[i]['id_request_part'] + '</td>')
+                            with_return = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
+                            id_requester = $('<td hidden>' + response.results[i]['id_requester'] + '</td>')
+                            jamdari_no = $('<td hidden>' + response.results[i]['jamdari_no'] + '</td>')
+                            date_request_shamsi = $('<td hidden>' + response.results[i]['date_request_shamsi'] + '</td>')
+                            date_request_miladi = $('<td hidden>' + response.results[i]['date_request_miladi'] + '</td>')
+                            id_form = $('<td hidden>' + response.results[i]['id_form'] + '</td>')
+                            reason4 = $('<td hidden>' + response.results[i]['reason4'] + '</td>')
+                            date_request_shamsi2 = $('<td hidden>' + response.results[i]['date_request_shamsi2'] + '</td>')
+
+                            t1 = $('<td></td>')
+                            select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>')
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-primary" style="font-family: Tahoma;font-size: smaller;width:100%">ویرایش</button>')
+                            del2 = $('<button type="button" class="btn-sm btn-outline-danger delete" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').on('click',function () {   
+
                                 id_t = $(this).closest('tr').find('td:eq(1)').text();
+                                alert(id_t)
                                 var token = $("meta[name='csrf-token']").attr("content");
                                 Swal.fire({
                                     title: 'مایل به حذف این درخواست هستید؟',
@@ -96,22 +128,71 @@
                                                 "_token": token,
                                             },
                                             success: function (response) {
-                                                if(true){
-                                                    $('.delete').closest('tr').remove();
-                                                    toastr.error('درخواست انتخابی حذف گردید');
-                                                }
+                                                alert('hi');
+                                                $(".report_row").closest('tr').remove();
+                                                toastr.error('درخواست انتخابی حذف گردید');
                                             }
                                         });
                                     }        
 
                                 })
                             })
+
                             t1.append(edit1)
                             var t2 = $('<td></td>')
-                            var row = $('<tr></tr>')
+                            var row = $('<tr class="report_row"></tr>')
                             t2.append(del2)
                             row.append(select,id_exit,description,exit_no,t1,t2)
                             $("#request_table1").append(row)
+
+                        }
+                            // var id_exit = $('<td class="id_exit" style="font-size: 10px">' + data.id_exit + '</td>')
+                            // var description = $('<td style="font-size: 10px;text-align:right">' + data.description + '</td>')
+                            // var exit_no = $('<td style="font-size: 10px">' + data.exit_no + '</td>')
+                            // var t1 = $('<td></td>')
+                            // var select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>')
+                            // var edit1 = $('<button type="button" class="btn-sm btn-outline-primary" style="font-family: Tahoma;font-size: smaller;width:100%">ویرایش</button>').attr('id',id_t + 5000)
+                            // var del2 = $('<button type="button" class="btn-sm btn-outline-danger delete" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').on('click',function () {   
+                            //     id_t = $(this).closest('tr').find('td:eq(1)').text();
+                            //     var token = $("meta[name='csrf-token']").attr("content");
+                            //     Swal.fire({
+                            //         title: 'مایل به حذف این درخواست هستید؟',
+                            //         position: 'top',
+                            //         customClass:{
+                            //             title:'swal-title',
+                            //             content:'swal-text',
+                            //             confirmButton:'swal-confirm',
+                            //             denyButton:'swal-deny',
+                            //             cancelButton:'swal-cancel',
+                            //         },
+
+                            //         showDenyButton: true,
+                            //         cancelButtonText: `بازگشت`,
+                            //         confirmButtonText: `انصراف از حذف`,
+                            //         denyButtonText: 'حذف شود',
+                            //     }).then((result) => {
+                            //          if (result.isConfirmed) {
+                            //             Swal.fire('رکورد انتخابی حذف نشد', '', 'info')
+                            //         } else if (result.isDenied) {
+                            //             $.ajax({
+                            //                 url:"/exit-delete/" + id_t,
+                            //                 type: 'DELETE',
+                            //                 data: {
+                            //                     "id": id_t,
+                            //                     "_token": token,
+                            //                 },
+                            //                 success: function (response) {
+                            //                     if(true){
+                            //                         $('.delete').closest('tr').remove();
+                            //                         toastr.error('درخواست انتخابی حذف گردید');
+                            //                     }
+                            //                 }
+                            //             });
+                            //         }        
+
+                            //     })
+                            // })
+    
                             $('#jamdari_no').val('');
                             $('#description').val('');
                             $('#description12').val('');

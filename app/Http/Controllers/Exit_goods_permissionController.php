@@ -307,10 +307,12 @@ class Exit_goods_permissionController extends Controller
         $date_request_shamsi2=$date_request_shamsi2_array[0].$date_request_shamsi2_array[1].$date_request_shamsi2_array[2];
         $exitform->date_request_shamsi2=$date_request_shamsi2;
         $exitform->goods_type = DB::table('goodstypes')->where('id_goods_type',$id_goods_type)->orderBy('id_goods_type', 'DESC')->first()->description;
-        $user = auth()->user()->l_name;       
+        $user = auth()->user()->l_name;  
+        $id_user = auth()->user()->id;       
         $exitform->requester_name=$user;
-        $exitform->id_form = 0;
-        // $exitform->id_form=$request->input('id_form');       
+        $id_form = DB::table('forms')->where('id_requester',$id_user)->orderBy('id_form', 'DESC')->first()->id_form;
+        $exitform->id_form = $id_form;
+    
         $exitform->level=1;
         $exitform->reason1='';
         $exitform->reason2='';
@@ -329,15 +331,23 @@ class Exit_goods_permissionController extends Controller
         $values = array('level' => 1,'id_exit' =>$id_exit,'id_user' => $id_user,'date_shamsi' => $request->input('date_request_shamsi'),'description' =>"توضیحات درخواست کننده:".$description2);
         DB::table('workflows')->insert($values);
         $exit_no = $request->input('exit_no').' '.$unit;
-        return response()->json(['success'=>'the information has successfuly saved',
+        $data = DB::table('exit_goods_permissions')->where('id_form',$id_form)->get();
+        return response()->json(['results'=>$data,
             'id_exit'=>$id_exit,
             'description'=>$description,
             'exit_no'=>$exit_no]);
     }
     public function delete($id){
+        $id_form = DB::table('forms')->where('id_requester',$id_user)->orderBy('id_form', 'DESC')->first()->id_form;
+        $data = DB::table('exit_goods_permissions')->where('id_form',$id_form)->get();
         Exit_goods_permission::where('id_exit', $id)->delete();
         Workflow::where('id_exit', $id)->delete();
-        return response()->json(['success'=>'hi','data'=>$id]);
+        return response()->json(['results'=>$data,'data'=>$id]);
+    }
+    public function form_select($id)
+    {
+        $data =  DB::table('exit_goods_permissions')->where('id_form',$id)->get();
+        return response()->json(['results'=> $data]);
     }
     public function editformm(Request $request)
     {
