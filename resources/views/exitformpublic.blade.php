@@ -315,152 +315,141 @@
         </div>
     <!-- Edit form -->
         <div class="modal fade mt-3" id="myModal2" style="direction: rtl;margin-top:10px;position: relative;top: -800px;left: 10%;">
-        <div class="modal-dialog modal-md" id="editlist" style="margin-top: 300px">
-            <div class="modal-content">
+            <div class="modal-dialog modal-md" id="editlist" style="margin-top: 300px">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header bg-dark" style="height: 35px;padding-top: 5px;" >
+                        <div class="row" style="width: 100%">
+                            <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">فرم اعمال تغییرات</p></div>
+                            <div class="col-6">
+                                <div class="row" style="width: 100%">
+                                    <div class="col-10">.</div>
+                                    <div class="col-2">
+                                        <button type="button" class="close" data-dismiss="modal" style="text-align: center;display: inline;color: white">&times;</button>
+                                    </div>
+                                </div>
 
-                <!-- Modal Header -->
-                <div class="modal-header bg-dark" style="height: 35px;padding-top: 5px;" >
-                    <div class="row" style="width: 100%">
-                        <div class="col-6"><p class="modal-title" style="color: white;font-family: Tahoma;font-size: small;display: inline">فرم اعمال تغییرات</p></div>
-                        <div class="col-6">
-                            <div class="row" style="width: 100%">
-                                <div class="col-10">.</div>
-                                <div class="col-2">
-                                    <button type="button" class="close" data-dismiss="modal" style="text-align: center;display: inline;color: white">&times;</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- Edit form -->
+                    <div class="container" style="margin: auto;background-color:lightgray ">
+                        <form method="post" encType="multipart/form-data" id="edit_form_request" action="{{route('editform.edit')}}">
+                            {{csrf_field()}}
+                            <input type="hidden" class="form-control" id="id_form2"  name="id_form" value={{$forms->id_form}}>
+                            <input type="hidden" class="form-control" id="id_exit2"  name="id_exit2">
+                            <input type="hidden" class="form-control" id="enter_exit2"  name="enter_exit" value={{$forms->enter_exit}}>
+                            <input type="hidden" class="form-control" id="date_request_shamsi2"  name="date_request_shamsi" value={{$date_shamsi}}>
+                            <input type="hidden" class="form-control" id="date_request_miladi2"  name="date_request_miladi" value={{$mytime}}>
+                            <input type="hidden" class="form-control" id="time_request2"  name="time_request" value={{$mytime->toTimeString()}}>
+                            <input type="hidden" class="form-control" id="request_timestamp2"  name="request_timestamp" value={{$mytime->timestamp}}>
+                            <input type="hidden" class="form-control" id="id_requester2" placeholder="Enter the id of requester" name="id_requester" value={{$user}}>
+                            <input type="hidden" class="form-control" id="id_request_part2" name="id_request_part" value={{$part}}>
+                            <div class="row" style="height: 20px;margin-top: 10px">
+                                <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">مقصد:</p></div>
+                                <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">نوع قطعه:</p></div>
+                            </div>
+
+                            <div class="row" style="height: 15px">
+                                <div class="col">
+                                    <div class="form-group" >
+                                        <input type="text" maxlength="30" class="form-control" id="origin_destination2"  data-toggle="tooltip" data-placement="right" placeholder="مقصد قطعه:" name="origin_destination2" style="direction: rtl;font-family: Tahoma;font-size: small;width: 200px" required title="لطفا مبدا یا مقصد این قطعه را وارد کنید">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group" style="text-align: right">
+                                        <select class="form-control" name="id_goods_type2" id="id_goods_type2" style="width: 150px;font-family: Tahoma;font-size: small;display: inline">
+                                            @foreach($goodstypes as $goodstype)
+                                                <option value="{{$goodstype->id_goods_type}}">{{$goodstype->description}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
-                        </div>
+                            <div class="row" style="height: 10px;margin-top: 25px;width: 100%">
+                                <div class="col-12"><p style="text-align: right;font-family: Tahoma;font-size: small">شرح انتقال:</p></div>
+                            </div>
+
+                            <div class="row" style="margin-top: 10px">
+                                <div class="col-12">
+                                    <div class="form-group" style="height: 15px">
+                                        <input type="text" maxlength="50" class="form-control" id="description2" data-toggle="tooltip" data-placement="right" placeholder="شرح کالا یا قطعه:" name="description2" style="direction:rtl;font-family:Tahoma;font-size:small" required title="شرح کالا و یا قطعه مورد نظر برای ورود یا خروج از نیروگاه">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" maxlength="200" class="form-control isclicked1" id="description3" data-toggle="tooltip" data-placement="right" placeholder="توضیحات:" name="description3" style="direction:rtl;font-family:Tahoma;font-size:small;background-color:#b8daff"  title="اطلاعاتی که لازم است مدیر نیروگاه و سایر گیرندگان این درخواست در جریان باشند در اینجا وارد شود">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="height: 10px;margin-top: 10px">
+                                <div class="col">
+                                    <p style="text-align: right;font-family: Tahoma;font-size: small">تعداد قطعه:</p>
+                                </div>
+                                <div class="col">
+
+                                    @if(true)
+                                    <p  style="text-align: right;font-family: Tahoma;font-size: small">همراه با بازگشت:</p>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 12px;height: 20px">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <input type="number" max="10000" min="1" class="form-control isclicked1" id="exit_no2" data-toggle="tooltip" data-placement="right" placeholder="تعداد موارد:" name="exit_no2" style="direction:rtl;font-family:Tahoma;font-size:small;width:110px;display: inline" required title="تعداد مواردی که باید وارد یا خارج از نیروگاه شوند">
+                                        <select class="form-control isclicked1" name="unit2" id="unit2" style="width:95px;font-family: Tahoma;font-size: small;display: inline">
+                                            <option value='عدد'>عدد</option>
+                                            <option value='دستگاه'>دستگاه</option>
+                                            <option value='کیلو'>کیلو</option>
+                                            <option value='تن'>تن</option>
+                                            <option value='لیتر'>لیتر</option>
+                                            <option value='مترمکعب'>مترمکعب</option>
+                                            <option value='متر'>متر</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+
+                                        @if(true)
+                                            <div  class="form-group" style="text-align: right">
+                                                <select class="form-control" name="with_return2" id="with_return2" style="width: 110px;font-family: Tahoma;font-size: small;display: inline">
+                                                    <option value=1>بله</option>
+                                                    <option value=2>خیر</option>
+                                                </select>
+                                            </div>
+                                        @endif
+                                </div>
+                            </div>
+
+                            <div class="row" style="height: 20px;margin-top:18px">
+                                <div class="col-12">
+                                    <p style="text-align: right;font-family: Tahoma;font-size: small">شماره جمعداری یا شماره سریال:</p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <input type="text" maxlength="20" class="form-control" id="jamdari_no2" data-toggle="tooltip" data-placement="right" placeholder="شماره جمعداری یا شماره سریال:" name="jamdari_no2" style="direction:rtl;font-family:Tahoma;font-size:small;width: 200px"  title="شماره جمعداری در این قسمت وارد شود">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary" id="btnupdate" style="font-family: Tahoma;font-size: small;text-align: right">اعمال تغییرات</button>
+                                </div>
+                            </div>
+                            <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>
+                        </form>
                     </div>
 
+                    <!-- Modal footer -->
+                    <div class="modal-footer bg-info" style="height: 20px"></div>
 
                 </div>
-
-                <!-- Edit form -->
-                <div class="container" style="margin: auto;background-color:lightgray ">
-                    <form method="post" encType="multipart/form-data" id="edit_form_request" action="{{route('editform.edit')}}">
-                        {{csrf_field()}}
-                        <input type="hidden" class="form-control" id="id_form2"  name="id_form" value={{$forms->id_form}}>
-                        <input type="hidden" class="form-control" id="id_exit2"  name="id_exit2">
-                        <input type="hidden" class="form-control" id="enter_exit2"  name="enter_exit" value={{$forms->enter_exit}}>
-                        <input type="hidden" class="form-control" id="date_request_shamsi2"  name="date_request_shamsi" value={{$date_shamsi}}>
-                        <input type="hidden" class="form-control" id="date_request_miladi2"  name="date_request_miladi" value={{$mytime}}>
-                        <input type="hidden" class="form-control" id="time_request2"  name="time_request" value={{$mytime->toTimeString()}}>
-                        <input type="hidden" class="form-control" id="request_timestamp2"  name="request_timestamp" value={{$mytime->timestamp}}>
-                        <input type="hidden" class="form-control" id="id_requester2" placeholder="Enter the id of requester" name="id_requester" value={{$user}}>
-                        <input type="hidden" class="form-control" id="id_request_part2" name="id_request_part" value={{$part}}>
-                        <div class="row" style="height: 20px;margin-top: 10px">
-                            <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">مقصد:</p></div>
-                            <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">نوع قطعه:</p></div>
-                        </div>
-
-                        <div class="row" style="height: 15px">
-                            <div class="col">
-                                <div class="form-group" >
-                                    <input type="text" maxlength="30" class="form-control" id="origin_destination2"  data-toggle="tooltip" data-placement="right" placeholder="مقصد قطعه:" name="origin_destination2" style="direction: rtl;font-family: Tahoma;font-size: small;width: 200px" required title="لطفا مبدا یا مقصد این قطعه را وارد کنید">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group" style="text-align: right">
-                                    <select class="form-control" name="id_goods_type2" id="id_goods_type2" style="width: 150px;font-family: Tahoma;font-size: small;display: inline">
-                                        @foreach($goodstypes as $goodstype)
-                                            <option value="{{$goodstype->id_goods_type}}">{{$goodstype->description}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row" style="height: 10px;margin-top: 25px;width: 100%">
-                            <div class="col-12"><p style="text-align: right;font-family: Tahoma;font-size: small">شرح انتقال:</p></div>
-                        </div>
-
-                        <div class="row" style="margin-top: 10px">
-                            <div class="col-12">
-                                <div class="form-group" style="height: 15px">
-                                    <input type="text" maxlength="50" class="form-control" id="description2" data-toggle="tooltip" data-placement="right" placeholder="شرح کالا یا قطعه:" name="description2" style="direction:rtl;font-family:Tahoma;font-size:small" required title="شرح کالا و یا قطعه مورد نظر برای ورود یا خروج از نیروگاه">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" maxlength="200" class="form-control isclicked1" id="description3" data-toggle="tooltip" data-placement="right" placeholder="توضیحات:" name="description3" style="direction:rtl;font-family:Tahoma;font-size:small;background-color:#b8daff"  title="اطلاعاتی که لازم است مدیر نیروگاه و سایر گیرندگان این درخواست در جریان باشند در اینجا وارد شود">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row" style="height: 10px;margin-top: 10px">
-                            <div class="col">
-                                <p style="text-align: right;font-family: Tahoma;font-size: small">تعداد قطعه:</p>
-                            </div>
-                            <div class="col">
-{{--                                @if($forms->enter_exit==2)--}}
-{{--                                  <p hidden style="text-align: right;font-family: Tahoma;font-size: small">همراه با بازگشت:</p>--}}
-{{--                                @endif--}}
-                                @if(true)
-                                  <p  style="text-align: right;font-family: Tahoma;font-size: small">همراه با بازگشت:</p>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin-top: 12px;height: 20px">
-                            <div class="col">
-                                <div class="form-group">
-                                    <input type="number" max="10000" min="1" class="form-control isclicked1" id="exit_no2" data-toggle="tooltip" data-placement="right" placeholder="تعداد موارد:" name="exit_no2" style="direction:rtl;font-family:Tahoma;font-size:small;width:110px;display: inline" required title="تعداد مواردی که باید وارد یا خارج از نیروگاه شوند">
-                                    <select class="form-control isclicked1" name="unit2" id="unit2" style="width:95px;font-family: Tahoma;font-size: small;display: inline">
-                                        <option value='عدد'>عدد</option>
-                                        <option value='دستگاه'>دستگاه</option>
-                                        <option value='کیلو'>کیلو</option>
-                                        <option value='تن'>تن</option>
-                                        <option value='لیتر'>لیتر</option>
-                                        <option value='مترمکعب'>مترمکعب</option>
-                                        <option value='متر'>متر</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col">
-{{--                                @if($forms->enter_exit==2)--}}
-{{--                                <div hidden class="form-group" style="text-align: right">--}}
-{{--                                    <select class="form-control" name="with_return2" id="with_return2" style="width: 110px;font-family: Tahoma;font-size: small;display: inline">--}}
-{{--                                        <option value=1>بله</option>--}}
-{{--                                        <option value=2>خیر</option>--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                                @endif--}}
-                                    @if(true)
-                                        <div  class="form-group" style="text-align: right">
-                                            <select class="form-control" name="with_return2" id="with_return2" style="width: 110px;font-family: Tahoma;font-size: small;display: inline">
-                                                <option value=1>بله</option>
-                                                <option value=2>خیر</option>
-                                            </select>
-                                        </div>
-                                    @endif
-                            </div>
-                        </div>
-
-                        <div class="row" style="height: 20px;margin-top:18px">
-                            <div class="col-12">
-                                <p style="text-align: right;font-family: Tahoma;font-size: small">شماره جمعداری یا شماره سریال:</p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <input type="text" maxlength="20" class="form-control" id="jamdari_no2" data-toggle="tooltip" data-placement="right" placeholder="شماره جمعداری یا شماره سریال:" name="jamdari_no2" style="direction:rtl;font-family:Tahoma;font-size:small;width: 200px"  title="شماره جمعداری در این قسمت وارد شود">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary" id="btnupdate" style="font-family: Tahoma;font-size: small;text-align: right">اعمال تغییرات</button>
-                            </div>
-                        </div>
-                        <div id="ajax-alert3" class="alert" style="display:none;font-family: Tahoma;font-size: small"></div>
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer bg-info" style="height: 20px"></div>
-
             </div>
         </div>
-    </div>
 
 
 @endsection
