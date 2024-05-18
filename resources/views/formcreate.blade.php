@@ -96,31 +96,12 @@
                             t1 = $('<td></td>')
                             select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>')
                             edit1 = $('<button type="button" class="btn-sm btn-outline-primary" style="font-family: Tahoma;font-size: smaller;width:100%">ویرایش</button>')
-                            del2 = $('<button type="button" class="btn-sm btn-outline-danger delete" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').on('click',function () {   
+                            del2 = $('<button type="button" class="btn-sm btn-outline-danger delete" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').attr('id',  response.results[i]['id_exit']).on('click',function () {   
 
                                 id_t = $(this).closest('tr').find('td:eq(1)').text();
                                 alert(id_t)
                                 var token = $("meta[name='csrf-token']").attr("content");
-                                Swal.fire({
-                                    title: 'مایل به حذف این درخواست هستید؟',
-                                    position: 'top',
-                                    customClass:{
-                                        title:'swal-title',
-                                        content:'swal-text',
-                                        confirmButton:'swal-confirm',
-                                        denyButton:'swal-deny',
-                                        cancelButton:'swal-cancel',
-                                    },
-
-                                    showDenyButton: true,
-                                    cancelButtonText: `بازگشت`,
-                                    confirmButtonText: `انصراف از حذف`,
-                                    denyButtonText: 'حذف شود',
-                                }).then((result) => {
-                                     if (result.isConfirmed) {
-                                        Swal.fire('رکورد انتخابی حذف نشد', '', 'info')
-                                    } else if (result.isDenied) {
-                                        $.ajax({
+                                $.ajax({
                                             url:"/exit-delete/" + id_t,
                                             type: 'DELETE',
                                             data: {
@@ -128,14 +109,34 @@
                                                 "_token": token,
                                             },
                                             success: function (response) {
-                                                alert('hi');
-                                                $(".report_row").closest('tr').remove();
+                                                $("#"+response.id).closest('tr').remove();
                                                 toastr.error('درخواست انتخابی حذف گردید');
                                             }
                                         });
-                                    }        
+                                
+                                // Swal.fire({
+                                //     title: 'مایل به حذف این درخواست هستید؟',
+                                //     position: 'top',
+                                //     customClass:{
+                                //         title:'swal-title',
+                                //         content:'swal-text',
+                                //         confirmButton:'swal-confirm',
+                                //         denyButton:'swal-deny',
+                                //         cancelButton:'swal-cancel',
+                                //     },
 
-                                })
+                                //     showDenyButton: true,
+                                //     cancelButtonText: `بازگشت`,
+                                //     confirmButtonText: `انصراف از حذف`,
+                                //     denyButtonText: 'حذف شود',
+                                // }).then((result) => {
+                                //      if (result.isConfirmed) {
+                                //         Swal.fire('رکورد انتخابی حذف نشد', '', 'info')
+                                //     } else if (result.isDenied) {
+
+                                //     }        
+
+                                // })
                             })
 
                             t1.append(edit1)

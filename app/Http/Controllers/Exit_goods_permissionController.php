@@ -338,11 +338,11 @@ class Exit_goods_permissionController extends Controller
             'exit_no'=>$exit_no]);
     }
     public function delete($id){
-        $id_form = DB::table('forms')->where('id_requester',$id_user)->orderBy('id_form', 'DESC')->first()->id_form;
-        $data = DB::table('exit_goods_permissions')->where('id_form',$id_form)->get();
+        // $id_form = DB::table('forms')->where('id_requester',$id_user)->orderBy('id_form', 'DESC')->first()->id_form;
+        // $data = DB::table('exit_goods_permissions')->where('id_form',$id_form)->get();
         Exit_goods_permission::where('id_exit', $id)->delete();
         Workflow::where('id_exit', $id)->delete();
-        return response()->json(['results'=>$data,'data'=>$id]);
+        return response()->json(['id'=>$id]);
     }
     public function form_select($id)
     {
