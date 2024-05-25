@@ -83,7 +83,7 @@ Route::post('/exit-edit','Exit_goods_permissionController@edit')->name('exit.edi
 Route::get('/exit1-show', 'Exit_goods_permissionController@showlist');
 Route::delete('/exit-delete/{id}', 'Exit_goods_permissionController@delete');
 Route::get('/exit-form/{id}', 'Exit_goods_permissionController@form_select');
-Route::post('/editform', 'Exit_goods_permissionController@editform')->name('editform.edit');
+Route::post('/editform', 'Exit_goods_permissionController@editform')->name('editform11.edit');
 Route::post('/editformm', 'Exit_goods_permissionController@editformm')->name('editformm.edit44');
 Route::post('/editform2', 'Exit_goods_permissionController@editform2')->name('editform.edit');
 Route::post('/editform3', 'Exit_goods_permissionController@editform3')->name('editform3.edit3');

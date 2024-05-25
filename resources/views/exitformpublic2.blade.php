@@ -193,6 +193,7 @@
                                     $("#first_spinner2").show();
                                 },
                                 success: function (response) {
+                                    $(".workflowrows").remove();
                                     $("#first_spinner2").hide();
                                     $('#myModal4').modal('show');
                                     var description = ''
@@ -849,6 +850,7 @@
                                                 $("#first_spinner2").show();
                                             },
                                             success: function (response) {
+                                                $(".workflowrows").remove();
                                                 $('#myModal4').modal('show');
                                                 var description = ''
                                                 var date_shamsi = ''

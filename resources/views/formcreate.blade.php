@@ -40,10 +40,10 @@
         });
         $("#exit_create").on('submit',function(event) {
                 
-                event.preventDefault();
-                $.ajaxSetup({
+            event.preventDefault();
+            $.ajaxSetup({
                     headers: {
-                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                     }
                 });
                 var _token = $("input[name='_token']").val();
@@ -107,6 +107,9 @@
                                 $('#description23').val($(this).closest('tr').find('td:eq(12)').text());
                                 $('#exit_no2').val($(this).closest('tr').find('td:eq(3)').text());
                                 $('#jamdari_no2').val($(this).closest('tr').find('td:eq(8)').text());
+                                $('#id_exit2').val($(this).closest('tr').find('td:eq(1)').text());
+                                $('#id_form2').val($(this).closest('tr').find('td:eq(11)').text());
+                                
                             })
                             del2 = $('<button type="button" class="btn-sm btn-outline-danger delete" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').attr('id',  response.results[i]['id_exit']).on('click',function () {   
 
@@ -145,32 +148,28 @@
                                 });
                     }        
                 })
-        })
-
-                            t1.append(edit1)
-                            var t2 = $('<td></td>')
-                            var row = $('<tr class="report_row"></tr>')
-                            t2.append(del2)
-                            row.append(select,id_exit,description,exit_no,id_goods_type,
-                                       id_request_part,with_return,id_requester,jamdari_no,
-                                       date_request_shamsi,date_request_miladi,id_form,reason4,
-                                       origin_destination,unit,t1,t2)
-                            $("#request_table1").append(row)
-
-                        }
-   
-                            $('#jamdari_no').val('');
-                            $('#description').val('');
-                            $('#description12').val('');
-                            $('#exit_no').val('');
-                            $('#id_goods_type').prop("selectedIndex", 0);
-                            $('#unit').prop("selectedIndex", 0);
-
+            })
+            t1.append(edit1)
+            var t2 = $('<td></td>')
+            var row = $('<tr class="report_row"></tr>')
+            t2.append(del2)
+            row.append(select,id_exit,description,exit_no,id_goods_type,
+                       id_request_part,with_return,id_requester,jamdari_no,
+                       date_request_shamsi,date_request_miladi,id_form,reason4,
+                       origin_destination,unit,t1,t2)
+                       $("#request_table1").append(row)
                     }
-                });
-
+   
+            $('#jamdari_no').val('');
+            $('#description').val('');
+            $('#description12').val('');
+            $('#exit_no').val('');
+            $('#id_goods_type').prop("selectedIndex", 0);
+            $('#unit').prop("selectedIndex", 0);
+            }
         });
-        $("#ignore_btn").on('click',function(event) {
+    });
+    $("#ignore_btn").on('click',function(event) {
             $("#enter_exit").val("");
             $("#origin_destination").val("");
             $("#with_return").val("");
@@ -186,6 +185,61 @@
             $('#first_btn').prop('disabled',false);
         });
     })
+    $("#edit_form_request").on('submit',function(event) {
+                alert('edit')
+                event.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "/editform",
+                    method:'POST',
+                    data:new FormData(this),
+                    dataType:'JSON',
+                    contentType:false,
+                    processData:false,
+                    success: function (response) {
+                        $('.description').text(response.description);
+                        $('.jamdari_no').text(response.jamdari_no);
+                        $('.exit_no').text(response.exit_no);
+                        if(true){
+                            $('.with_return').text(response.with_return_text);
+                        }
+                        // if(response.enter_exit==2){
+                        //     $('.with_return').text('--');
+                        // }
+                        $('.goods_type').text(response.goods_type);
+                        $('.origin_destination').text(response.origin_destination);
+                        $('.goods_type_value').text(response.id_goods_type);
+                        $('.with_return_text').text(response.with_return);
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "positionClass": "toast-top-right",
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "3000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        };
+                        toastr.info('این درخواست تغییر داده شد');
+
+                        $('#ajax-alert1').hide();
+                        $('#ajax-alert2').hide();
+                        $('#ajax-alert3').hide();
+                        // $('#ajax-alert3').addClass('alert-primary').show(function(){
+                        //     $(this).html("آیتمهای درخواست جاری به روز رسانی گردید");
+                        // });
+                    }
+                });
+            });
 </script>
 
     <div class="container" style="direction: rtl">
@@ -317,7 +371,7 @@
                         </div>
                         <!-- Edit form -->
                         <div class="container" style="margin: auto;background-color:lightgray ">
-                            <form method="post" encType="multipart/form-data" id="edit_form_request" action="{{route('editform.edit')}}">
+                            <form method="post" encType="multipart/form-data" id="edit_form_request" action="{{route('editform11.edit')}}">
                                 {{csrf_field()}}
                                 <input type="hidden" class="form-control" id="id_form2"  name="id_form">
                                 <input type="hidden" class="form-control" id="id_exit2"  name="id_exit">
