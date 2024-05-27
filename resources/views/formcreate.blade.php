@@ -204,56 +204,6 @@
                 }
             })
         })       
-        $("#edit_form_request").on('submit',function(event) {
-            alert('edit')
-            event.preventDefault();
-            $.ajaxSetup({
-                headers: {
-                    'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            });
-            var _token = $("input[name='_token']").val();
-            $.ajax({
-                url: "/editform",
-                method:'POST',
-                data:new FormData(this),
-                dataType:'JSON',
-                contentType:false,
-                processData:false,
-                success: function (response) {
-                        $('.description').text(response.description);
-                        $('.jamdari_no').text(response.jamdari_no);
-                        $('.exit_no').text(response.exit_no);
-                        if(true){
-                            $('.with_return').text(response.with_return_text);
-                        }
-                        $('.goods_type').text(response.goods_type);
-                        $('.origin_destination').text(response.origin_destination);
-                        $('.goods_type_value').text(response.id_goods_type);
-                        $('.with_return_text').text(response.with_return);
-                        toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "positionClass": "toast-top-right",
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                        };
-                        toastr.info('این درخواست تغییر داده شد');
-
-                        $('#ajax-alert1').hide();
-                        $('#ajax-alert2').hide();
-                        $('#ajax-alert3').hide();
-                }
-
-            })
-        })
     })   
     
       
