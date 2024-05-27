@@ -351,36 +351,32 @@ class Exit_goods_permissionController extends Controller
     }
     public function editformm(Request $request)
     {
-        $id_exit=$request->input('id_exit2');
-        $description=$request->input('description2');
-        $jamdari_no=$request->input('jamdari_no2');
-        $with_return=$request->input('with_return2');
-        $id_goods_type=$request->input('id_goods_type2');
-        $origin_destination=$request->input('origin_destination2');
-//        $unit=$request->input('unit2');
-        $exit_no=$request->input('exit_no2');
+        $id_exit=$request->input('id_exit');
+        $origin_destination=$request->input('origin_destination');
+        $id_goods_type=$request->input('id_goods_type');
+        $description2=$request->input('description2');
+        $description3=$request->input('description3');
+        $exit_no=$request->input('exit_no');
+        $with_return2=$request->input('with_return2');
+        $jamdari_no=$request->input('jamdari_no');
+
         $goods=Goodstype::where('id_goods_type', $id_goods_type)->first();
-        if($with_return==1){
+        if($with_return2==1){
             $with_return_text="بله";
         }else{
             $with_return_text="خیر";
         }
-//        $description2=$request->input('description3');
-//        $id_user=$request->input('id_requester');
-//        $values = array('level' => 1,'id_exit' =>$id_exit,'id_user' => $id_user,'date_shamsi' => $request->input('date_request_shamsi'),'description' =>"توضیحات درخواست کننده:".$description2);
-//        DB::table('workflows')->insert($values);
-        Exit_goods_permission::where('id_exit', $id_exit)->update(['description'=>$description,'exit_no'=>$exit_no,'jamdari_no'=>$jamdari_no,'with_return'=>$with_return,'id_goods_type'=>$id_goods_type,'origin_destination'=>$origin_destination]);
-        return response()->json(['success'=>'the information has successfuly saved',
-            'id_exit'=>$id_exit,
-            'description'=>$description,
-            'id_goods_type'=>$id_goods_type,
-            'with_return_value'=>$with_return_text,
-            'jamdari_no'=>$jamdari_no,
-            'with_return'=>$with_return,
-            'goods_type'=>$goods->description,
-            'with_return_text'=>$with_return_text,
-            'origin_destination'=>$origin_destination,
-            'exit_no'=>$exit_no]);
+        Exit_goods_permission::where('id_exit', $id_exit)->update
+        (['origin_destination'=>$origin_destination,
+          'id_goods_type'=>$id_goods_type,
+          'description'=>$description2,
+          'reason4'=>$description3,
+          'exit_no'=>$exit_no,
+          'with_return'=>$with_return2,
+          'jamdari_no'=>$jamdari_no
+        ]);
+
+        return response()->json(['success'=>'the information has successfuly saved']);
 
     }
     public function editform(Request $request)

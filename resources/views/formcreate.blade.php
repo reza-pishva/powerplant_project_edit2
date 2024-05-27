@@ -3,15 +3,12 @@
 <script>
     $(document).ready(function() {
         $("#form_create").on('submit',function(event) {
-            // $('#requests').css('display','flex');
             $('#requests').fadeIn(1500);
-
             $('#enter_exit2').prop('disabled',true);
             $('#origin_destination2').prop('disabled',true);
             $('#with_return2').prop('disabled',true);
             $('#ignore_btn').prop('disabled',false);
             $('#first_btn').prop('disabled',true);
-
             $("#enter_exit").val($("#enter_exit2").val());
             $("#origin_destination").val($("#origin_destination2").val());
             $("#with_return").val($("#with_return2").val());
@@ -36,54 +33,113 @@
                         });
                     }
                 });
-
+        });  
+        $("#ignore_btn").on('click',function(event) {
+            $("#enter_exit").val("");
+            $("#origin_destination").val("");
+            $("#with_return").val("");
+            $("#enter_exit2").val(0);
+            $("#origin_destination2").val("");
+            $("#with_return2").val(0);
+            $('#requests').fadeOut(1500);
+            $('#enter_exit2').prop('disabled',false);
+            $('#origin_destination2').prop('disabled',false);
+            $('#with_return2').prop('disabled',false);
+            $('#ignor_btn').prop('disabled',true);
+            $('#first_btn').prop('disabled',false);
         });
-        $("#exit_create").on('submit',function(event) {
-                
+        $("#edit_form_request").on('submit',function(event) {
+            alert('edit')
             event.preventDefault();
             $.ajaxSetup({
-                    headers: {
+                headers: {
                     'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            })
+            var _token = $("input[name='_token']").val();
+            $.ajax({
+                url: "/editform",
+                method:'POST',
+                data:new FormData(this),
+                dataType:'JSON',
+                contentType:false,
+                processData:false,
+                success: function (response) {
+                    $('.description').text(response.description);
+                    $('.jamdari_no').text(response.jamdari_no);
+                    $('.exit_no').text(response.exit_no);
+                    if(true){
+                       $('.with_return').text(response.with_return_text);
                     }
-                });
-                var _token = $("input[name='_token']").val();
-                $.ajax({
-                    url: "/exit-store",
-                    method: 'POST',
-                    data: new FormData(this),
-                    dataType: 'JSON',
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        var id_t = 0
-                        var id_exit =''
-                        var id_goods_type =''
-                        var id_request_part =''
-                        var with_return =''
-                        var id_requester =''
-                        var jamdari_no =''
-                        var date_request_shamsi =''
-                        var date_request_miladi =''
-                        var id_form =''
-                        var reason4 =''
-                        var date_request_shamsi2 =''
-                        var origin_destination =''
-                        var unit = ''
-                        var t1 =''
-                        var edit1 =''
-                        var del2 =''
-                        var t2 =''
-                        var row =''
-                        toastr.success("درخواست جدید با موفقیت به فرم اضافه گردید", "", {
-                            "timeOut": "3500",
-                            "extendedTImeout": "0"
-                        });
-                        $(".report_row").remove();
-                        for(var i = 0; i < response.results.length; i++) {
+                    $('.goods_type').text(response.goods_type);
+                    $('.origin_destination').text(response.origin_destination);
+                    $('.goods_type_value').text(response.id_goods_type);
+                    $('.with_return_text').text(response.with_return);
+                    toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "positionClass": "toast-top-right",
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "3000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                    };
+                    toastr.info('این درخواست تغییر داده شد');
+                    $('#ajax-alert1').hide();
+                    $('#ajax-alert2').hide();
+                    $('#ajax-alert3').hide();
+                }
+            })
+        });
+        $("#exit_create").on('submit',function(event) {
+            event.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            var _token = $("input[name='_token']").val();
+            $.ajax({
+                url: "/exit-store",
+                method: 'POST',
+                data: new FormData(this),
+                dataType: 'JSON',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    var id_t = 0
+                    var id_exit =''
+                    var id_goods_type =''
+                    var id_request_part =''
+                    var with_return =''
+                    var id_requester =''
+                    var jamdari_no =''
+                    var date_request_shamsi =''
+                    var date_request_miladi =''
+                    var id_form =''
+                    var reason4 =''
+                    var date_request_shamsi2 =''
+                    var origin_destination =''
+                    var unit = ''
+                    var t1 =''
+                    var edit1 =''
+                    var del2 =''
+                    var t2 =''
+                    var row =''
+                    toastr.success("درخواست جدید با موفقیت به فرم اضافه گردید", "", {
+                        "timeOut": "3500",
+                        "extendedTImeout": "0"
+                    });
+                    $(".report_row").remove();
+                    for(var i = 0; i < response.results.length; i++) {
                             id_exit = $('<td class="id_exit" style="font-size: 10px">' + response.results[i]['id_exit'] + '</td>')
                             description = $('<td style="font-size: 10px;text-align:right">' + response.results[i]['description'] + '</td>')
-                            exit_no = $('<td style="font-size: 10px">' + response.results[i]['exit_no'] + '</td>')     
-
+                            exit_no = $('<td style="font-size: 10px">' + response.results[i]['exit_no'] + '</td>')   
                             origin_destination = $('<td hidden>' + response.results[i]['origin_destination'] + '</td>')
                             unit = $('<td hidden>' + response.results[i]['unit'] + '</td>')
                             id_goods_type = $('<td hidden>' + response.results[i]['id_goods_type'] + '</td>')
@@ -97,8 +153,6 @@
                             reason4 = $('<td hidden>' + response.results[i]['reason4'] + '</td>')
                             date_request_shamsi2 = $('<td hidden>' + response.results[i]['date_request_shamsi2'] + '</td>')
 
-                            t1 = $('<td></td>')
-                            select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>')
                             edit1 = $('<button type="button" class="btn-sm btn-outline-primary" style="font-family: Tahoma;font-size: smaller;width:100%" data-toggle="modal" data-target="#myModal2">ویرایش</button>').attr('id',  response.results[i]['id_exit']+1000).click(function () {
                                 $('#origin_destination3').val($('#origin_destination2').val());
                                 $('#with_return3').val($('#with_return2').val());
@@ -108,109 +162,71 @@
                                 $('#exit_no2').val($(this).closest('tr').find('td:eq(3)').text());
                                 $('#jamdari_no2').val($(this).closest('tr').find('td:eq(8)').text());
                                 $('#id_exit2').val($(this).closest('tr').find('td:eq(1)').text());
-                                $('#id_form2').val($(this).closest('tr').find('td:eq(11)').text());
-                                
+                                $('#id_form2').val($(this).closest('tr').find('td:eq(11)').text());                                
                             })
                             del2 = $('<button type="button" class="btn-sm btn-outline-danger delete" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').attr('id',  response.results[i]['id_exit']).on('click',function () {   
-
                                 id_t = $(this).closest('tr').find('td:eq(1)').text();
                                 var token = $("meta[name='csrf-token']").attr("content");
-                                Swal.fire({
-                                    title: 'مایل به حذف این درخواست هستید؟',
-                                    position: 'top',
-                                    customClass:{
-                                        title:'swal-title',
-                                        content:'swal-text',
-                                        confirmButton:'swal-confirm',
-                                        denyButton:'swal-deny',
-                                        cancelButton:'swal-cancel',
-                                    },
 
-                                    showDenyButton: true,
-                                    cancelButtonText: `بازگشت`,
-                                    confirmButtonText: `انصراف از حذف`,
-                                    denyButtonText: 'حذف شود',
-                                }).then((result) => {
-                                     if (result.isConfirmed) {
-                                        Swal.fire('رکورد انتخابی حذف نشد', '', 'info')
-                                    } else if (result.isDenied) {
-                                        $.ajax({
+                                $.ajax({
                                     url:"/exit-delete/" + id_t,
                                     type: 'DELETE',
                                     data: {
-                                    "id": id_t,
-                                    "_token": token,
+                                      "id": id_t,
+                                      "_token": token,
                                     },
                                     success: function (response) {
                                         $("#"+response.id).closest('tr').remove();
                                         toastr.error('درخواست انتخابی حذف گردید');
                                     }
-                                });
-                    }        
-                })
-            })
-            t1.append(edit1)
-            var t2 = $('<td></td>')
-            var row = $('<tr class="report_row"></tr>')
-            t2.append(del2)
-            row.append(select,id_exit,description,exit_no,id_goods_type,
-                       id_request_part,with_return,id_requester,jamdari_no,
-                       date_request_shamsi,date_request_miladi,id_form,reason4,
-                       origin_destination,unit,t1,t2)
-                       $("#request_table1").append(row)
-                    }
-   
-            $('#jamdari_no').val('');
-            $('#description').val('');
-            $('#description12').val('');
-            $('#exit_no').val('');
-            $('#id_goods_type').prop("selectedIndex", 0);
-            $('#unit').prop("selectedIndex", 0);
-            }
-        });
-    });
-    $("#ignore_btn").on('click',function(event) {
-            $("#enter_exit").val("");
-            $("#origin_destination").val("");
-            $("#with_return").val("");
-            $("#enter_exit2").val(0);
-            $("#origin_destination2").val("");
-            $("#with_return2").val(0);
+                                })
+                            })
 
-            $('#requests').fadeOut(1500);
-            $('#enter_exit2').prop('disabled',false);
-            $('#origin_destination2').prop('disabled',false);
-            $('#with_return2').prop('disabled',false);
-            $('#ignor_btn').prop('disabled',true);
-            $('#first_btn').prop('disabled',false);
-        });
-    })
-    $("#edit_form_request").on('submit',function(event) {
-                alert('edit')
-                event.preventDefault();
-                $.ajaxSetup({
-                    headers: {
-                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                            t1 = $('<td></td>')
+                            select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>')
+                            t1.append(edit1)
+                            var t2 = $('<td></td>')
+                            var row = $('<tr class="report_row"></tr>')
+                            t2.append(del2)
+                            row.append(select,id_exit,description,exit_no,id_goods_type,
+                                    id_request_part,with_return,id_requester,jamdari_no,
+                                    date_request_shamsi,date_request_miladi,id_form,reason4,
+                                    origin_destination,unit,t1,t2)
+                            $("#request_table1").append(row)               
+                            $('#jamdari_no').val('');
+                            $('#description').val('');
+                            $('#description12').val('');
+                            $('#exit_no').val('');
+                            $('#id_goods_type').prop("selectedIndex", 0);
+                            $('#unit').prop("selectedIndex", 0);
+
                     }
-                });
-                var _token = $("input[name='_token']").val();
-                $.ajax({
-                    url: "/editform",
-                    method:'POST',
-                    data:new FormData(this),
-                    dataType:'JSON',
-                    contentType:false,
-                    processData:false,
-                    success: function (response) {
+                }
+            })
+        })       
+        $("#edit_form_request").on('submit',function(event) {
+            alert('edit')
+            event.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            var _token = $("input[name='_token']").val();
+            $.ajax({
+                url: "/editform",
+                method:'POST',
+                data:new FormData(this),
+                dataType:'JSON',
+                contentType:false,
+                processData:false,
+                success: function (response) {
                         $('.description').text(response.description);
                         $('.jamdari_no').text(response.jamdari_no);
                         $('.exit_no').text(response.exit_no);
                         if(true){
                             $('.with_return').text(response.with_return_text);
                         }
-                        // if(response.enter_exit==2){
-                        //     $('.with_return').text('--');
-                        // }
                         $('.goods_type').text(response.goods_type);
                         $('.origin_destination').text(response.origin_destination);
                         $('.goods_type_value').text(response.id_goods_type);
@@ -234,12 +250,16 @@
                         $('#ajax-alert1').hide();
                         $('#ajax-alert2').hide();
                         $('#ajax-alert3').hide();
-                        // $('#ajax-alert3').addClass('alert-primary').show(function(){
-                        //     $(this).html("آیتمهای درخواست جاری به روز رسانی گردید");
-                        // });
-                    }
-                });
-            });
+                }
+
+            })
+        })
+    })   
+    
+      
+
+
+    
 </script>
 
     <div class="container" style="direction: rtl">
@@ -371,17 +391,10 @@
                         </div>
                         <!-- Edit form -->
                         <div class="container" style="margin: auto;background-color:lightgray ">
-                            <form method="post" encType="multipart/form-data" id="edit_form_request" action="{{route('editform11.edit')}}">
+                            <form method="post" encType="multipart/form-data" id="edit_form_request" action="{{route('editformm.edit44')}}">
                                 {{csrf_field()}}
                                 <input type="hidden" class="form-control" id="id_form2"  name="id_form">
                                 <input type="hidden" class="form-control" id="id_exit2"  name="id_exit">
-                                {{-- <input type="hidden" class="form-control" id="enter_exit2"  name="enter_exit">
-                                <input type="hidden" class="form-control" id="date_request_shamsi2"  name="date_request_shamsi">
-                                <input type="hidden" class="form-control" id="date_request_miladi2"  name="date_request_miladi">
-                                <input type="hidden" class="form-control" id="time_request2"  name="time_request">
-                                <input type="hidden" class="form-control" id="request_timestamp2"  name="request_timestamp">
-                                <input type="hidden" class="form-control" id="id_requester2" placeholder="Enter the id of requester" name="id_requester">
-                                <input type="hidden" class="form-control" id="id_request_part2" name="id_request_part"> --}}
                                 <div class="row" style="height: 20px;margin-top: 10px">
                                     <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">مقصد:</p></div>
                                     <div class="col"><p style="text-align: right;font-family: Tahoma;font-size: small">نوع قطعه:</p></div>
@@ -390,7 +403,7 @@
                                 <div class="row" style="height: 15px">
                                     <div class="col">
                                         <div class="form-group" >
-                                            <input type="text" maxlength="30" class="form-control" id="origin_destination3"  data-toggle="tooltip" data-placement="right" placeholder="مقصد قطعه:" name="origin_destination" style="direction: rtl;font-family: Tahoma;font-size: small;width: 200px" required title="لطفا مبدا یا مقصد این قطعه را وارد کنید">
+                                            <input type="text" maxlength="30" class="form-control" id="origin_destination3"  data-toggle="tooltip" data-placement="right" placeholder="مقصد قطعه:" name="origin_destination" style="direction: rtl;font-family: Tahoma;font-size: small;width: 200px" required>
                                         </div>
                                     </div>
                                     <div class="col">
