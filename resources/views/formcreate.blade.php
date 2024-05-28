@@ -153,6 +153,7 @@
                             $('#unit').prop("selectedIndex", 0);
 
                     }
+                    $('.modal.fade').modal('hide');
                 }
             })
         });
