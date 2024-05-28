@@ -49,7 +49,6 @@
             $('#first_btn').prop('disabled',false);
         });
         $("#edit_form_request").on('submit',function(event) {
-            alert('edit')
             event.preventDefault();
             $.ajaxSetup({
                 headers: {
@@ -58,41 +57,102 @@
             })
             var _token = $("input[name='_token']").val();
             $.ajax({
-                url: "/editform",
+                url: "/editformm",
                 method:'POST',
                 data:new FormData(this),
                 dataType:'JSON',
                 contentType:false,
                 processData:false,
                 success: function (response) {
-                    $('.description').text(response.description);
-                    $('.jamdari_no').text(response.jamdari_no);
-                    $('.exit_no').text(response.exit_no);
-                    if(true){
-                       $('.with_return').text(response.with_return_text);
+                    var id_t = 0
+                    var id_exit =''
+                    var id_goods_type =''
+                    var id_request_part =''
+                    var with_return =''
+                    var id_requester =''
+                    var jamdari_no =''
+                    var date_request_shamsi =''
+                    var date_request_miladi =''
+                    var id_form =''
+                    var reason4 =''
+                    var date_request_shamsi2 =''
+                    var origin_destination =''
+                    var unit = ''
+                    var t1 =''
+                    var edit1 =''
+                    var del2 =''
+                    var t2 =''
+                    var row =''
+                    toastr.info("تغییرات اعمال گردید", "", {
+                        "timeOut": "3500",
+                        "extendedTImeout": "0"
+                    });
+                    $(".report_row").remove();
+                    for(var i = 0; i < response.results.length; i++) {
+                            id_exit = $('<td class="id_exit" style="font-size: 10px">' + response.results[i]['id_exit'] + '</td>')
+                            description = $('<td style="font-size: 10px;text-align:right">' + response.results[i]['description'] + '</td>')
+                            exit_no = $('<td style="font-size: 10px">' + response.results[i]['exit_no'] + '</td>')   
+                            origin_destination = $('<td hidden>' + response.results[i]['origin_destination'] + '</td>')
+                            unit = $('<td hidden>' + response.results[i]['unit'] + '</td>')
+                            id_goods_type = $('<td hidden>' + response.results[i]['id_goods_type'] + '</td>')
+                            id_request_part = $('<td hidden>' + response.results[i]['id_request_part'] + '</td>')
+                            with_return = $('<td hidden>' + response.results[i]['with_return'] + '</td>')
+                            id_requester = $('<td hidden>' + response.results[i]['id_requester'] + '</td>')
+                            jamdari_no = $('<td hidden>' + response.results[i]['jamdari_no'] + '</td>')
+                            date_request_shamsi = $('<td hidden>' + response.results[i]['date_request_shamsi'] + '</td>')
+                            date_request_miladi = $('<td hidden>' + response.results[i]['date_request_miladi'] + '</td>')
+                            id_form = $('<td hidden>' + response.results[i]['id_form'] + '</td>')
+                            reason4 = $('<td hidden>' + response.results[i]['reason4'] + '</td>')
+                            date_request_shamsi2 = $('<td hidden>' + response.results[i]['date_request_shamsi2'] + '</td>')
+
+                            edit1 = $('<button type="button" class="btn-sm btn-outline-primary" style="font-family: Tahoma;font-size: smaller;width:100%" data-toggle="modal" data-target="#myModal2">ویرایش</button>').attr('id',  response.results[i]['id_exit']+1000).click(function () {
+                                $('#origin_destination3').val($('#origin_destination2').val());
+                                $('#with_return3').val($('#with_return2').val());
+                                $('#id_goods_type2').val($(this).closest('tr').find('td:eq(4)').text());
+                                $('#description22').val($(this).closest('tr').find('td:eq(2)').text());
+                                $('#description23').val($(this).closest('tr').find('td:eq(12)').text());
+                                $('#exit_no2').val($(this).closest('tr').find('td:eq(3)').text());
+                                $('#jamdari_no2').val($(this).closest('tr').find('td:eq(8)').text());
+                                $('#id_exit2').val($(this).closest('tr').find('td:eq(1)').text());
+                                $('#id_form2').val($(this).closest('tr').find('td:eq(11)').text());                                
+                            })
+                            del2 = $('<button type="button" class="btn-sm btn-outline-danger delete" style="font-family: Tahoma;font-size: smaller;;width:100%">حذف</button>').attr('id',  response.results[i]['id_exit']).on('click',function () {   
+                                id_t = $(this).closest('tr').find('td:eq(1)').text();
+                                var token = $("meta[name='csrf-token']").attr("content");
+
+                                $.ajax({
+                                    url:"/exit-delete/" + id_t,
+                                    type: 'DELETE',
+                                    data: {
+                                      "id": id_t,
+                                      "_token": token,
+                                    },
+                                    success: function (response) {
+                                        $("#"+response.id).closest('tr').remove();
+                                        toastr.error('درخواست انتخابی حذف گردید');
+                                    }
+                                })
+                            })
+
+                            t1 = $('<td></td>')
+                            select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>')
+                            t1.append(edit1)
+                            var t2 = $('<td></td>')
+                            var row = $('<tr class="report_row"></tr>')
+                            t2.append(del2)
+                            row.append(select,id_exit,description,exit_no,id_goods_type,
+                                    id_request_part,with_return,id_requester,jamdari_no,
+                                    date_request_shamsi,date_request_miladi,id_form,reason4,
+                                    origin_destination,unit,t1,t2)
+                            $("#request_table1").append(row)               
+                            $('#jamdari_no').val('');
+                            $('#description').val('');
+                            $('#description12').val('');
+                            $('#exit_no').val('');
+                            $('#id_goods_type').prop("selectedIndex", 0);
+                            $('#unit').prop("selectedIndex", 0);
+
                     }
-                    $('.goods_type').text(response.goods_type);
-                    $('.origin_destination').text(response.origin_destination);
-                    $('.goods_type_value').text(response.id_goods_type);
-                    $('.with_return_text').text(response.with_return);
-                    toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "positionClass": "toast-top-right",
-                            "onclick": null,
-                            "showDuration": "300",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                    };
-                    toastr.info('این درخواست تغییر داده شد');
-                    $('#ajax-alert1').hide();
-                    $('#ajax-alert2').hide();
-                    $('#ajax-alert3').hide();
                 }
             })
         });

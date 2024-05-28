@@ -351,6 +351,7 @@ class Exit_goods_permissionController extends Controller
     }
     public function editformm(Request $request)
     {
+        $id_form=$request->input('id_form');
         $id_exit=$request->input('id_exit');
         $origin_destination=$request->input('origin_destination');
         $id_goods_type=$request->input('id_goods_type');
@@ -376,7 +377,9 @@ class Exit_goods_permissionController extends Controller
           'jamdari_no'=>$jamdari_no
         ]);
 
-        return response()->json(['success'=>'the information has successfuly saved']);
+        $data = DB::table('exit_goods_permissions')->where('id_form',$id_form)->get();
+
+        return response()->json(['results'=>$data]);
 
     }
     public function editform(Request $request)
