@@ -243,6 +243,7 @@
                                     <option value='کیلو'>کیلو</option>
                                     <option value='تن'>تن</option>
                                     <option value='لیتر'>لیتر</option>
+                                    <option value='بشکه'>بشکه</option>
                                     <option value='مترمکعب'>مترمکعب</option>
                                     <option value='متر'>متر</option>
                                     <option value='ست'>ست</option>
@@ -406,6 +407,7 @@
                                             <option value='کیلو'>کیلو</option>
                                             <option value='تن'>تن</option>
                                             <option value='لیتر'>لیتر</option>
+                                            <option value='بشکه'>بشکه</option>
                                             <option value='مترمکعب'>مترمکعب</option>
                                             <option value='متر'>متر</option>
                                         </select>
