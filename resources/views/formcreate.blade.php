@@ -274,7 +274,14 @@
                     }
                 }
             })
-        })       
+        })  
+        $('#enter_exit2').on('change',function(){
+           if($('#enter_exit2').val() == 1){
+            $("#origin_destination2").val("از نیروگاه به ...");
+           }else{
+            $("#origin_destination2").val("از ... به نیروگاه");
+           }
+        })     
     })   
     
       
