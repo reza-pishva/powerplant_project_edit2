@@ -244,7 +244,12 @@
                             })
 
                             t1 = $('<td></td>')
-                            select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>')
+                            select = $('<td><button type="button" class="btn-sm btn-outline-info" style="font-family: Tahoma;font-size: smaller;text-align: right">>></button></td>').click(function (){
+                                $("tr.report_row").css("background-color", "white");
+                                $("tr.report_row").css("color", "black");
+                                $(this).closest('tr.report_row').css("background-color", "#66CDAA");
+                                $(this).closest('tr.report_row').css("color", "white");
+                            })
                             t1.append(edit1)
                             var t2 = $('<td></td>')
                             var row = $('<tr class="report_row"></tr>')
