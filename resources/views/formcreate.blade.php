@@ -70,6 +70,7 @@
                                 $("#origin_destination2").val("");
                                 $("#with_return2").val(0);
                                 $('#requests').fadeOut(1500);
+                                $('#forms').fadeOut(1500);
                                 $('#enter_exit2').prop('disabled',false);
                                 $('#origin_destination2').prop('disabled',false);
                                 $('#with_return2').prop('disabled',false);
@@ -81,8 +82,7 @@
                         Swal.fire("فرم درخواست حذف نشد", "", "info");
                     }
                 });    
-            });
-            
+        });
         $("#edit_form_request").on('submit',function(event) {
             event.preventDefault();
             $.ajaxSetup({
@@ -317,17 +317,43 @@
             $("#origin_destination2").val("از ... به نیروگاه");
            }
         })     
-    })   
-    
-      
-
-
-    
+        $('#third_btn').on('click',function(){
+            Swal.fire({
+                title: "آیا مایلید این فرم همراه با درخواستهای الصاقی برای مسئول قسمت ارسال گردد",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "ارسال درخواست",
+                denyButtonText: `انصراف`,
+                customClass:{
+                    popup:'swal2-popup',
+                }
+                }).then((result) => {
+                    if (result.isDenied) {
+                        Swal.fire("شما هنوز امکان اعمال تغییرات در این فرم درخواست را دارید", "", "info");
+                    } else if (result.isConfirmed) {
+                        Swal.fire("این فرم همراه با درخواستهای الصاقی ارسال گردید", "", "info");
+                        $(".report_row").remove();
+                        $("#enter_exit").val("");
+                        $("#origin_destination").val("");
+                        $("#with_return").val("");
+                        $("#enter_exit2").val(0);
+                        $("#origin_destination2").val("");
+                        $("#with_return2").val(0);
+                        $('#requests').fadeOut(1500);
+                        $('#forms').fadeOut(1500);
+                        $('#enter_exit2').prop('disabled',false);
+                        $('#origin_destination2').prop('disabled',false);
+                        $('#with_return2').prop('disabled',false);
+                        $('#ignor_btn').prop('disabled',true);
+                        $('#first_btn').prop('disabled',false);                       
+                    }
+                });    
+        })
+    })       
 </script>
-
     <div class="container" style="direction: rtl">
         <!-- First form -->
-        <div class="row mt-3" style="margin-right:-40px;width:100%;direction: rtl;height:120px">
+        <div class="row mt-3" id="forms" style="margin-right:-40px;width:100%;direction: rtl;height:120px">
             <div class="col-1 mt-5"></div>
             <div class="col-9 pt-3" style="background-color: gainsboro;border-radius: 5px;margin-top: 3px;">
                 <form method="post" encType="multipart/form-data" id="form_create" action={{route('form.store')}}>
@@ -356,15 +382,17 @@
                     <div class="row">
                         <div class="col">
                             <button type="commit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="first_btn">ثبت فرم وشروع ثبت قطعات و کالا</button>                            
-                                           
+                        </div>                                          
                    
                 </form>
                 <form method="post" encType="multipart/form-data" id="form_remove" action={{route('form.remove')}}>
                       {{csrf_field()}}
-                      <button type="commit" disabled style="display;font-family: Tahoma;font-size: small" class="btn btn-danger" id="ignore_btn">انصراف و حذف فرم جاری</button>
-                   </div>
-                </div>
+                      <div class="col" style="text-align: left">
+                         <button type="commit" disabled style="display;font-family: Tahoma;font-size: small" class="btn btn-danger" id="ignore_btn">انصراف و حذف فرم جاری</button>
+                      </div>
+                
                 </form>
+            </div>
             </div>
             <div class="col-2 mt-5"></div>
         </div>
@@ -415,7 +443,7 @@
                     </div>
                     <div class="form-group mt-2">
                         <button type="submit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="second_btn">ثبت اطلاعات</button>
-                        <button type="submit" style="display;font-family: Tahoma;font-size: small" class="btn btn-info" id="third_btn">بستن درخواست و خروج</button>
+                        <button type="button" style="display;font-family: Tahoma;font-size: small" class="btn btn-info" id="third_btn">بستن درخواست و خروج</button>
                     </div>                    
                 </form> 
            </div>
