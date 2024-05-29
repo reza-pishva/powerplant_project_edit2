@@ -173,13 +173,13 @@
                 <div class="row mt-1" style="height:100%;margin: auto;width:233px">
                     <div class="col" style="border-radius: 5px;height: 660px;background-color:rgba(14,53,126,0.5);text-align: center">
                         <div >
-                            <a href="/requester">
-                                <img src="{{URL::to('/')}}/exit002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
+                            <a href="#">
+                                <img src="{{URL::to('/')}}/addlist.jpg" id="first_stage" class="reza2" data-toggle="tooltip" data-placement="left" title="ایجاد فرم درخواست جدید">
                             </a>
                         </div>
                         <div class="mt-4">
                             <a href="/requester">
-                                <img src="{{URL::to('/')}}/exit002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
+                                <img src="{{URL::to('/')}}/edit_enter_exit.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="مشاهده موارد ارسالی و اصلاح آنها">
                             </a>
                         </div>
                         <div >

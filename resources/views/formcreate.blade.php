@@ -2,6 +2,9 @@
 @section('content')
 <script>
     $(document).ready(function() {
+        $('#first_stage').on('click',function(){
+            $('#forms').fadeIn(1500);
+        })
         $("#form_create").on('submit',function(event) {
             $('#requests').fadeIn(1500);
             $('#enter_exit2').prop('disabled',true);
@@ -353,9 +356,9 @@
 </script>
     <div class="container" style="direction: rtl">
         <!-- First form -->
-        <div class="row mt-3" id="forms" style="margin-right:-40px;width:100%;direction: rtl;height:120px">
+        <div class="row mt-3" id="forms" style="margin-right:-40px;width:100%;direction: rtl;height:120px;display:none">
             <div class="col-1 mt-5"></div>
-            <div class="col-9 pt-3" style="background-color: gainsboro;border-radius: 5px;margin-top: 3px;">
+            <div class="col-9 pt-3" style="background-color: rgb(107, 116, 136);border-radius: 5px;margin-top: 3px;">
                 <form method="post" encType="multipart/form-data" id="form_create" action={{route('form.store')}}>
                     {{csrf_field()}}
                     <div class="row">
