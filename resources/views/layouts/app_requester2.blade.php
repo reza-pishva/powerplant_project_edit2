@@ -24,13 +24,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-        .swal-title {
-            font-size: 16px; /* تغییر اندازه فونت عنوان */
-            font-family: 'tahoma'; /* تغییر خانواده فونت عنوان */
+        .swal2-popup {
+            font-size: 1.5rm !important; 
+            font-family: 'tahoma', sans-serif;
+            margin-top: -400px;
         }
 
         .swal-text {
-            font-size: 10px; /* تغییر اندازه فونت متن */
+            font-size: 12px; /* تغییر اندازه فونت متن */
             font-family: 'tahoma', sans-serif; /* تغییر خانواده فونت متن */
         }
 

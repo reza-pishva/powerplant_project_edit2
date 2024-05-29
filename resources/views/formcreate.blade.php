@@ -35,39 +35,6 @@
                 });
         });  
         $("#form_remove").on('submit',function(event) {
-
-                                // event.preventDefault();
-                    // $.ajaxSetup({
-                    //     headers: {
-                    //         'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                    //     }
-                    // });
-                    // var _token = $("input[name='_token']").val();
-                    // $.ajax({
-                    //     url: "/form-delete",
-                    //     type: 'POST',
-                    //     data: new FormData(this),
-                    //     dataType: 'JSON',
-                    //     contentType: false,
-                    //     processData: false,
-                    //     success: function (response) {
-                    //         Swal.fire("این فرم همراه با کلیه درخواستهای الصاق شده حذف گردید", "", "success");                        
-                    //         $(".report_row").remove();
-                    //         $("#enter_exit").val("");
-                    //         $("#origin_destination").val("");
-                    //         $("#with_return").val("");
-                    //         $("#enter_exit2").val(0);
-                    //         $("#origin_destination2").val("");
-                    //         $("#with_return2").val(0);
-                    //         $('#requests').fadeOut(1500);
-                    //         $('#enter_exit2').prop('disabled',false);
-                    //         $('#origin_destination2').prop('disabled',false);
-                    //         $('#with_return2').prop('disabled',false);
-                    //         $('#ignor_btn').prop('disabled',true);
-                    //         $('#first_btn').prop('disabled',false);
-                    //     }
-                    // }); 
-
             event.preventDefault();
             $.ajaxSetup({
                 headers: {
@@ -79,10 +46,13 @@
                 title: "آیا مایلید این فرم همراه با کلیه درخواستهای ثبت شده توسط شما حذف شود؟",
                 showDenyButton: true,
                 showCancelButton: true,
-                confirmButtonText: "کلیه موارد حذف شوند",
-                denyButtonText: `انصراف از حذف`
+                denyButtonText: "کلیه موارد حذف شوند",
+                confirmButtonText: `انصراف از حذف`,
+                customClass:{
+                    popup:'swal2-popup',
+                }
                 }).then((result) => {
-                    if (result.isConfirmed) {
+                    if (result.isDenied) {
                         $.ajax({
                             url: "/form-delete",
                             type: 'POST',
@@ -107,7 +77,7 @@
                                 $('#first_btn').prop('disabled',false);
                             }
                         });                
-                    } else if (result.isDenied) {
+                    } else if (result.isConfirmed) {
                         Swal.fire("فرم درخواست حذف نشد", "", "info");
                     }
                 });    
