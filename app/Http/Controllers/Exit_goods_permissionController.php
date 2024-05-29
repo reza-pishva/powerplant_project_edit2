@@ -344,6 +344,12 @@ class Exit_goods_permissionController extends Controller
         Workflow::where('id_exit', $id)->delete();
         return response()->json(['id'=>$id]);
     }
+    public function form_delete(){
+        $id_user = auth()->user()->id;
+        $id_form = DB::table('forms')->where('id_requester',$id_user)->orderBy('id_form', 'DESC')->first()->id_form;
+        Exit_goods_permission::where('id_form', $id_form)->delete();
+        return response()->json(['id'=>$id_form]);
+    }
     public function form_select($id)
     {
         $data =  DB::table('exit_goods_permissions')->where('id_form',$id)->get();

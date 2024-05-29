@@ -34,19 +34,79 @@
                     }
                 });
         });  
-        $("#ignore_btn").on('click',function(event) {
-            $("#enter_exit").val("");
-            $("#origin_destination").val("");
-            $("#with_return").val("");
-            $("#enter_exit2").val(0);
-            $("#origin_destination2").val("");
-            $("#with_return2").val(0);
-            $('#requests').fadeOut(1500);
-            $('#enter_exit2').prop('disabled',false);
-            $('#origin_destination2').prop('disabled',false);
-            $('#with_return2').prop('disabled',false);
-            $('#ignor_btn').prop('disabled',true);
-            $('#first_btn').prop('disabled',false);
+        $("#form_remove").on('submit',function(event) {
+            // Swal.fire({
+            //                                icon: 'error',
+            //                                title: 'هشدار',
+            //                                text: 'به علت ثبت درخواست دریافت قطعه برای این برنامه امکان حذف وجود ندارد',
+            //                             })
+            //                                       }
+            //                                             else{
+            //                                                 if(response.n==0){
+            //                                                     $('#' + (Number(id_t) + 2000).toString()).closest('tr').remove();
+            //                                                     toastr.options = {
+            //                                                         "closeButton": true,
+            //                                                         "debug": false,
+            //                                                         "positionClass": "toast-top-right",
+            //                                                         "onclick": null,
+            //                                                         "showDuration": "300",
+            //                                                         "hideDuration": "1000",
+            //                                                         "timeOut": "3000",
+            //                                                         "extendedTimeOut": "1000",
+            //                                                         "showEasing": "swing",
+            //                                                         "hideEasing": "linear",
+            //                                                         "showMethod": "fadeIn",
+            //                                                         "hideMethod": "fadeOut"
+            //                                                     };
+            //                                                     toastr.error('برنامه تعمیراتی حذف گردید');
+            //                                                     $('#' + (Number(id_t) + 2000).toString()).closest('tr').remove();
+            //                                                     Swal.fire('حذف شد', '', 'success');
+            //                                                 }else{
+            //                                                     Swal.fire('به علت استفاده از این برنامه در سوابق موجود امکان حذف وجود ندارد', '', 'info')
+            //                                                 }
+            //                                             })
+
+
+                                            
+                                       
+
+                                     
+
+  
+                                       
+
+
+            event.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var _token = $("input[name='_token']").val();
+            $.ajax({
+                url: "/form-delete",
+                type: 'POST',
+                data: new FormData(this),
+                dataType: 'JSON',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+
+                    
+                    $("#enter_exit").val("");
+                    $("#origin_destination").val("");
+                    $("#with_return").val("");
+                    $("#enter_exit2").val(0);
+                    $("#origin_destination2").val("");
+                    $("#with_return2").val(0);
+                    $('#requests').fadeOut(1500);
+                    $('#enter_exit2').prop('disabled',false);
+                    $('#origin_destination2').prop('disabled',false);
+                    $('#with_return2').prop('disabled',false);
+                    $('#ignor_btn').prop('disabled',true);
+                    $('#first_btn').prop('disabled',false);
+                }
+            });
         });
         $("#edit_form_request").on('submit',function(event) {
             event.preventDefault();
@@ -320,11 +380,15 @@
                     </div>                       
                     <div class="row">
                         <div class="col">
-                            <button type="commit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="first_btn">ثبت فرم وشروع ثبت قطعات و کالا</button>
-                            <button type="button" disabled style="display;font-family: Tahoma;font-size: small" class="btn btn-danger" id="ignore_btn">انصراف و حذف فرم جاری</button>
-                        </div>
-                    </div>
+                            <button type="commit" style="display;font-family: Tahoma;font-size: small" class="btn btn-primary" id="first_btn">ثبت فرم وشروع ثبت قطعات و کالا</button>                            
+                                           
                    
+                </form>
+                <form method="post" encType="multipart/form-data" id="form_remove" action={{route('form.remove')}}>
+                      {{csrf_field()}}
+                      <button type="commit" disabled style="display;font-family: Tahoma;font-size: small" class="btn btn-danger" id="ignore_btn">انصراف و حذف فرم جاری</button>
+                   </div>
+                </div>
                 </form>
             </div>
             <div class="col-2 mt-5"></div>
