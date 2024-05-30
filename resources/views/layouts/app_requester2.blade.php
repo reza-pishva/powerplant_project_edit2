@@ -178,27 +178,27 @@
                             </a>
                         </div>
                         <div class="mt-4">
-                            <a href="/requester">
-                                <img src="{{URL::to('/')}}/edit_enter_exit.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="مشاهده موارد ارسالی و اصلاح آنها">
+                            <a href="#">
+                                <img src="{{URL::to('/')}}/edit_enter_exit.png" id="first_report" class="reza2" data-toggle="tooltip" data-placement="left" title="مشاهده موارد ارسالی و اصلاح آنها">
                             </a>
                         </div>
                         <div >
-                            <a href="/requester">
-                                <img src="{{URL::to('/')}}/amar3.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
+                            <a href="#">
+                                <img src="{{URL::to('/')}}/amar3.png" id="second_report" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
                             </a>
                         </div>
                         <div >
-                            <a href="/requester">
-                                <img src="{{URL::to('/')}}/unauthorised002.jpg" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
+                            <a href="#">
+                                <img src="{{URL::to('/')}}/unauthorised002.jpg" id="third_report" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
                             </a>
                         </div>
                         <div >
-                            <a href="/requester">
-                                <img src="{{URL::to('/')}}/person_search002.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
+                            <a href="#">
+                                <img src="{{URL::to('/')}}/person_search002.png" id="fourth_report" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
                             </a>
                         </div>
                         <div class="mt-4" >
-                            <a href="/requester">
+                            <a href="/report">
                                 <img src="{{URL::to('/')}}/reports.png" id="not_confirmed2" class="reza2" data-toggle="tooltip" data-placement="left" title="بازگشت به صفحه اصلی - پایان ورود اطلاعات">
                             </a>
                         </div>
